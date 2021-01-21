@@ -12,19 +12,6 @@
       experimental-features = nix-command flakes
     '';
   };
-  # import modules
-  imports =
-    [ # Include the results of the hardware scan.
-      ./hardware-configuration.nix
-      ./user-configuration.nix
-      ./systemd-configuration.nix
-    ];
-
-  # nixpkgs overlays
-  nixpkgs.overlays = [
-    (import ./overlays/fonts)
-    (import ./overlays/polybar)
-  ];
 
   boot.isContainer = false;
   # Use the systemd-boot EFI boot loader.

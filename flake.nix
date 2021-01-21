@@ -8,10 +8,17 @@
 
       modules = [
         ./configuration.nix
+        ./hardware-configuration.nix
+        ./user-configuration.nix
+        ./systemd-configuration.nix
         nixpkgs.nixosModules.notDetected
-        # Let 'nixos-version --json' know about the Git revision of this flake.
         ({ pkgs, ... }: {
+          # Let 'nixos-version --json' know about the Git revision of this flake.
           system.configurationRevision = nixpkgs.lib.mkIf (self ? rev) self.rev;
+          nixpkgs.overlays = [
+            (import ./overlays/fonts)
+            (import ./overlays/polybar)
+          ];
         })
       ];
     };
