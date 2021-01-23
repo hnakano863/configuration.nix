@@ -1,26 +1,46 @@
 {
-  inputs.nixpkgs.url = "github:NixOS/nixpkgs/nixos-20.09";
-
-  outputs = { self, nixpkgs }: {
-
-    nixosConfigurations.bravo = nixpkgs.lib.nixosSystem {
-      system = "x86_64-linux";
-
-      modules = [
-        ./configuration.nix
-        ./hardware-configuration.nix
-        ./user-configuration.nix
-        ./systemd-configuration.nix
-        nixpkgs.nixosModules.notDetected
-        ({ pkgs, ... }: {
-          # Let 'nixos-version --json' know about the Git revision of this flake.
-          system.configurationRevision = nixpkgs.lib.mkIf (self ? rev) self.rev;
-          nixpkgs.overlays = [
-            (import ./overlays/fonts)
-            (import ./overlays/polybar)
-          ];
-        })
-      ];
-    };
+  inputs = {
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-20.09";
+    home-manager.url = "github:nix-community/home-manager/release-20.09";
+    nur.url = "github:nix-community/NUR";
+    emacs-overlay.url = "github:nix-community/emacs-overlay";
   };
+
+  outputs =
+    { self
+    , nixpkgs
+    , home-manager
+    , nur
+    , emacs-overlay
+    }: {
+      nixosConfigurations.bravo = nixpkgs.lib.nixosSystem {
+        system = "x86_64-linux";
+
+        modules = [
+
+          nixpkgs.nixosModules.notDetected
+          home-manager.nixosModules.home-manager
+
+          ./configuration.nix
+          ./hardware.nix
+          ./users.nix
+          ./guix.nix
+
+          { system.configurationRevision = nixpkgs.lib.mkIf (self ? rev) self.rev; }
+          {
+            home-manager.useGlobalPkgs = true;
+            home-manager.useUserPackages = true;
+            home-manager.users.hnakano = import ./home/hnakano/home.nix;
+          }
+          {
+            nixpkgs.overlays = [
+              (import ./overlays)
+              # nur.overlay
+              emacs-overlay.overlay
+            ];
+          }
+
+        ];
+      };
+    };
 }
