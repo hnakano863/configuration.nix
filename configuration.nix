@@ -13,6 +13,7 @@
 
   nixpkgs.config = {
     allowUnfree = true;
+    allowBroken = true;
   };
 
   boot.isContainer = false;
