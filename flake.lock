@@ -2,11 +2,11 @@
   "nodes": {
     "emacs-overlay": {
       "locked": {
-        "lastModified": 1611375384,
-        "narHash": "sha256-Qs74u9k8n7TQYY6GxuJFVJX2U2tIQxDrnraS+p8DuUA=",
+        "lastModified": 1612008806,
+        "narHash": "sha256-frLlnDTg3+YNW++ZkfhEaaz72ZaGh4DBoCwI8PswLhE=",
         "owner": "nix-community",
         "repo": "emacs-overlay",
-        "rev": "d005562c15c2ca2f289e2f464be8c26780e6f116",
+        "rev": "63571d4a0a62b8f5453b29102c075a9fd3ecea0c",
         "type": "github"
       },
       "original": {
@@ -20,16 +20,15 @@
         "nixpkgs": "nixpkgs"
       },
       "locked": {
-        "lastModified": 1611323638,
-        "narHash": "sha256-+7wm2RH82NYTZjzl0Nw+8E4yyXqVp/6xPdPWHAQXlt8=",
+        "lastModified": 1611994408,
+        "narHash": "sha256-9lF/96lCtwJXE9r9r3gVbFX4tVa85nyG93oRfweDkEo=",
         "owner": "nix-community",
         "repo": "home-manager",
-        "rev": "91bd34620d73340be03642279ee0d1c64110ee6c",
+        "rev": "98d030f723e0a4a446e56b276573efb8bef422f5",
         "type": "github"
       },
       "original": {
         "owner": "nix-community",
-        "ref": "release-20.09",
         "repo": "home-manager",
         "type": "github"
       }
@@ -50,16 +49,16 @@
     },
     "nixpkgs_2": {
       "locked": {
-        "lastModified": 1611179033,
-        "narHash": "sha256-NMepSdxJt8mFfgWHUT2o7u2yKZ8l2KD+FWbNDiR8Ufk=",
+        "lastModified": 1611575689,
+        "narHash": "sha256-z2rNP3zdVnGxp9iV2Rbn0/LLKhk47DZQKxDkpYFLI7M=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "da3378c4aaf2ed350ad14552558fa55bb68d96d3",
+        "rev": "891f607d5301d6730cb1f9dcf3618bcb1ab7f10e",
         "type": "github"
       },
       "original": {
         "owner": "NixOS",
-        "ref": "nixos-20.09",
+        "ref": "nixos-unstable",
         "repo": "nixpkgs",
         "type": "github"
       }
