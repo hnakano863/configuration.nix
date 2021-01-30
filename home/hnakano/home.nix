@@ -2,7 +2,7 @@
 {
   imports = [
     # pkgs.nur.repos.rycee.hmModules.emacs-init
-    # ./emacs
+    ./emacs
     ./julia
   ];
   # Let Home Manager install and manage itself.

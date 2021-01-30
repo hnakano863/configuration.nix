@@ -2,7 +2,8 @@
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-20.09";
     home-manager.url = "github:nix-community/home-manager/release-20.09";
-    nur.url = "github:nix-community/NUR";
+    rycee.url = "gitlab:rycee/nur-expressions/master";
+    rycee.flake = false;
     emacs-overlay.url = "github:nix-community/emacs-overlay";
   };
 
@@ -10,9 +11,17 @@
     { self
     , nixpkgs
     , home-manager
-    , nur
+    , rycee
     , emacs-overlay
-    }: {
+    }:
+    let
+      lock = builtins.fromJSON (builtins.readFile ./flake.lock);
+      ryceeNurExpressions = import (fetchTarball {
+        url = "https://gitlab.com/rycee/nur-expressions/-/archive/${lock.nodes.rycee.locked.rev}/nur-expressions-${lock.nodes.rycee.locked.rev}.tar.gz";
+        sha256 = lock.nodes.rycee.locked.narHash;
+      });
+    in
+    {
       nixosConfigurations.bravo = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
 
@@ -30,12 +39,16 @@
           {
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
-            home-manager.users.hnakano = import ./home/hnakano/home.nix;
+            home-manager.users.hnakano = { config, pkgs, lib, ... }: {
+              imports = [
+                (ryceeNurExpressions { pkgs = nixpkgs; }).hmModules.emacs-init
+                ./home/hnakano/home.nix
+              ];
+            };
           }
           {
             nixpkgs.overlays = [
               (import ./overlays)
-              # nur.overlay
               emacs-overlay.overlay
             ];
           }

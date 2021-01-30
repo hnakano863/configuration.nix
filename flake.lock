@@ -64,27 +64,29 @@
         "type": "github"
       }
     },
-    "nur": {
-      "locked": {
-        "lastModified": 1611375273,
-        "narHash": "sha256-JGQTXQnFiiWnBVoS3P/AZL5TGrXUwnXxC1M9KVGpw+s=",
-        "owner": "nix-community",
-        "repo": "NUR",
-        "rev": "01aa1f5755d2c719320d128b021cd0926ab08ca0",
-        "type": "github"
-      },
-      "original": {
-        "owner": "nix-community",
-        "repo": "NUR",
-        "type": "github"
-      }
-    },
     "root": {
       "inputs": {
         "emacs-overlay": "emacs-overlay",
         "home-manager": "home-manager",
         "nixpkgs": "nixpkgs_2",
-        "nur": "nur"
+        "rycee": "rycee"
+      }
+    },
+    "rycee": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1611995535,
+        "narHash": "sha256-PCGa5WB4JA95XjegM598t1tEV4eMlsvOTDk4noXaykk=",
+        "owner": "rycee",
+        "repo": "nur-expressions",
+        "rev": "000ec0301670fecf841d07678a0e2dcf93c3f40b",
+        "type": "gitlab"
+      },
+      "original": {
+        "owner": "rycee",
+        "ref": "master",
+        "repo": "nur-expressions",
+        "type": "gitlab"
       }
     }
   },
