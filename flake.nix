@@ -47,6 +47,7 @@
             };
           }
           {
+            nix.registry.nixpkgs.flake = nixpkgs;
             nixpkgs.overlays = [
               (import ./overlays)
               emacs-overlay.overlay
