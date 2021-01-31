@@ -4,6 +4,7 @@
     ./elisp
     ./fish
     ./gnuplot
+    ./idris
     ./julia
     ./jupyter
     ./nix

@@ -1,7 +1,7 @@
 {
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
-    home-manager.url = "github:nix-community/home-manager";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-20.09";
+    home-manager.url = "github:nix-community/home-manager/release-20.09";
     rycee.url = "gitlab:rycee/nur-expressions/master";
     rycee.flake = false;
     emacs-overlay.url = "github:nix-community/emacs-overlay";
@@ -39,9 +39,9 @@
           {
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
-            home-manager.users.hnakano = { config, pkgs, lib, ... }: {
+            home-manager.users.hnakano = { config, pkgs ? pkgs, lib, ... }: {
               imports = [
-                (ryceeNurExpressions { pkgs = nixpkgs; }).hmModules.emacs-init
+                (ryceeNurExpressions { inherit pkgs; }).hmModules.emacs-init
                 ./home/hnakano/home.nix
               ];
             };
