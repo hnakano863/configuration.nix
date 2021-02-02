@@ -67,8 +67,9 @@
     feather-icon-font
   ];
 
-  environment.sessionVariables = {
+  environment.variables = {
     GUIX_PROFILE = "/root/.config/guix/current";
+    GUIX_LOCPATH = "/root/.guix-profile/lib/locale";
   };
 
   # Some programs need SUID wrappers, can be configured further or are
