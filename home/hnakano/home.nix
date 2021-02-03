@@ -25,9 +25,8 @@
     vlc
   ];
 
-  home.sessionPath = [ "$HOME/.local/bin" "$HOME/.guix-profile/bin"];
+  home.sessionPath = [ "$HOME/.local/bin" ];
   home.sessionVariables = {
-    GUIX_PROFILE = "$HOME/.guix-profile";
     GUIX_LOCPATH = "$HOME/.guix-profile/lib/locale";
   };
 
@@ -35,6 +34,8 @@
 
   programs.bash.enable = true;
   programs.bash.initExtra = ''
+    export GUIX_PROFILE="$HOME/.guix-profile"
+    source "$GUIX_PROFILE/etc/profile"
     exec fish
   '';
 
