@@ -34,8 +34,6 @@
 
   programs.bash.enable = true;
   programs.bash.initExtra = ''
-    export GUIX_PROFILE="$HOME/.guix-profile"
-    source "$GUIX_PROFILE/etc/profile"
     exec fish
   '';
 
@@ -60,6 +58,11 @@
         };
       }
     ];
+
+    interactiveShellInit = ''
+      set -gx GUIX_PROFILE "$HOME/.guix-profile"
+      bass source "$GUIX_PROFILE/etc/profile"
+    '';
   };
 
   programs.starship = {
