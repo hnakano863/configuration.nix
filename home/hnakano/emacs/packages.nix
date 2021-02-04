@@ -96,17 +96,6 @@ with pkgs;
     magit = {
       enable = true;
       command = [ "magit-status" ];
-      config = "(require 'evil-magit)";
-    };
-
-    evil-magit = {
-      enable = true;
-      defer = true;
-      extraConfig = ''
-        :custom
-        (evil-magit-state 'normal)
-        (evil-magit-use-y-for-yank t)
-      '';
     };
 
     treemacs = {
@@ -256,7 +245,14 @@ with pkgs;
 
     evil-collection = {
       enable = true;
-      hook = [ "(pdf-view-mode . evil-collection-pdf-setup)" ];
+      hook = [
+        "(pdf-view-mode . evil-collection-pdf-setup)"
+        "(magit-mode . evil-collection-magit-setup)"
+      ];
+      extraConfig = ''
+        :custom
+        (evil-collection-magit-state 'normal)
+      '';
     };
 
     ebib.enable = true;
