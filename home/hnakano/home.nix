@@ -1,7 +1,6 @@
 { config, pkgs, lib, ... }:
 {
   imports = [
-    # pkgs.nur.repos.rycee.hmModules.emacs-init
     ./emacs
     ./julia
   ];
@@ -23,6 +22,7 @@
     gimp
     texlive.combined.scheme-medium
     vlc
+    python3
   ];
 
   home.sessionPath = [ "$HOME/.local/bin" ];
@@ -48,6 +48,18 @@
         body = builtins.readFile ./fish_functions/vterm_printf.fish;
       };
     };
+
+    plugins = [
+      {
+        name = "bass";
+        src = pkgs.fetchFromGitHub {
+          owner = "edc";
+          repo = "bass";
+          rev = "df4a1ebf8c0536e4bd7b7828a4c0dcb2b7b5d22b";
+          sha256 = "VBqfBhHj0OyUmDzjak7OpSNxXlB0Xp1oG31To35u/rU=";
+        };
+      }
+    ];
   };
 
   programs.starship = {
