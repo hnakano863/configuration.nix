@@ -42,9 +42,14 @@
   programs.fish = {
     enable = true;
     functions = {
-      vterm_printf = {
-        body = builtins.readFile ./fish_functions/vterm_printf.fish;
-      };
+      vterm_printf.body = builtins.readFile ./fish_functions/vterm_printf.fish;
+      mkprof.body = builtins.readFile ./fish_functions/mkprof.fish;
+      swprof.body = builtins.readFile ./fish_functions/swprof.fish;
+      lsprof.body = ''
+      function lsprof;
+          ls $GUIX_EXTRA_PROFILES
+      end
+      '';
     };
 
     plugins = [
@@ -60,8 +65,9 @@
     ];
 
     interactiveShellInit = ''
-      set -gx GUIX_PROFILE "$HOME/.guix-profile"
-      bass source "$GUIX_PROFILE/etc/profile"
+      set -gx GUIX_DEFAULT_PROFILE "$HOME/.guix-profile"
+      set -gx GUIX_EXTRA_PROFILES "$HOME/.guix-extra-profiles"
+      swprof
     '';
   };
 
