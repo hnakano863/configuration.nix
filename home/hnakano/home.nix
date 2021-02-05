@@ -67,7 +67,8 @@
     interactiveShellInit = ''
       set -gx GUIX_DEFAULT_PROFILE "$HOME/.guix-profile"
       set -gx GUIX_EXTRA_PROFILES "$HOME/.guix-extra-profiles"
-      swprof
+      set -gx GUIX_PROFILE $GUIX_DEFAULT_PROFILE
+      bass source "$GUIX_PROFILE/etc/profile"
     '';
   };
 
