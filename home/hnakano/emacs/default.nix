@@ -14,6 +14,10 @@ in
   programs.emacs.enable = true;
   programs.emacs.overrides = import ./overrides { inherit pkgs; };
   # programs.emacs.package = emacsGcc;
+  programs.emacs.extraPackages = (epkgs: with epkgs; [
+    leaf
+    leaf-convert
+  ]);
 
   programs.emacs.init = {
     enable = true;
