@@ -14,7 +14,6 @@
 
   home.packages = with pkgs; [
     firefox-bin
-    vivaldi
     exa
     fd
     fzf
