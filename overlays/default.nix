@@ -27,8 +27,7 @@ final: prev: {
 
   vivaldi = (prev.vivaldi.override {
     proprietaryCodecs = true;
-    enableWidevine = true;
-    inherit (prev) vivaldi-ffmpeg-codecs vivaldi-widevine;
+    inherit (prev) vivaldi-ffmpeg-codecs;
   }).overrideAttrs (
     old: rec {
       version = "3.6.2165.36-1";
