@@ -25,4 +25,7 @@ final: prev: {
   # jupyter-command
   jupyterCmdFHS = import ./jupyterCmdFHS final prev;
 
+  vivaldi = prev.vivaldi.overrideAttrs (old: rec {
+    version = "3.6.2165.36-1";
+  });
 }
