@@ -8,7 +8,7 @@ let
   } ''substituteAll "${./init.el}" $out '';
 in
 {
-  imports = [ ./extraPackages ];
+  imports = [ ./extraPackages.nix ];
 
   programs.emacs.enable = true;
   programs.emacs.overrides = import ./overrides { inherit pkgs; };
