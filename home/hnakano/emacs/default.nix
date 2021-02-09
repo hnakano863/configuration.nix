@@ -15,6 +15,10 @@ in
   programs.emacs.overrides = import ./overrides { inherit pkgs; };
   # programs.emacs.package = emacsGcc;
   programs.emacs.extraPackages = (epkgs: with epkgs; [
+    all-the-icons
+    company
+    general
+    hydra
     leaf
     leaf-convert
   ]);
