@@ -2,46 +2,18 @@
 with pkgs;
 with lib;
 let
-  readFile = builtins.readFile;
+  init-el = runCommand "init.el" {
+    inherit python3 skk-dicts rnix-lsp gnuplot idris;
+    inherit julia-bin jupyterCmdFHS sqlite graphviz;
+  } ''substituteAll "${./init.el}" $out '';
 in
 {
-  imports = [
-    ./packages.nix
-    ./langs
-    ./org
-  ];
+  imports = [ ./extraPackages ];
 
   programs.emacs.enable = true;
   programs.emacs.overrides = import ./overrides { inherit pkgs; };
   # programs.emacs.package = emacsGcc;
-  programs.emacs.extraPackages = (epkgs: with epkgs; [
-    all-the-icons
-    company
-    general
-    hydra
-    leaf
-    leaf-convert
-  ]);
 
-  programs.emacs.init = {
-    enable = true;
-    startupTimer = true;
-
-    recommendedGcSettings = true;
-
-    earlyInit = ''
-      (push '(menu-bar-lines . 0) default-frame-alist)
-      (push '(tool-bar-lines . 0) default-frame-alist)
-      (push '(vertical-scroll-bars . nil) default-frame-alist)
-      (push '(font . "Cica-14") default-frame-alist)
-      (push '(fullscreen . maximized) initial-frame-alist)
-    '';
-
-    prelude = readFile ./prelude.el;
-
-    postlude = ''
-      (load "${./hydrae.el}")
-      (load "${./keybinds.el}")
-    '';
-  };
+  home.file.".emacs.d/early-init.el".source = ./early-init.el;
+  home.file.".emacs.d/init.el".source = init-el;
 }
