@@ -6,7 +6,6 @@
       company
       company-nixos-options
       consult
-      consult-selectrum
       ddskk
       ddskk-posframe
       doom-modeline
@@ -29,7 +28,6 @@
       jupyter
       leaf
       leaf-convert
-      lsp-headerline
       lsp-mode
       lsp-ui
       macrostep
@@ -37,9 +35,7 @@
       nix-mode
       nyan-mode
       ob-restclient
-      org-babel-gnuplot
       org-bullets
-      org-eldoc
       org-journal
       org-plus-contrib
       org-pomodoro

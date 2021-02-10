@@ -66,8 +66,8 @@
     :after evil
     :custom (evil-collection-magit-state . 'normal)
     :hook
-    (pdf-view-mode . evil-collection-pdf-setup)
-    (magit-mode . evil-collection-magit-setup)))
+    (pdf-view-mode-hook . evil-collection-pdf-setup)
+    (magit-mode-hook . evil-collection-magit-setup)))
 
 (leaf completion-framework
   :doc "Settings for completion framework."
@@ -100,8 +100,8 @@
   :custom
   (treemacs-width . 30)
   (treemacs-python-executable . "@python3@/bin/python")
+  :hook (treemacs-mode-hook . (lambda () (treemacs-git-mode 'deferred)))
   :config
-  (treemacs-git-mode 'deferred)
   (leaf treemacs-evil
     :after treemacs
     :require t)
@@ -127,7 +127,7 @@
   :config
   (leaf doom-themes
     :config
-    (load-theme 'doom-opera)
+    (load-theme 'doom-opera t)
     (leaf doom-themes-ext-treemacs
       :custom
       (doom-themes-treemacs-theme . "doom-colors")
@@ -163,7 +163,7 @@
   :config
   (leaf vterm-toggle
     :after evil
-    :custom (vterm-toggle-cd-auto-create-buffer t)))
+    :custom (vterm-toggle-cd-auto-create-buffer . t)))
 
 (leaf pdf-tools
  :mode ("\\.pdf\\'" . pdf-view-mode))
@@ -188,7 +188,7 @@
       (add-to-list 'company-backends 'company-nixos-options)))
   (leaf smartparens
     :hook
-    ((emacs-lisp-mode-hook org-mode) . smartparens-mode)
+    ((emacs-lisp-mode-hook org-mode-hook) . smartparens-mode)
     :config
     (leaf smartparens-config
       :after smartparens
@@ -205,7 +205,7 @@
     :config
     (leaf lsp-mode
       :hook
-      (lsp-mode . lsp-enable-which-key-integration)
+      (lsp-mode-hook . lsp-enable-which-key-integration)
       (nix-mode-hook . lsp-deferred)
       :custom
       (lsp-keymap-prefix . "C-c C-l")
@@ -222,7 +222,7 @@
     :mode "\\.fish\\'")
   (leaf gnuplot
     :mode ("\\.gp\\'" . gnuplot-mode)
-    :custom (gnuplot-program "@gnuplot@/bin/gnuplot"))
+    :custom (gnuplot-program . "@gnuplot@/bin/gnuplot"))
   (leaf idris-mode
     :mode "\\.idr\\'"
     :custom
@@ -230,7 +230,7 @@
   (leaf julia-mode
     :mode "\\.jl\\'"
     :custom
-    (inferior-julia-program-name "@julia-bin@/bin/julia"))
+    (inferior-julia-program-name . "@julia-bin@/bin/julia"))
   (leaf jupyter
     :custom
     (jupyter-executable . "@jupyterCmdFHS@/bin/jupyter-command")
@@ -381,8 +381,7 @@
     :config
     (defhydra hydra-git-gutter (:color red :hint nil)
       "
-_j_: next _k_: previous _s_: stage _r_: revert _d_: popup diff
-_TAB_: toggle diff _ESC_: exit"
+_j_: next _k_: previous _s_: stage _r_: revert _d_: popup diff"
       ("j" git-gutter:next-hunk)
       ("k" git-gutter:previous-hunk)
       ("s" git-gutter:stage-hunk)
@@ -508,7 +507,7 @@ _TAB_: toggle diff _ESC_: exit"
      "f" 'treemacs
      "v" 'vterm-toggle))
   (leaf my/bind-org
-    :leaf
+    :config
     (my/bind
       :prefix "SPC o"
       "c" 'org-capture
