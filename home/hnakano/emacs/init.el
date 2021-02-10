@@ -210,7 +210,7 @@
       :custom
       (lsp-keymap-prefix . "C-c C-l")
       (lsp-auto-configure . t)
-      (lsp-nix-server-path . "@rnix-lsp@/bin/rnix-lsp"))
+      (lsp-nix-server-path . "@rnixlsp@/bin/rnix-lsp"))
     (leaf lsp-ui
       :custom (lsp-ui-sideline-show-hover . t))))
 

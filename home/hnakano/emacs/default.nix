@@ -3,8 +3,9 @@ with pkgs;
 with lib;
 let
   init-el = runCommand "init.el" {
-    inherit python3 skk-dicts rnix-lsp gnuplot idris;
+    inherit python3 skk-dicts gnuplot idris;
     inherit julia-bin jupyterCmdFHS sqlite graphviz;
+    rnixlsp = rnix-lsp;
   } ''substituteAll "${./init.el}" $out '';
 in
 {
