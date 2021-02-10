@@ -26,6 +26,11 @@
 (leaf cus-edit
   :doc "tools for customizing Emacs and Lisp packages"
   :tag "builtin" "faces" "help"
+  :preface
+  (defun print-startup-stats ()
+    "Prints some basic startup statistics."
+    (let ((elapsed (float-time (time-subtract after-init-time before-init-time))))
+      (message "Startup took %.2fs with %d GCs" elapsed gcs-done)))
   :custom
   `(custom-file . ,(locate-user-emacs-file "custom.el"))
   (auto-save-list-file-prefix . nil)
@@ -33,7 +38,9 @@
   (backup-directory-alist . '((".*" . "/tmp/")))
   (auto-save-file-name-transforms . '((".*" "/tmp/" t)))
   :global-minor-mode global-hl-line-mode recentf-mode
-  :hook (before-save-hook . delete-trailing-whitespace)
+  :hook
+  (before-save-hook . delete-trailing-whitespace)
+  (emacs-startup-hook . print-startup-stats)
   :init
   (blink-cursor-mode -1)
   (make-variable-buffer-local 'global-hl-line-mode)
