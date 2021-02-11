@@ -1,5 +1,10 @@
 { pkgs, ... }:
 {
+  programs.emacs.compileInit.earlyInitPackages =
+    epkgs: with epkgs; [
+      initchart
+    ];
+
   programs.emacs.compileInit.initPackages =
     epkgs: with epkgs; [
       all-the-icons

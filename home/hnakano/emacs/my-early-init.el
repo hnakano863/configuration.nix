@@ -22,6 +22,9 @@
 ;; My early init file.
 
 ;;; Code:
+(require 'initchart)
+(initchart-record-execution-time-of load file)
+(initchart-record-execution-time-of require feature)
 
 (defun early-init-reduce-gc ()
   "Reduce the frequency of garbage collection."
