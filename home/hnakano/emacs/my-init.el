@@ -24,7 +24,12 @@
 ;;; Code:
 
 (eval-and-compile
-  (package-initialize))
+  (package-initialize)
+  (require 'leaf)
+  (require 'smartparens)
+  (general-create-definer my/bind
+    :states '(motion normal)
+    :keymaps 'override))
 
 (make-variable-buffer-local 'global-hl-line-mode)
 (leaf cus-edit
@@ -111,7 +116,7 @@
   :defun treemacs-git-mode
   :custom
   (treemacs-width . 30)
-  (treemacs-python-executable . "/nix/store/v72cj06nk69cynckz2s12rhar25k1h7v-python3-3.8.5/bin/python")
+  (treemacs-python-executable . "@python3@/bin/python")
   :hook (treemacs-mode-hook . (lambda () (treemacs-git-mode 'deferred)))
   :config
   (leaf treemacs-evil
@@ -127,7 +132,7 @@
 (leaf skk
   :custom
   (skk-jisyo-code . 'utf-8-unix)
-  (skk-large-jisyo . "@skk-dicts@/share/SKK-JISYO.L")
+  (skk-large-jisyo . "@skkdicts@/share/SKK-JISYO.L")
   (default-input-method . "japanese-skk")
   :config
   (leaf ddskk-posframe
@@ -227,7 +232,7 @@
       :custom
       (lsp-keymap-prefix . "C-c C-l")
       (lsp-auto-configure . t)
-      (lsp-nix-server-path . "/nix/store/2chfz616vln1vc9qm9mwka97xms5n8gr-rnix-lsp-0.1.0/bin/rnix-lsp"))
+      (lsp-nix-server-path . "@rnixlsp@/bin/rnix-lsp"))
     (leaf lsp-ui
       :custom (lsp-ui-sideline-show-hover . t))))
 
@@ -239,19 +244,19 @@
     :mode "\\.fish\\'")
   (leaf gnuplot
     :mode ("\\.gp\\'" . gnuplot-mode)
-    :custom (gnuplot-program . "/nix/store/5lm5pxqpy8anwkinrn22balm0yqcswza-gnuplot-5.4.1/bin/gnuplot"))
+    :custom (gnuplot-program . "@gnuplot@/bin/gnuplot"))
   (leaf idris-mode
     :mode "\\.idr\\'"
     :custom
-    (idris-interpreter-path . "/nix/store/xak9s2d0i5vgcb1sgld6akl79jwz32xc-idris-1.3.3/bin/idris"))
+    (idris-interpreter-path . "@idris@/bin/idris"))
   (leaf julia-mode
     :mode "\\.jl\\'"
     :custom
-    (inferior-julia-program-name . "@julia-bin@/bin/julia"))
+    (inferior-julia-program-name . "@julia@/bin/julia"))
   (leaf jupyter
     :preface
     (defun jupyter-command-advice (&rest args)
-      (let ((jupyter-executable "/nix/store/psx8xiv451zra38ysahmdq2zsb12ky9h-jupyter-command/bin/jupyter-command"))
+      (let ((jupyter-executable "@jupyerCmdFHS@/bin/jupyter-command"))
 	(with-temp-buffer
 	  (when (zerop (apply #'process-file jupyter-executable nil t nil args))
 	    (string-trim-right (buffer-string))))))
@@ -385,8 +390,8 @@
     :global-minor-mode t
     :custom
     (org-roam-directory . "~/Org/roam")
-    (emacsql-sqlite3-executable . "/nix/store/61rqmy3ldrdb0cpmj5ilzp3kzldgphyl-sqlite-3.33.0-bin/bin/sqlite3")
-    (org-roam-graph-executable . "/nix/store/lq3m004jgydhlj48la1f5v4gwr7c2a1v-graphviz-2.42.2/bin/dot")
+    (emacsql-sqlite3-executable . "@sqlite@/bin/sqlite3")
+    (org-roam-graph-executable . "@graphviz@/bin/dot")
     (org-roam-graph-extra-config . '(("layout" . "neato")
 				     ("overlap" . "false")
 				     ("splines" . "true")))))
@@ -409,11 +414,7 @@ _j_: next _k_: previous _s_: stage _r_: revert _d_: popup diff"
       ("ESC" nil :exit t))))
 
 (leaf general
-  :defun my/bind
   :config
-  (general-create-definer my/bind
-    :states '(motion normal)
-    :keymaps 'override)
   (leaf my/bind-root
     :config
     (my/bind
