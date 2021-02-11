@@ -208,7 +208,7 @@
       (add-to-list 'company-backends 'company-nixos-options)))
   (leaf smartparens
     :hook
-    ((emacs-lisp-mode-hook org-mode-hook) . smartparens-mode)
+    ((emacs-lisp-mode-hook org-mode-hook nix-mode-hook) . smartparens-mode)
     :config
     (leaf smartparens-config
       :defun
