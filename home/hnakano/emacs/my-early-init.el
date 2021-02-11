@@ -1,4 +1,4 @@
-;;; my-early-init.el --- My early-init.el -*- lexical binding: t; -*-
+;;; my-early-init.el --- My early-init.el -*- lexical-binding: t; -*-
 
 ;; Copyright (C) 2021  Hiroshi Nakano
 
@@ -43,10 +43,6 @@
 ;; But make it more regular after startup and after closing minibuffer.
 (add-hook 'emacs-startup-hook #'early-init-restore-gc)
 (add-hook 'minibuffer-exit-hook #'early-init-restore-gc)
-
-;; Do not use packages provided by package.el
-;; I manage packages by nix
-(setq package-archives nil)
 
 ;; Avoid expensive frame resizing.
 (setq frame-inhibit-implied-resize t)
