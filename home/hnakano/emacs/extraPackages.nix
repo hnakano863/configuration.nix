@@ -1,5 +1,12 @@
 { pkgs, ... }:
 {
+  programs.emacs.compileInit.initPackages =
+    epkgs: with epkgs; [
+      leaf
+      general
+      hydra
+    ];
+
   programs.emacs.extraPackages = (
     epkgs: with epkgs; [
       all-the-icons
@@ -18,16 +25,12 @@
       evil-org
       fish-mode
       flycheck
-      general
       git-gutter
       gnuplot
-      hydra
       idris-mode
       initchart
       julia-mode
       jupyter
-      leaf
-      leaf-convert
       lsp-mode
       lsp-ui
       macrostep

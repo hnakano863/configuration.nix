@@ -2,19 +2,25 @@
 with pkgs;
 with lib;
 let
-  init-el = runCommand "init.el" {
+  init-el = runCommand "my-init.el" {
     inherit python3 skk-dicts gnuplot idris;
     inherit julia-bin jupyterCmdFHS sqlite graphviz;
     rnixlsp = rnix-lsp;
-  } ''substituteAll "${./init.el}" $out '';
+  } ''substituteAll "${./my-init.el}" $out '';
 in
 {
-  imports = [ ./extraPackages.nix ];
+  imports = [
+    ./compileInit.nix
+    ./extraPackages.nix
+  ];
 
   programs.emacs.enable = true;
   programs.emacs.overrides = import ./overrides { inherit pkgs; };
   # programs.emacs.package = emacsGcc;
 
-  home.file.".emacs.d/early-init.el".source = ./early-init.el;
-  home.file.".emacs.d/init.el".source = init-el;
+  programs.emacs.compileInit = {
+    enable = true;
+    initFile = init-el;
+    earlyInitFile = ./my-early-init.el;
+  };
 }

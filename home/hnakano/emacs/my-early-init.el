@@ -1,4 +1,4 @@
-;;; early-init.el --- My early-init.el -*- lexical binding: t; -*-
+;;; my-early-init.el --- My early-init.el -*- lexical binding: t; -*-
 
 ;; Copyright (C) 2021  Hiroshi Nakano
 
@@ -66,5 +66,5 @@
 ;; Fullscreen at startup
 (push '(fullscreen . maximized) initial-frame-alist)
 
-(provide 'early-init)
-;;; early-init.el ends here
+(provide 'my-early-init)
+;;; my-early-init.el ends here

@@ -1,4 +1,4 @@
-;;; init.el --- My init.el -*- lexical binding: t; -*-
+;;; my-init.el --- My init.el -*- lexical binding: t; -*-
 
 ;; Copyright (C) 2021  Hiroshi Nakano
 
@@ -22,6 +22,11 @@
 ;; My init file.
 
 ;;; Code:
+
+(eval-when-compile
+  (require 'leaf)
+  (require 'hydra)
+  (require 'general))
 
 (leaf cus-edit
   :doc "tools for customizing Emacs and Lisp packages"
@@ -530,5 +535,5 @@ _j_: next _k_: previous _s_: stage _r_: revert _d_: popup diff"
       "r" 'org-roam
       "g" 'org-roam-graph)))
 
-(provide 'init)
-;;; init.el ends here
+(provide 'my-init)
+;;; my-init.el ends here
