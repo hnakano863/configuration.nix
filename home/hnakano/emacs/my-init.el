@@ -244,6 +244,11 @@
   :config
   (leaf fish-mode
     :mode "\\.fish\\'")
+  (leaf geiser
+    :pre-setq
+    (geiser-active-implementations . '(guile))
+    :custom
+    (geiser-guile-binary . "~/.guix-profile/bin/guile"))
   (leaf gnuplot
     :mode ("\\.gp\\'" . gnuplot-mode)
     :custom (gnuplot-program . "@gnuplot@/bin/gnuplot"))

@@ -23,6 +23,7 @@
       evil-org
       fish-mode
       flycheck
+      geiser
       general
       git-gutter
       gnuplot
