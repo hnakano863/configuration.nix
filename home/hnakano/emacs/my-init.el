@@ -25,8 +25,10 @@
 
 (eval-and-compile
   (package-initialize)
-  (require 'leaf)
+  (require 'leaf))
+(eval-when-compile
   (require 'smartparens)
+  (require 'org)
   (general-create-definer my/bind
     :states '(motion normal)
     :keymaps 'override))
@@ -388,14 +390,16 @@
   (leaf org-eldoc
     :hook (org-mode-hook . org-eldoc-load))
   (leaf org-roam
-    :global-minor-mode t
     :custom
     (org-roam-directory . "~/Org/roam")
     (emacsql-sqlite3-executable . "@sqlite@/bin/sqlite3")
     (org-roam-graph-executable . "@graphviz@/bin/dot")
     (org-roam-graph-extra-config . '(("layout" . "neato")
 				     ("overlap" . "false")
-				     ("splines" . "true")))))
+				     ("splines" . "true")))
+    :config
+    (with-eval-after-load 'org-roam
+      (org-roam-mode 1))))
 
 (leaf hydra
   :config

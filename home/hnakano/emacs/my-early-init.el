@@ -25,7 +25,6 @@
 (require 'initchart)
 (initchart-record-execution-time-of load file)
 (initchart-record-execution-time-of require feature)
-(add-hook 'emacs-startup-hook #'(lambda () (initchart-visualize-init-sequence "~/Pictures/initchart.svg")))
 
 (defun early-init-reduce-gc ()
   "Reduce the frequency of garbage collection."
