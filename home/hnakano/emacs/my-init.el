@@ -270,6 +270,7 @@
 (leaf org
   :doc "org-mode and its extentions"
   :tag "org"
+  :config
   (leaf org-startup
     :doc "startup settings"
     :custom
@@ -363,7 +364,7 @@
     :custom
     (org-journal-file-type . 'weekly)
     (org-journal-file-format . "%Y-%m-%d")
-    `(org-journal-dir ,(concat "~/Org/journal/" (format-time-string "%Y" (current-time)))))
+    `(org-journal-dir . ,(concat "~/Org/journal/" (format-time-string "%Y" (current-time)))))
   (leaf org-pomodoro
     :custom
     (org-pomodoro-format . "🍅~%s")

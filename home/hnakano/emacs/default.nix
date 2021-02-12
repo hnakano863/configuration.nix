@@ -5,7 +5,7 @@ let
   init-el = runCommand "my-init.el" {
     inherit python3 gnuplot idris jupyterCmdFHS sqlite graphviz;
     rnixlsp = rnix-lsp;
-    juliabin = julia-bin;
+    julia = julia-bin;
     skkdicts = skk-dicts;
   } ''substituteAll "${./my-init.el}" $out '';
 in
