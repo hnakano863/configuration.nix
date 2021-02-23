@@ -14,6 +14,8 @@
 
   home.packages = with pkgs; [
     firefox-bin
+    elmPackages.elm
+    elmPackages.elm-language-server
     exa
     fd
     fzf

@@ -242,6 +242,8 @@
   :doc "programming language setup"
   :tag "lang"
   :config
+  (leaf elm-mode
+    :mode "\\.elm\\'")
   (leaf fish-mode
     :mode "\\.fish\\'")
   (leaf geiser

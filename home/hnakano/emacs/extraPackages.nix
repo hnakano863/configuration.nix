@@ -17,6 +17,7 @@
       doom-themes
       ebib
       ein
+      elm-mode
       envrc
       evil
       evil-collection
