@@ -3,8 +3,6 @@
     nixos-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-20.09";
     home-manager.url = "github:nix-community/home-manager/release-20.09";
-    rycee.url = "gitlab:rycee/nur-expressions/master";
-    rycee.flake = false;
     emacs-overlay.url = "github:nix-community/emacs-overlay";
   };
 
@@ -13,15 +11,10 @@
     , nixos-unstable
     , nixpkgs
     , home-manager
-    , rycee
     , emacs-overlay
     }:
     let
       lock = builtins.fromJSON (builtins.readFile ./flake.lock);
-      ryceeNurExpressions = import (fetchTarball {
-        url = "https://gitlab.com/rycee/nur-expressions/-/archive/${lock.nodes.rycee.locked.rev}/nur-expressions-${lock.nodes.rycee.locked.rev}.tar.gz";
-        sha256 = lock.nodes.rycee.locked.narHash;
-      });
       pkgs-unstable = import nixos-unstable {
         system = "x86_64-linux";
         overlays = [ (import ./overlays) ];
@@ -48,7 +41,6 @@
             home-manager.useUserPackages = true;
             home-manager.users.hnakano = { config, pkgs ? pkgs, lib, ... }: {
               imports = [
-                (ryceeNurExpressions { inherit pkgs; }).hmModules.emacs-init
                 ./home/hnakano/home.nix
               ];
               home.packages = [ pkgs-unstable.vivaldi ];
