@@ -37,4 +37,9 @@ final: prev: {
       };
     }
   );
+
+  # dictd-db
+  dictdDBs = prev.dictdDBs // {
+    eng2jpn = final.callPackage ./dictd-db/eng-jpn.nix {};
+  };
 }
