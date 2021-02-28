@@ -19,6 +19,7 @@
     exa
     fd
     fzf
+    R
     ripgrep
     bat
     gimp

@@ -20,6 +20,7 @@
       ein
       elm-mode
       envrc
+      ess
       evil
       evil-collection
       evil-org
