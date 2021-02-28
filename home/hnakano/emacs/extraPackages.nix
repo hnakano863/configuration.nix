@@ -13,6 +13,7 @@
       consult
       ddskk
       ddskk-posframe
+      dictionary
       doom-modeline
       doom-themes
       ebib

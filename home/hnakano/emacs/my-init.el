@@ -189,6 +189,11 @@
 (leaf pdf-tools
  :mode ("\\.pdf\\'" . pdf-view-mode))
 
+(leaf dictionary
+  :custom
+  (dictionary-server . "localhost")
+  (dictionary-default-dictionary . "dictd-db-eng-jpn"))
+
 (leaf ide
   :doc "provide ide-like features"
   :tag "ide" "company" "flycheck" "lsp"
@@ -514,7 +519,8 @@ _j_: next _k_: previous _s_: stage _r_: revert _d_: popup diff"
       "f" 'describe-function
       "v" 'describe-variable
       "k" 'describe-key
-      "m" 'describe-mode))
+      "m" 'describe-mode
+      "w" 'dictionary-search))
   (leaf my/bind-quit
     :config
     (my/bind
