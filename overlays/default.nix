@@ -30,10 +30,10 @@ final: prev: {
     inherit (prev) vivaldi-ffmpeg-codecs;
   }).overrideAttrs (
     old: rec {
-      version = "3.6.2165.36-1";
+      version = "3.6.2165.40-1";
       src = builtins.fetchurl {
         url = "https://downloads.vivaldi.com/stable/vivaldi-stable_${version}_amd64.deb";
-        sha256 = "1wgxzggy5sg98k4lzd34k4hyw2jgc14db41z7s7j3c5whlnifh08";
+        sha256 = "12l6xdlgnfv5apv92jlyz324crmm8r3di421ql424bj53j6bsq3y";
       };
     }
   );
