@@ -50,6 +50,7 @@
       org-pomodoro
       org-projectile
       org-roam
+      pandoc
       pdf-tools
       posframe
       projectile

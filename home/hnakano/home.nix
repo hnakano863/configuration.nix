@@ -27,6 +27,7 @@
     vlc
     python3
     emacs-all-the-icons-fonts
+    pandoc
   ];
 
   home.sessionPath = [ "$HOME/.local/bin" ];
