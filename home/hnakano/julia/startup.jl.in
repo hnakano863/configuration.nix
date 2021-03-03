@@ -1,3 +1,11 @@
-ENV["JUPYTER"] = "@jupyterCmdFHS@/bin/jupyter-command"
-ENV["PYTHON"] = "@pyCallEnv@/bin/python"
-ENV["PYTHONPATH"] = "@pyCallEnv@/@sitePackages@"
+let
+    custom_envvars = Dict(
+        "JUPYTER" => "@jupyterCmdFHS@/bin/jupyter-command",
+        "PYTHON" => "@pyCallEnv@/bin/python",
+        "PYTHONPATH" => "@pyCallEnv@/@sitePackages@",
+    )
+
+    for (k, v) in pairs(custom_envvars)
+        haskey(ENV, k) || (ENV[k] = v)
+    end
+end
