@@ -1,6 +1,3 @@
 ENV["JUPYTER"] = "@jupyterCmdFHS@/bin/jupyter-command"
 ENV["PYTHON"] = "@pyCallEnv@/bin/python"
-
-using PyCall
-
-pushfirst!(PyVector(pyimport("sys")."path"), "@pyCallEnv@/lib/python3.8/site-packages")
+ENV["PYTHONPATH"] = "@pyCallEnv@/@sitePackages@"
