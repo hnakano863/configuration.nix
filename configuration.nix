@@ -142,7 +142,6 @@
         networkmanagerapplet
         i3lock
         pavucontrol
-        rofi
         alacritty
         polybar
       ];

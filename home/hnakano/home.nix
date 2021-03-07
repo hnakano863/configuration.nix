@@ -107,6 +107,14 @@
     enableFishIntegration = true;
   };
 
+  programs.rofi = {
+    enable = true;
+    extraConfig = ''
+      rofi.modi: drun
+    '';
+    theme = "Pop-Dark";
+  };
+
   # This value determines the Home Manager release that your
   # configuration is compatible with. This helps avoid breakage
   # when a new Home Manager release introduces backwards
