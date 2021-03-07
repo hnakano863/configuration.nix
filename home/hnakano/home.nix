@@ -113,6 +113,7 @@
       rofi.modi: drun
     '';
     theme = "Pop-Dark";
+    terminal = "${pkgs.alacritty}/bin/alacritty";
   };
 
   # This value determines the Home Manager release that your
