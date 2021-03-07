@@ -65,6 +65,7 @@
     siji
     nerdfonts
     feather-icon-font
+    material-icons
   ];
 
   environment.variables = {
