@@ -144,7 +144,6 @@
         i3lock
         pavucontrol
         alacritty
-        polybar
       ];
     };
 
