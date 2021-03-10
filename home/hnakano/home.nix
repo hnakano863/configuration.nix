@@ -17,6 +17,7 @@
     firefox-bin
     elmPackages.elm
     elmPackages.elm-language-server
+    elmPackages.elm-format
     exa
     fd
     fzf
