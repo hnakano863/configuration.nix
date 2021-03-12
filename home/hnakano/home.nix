@@ -30,6 +30,7 @@
     python3
     emacs-all-the-icons-fonts
     pandoc
+    palemoon
   ];
 
   home.sessionPath = [ "$HOME/.local/bin" ];
