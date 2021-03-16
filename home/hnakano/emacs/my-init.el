@@ -136,6 +136,7 @@
   (skk-jisyo-code . 'utf-8-unix)
   (skk-large-jisyo . "@skkdicts@/share/SKK-JISYO.L")
   (default-input-method . "japanese-skk")
+  (skk-use-color-cursor . nil)
   :config
   (leaf ddskk-posframe
     :hook skk-mode-hook))
