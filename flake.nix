@@ -43,7 +43,10 @@
               imports = [
                 ./home/hnakano/home.nix
               ];
-              home.packages = [ pkgs-unstable.vivaldi ];
+              home.packages = with pkgs-unstable; [
+                vivaldi
+                spotify
+              ];
             };
           }
           {
