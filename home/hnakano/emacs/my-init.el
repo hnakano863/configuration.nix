@@ -273,7 +273,7 @@
   (leaf jupyter
     :preface
     (defun jupyter-command-advice (&rest args)
-      (let ((jupyter-executable "@jupyerCmdFHS@/bin/jupyter-command"))
+      (let ((jupyter-executable "@jupyterCmdFHS@/bin/jupyter-command"))
 	(with-temp-buffer
 	  (when (zerop (apply #'process-file jupyter-executable nil t nil args))
 	    (string-trim-right (buffer-string))))))
