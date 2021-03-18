@@ -358,12 +358,22 @@
       (when (and org-src-tab-acts-natively (org-in-src-block-p t))
 	(org-babel-do-in-edit-buffer
 	 (call-interactively #'indent-for-tab-command))))
+
+    (defun ek/babel-ansi ()
+      (when-let ((beg (org-babel-where-is-src-block-result nil nil)))
+	(save-excursion
+	  (goto-char beg)
+	  (when (looking-at org-babel-result-regexp)
+            (let ((end (org-babel-result-end))
+		  (ansi-color-context-region nil))
+              (ansi-color-apply-on-region beg end))))))
     :advice
     (:after org-return doom/org-fix-newline-and-indent-in-src-blocks)
     :hook
     (org-tab-first-hook . doom/org-fix-newline-and-indent-in-src-blocks)
     (org-babel-after-execute-hook . org-redisplay-inline-images)
-    :config
+    (org-babel-after-execute-hook . ek/babel-ansi)
+    :init
     (org-babel-do-load-languages
      'org-babel-load-languages
      '((emacs-lisp . t)
