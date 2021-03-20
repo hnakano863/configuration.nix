@@ -353,6 +353,10 @@
     (org-src-fontify-natively . t)
     (org-src-preserve-indentation . t)
     (org-src-tab-acts-natively . t)
+    (org-babel-default-header-args:jupyter-julia . '((:async . "yes")
+						     (:session . "jl")
+						     (:results . "scalar")
+						     (:display . "text/plane")))
     :preface
     (defun doom/org-fix-newline-and-indent-in-src-blocks (&optional indent arg interactive)
       (when (and org-src-tab-acts-natively (org-in-src-block-p t))
@@ -382,7 +386,9 @@
        (python . t)
        (julia . t)
        (jupyter . t)
-       (restclient . t))))
+       (restclient . t)))
+    (add-to-list 'org-structure-template-alist '("jj" . "src jupyter-julia\n"))
+    (add-to-list 'org-structure-template-alist '("jd" . "src jupyter-julia :display image/svg\n")))
   (leaf org-bullets
     :hook (org-mode-hook . org-bullets-mode)
     :custom
