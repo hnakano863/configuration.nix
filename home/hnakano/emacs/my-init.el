@@ -194,7 +194,8 @@
   :custom
   (dictionary-server . "localhost")
   (dictionary-default-dictionary . "dictd-db-eijiro")
-  (dictionary-default-strategy . "re"))
+  (dictionary-default-strategy . "re")
+  (dictionary-default-popup-strategy . "re"))
 
 (leaf ide
   :doc "provide ide-like features"
