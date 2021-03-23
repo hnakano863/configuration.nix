@@ -193,7 +193,8 @@
 (leaf dictionary
   :custom
   (dictionary-server . "localhost")
-  (dictionary-default-dictionary . "dictd-db-eng-jpn"))
+  (dictionary-default-dictionary . "dictd-db-eijiro")
+  (dictionary-default-strategy . "re"))
 
 (leaf ide
   :doc "provide ide-like features"

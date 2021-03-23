@@ -4,6 +4,7 @@
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-20.09";
     home-manager.url = "github:nix-community/home-manager/release-20.09";
     emacs-overlay.url = "github:nix-community/emacs-overlay";
+    eijiro.url = "path:/home/hnakano/repos/eijiro.nix";
   };
 
   outputs =
@@ -12,6 +13,7 @@
     , nixpkgs
     , home-manager
     , emacs-overlay
+    , eijiro
     }:
     let
       lock = builtins.fromJSON (builtins.readFile ./flake.lock);
@@ -54,6 +56,7 @@
             nixpkgs.overlays = [
               (import ./overlays)
               emacs-overlay.overlay
+              eijiro.overlay
             ];
           }
 

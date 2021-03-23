@@ -1,5 +1,19 @@
 {
   "nodes": {
+    "eijiro": {
+      "inputs": {
+        "nixpkgs": "nixpkgs"
+      },
+      "locked": {
+        "narHash": "sha256-0u8yaOgdxr2t6CJklK5Vyk8t6aWSC714F9oRN84heyk=",
+        "path": "/home/hnakano/repos/eijiro.nix",
+        "type": "path"
+      },
+      "original": {
+        "path": "/home/hnakano/repos/eijiro.nix",
+        "type": "path"
+      }
+    },
     "emacs-overlay": {
       "locked": {
         "lastModified": 1615198650,
@@ -17,7 +31,7 @@
     },
     "home-manager": {
       "inputs": {
-        "nixpkgs": "nixpkgs"
+        "nixpkgs": "nixpkgs_2"
       },
       "locked": {
         "lastModified": 1612902587,
@@ -52,6 +66,22 @@
     },
     "nixpkgs": {
       "locked": {
+        "lastModified": 1616396939,
+        "narHash": "sha256-equJ4b8vLMvV1eDX82SzUur5CKclQtL9nBsNUFbDMxo=",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "f8929dce13e729357f31d5b2950cbb097744bed7",
+        "type": "github"
+      },
+      "original": {
+        "owner": "NixOS",
+        "ref": "nixos-20.09",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
+    "nixpkgs_2": {
+      "locked": {
         "lastModified": 1613980253,
         "narHash": "sha256-3jZJAUsTSsKaElPy509a4OX87Vvy1Mu5Z1V3pMg/Pc0=",
         "path": "/nix/store/ad45abr3hfc2pildw2qr369r7n89wz87-source",
@@ -63,7 +93,7 @@
         "type": "indirect"
       }
     },
-    "nixpkgs_2": {
+    "nixpkgs_3": {
       "locked": {
         "lastModified": 1615162706,
         "narHash": "sha256-r7QkUDsIbZ8RH6YU+XW00wM0XW4MXLdEC8QSrDwUGwY=",
@@ -81,10 +111,11 @@
     },
     "root": {
       "inputs": {
+        "eijiro": "eijiro",
         "emacs-overlay": "emacs-overlay",
         "home-manager": "home-manager",
         "nixos-unstable": "nixos-unstable",
-        "nixpkgs": "nixpkgs_2"
+        "nixpkgs": "nixpkgs_3"
       }
     }
   },
