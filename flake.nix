@@ -5,6 +5,7 @@
     home-manager.url = "github:nix-community/home-manager/release-20.09";
     emacs-overlay.url = "github:nix-community/emacs-overlay";
     eijiro.url = "path:/home/hnakano/repos/eijiro.nix";
+    hnakano863.url = "github:hnakano863/nixos-overlay";
   };
 
   outputs =
@@ -14,12 +15,13 @@
     , home-manager
     , emacs-overlay
     , eijiro
+    , hnakano863
     }:
     let
       lock = builtins.fromJSON (builtins.readFile ./flake.lock);
       pkgs-unstable = import nixos-unstable {
         system = "x86_64-linux";
-        overlays = [ (import ./overlays) ];
+        overlays = [ hnakano863.overlay ];
         config.allowUnfree = true;
       };
     in
@@ -54,7 +56,7 @@
           {
             nix.registry.nixpkgs.flake = nixpkgs;
             nixpkgs.overlays = [
-              (import ./overlays)
+              hnakano863.overlay
               emacs-overlay.overlay
               eijiro.overlay
             ];
