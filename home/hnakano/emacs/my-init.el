@@ -239,10 +239,12 @@
       :hook
       (lsp-mode-hook . lsp-enable-which-key-integration)
       (nix-mode-hook . lsp-deferred)
+      (julia-mode-hook . lsp-deferred)
       :custom
       (lsp-keymap-prefix . "C-c C-l")
       (lsp-auto-configure . t)
-      (lsp-nix-server-path . "@rnixlsp@/bin/rnix-lsp"))
+      (lsp-nix-server-path . "@rnixlsp@/bin/rnix-lsp")
+      (lsp-enable-folding . t))
     (leaf lsp-ui
       :custom (lsp-ui-sideline-show-hover . t))))
 
@@ -271,7 +273,14 @@
   (leaf julia-mode
     :mode "\\.jl\\'"
     :custom
-    (inferior-julia-program-name . "@julia@/bin/julia"))
+    (inferior-julia-program-name . "@julia@/bin/julia")
+    :config
+    (leaf lsp-julia
+      :after lsp-mode
+      :require t
+      :custom
+      (lsp-julia-package-dir . nil)
+      (lsp-julia-default-environment . "~/.julia/environments/v1.6")))
   (leaf jupyter
     :preface
     (defun jupyter-command-advice (&rest args)

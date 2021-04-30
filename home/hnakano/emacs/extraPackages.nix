@@ -37,6 +37,7 @@
       jupyter
       leaf
       leaf-convert
+      lsp-julia
       lsp-mode
       lsp-ui
       macrostep
