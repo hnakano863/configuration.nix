@@ -34,6 +34,7 @@
       idris-mode
       initchart
       julia-mode
+      julia-repl
       jupyter
       leaf
       leaf-convert
