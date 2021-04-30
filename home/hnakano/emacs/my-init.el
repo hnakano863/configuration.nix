@@ -280,7 +280,8 @@
       :require t
       :custom
       (lsp-julia-package-dir . nil)
-      (lsp-julia-default-environment . "~/.julia/environments/v1.6")))
+      (lsp-julia-default-environment . "~/.julia/julials-compiled")
+      (lsp-julia-flags . `("--startup-file=no" "--history-file=no" "-J/home/hnakano/.julia/julials-compiled/julia-ls-sysimage.so"))))
   (leaf jupyter
     :preface
     (defun jupyter-command-advice (&rest args)
