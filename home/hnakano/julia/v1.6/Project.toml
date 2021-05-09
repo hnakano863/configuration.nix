@@ -1,0 +1,9 @@
+[deps]
+DrWatson = "634d3b9d-ee7a-5ddf-bec9-22491ea816e1"
+IJulia = "7073ff75-c697-5162-941a-fcdaad2a7d2a"
+LanguageServer = "2b0e0bc5-e4fd-59b4-8912-456d1b03d8d7"
+PackageCompiler = "9b87118b-4619-50d2-8e1e-99f35a4d4d9d"
+Pluto = "c3e4b0f8-55cb-11ea-2926-15256bba5781"
+PyCall = "438e738f-606a-5dbb-bf0a-cddfbfd45ab0"
+Revise = "295af30f-e4ad-537b-8983-00126c2a3abe"
+SymbolServer = "cf896787-08d5-524d-9de7-132aaa0cb996"
