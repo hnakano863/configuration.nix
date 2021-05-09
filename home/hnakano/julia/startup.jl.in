@@ -9,3 +9,5 @@ let
         haskey(ENV, k) || (ENV[k] = v)
     end
 end
+
+using Revise
