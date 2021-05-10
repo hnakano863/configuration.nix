@@ -52,7 +52,9 @@
   :hook
   (before-save-hook . delete-trailing-whitespace)
   (emacs-startup-hook . print-startup-stats)
+  (term-mode-hook . eterm-256color-mode)
   :init
+  (setenv "JULIA_PROJECT" "@juliaProjectPath@")
   (blink-cursor-mode -1)
   (add-hook 'term-mode-hook  #'(lambda () (setq-local global-hl-line-mode nil))))
 
@@ -284,7 +286,9 @@
       (lsp-julia-flags . `("--startup-file=no" "--history-file=no" "-J/home/hnakano/.julia/julials-compiled/julia-ls-sysimage.so")))
     (leaf julia-repl
       :hook
-      (julia-mode-hook . julia-repl-mode)))
+      (julia-mode-hook . julia-repl-mode)
+      :config
+      (julia-repl-set-terminal-backend 'vterm)))
   (leaf jupyter
     :preface
     (defun jupyter-command-advice (&rest args)

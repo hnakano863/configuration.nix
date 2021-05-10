@@ -6,6 +6,7 @@ let
     inherit python3 gnuplot idris jupyterCmdFHS sqlite graphviz;
     rnixlsp = rnix-lsp;
     julia = julia-bin;
+    juliaProjectPath = config.home.sessionVariables.JULIA_PROJECT;
     skkdicts = skk-dicts;
   } ''substituteAll "${./my-init.el}" $out '';
 in
