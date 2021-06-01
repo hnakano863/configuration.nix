@@ -71,6 +71,11 @@
   environment.variables = {
     GUIX_PROFILE = "/root/.config/guix/current";
     GUIX_LOCPATH = "/root/.guix-profile/lib/locale";
+    LIBRARY_PATH = with pkgs; builtins.concatStringsSep ":" [
+      "${lib.getLib stdenv.cc.cc}/lib"
+      "${lib.getLib stdenv.glibc}/lib"
+      "${lib.getLib libgccjit}/lib/gcc/x86_64-unknown-linux-gnu/9.3.0"
+    ];
   };
 
   # Some programs need SUID wrappers, can be configured further or are
