@@ -220,7 +220,7 @@
       (add-to-list 'company-backends 'company-nixos-options)))
   (leaf smartparens
     :hook
-    ((emacs-lisp-mode-hook org-mode-hook nix-mode-hook) . smartparens-mode)
+    ((emacs-lisp-mode-hook org-mode-hook nix-mode-hook js-mode-hook) . smartparens-mode)
     :config
     (leaf smartparens-config
       :defun
@@ -242,6 +242,7 @@
       (lsp-mode-hook . lsp-enable-which-key-integration)
       (nix-mode-hook . lsp-deferred)
       (julia-mode-hook . lsp-deferred)
+      (js-mode-hook . lsp)
       :custom
       (lsp-keymap-prefix . "C-c C-l")
       (lsp-auto-configure . t)
