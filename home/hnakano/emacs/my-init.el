@@ -247,6 +247,7 @@
       (lsp-keymap-prefix . "C-c C-l")
       (lsp-auto-configure . t)
       (lsp-nix-server-path . "@rnixlsp@/bin/rnix-lsp")
+      (lsp-clients-typescript-tls-path . "@tsls@/bin/typescript-language-server")
       (lsp-enable-folding . t))
     (leaf lsp-ui
       :custom (lsp-ui-sideline-show-hover . t))))
