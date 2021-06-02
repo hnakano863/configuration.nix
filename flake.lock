@@ -5,7 +5,7 @@
         "nixpkgs": "nixpkgs"
       },
       "locked": {
-        "narHash": "sha256-0u8yaOgdxr2t6CJklK5Vyk8t6aWSC714F9oRN84heyk=",
+        "narHash": "sha256-yKV2kTCHhWA5/truKnIU8efRLDAt2TypDBGYN509zmU=",
         "path": "/home/hnakano/repos/eijiro.nix",
         "type": "path"
       },
@@ -31,11 +31,11 @@
     },
     "hnakano863": {
       "locked": {
-        "lastModified": 1622641596,
-        "narHash": "sha256-eKP1cx6L6UA5NkPY/qf61vmPVEcCTq6PSKQ0lXLgooQ=",
+        "lastModified": 1622643865,
+        "narHash": "sha256-absnD5dtyDNnSUNJS1+T6eMoJqVLs3Vj2+C7sUpFy78=",
         "owner": "hnakano863",
         "repo": "nixos-overlay",
-        "rev": "9d6c76c16d6de8a9d8ca0a041f71373bde0a2574",
+        "rev": "cb0cae6c03a605d931a70c9877d3ca3c8457c380",
         "type": "github"
       },
       "original": {
