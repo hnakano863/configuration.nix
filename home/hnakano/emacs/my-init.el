@@ -248,7 +248,9 @@
       (lsp-auto-configure . t)
       (lsp-nix-server-path . "@rnixlsp@/bin/rnix-lsp")
       (lsp-clients-typescript-tls-path . "@tsls@/bin/typescript-language-server")
-      (lsp-enable-folding . t))
+      (lsp-enable-folding . t)
+      :config
+      (lsp-dependency 'typescript '(:system "@typescript@/bin/tsserver")))
     (leaf lsp-ui
       :custom (lsp-ui-sideline-show-hover . t))))
 

@@ -4,6 +4,7 @@ with lib;
 let
   init-el = runCommand "my-init.el" {
     inherit python3 gnuplot idris jupyterCmdFHS sqlite graphviz;
+    inherit (nodePackages) typescript;
     rnixlsp = rnix-lsp;
     tsls = nodePackages.typescript-language-server;
     julia = julia-bin;
