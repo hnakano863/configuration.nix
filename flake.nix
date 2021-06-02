@@ -1,8 +1,7 @@
 {
   inputs = {
-    nixos-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-20.09";
-    home-manager.url = "github:nix-community/home-manager/release-20.09";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-21.05";
+    home-manager.url = "github:nix-community/home-manager/release-21.05";
     emacs-overlay.url = "github:nix-community/emacs-overlay";
     eijiro.url = "path:/home/hnakano/repos/eijiro.nix";
     hnakano863.url = "github:hnakano863/nixos-overlay";
@@ -10,7 +9,6 @@
 
   outputs =
     { self
-    , nixos-unstable
     , nixpkgs
     , home-manager
     , emacs-overlay
@@ -19,11 +17,6 @@
     }:
     let
       lock = builtins.fromJSON (builtins.readFile ./flake.lock);
-      pkgs-unstable = import nixos-unstable {
-        system = "x86_64-linux";
-        overlays = [ hnakano863.overlay ];
-        config.allowUnfree = true;
-      };
     in
     {
       nixosConfigurations.bravo = nixpkgs.lib.nixosSystem {
@@ -44,13 +37,7 @@
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
             home-manager.users.hnakano = { config, pkgs ? pkgs, lib, ... }: {
-              imports = [
-                ./home/hnakano/home.nix
-              ];
-              home.packages = with pkgs-unstable; [
-                vivaldi
-                spotify
-              ];
+              imports = [ ./home/hnakano/home.nix  ];
             };
           }
           {

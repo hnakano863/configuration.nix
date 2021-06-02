@@ -31,6 +31,7 @@
     emacs-all-the-icons-fonts
     pandoc
     palemoon
+    vivaldi
   ];
 
   home.sessionPath = [ "$HOME/.local/bin" ];
