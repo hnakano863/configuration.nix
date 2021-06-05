@@ -143,7 +143,7 @@
 
     # desktop environment
     windowManager.i3 = {
-      enable = true;
+      enable = false;
       extraPackages = with pkgs; [
         networkmanagerapplet
         i3lock
@@ -152,9 +152,12 @@
       ];
     };
 
+    desktopManager.gnome.enable = true;
+
     displayManager = {
-      defaultSession = "none+i3";
-      lightdm.enable = true;
+      defaultSession = "gnome-xorg";
+      lightdm.enable = false;
+      gdm.enable = true;
     };
   };
 
