@@ -32,6 +32,7 @@
     pandoc
     palemoon
     vivaldi
+    jupyterCommand
   ];
 
   home.sessionPath = [ "$HOME/.local/bin" ];

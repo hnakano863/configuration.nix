@@ -1,6 +1,6 @@
 let
     custom_envvars = Dict(
-        "JUPYTER" => "@jupyterCmdFHS@/bin/jupyter-command",
+        "JUPYTER" => "@jupyterCommand@/bin/jupyter",
         "PYTHON" => "@pyCallEnv@/bin/python",
         "PYTHONPATH" => "@pyCallEnv@/@sitePackages@",
     )

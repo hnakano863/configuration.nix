@@ -296,15 +296,6 @@
       (julia-mode-hook . julia-repl-mode)
       :config
       (julia-repl-set-terminal-backend 'vterm)))
-  (leaf jupyter
-    :preface
-    (defun jupyter-command-advice (&rest args)
-      (let ((jupyter-executable "@jupyterCmdFHS@/bin/jupyter-command"))
-	(with-temp-buffer
-	  (when (zerop (apply #'process-file jupyter-executable nil t nil args))
-	    (string-trim-right (buffer-string))))))
-    :advice
-    (:override jupyter-command jupyter-command-advice))
   (leaf nix-mode :mode "\\.nix\\'")
   (leaf python-mode
     :custom (python-guess-indent . nil)
@@ -379,10 +370,16 @@
     (org-src-fontify-natively . t)
     (org-src-preserve-indentation . t)
     (org-src-tab-acts-natively . t)
-    (org-babel-default-header-args:jupyter-julia . '((:async . "yes")
+    (org-babel-default-header-args:jupyter-python . '((:kernel . "python3")
+						      (:async "yes")
+						      (:session "py")
+						      (:results . "scalar")
+						      (:display . "text/plain")))
+    (org-babel-default-header-args:jupyter-julia . '((:kernel . "julia1.6")
+						     (:async . "yes")
 						     (:session . "jl")
 						     (:results . "scalar")
-						     (:display . "text/plane")))
+						     (:display . "text/plain")))
     :preface
     (defun doom/org-fix-newline-and-indent-in-src-blocks (&optional indent arg interactive)
       (when (and org-src-tab-acts-natively (org-in-src-block-p t))
@@ -414,7 +411,9 @@
        (jupyter . t)
        (restclient . t)))
     (add-to-list 'org-structure-template-alist '("jj" . "src jupyter-julia\n"))
-    (add-to-list 'org-structure-template-alist '("jd" . "src jupyter-julia :display image/svg\n")))
+    (add-to-list 'org-structure-template-alist '("jd" . "src jupyter-julia :display image/svg\n"))
+    (add-to-list 'org-structure-template-alist '("pp" . "src jupyter-python\n"))
+    (add-to-list 'org-structure-template-alist '("pd" . "src jupyter-python :display image/png\n")))
   (leaf org-bullets
     :hook (org-mode-hook . org-bullets-mode)
     :custom

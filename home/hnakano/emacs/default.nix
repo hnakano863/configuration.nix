@@ -3,7 +3,7 @@ with pkgs;
 with lib;
 let
   init-el = runCommand "my-init.el" {
-    inherit python3 gnuplot idris jupyterCmdFHS sqlite graphviz;
+    inherit python3 gnuplot idris sqlite graphviz;
     inherit (nodePackages) typescript;
     rnixlsp = rnix-lsp;
     tsls = nodePackages.typescript-language-server;
