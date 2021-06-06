@@ -25,6 +25,8 @@
     fzf
     gnome.gnome-tweak-tool
     mojave-gtk-theme
+    marwaita-manjaro
+    papirus-maia-icon-theme
     R
     ripgrep
     bat
