@@ -2,6 +2,7 @@
 {
   home.packages = [
     dconf2nix
+    gnome.dconf-editor
     gnome.gnome-tweak-tool
     gnomeExtensions.toggle-alacritty
     mojave-gtk-theme
