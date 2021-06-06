@@ -1,4 +1,5 @@
 { config, pkgs, lib, ... }:
+with pkgs;
 {
   home.packages = [
     dconf2nix
