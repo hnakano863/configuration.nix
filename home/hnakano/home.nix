@@ -4,7 +4,7 @@
     ./emacs
     ./julia
     ./polybar
-    ./dconf.nix
+    ./gnome
   ];
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
@@ -16,7 +16,6 @@
 
   home.packages = with pkgs; [
     alacritty
-    dconf2nix
     firefox-bin
     elmPackages.elm
     elmPackages.elm-language-server
@@ -24,11 +23,6 @@
     exa
     fd
     fzf
-    gnome.gnome-tweak-tool
-    gnomeExtensions.toggle-alacritty
-    mojave-gtk-theme
-    marwaita-manjaro
-    papirus-maia-icon-theme
     R
     ripgrep
     bat

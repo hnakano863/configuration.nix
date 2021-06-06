@@ -21,7 +21,11 @@ in
     };
 
     "org/gnome/desktop/interface" = {
+      font-antialiasing = "grayscale";
+      font-hinting = "slight";
       gtk-im-module = "ibus";
+      gtk-theme = "Marwaita Manjaro Color";
+      icon-theme = "Papirus-Adapta-Maia";
     };
 
     "org/gnome/desktop/notifications" = {
@@ -83,11 +87,22 @@ in
     };
 
     "org/gnome/shell" = {
+      command-history = [ "r" ];
+      disabled-extensions = "@as []";
+      enabled-extensions = [ "user-theme@gnome-shell-extensions.gcampax.github.com" "toggle-alacritty@itstime.tech" ];
       welcome-dialog-last-shown-version = "40.1";
+    };
+
+    "org/gnome/shell/extensions/user-theme" = {
+      name = "Mojave-dark";
     };
 
     "org/gnome/shell/world-clocks" = {
       locations = "@av []";
+    };
+
+    "org/gnome/tweaks" = {
+      show-extensions-notice = false;
     };
 
     "org/gtk/settings/file-chooser" = {
@@ -96,13 +111,13 @@ in
       show-hidden = false;
       show-size-column = true;
       show-type-column = true;
-      sidebar-width = 186;
+      sidebar-width = 193;
       sort-column = "name";
       sort-directories-first = false;
       sort-order = "ascending";
       type-format = "category";
-      window-position = mkTuple [ 139 0 ];
-      window-size = mkTuple [ 1098 706 ];
+      window-position = mkTuple [ 134 28 ];
+      window-size = mkTuple [ 1098 700 ];
     };
 
   };
