@@ -155,9 +155,10 @@
     desktopManager.gnome.enable = true;
 
     displayManager = {
-      defaultSession = "gnome-xorg";
+      defaultSession = "gnome";
       lightdm.enable = false;
       gdm.enable = true;
+      gdm.wayland = true;
     };
   };
 
