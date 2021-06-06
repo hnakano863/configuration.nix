@@ -129,6 +129,9 @@
   # Enable power management
   powerManagement.enable = true;
 
+  # Enable dconf for gnome
+  programs.dconf.enable = true;
+
   services.xserver = {
     # for configuration
     autorun = true;
