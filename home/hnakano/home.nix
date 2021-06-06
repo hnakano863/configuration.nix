@@ -23,6 +23,7 @@
     exa
     fd
     fzf
+    gnome.gnome-tweak-tool
     R
     ripgrep
     bat
