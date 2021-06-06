@@ -23,6 +23,7 @@
     exa
     fd
     fzf
+    thunderbird
     R
     ripgrep
     bat
