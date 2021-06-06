@@ -14,6 +14,7 @@
   home.homeDirectory = "/home/hnakano";
 
   home.packages = with pkgs; [
+    dconf2nix
     firefox-bin
     elmPackages.elm
     elmPackages.elm-language-server
