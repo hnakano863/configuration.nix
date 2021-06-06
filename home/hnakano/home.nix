@@ -15,6 +15,7 @@
   home.homeDirectory = "/home/hnakano";
 
   home.packages = with pkgs; [
+    alacritty
     dconf2nix
     firefox-bin
     elmPackages.elm
@@ -24,6 +25,7 @@
     fd
     fzf
     gnome.gnome-tweak-tool
+    gnomeExtensions.toggle-alacritty
     mojave-gtk-theme
     marwaita-manjaro
     papirus-maia-icon-theme
