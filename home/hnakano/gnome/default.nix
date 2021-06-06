@@ -4,7 +4,6 @@
     dconf2nix
     gnome.dconf-editor
     gnome.gnome-tweak-tool
-    gnomeExtensions.toggle-alacritty
     mojave-gtk-theme
     marwaita-manjaro
     papirus-maia-icon-theme
