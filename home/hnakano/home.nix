@@ -24,6 +24,7 @@
     fd
     fzf
     gnome.gnome-tweak-tool
+    mojave-gtk-theme
     R
     ripgrep
     bat
