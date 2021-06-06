@@ -6,18 +6,32 @@ let
 in
 {
   dconf.settings = {
+    "ca/desrt/dconf-editor" = {
+      saved-pathbar-path = "/org/gnome/desktop/applications/terminal/exec";
+      saved-view = "/org/gnome/desktop/applications/terminal/exec";
+      window-height = 500;
+      window-is-maximized = false;
+      window-width = 540;
+    };
+
     "org/gnome/Geary" = {
       migrated-config = true;
       window-height = 736;
     };
 
     "org/gnome/control-center" = {
-      last-panel = "online-accounts";
+      last-panel = "keyboard";
+    };
+
+    "org/gnome/desktop/applications/terminal" = {
+      exec = "alacritty";
+      exec-arg = "";
     };
 
     "org/gnome/desktop/input-sources" = {
+      per-window = false;
       sources = [ (mkTuple [ "xkb" "jp" ]) ];
-      xkb-options = [ "ctrl:swapcaps" ];
+      xkb-options = [ "ctrl:swapcaps" "lv3:ralt_switch" ];
     };
 
     "org/gnome/desktop/interface" = {
@@ -29,7 +43,7 @@ in
     };
 
     "org/gnome/desktop/notifications" = {
-      application-children = [ "vivaldi-stable" "gnome-power-panel" "org-gnome-epiphany" ];
+      application-children = [ "vivaldi-stable" "gnome-power-panel" "org-gnome-epiphany" "org-gnome-geary" ];
     };
 
     "org/gnome/desktop/notifications/application/gnome-power-panel" = {
@@ -38,6 +52,10 @@ in
 
     "org/gnome/desktop/notifications/application/org-gnome-epiphany" = {
       application-id = "org.gnome.Epiphany.desktop";
+    };
+
+    "org/gnome/desktop/notifications/application/org-gnome-geary" = {
+      application-id = "org.gnome.Geary.desktop";
     };
 
     "org/gnome/desktop/notifications/application/vivaldi-stable" = {
@@ -86,10 +104,20 @@ in
       ignore-phase2-ca-cert = false;
     };
 
+    "org/gnome/settings-daemon/plugins/media-keys" = {
+      custom-keybindings = [ "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/" ];
+    };
+
+    "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0" = {
+      binding = "<Super>Return";
+      command = "alacritty";
+      name = "端末を起動";
+    };
+
     "org/gnome/shell" = {
-      command-history = [ "r" ];
-      disabled-extensions = "@as []";
-      enabled-extensions = [ "user-theme@gnome-shell-extensions.gcampax.github.com" "toggle-alacritty@itstime.tech" ];
+      command-history = [ "alacritty" "r" ];
+      disabled-extensions = [ "toggle-alacritty@itstime.tech" ];
+      enabled-extensions = [ "user-theme@gnome-shell-extensions.gcampax.github.com" ];
       welcome-dialog-last-shown-version = "40.1";
     };
 
