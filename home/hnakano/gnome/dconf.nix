@@ -33,7 +33,7 @@ in
     };
 
     "org/gnome/control-center" = {
-      last-panel = "background";
+      last-panel = "mouse";
     };
 
     "org/gnome/desktop/applications/terminal" = {
@@ -68,7 +68,7 @@ in
     };
 
     "org/gnome/desktop/notifications" = {
-      application-children = [ "vivaldi-stable" "gnome-power-panel" "org-gnome-epiphany" "org-gnome-geary" "emacs" "thunderbird" ];
+      application-children = [ "vivaldi-stable" "gnome-power-panel" "org-gnome-epiphany" "org-gnome-geary" "thunderbird" ];
     };
 
     "org/gnome/desktop/notifications/application/emacs" = {
@@ -95,6 +95,11 @@ in
       application-id = "vivaldi-stable.desktop";
     };
 
+    "org/gnome/desktop/peripherals/touchpad" = {
+      tap-to-click = true;
+      two-finger-scrolling-enabled = true;
+    };
+
     "org/gnome/desktop/screensaver" = {
       color-shading-type = "solid";
       picture-options = "zoom";
@@ -119,7 +124,7 @@ in
     };
 
     "org/gnome/gnome-system-monitor" = {
-      current-tab = "resources";
+      current-tab = "processes";
       maximized = false;
       network-total-in-bits = false;
       show-dependencies = false;
