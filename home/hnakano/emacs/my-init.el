@@ -325,8 +325,7 @@
     (org-agenda-files . '("~/Org/notes.org" "~/Org/knowledge"))
     (org-refile-targets . '((org-agenda-files :maxlevel . 1)))
     (org-default-notes-file . "~/Org/notes.org")
-    `(org-archive-location . ,(concat org-directory
-				      "/archives/%s_archive_"
+    `(org-archive-location . ,(concat "~/Org/archives/%s_archive_"
 				      (format-time-string "%Y" (current-time))
 				      "::")))
   (leaf org-todo
