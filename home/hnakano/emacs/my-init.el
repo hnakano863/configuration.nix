@@ -433,7 +433,7 @@
     (org-projectile-per-project-filepath . "todos.org")
     :config
     (org-projectile-per-project)
-    (setq org-agenda-files (append org-agenda-files (org-projectile-project-todo-files))))
+    (setq org-agenda-files (append org-agenda-files (org-projectile-todo-files))))
   (leaf evil-org
     :hook
     (org-mode-hook . evil-org-mode)
