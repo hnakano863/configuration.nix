@@ -48,7 +48,7 @@
 
   programs.bash.enable = true;
   programs.bash.initExtra = ''
-    if [ -z $IN_NIX_SHELL ]; then
+    if [[ $SHLVL -eq 1 ]]; then
       exec fish
     fi
   '';
