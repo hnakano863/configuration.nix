@@ -48,7 +48,9 @@
 
   programs.bash.enable = true;
   programs.bash.initExtra = ''
-    if [ -z $IN_NIX_SHELL ]; then exec fish fi
+    if [ -z $IN_NIX_SHELL ]; then
+      exec fish
+    fi
   '';
 
   # programs.emacs.enable = true;
