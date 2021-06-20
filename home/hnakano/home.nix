@@ -92,6 +92,7 @@
     enable = true;
     enableBashIntegration = true;
     enableFishIntegration = true;
+    settings.command_timeout = 2000;
   };
 
   programs.git = {
