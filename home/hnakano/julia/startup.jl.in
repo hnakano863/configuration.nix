@@ -3,6 +3,7 @@ let
         "JUPYTER" => "@jupyterCommand@/bin/jupyter",
         "PYTHON" => "@pyCallEnv@/bin/python",
         "PYTHONPATH" => "@pyCallEnv@/@sitePackages@",
+        "FREETYPE_ABSTRACTION_FONT_PATH" => "/run/current-system/sw/share/X11/fonts",
     )
 
     for (k, v) in pairs(custom_envvars)

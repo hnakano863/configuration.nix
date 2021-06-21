@@ -1,5 +1,6 @@
 [deps]
 DrWatson = "634d3b9d-ee7a-5ddf-bec9-22491ea816e1"
+FreeTypeAbstraction = "663a7486-cb36-511b-a19d-713bb74d65c9"
 IJulia = "7073ff75-c697-5162-941a-fcdaad2a7d2a"
 LanguageServer = "2b0e0bc5-e4fd-59b4-8912-456d1b03d8d7"
 OhMyREPL = "5fb14364-9ced-5910-84b2-373655c76a03"
