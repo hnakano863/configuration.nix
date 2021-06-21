@@ -54,7 +54,6 @@
   (emacs-startup-hook . print-startup-stats)
   (term-mode-hook . eterm-256color-mode)
   :init
-  (setenv "JULIA_PROJECT" "@juliaProjectPath@")
   (blink-cursor-mode -1)
   (add-hook 'term-mode-hook  #'(lambda () (setq-local global-hl-line-mode nil))))
 

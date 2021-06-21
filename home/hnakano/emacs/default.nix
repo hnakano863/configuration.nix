@@ -8,7 +8,6 @@ let
     rnixlsp = rnix-lsp;
     tsls = nodePackages.typescript-language-server;
     julia = julia-bin;
-    juliaProjectPath = config.home.sessionVariables.JULIA_PROJECT;
     skkdicts = skk-dicts;
   } ''substituteAll "${./my-init.el}" $out '';
 in

@@ -41,7 +41,6 @@
   home.sessionPath = [ "$HOME/.local/bin" ];
   home.sessionVariables = {
     GUIX_LOCPATH = "$HOME/.guix-profile/lib/locale";
-    JULIA_PROJECT = "${./julia/environments/v1.6}";
   };
 
   fonts.fontconfig.enable = true;
