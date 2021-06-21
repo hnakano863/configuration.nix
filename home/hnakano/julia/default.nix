@@ -14,4 +14,6 @@ in
   ];
 
   home.file.".julia/config/startup.jl".source = startup-jl;
+  home.file.".julia/environments/v1.6/Project.toml".source = ./environments/v1.6/Project.toml;
+  home.file.".julia/environments/v1.6/Manifest.toml".source = ./environments/v1.6/Manifest.toml;
 }
