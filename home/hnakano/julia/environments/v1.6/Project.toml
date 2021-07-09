@@ -1,4 +1,5 @@
 [deps]
+BenchmarkTools = "6e4b80f9-dd63-53aa-95a3-0cdb28fa8baf"
 DrWatson = "634d3b9d-ee7a-5ddf-bec9-22491ea816e1"
 FreeTypeAbstraction = "663a7486-cb36-511b-a19d-713bb74d65c9"
 IJulia = "7073ff75-c697-5162-941a-fcdaad2a7d2a"

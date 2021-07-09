@@ -19,7 +19,7 @@ in
 
   programs.emacs.enable = true;
   programs.emacs.overrides = import ./overrides { inherit pkgs; };
-  programs.emacs.package = emacsGcc;
+  programs.emacs.package = emacs;
 
   programs.emacs.compileInit = {
     enable = true;
