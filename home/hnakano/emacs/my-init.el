@@ -239,7 +239,6 @@
     (leaf lsp-mode
       :hook
       (lsp-mode-hook . lsp-enable-which-key-integration)
-      (prog-mode-hook . lsp-deferred)
       :custom
       (lsp-keymap-prefix . "C-c C-l")
       (lsp-auto-configure . t)
@@ -272,6 +271,7 @@
   (leaf js
     :custom
     (js-indent-level . 2)
+    :hook (js-mode-hook . lsp-deferred)
     :config
     (leaf lsp-javascript
       :after lsp-mode
@@ -282,6 +282,7 @@
       (lsp-dependency 'typescript '(:system "@typescript@/bin/tsserver"))))
   (leaf julia-mode
     :mode "\\.jl\\'"
+    :hook (julia-mode-hook . lsp-deferred)
     :custom
     (inferior-julia-program-name . "@julia@/bin/julia")
     :config
@@ -299,6 +300,7 @@
       (julia-repl-set-terminal-backend 'vterm)))
   (leaf nix-mode
     :mode "\\.nix\\'"
+    :hook (nix-mode-hook . lsp-deferred)
     :config
     (leaf lsp-nix
       :after lsp-mode
