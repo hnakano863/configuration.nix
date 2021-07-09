@@ -239,20 +239,11 @@
     (leaf lsp-mode
       :hook
       (lsp-mode-hook . lsp-enable-which-key-integration)
-      (nix-mode-hook . lsp-deferred)
-      (julia-mode-hook . lsp-deferred)
-      (js-mode-hook . lsp)
+      (prog-mode-hook . lsp-deferred)
       :custom
       (lsp-keymap-prefix . "C-c C-l")
       (lsp-auto-configure . t)
-      (lsp-nix-server-path . "@rnixlsp@/bin/rnix-lsp")
-      (lsp-enable-folding . t)
-      :config
-      (leaf lsp-javascript
-	:custom
-	(lsp-clients-typescript-tls-path . "@tsls@/bin/typescript-language-server")
-	:config
-	(lsp-dependency 'typescript '(:system "@typescript@/bin/tsserver"))))
+      (lsp-enable-folding . t))
     (leaf lsp-ui
       :custom (lsp-ui-sideline-show-hover . t))))
 
@@ -278,6 +269,17 @@
     :mode "\\.idr\\'"
     :custom
     (idris-interpreter-path . "@idris@/bin/idris"))
+  (leaf js
+    :custom
+    (js-indent-level . 2)
+    :config
+    (leaf lsp-javascript
+      :after lsp-mode
+      :require t
+      :custom
+      (lsp-clients-typescript-tls-path . "@tsls@/bin/typescript-language-server")
+      :config
+      (lsp-dependency 'typescript '(:system "@typescript@/bin/tsserver"))))
   (leaf julia-mode
     :mode "\\.jl\\'"
     :custom
@@ -295,7 +297,14 @@
       (julia-mode-hook . julia-repl-mode)
       :config
       (julia-repl-set-terminal-backend 'vterm)))
-  (leaf nix-mode :mode "\\.nix\\'")
+  (leaf nix-mode
+    :mode "\\.nix\\'"
+    :config
+    (leaf lsp-nix
+      :after lsp-mode
+      :require t
+      :custom
+      (lsp-nix-server-path . "@rnixlsp@/bin/rnix-lsp")))
   (leaf python-mode
     :custom (python-guess-indent . nil)
     :mode "\\.py\\'"))
