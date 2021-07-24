@@ -2,7 +2,7 @@
 {
   imports = [
     ./emacs
-    ./julia
+    ./language
     ./polybar
     ./gnome
   ];
