@@ -294,10 +294,11 @@
       (lsp-julia-default-environment . "~/.julia/environments/v1.6")
       (lsp-julia-flags . `("--startup-file=no" "--history-file=no")))
     (leaf julia-repl
-      :hook
-      (julia-mode-hook . julia-repl-mode)
+      :hook (julia-mode-hook . julia-repl-mode)
       :config
-      (julia-repl-set-terminal-backend 'vterm)))
+      (julia-repl-set-terminal-backend 'vterm)
+      (when (featurep 'lsp-mode)
+	(leaf-keys-bind-keymap (("C-c C-l" . nil)) nil 'julia-repl))))
   (leaf nix-mode
     :mode "\\.nix\\'"
     :hook (nix-mode-hook . lsp-deferred)
