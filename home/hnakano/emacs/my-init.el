@@ -304,9 +304,7 @@
     :config
     (leaf lsp-nix
       :after lsp-mode
-      :require t
-      :custom
-      `(lsp-nix-server-path . ,(executable-find "rnix-lsp"))))
+      :require t))
   (leaf python-mode
     :custom (python-guess-indent . nil)
     :mode "\\.py\\'"))
