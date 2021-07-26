@@ -269,17 +269,12 @@
     :custom
     (idris-interpreter-path . "@idris@/bin/idris"))
   (leaf js
-    :custom
-    (js-indent-level . 2)
+    :custom (js-indent-level . 2)
     :hook (js-mode-hook . lsp-deferred)
     :config
     (leaf lsp-javascript
       :after lsp-mode
-      :require t
-      :custom
-      (lsp-clients-typescript-tls-path . "@tsls@/bin/typescript-language-server")
-      :config
-      (lsp-dependency 'typescript '(:system "@typescript@/bin/tsserver"))))
+      :require t))
   (leaf julia-mode
     :mode "\\.jl\\'"
     :hook (julia-mode-hook . lsp-deferred)
