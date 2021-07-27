@@ -17,7 +17,6 @@
   home.packages = with pkgs; [
     alacritty
     firefox-bin
-    elmPackages.elm-format
     exa
     fd
     fzf
