@@ -40,6 +40,7 @@
       leaf-convert
       lsp-julia
       lsp-mode
+      lsp-pyright
       lsp-ui
       macrostep
       magit

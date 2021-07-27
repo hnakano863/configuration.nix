@@ -12,5 +12,7 @@
     elmPackages.elm-language-server
     elmPackages.elm-format
     elmPackages.elm-test
+    python3
+    nodePackages.pyright
   ];
 }

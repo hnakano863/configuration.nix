@@ -27,7 +27,6 @@
     gimp
     texlive.combined.scheme-medium
     vlc
-    python3
     emacs-all-the-icons-fonts
     pandoc
     palemoon
