@@ -251,7 +251,11 @@
   :tag "lang"
   :config
   (leaf elm-mode
-    :mode "\\.elm\\'")
+    :mode "\\.elm\\'"
+    :hook (elm-mode-hook . lsp-deferred)
+    (leaf lsp-elm
+      :after lsp-mode
+      :require t))
   (leaf ess-site
     :mode ("\\.R\\'" . R-mode))
   (leaf fish-mode

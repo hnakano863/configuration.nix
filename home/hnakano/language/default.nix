@@ -8,5 +8,7 @@
     rnix-lsp
     nodePackages.typescript
     nodePackages.typescript-language-server
+    elmPackages.elm
+    elmPackages.elm-language-server
   ];
 }
