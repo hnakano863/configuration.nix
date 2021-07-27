@@ -253,6 +253,7 @@
   (leaf elm-mode
     :mode "\\.elm\\'"
     :hook (elm-mode-hook . lsp-deferred)
+    :config
     (leaf lsp-elm
       :after lsp-mode
       :require t))
