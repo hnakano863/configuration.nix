@@ -20,6 +20,7 @@
     exa
     fd
     fzf
+    ghq
     thunderbird
     R
     ripgrep
@@ -61,6 +62,8 @@
           ls $GUIX_EXTRA_PROFILES
       end
       '';
+
+      gfz.body = "cd (ghq list -p | fzf)";
     };
 
     plugins = [
