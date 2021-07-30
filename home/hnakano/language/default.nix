@@ -12,7 +12,7 @@
     elmPackages.elm-language-server
     elmPackages.elm-format
     elmPackages.elm-test
-    python3
+    (python3.withPackages (ps: with ps; [ ipython ]))
     nodePackages.pyright
   ];
 }
