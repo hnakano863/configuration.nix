@@ -52,7 +52,7 @@
   # $ nix search wget
   environment.systemPackages = with pkgs; [
     git wget vim gnupg mkpasswd psmisc file
-    feh
+    feh docker-compose
   ];
 
   fonts.enableDefaultFonts = true;
