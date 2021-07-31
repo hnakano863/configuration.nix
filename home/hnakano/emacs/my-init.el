@@ -218,7 +218,7 @@
       (add-to-list 'company-backends 'company-nixos-options)))
   (leaf smartparens
     :hook
-    ((emacs-lisp-mode-hook org-mode-hook nix-mode-hook js-mode-hook) . smartparens-mode)
+    ((emacs-lisp-mode-hook org-mode-hook) . smartparens-mode)
     :config
     (leaf smartparens-config
       :defun
@@ -226,11 +226,7 @@
       :after smartparens
       :require t
       :config
-      (sp-local-pair 'org-mode "\\[" "\\]")
-      (sp-with-modes 'nix-mode
-	(sp-local-pair "[ " " ]")
-	(sp-local-pair "{ " " }")
-	(sp-local-pair "( " " )"))))
+      (sp-local-pair 'org-mode "\\[" "\\]")))
   (leaf rainbow-delimiters
     :hook ((emacs-lisp-mode-hook org-mode-hook) . rainbow-delimiters-mode))
   (leaf language-server
@@ -272,7 +268,9 @@
     (idris-interpreter-path . "@idris@/bin/idris"))
   (leaf js
     :custom (js-indent-level . 2)
-    :hook (js-mode-hook . lsp-deferred))
+    :hook
+    (js-mode-hook . lsp-deferred)
+    (js-mode-hook . smartparens-mode))
   (leaf julia-mode
     :mode "\\.jl\\'"
     :hook (julia-mode-hook . lsp-deferred)
@@ -294,7 +292,14 @@
 	(leaf-keys-bind-keymap (("C-c C-l" . nil)) nil 'julia-repl))))
   (leaf nix-mode
     :mode "\\.nix\\'"
-    :hook (nix-mode-hook . lsp-deferred))
+    :hook
+    (nix-mode-hook . lsp-deferred)
+    (nix-mode-hook . smartparens-mode)
+    :config
+    (sp-with-modes 'nix-mode
+      (sp-local-pair "[ " " ]")
+      (sp-local-pair "{ " " }")
+      (sp-local-pair "( " " )")))
   (leaf python
     :custom (python-guess-indent . nil)
     :mode "\\.py\\'"
