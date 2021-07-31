@@ -57,7 +57,6 @@
       pdf-tools
       posframe
       projectile
-      python-mode
       restart-emacs
       restclient
       rust-mode

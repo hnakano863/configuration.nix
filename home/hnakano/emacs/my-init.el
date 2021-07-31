@@ -306,12 +306,14 @@
     (leaf lsp-nix
       :after lsp-mode
       :require t))
-  (leaf python-mode
+  (leaf python
     :custom (python-guess-indent . nil)
     :mode "\\.py\\'"
-    :hook (python-mode-hook . (lambda ()
-				(require 'lsp-pyright)
-				(lsp)))))
+    :hook (python-mode-hook . lsp-deferred)
+    :config
+    (leaf lsp-pyright
+      :after lsp-mode
+      :require t)))
 
 (leaf org
   :doc "org-mode and its extentions"
