@@ -2,6 +2,7 @@
 {
   imports = [
     ./julia
+    ./python
   ];
 
   home.packages = with pkgs; [
@@ -12,7 +13,5 @@
     elmPackages.elm-language-server
     elmPackages.elm-format
     elmPackages.elm-test
-    (python3.withPackages (ps: with ps; [ ipython ]))
-    nodePackages.pyright
   ];
 }
