@@ -252,11 +252,7 @@
   :config
   (leaf elm-mode
     :mode "\\.elm\\'"
-    :hook (elm-mode-hook . lsp-deferred)
-    :config
-    (leaf lsp-elm
-      :after lsp-mode
-      :require t))
+    :hook (elm-mode-hook . lsp-deferred))
   (leaf ess-site
     :mode ("\\.R\\'" . R-mode))
   (leaf fish-mode
@@ -275,11 +271,7 @@
     (idris-interpreter-path . "@idris@/bin/idris"))
   (leaf js
     :custom (js-indent-level . 2)
-    :hook (js-mode-hook . lsp-deferred)
-    :config
-    (leaf lsp-javascript
-      :after lsp-mode
-      :require t))
+    :hook (js-mode-hook . lsp-deferred))
   (leaf julia-mode
     :mode "\\.jl\\'"
     :hook (julia-mode-hook . lsp-deferred)
@@ -301,11 +293,7 @@
 	(leaf-keys-bind-keymap (("C-c C-l" . nil)) nil 'julia-repl))))
   (leaf nix-mode
     :mode "\\.nix\\'"
-    :hook (nix-mode-hook . lsp-deferred)
-    :config
-    (leaf lsp-nix
-      :after lsp-mode
-      :require t))
+    :hook (nix-mode-hook . lsp-deferred))
   (leaf python
     :custom (python-guess-indent . nil)
     :mode "\\.py\\'"
