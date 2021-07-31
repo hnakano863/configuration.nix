@@ -487,6 +487,8 @@ _j_: next _k_: previous _s_: stage _r_: revert _d_: popup diff"
 
 (leaf general
   :config
+  (general-def emacs-lisp-mode-map
+    "C-c C-e" 'macrostep-expand)
   (leaf my/bind-root
     :config
     (my/bind
