@@ -307,7 +307,9 @@
       (sp-local-pair "{ " " }")
       (sp-local-pair "( " " )")))
   (leaf python
-    :custom (python-guess-indent . nil)
+    :custom
+    (python-guess-indent . nil)
+    (python-shell-interpreter . "ipython")
     :mode "\\.py\\'"
     :hook
     (python-mode-hook . lsp-deferred)
@@ -498,10 +500,10 @@ _j_: next _k_: previous _s_: stage _r_: revert _d_: popup diff"
   (general-def emacs-lisp-mode-map
     "C-c C-e" 'macrostep-expand)
   (general-def 'insert smartparens-mode-map
-    "C-c C-[ s" 'sp-backward-slurp-sexp
-    "C-c C-[ b" 'sp-backward-barf-sexp
-    "C-c C-] s" 'sp-forward-slurp-sexp
-    "C-c C-] b" 'sp-forward-barf-sexp)
+    "C-c [ s" 'sp-backward-slurp-sexp
+    "C-c [ b" 'sp-backward-barf-sexp
+    "C-c ] s" 'sp-forward-slurp-sexp
+    "C-c ] b" 'sp-forward-barf-sexp)
   (leaf my/bind-root
     :config
     (my/bind
