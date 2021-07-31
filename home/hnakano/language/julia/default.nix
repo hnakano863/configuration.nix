@@ -2,10 +2,8 @@
 with pkgs;
 with lib;
 let
-  pyCallEnv = python3.withPackages ( ps: with ps; [ matplotlib ]);
   startup-jl = runCommand "startup.jl" {
-    inherit jupyterCommand pyCallEnv;
-    inherit (pyCallEnv) sitePackages;
+    inherit jupyterCommand;
   } ''substituteAll "${./startup.jl.in}" $out '';
 in
 {
