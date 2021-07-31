@@ -231,6 +231,8 @@
 	(sp-local-pair "[ " " ]")
 	(sp-local-pair "{ " " }")
 	(sp-local-pair "( " " )"))))
+  (leaf rainbow-delimiters
+    :hook ((emacs-lisp-mode-hook org-mode-hook) . rainbow-delimiters-mode))
   (leaf language-server
     :doc "lsp-mode and its extentions"
     :tag "lsp"

@@ -57,6 +57,7 @@
       pdf-tools
       posframe
       projectile
+      rainbow-delimiters
       restart-emacs
       restclient
       rust-mode
