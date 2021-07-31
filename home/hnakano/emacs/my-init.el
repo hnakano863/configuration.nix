@@ -376,8 +376,9 @@
 		     :html-background "Transparent"
 		     :html-scale 1.6
 		     :matchers ("begin" "$1" "$" "$$" "\\(" "\\["))))
-  (leaf org-babel
+  (leaf ob
     :doc "setting for org-babel"
+    :after org
     :custom
     (org-confirm-babel-evaluate . nil)
     (org-src-fontify-natively . t)
@@ -413,7 +414,14 @@
     (org-tab-first-hook . doom/org-fix-newline-and-indent-in-src-blocks)
     (org-babel-after-execute-hook . org-redisplay-inline-images)
     (org-babel-after-execute-hook . ek/babel-ansi)
-    :init
+    :config
+    (let ((cmds '(("jj" . "src jupyter-julia\n")
+		  ("jd" . "src jupyter-julia :display image/svg\n")
+		  ("pp" . "src jupyter-python\n")
+		  ("pd" . "src jupyter-python :display image/png\n"))))
+      (dolist (cmd cmds)
+	(push cmd org-structure-template-alist)))
+    :defer-config
     (org-babel-do-load-languages
      'org-babel-load-languages
      '((emacs-lisp . t)
@@ -422,11 +430,7 @@
        (python . t)
        (julia . t)
        (jupyter . t)
-       (restclient . t)))
-    (add-to-list 'org-structure-template-alist '("jj" . "src jupyter-julia\n"))
-    (add-to-list 'org-structure-template-alist '("jd" . "src jupyter-julia :display image/svg\n"))
-    (add-to-list 'org-structure-template-alist '("pp" . "src jupyter-python\n"))
-    (add-to-list 'org-structure-template-alist '("pd" . "src jupyter-python :display image/png\n")))
+       (restclient . t))))
   (leaf org-bullets
     :hook (org-mode-hook . org-bullets-mode)
     :custom
