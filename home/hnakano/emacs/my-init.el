@@ -489,6 +489,11 @@ _j_: next _k_: previous _s_: stage _r_: revert _d_: popup diff"
   :config
   (general-def emacs-lisp-mode-map
     "C-c C-e" 'macrostep-expand)
+  (general-def 'insert smartparens-mode-map
+    "C-c C-[ s" 'sp-backward-slurp-sexp
+    "C-c C-[ b" 'sp-backward-barf-sexp
+    "C-c C-] s" 'sp-forward-slurp-sexp
+    "C-c C-] b" 'sp-forward-barf-sexp)
   (leaf my/bind-root
     :config
     (my/bind
