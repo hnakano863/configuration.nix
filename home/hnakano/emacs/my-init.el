@@ -119,7 +119,6 @@
   :defun treemacs-git-mode
   :custom
   (treemacs-width . 30)
-  (treemacs-python-executable . "@python3@/bin/python")
   :hook (treemacs-mode-hook . (lambda () (treemacs-git-mode 'deferred)))
   :config
   (leaf treemacs-evil

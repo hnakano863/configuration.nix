@@ -3,7 +3,7 @@ with pkgs;
 with lib;
 let
   init-el = runCommand "my-init.el" {
-    inherit python3 gnuplot idris sqlite graphviz;
+    inherit gnuplot idris sqlite graphviz;
     julia = julia-bin;
     skkdicts = skk-dicts;
   } ''substituteAll "${./my-init.el}" $out '';
