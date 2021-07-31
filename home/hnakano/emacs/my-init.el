@@ -273,7 +273,9 @@
     (js-mode-hook . smartparens-mode))
   (leaf julia-mode
     :mode "\\.jl\\'"
-    :hook (julia-mode-hook . lsp-deferred)
+    :hook
+    (julia-mode-hook . lsp-deferred)
+    (julia-mode-hook . smartparens-mode)
     :custom
     (inferior-julia-program-name . "@julia@/bin/julia")
     :config
@@ -286,10 +288,14 @@
       (lsp-julia-flags . `("--startup-file=no" "--history-file=no")))
     (leaf julia-repl
       :hook (julia-mode-hook . julia-repl-mode)
+      :bind (:julia-repl-mode-map
+	     ("C-c C-l" . nil))
       :config
-      (julia-repl-set-terminal-backend 'vterm)
-      (when (featurep 'lsp-mode)
-	(leaf-keys-bind-keymap (("C-c C-l" . nil)) nil 'julia-repl))))
+      (julia-repl-set-terminal-backend 'vterm))
+    (require 'smartparens-python)
+    (sp-with-modes 'julia-mode
+      (sp-local-pair "\"" "\"" :post-handlers '(:add sp-python-fix-triple-quotes))
+      (sp-local-pair "\"\"\"" "\"\"\"")))
   (leaf nix-mode
     :mode "\\.nix\\'"
     :hook
@@ -303,7 +309,9 @@
   (leaf python
     :custom (python-guess-indent . nil)
     :mode "\\.py\\'"
-    :hook (python-mode-hook . lsp-deferred)
+    :hook
+    (python-mode-hook . lsp-deferred)
+    (python-mode-hook . smartparens-mode)
     :config
     (leaf lsp-pyright
       :after lsp-mode
