@@ -16,6 +16,7 @@
 
   home.packages = with pkgs; [
     alacritty
+    anki
     firefox-bin
     exa
     fd
