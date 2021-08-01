@@ -325,7 +325,9 @@
   (leaf yaml-mode
     :mode "\\.ya?ml\\'")
   (leaf dockerfile-mode
-    :mode "Dockerfile\\'"))
+    :mode "Dockerfile\\'")
+  (leaf docker-compose-mode
+    :hook (docker-compose-mode-hook . company-mode)))
 
 (leaf org
   :doc "org-mode and its extentions"
