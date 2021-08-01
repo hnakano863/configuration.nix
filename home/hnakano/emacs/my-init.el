@@ -318,7 +318,13 @@
     :config
     (leaf lsp-pyright
       :after lsp-mode
-      :require t)))
+      :require t))
+  (leaf toml-mode
+    :mode "\\.toml\\'")
+  (leaf yaml-mode
+    :mode "\\.ya?ml\\'")
+  (leaf dockerfile-mode
+    :mode "Dockerfile\\'"))
 
 (leaf org
   :doc "org-mode and its extentions"

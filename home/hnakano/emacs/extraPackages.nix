@@ -14,6 +14,8 @@
       ddskk
       ddskk-posframe
       dictionary
+      docker
+      dockerfile-mode
       doom-modeline
       doom-themes
       ebib
@@ -67,6 +69,7 @@
       selectrum-prescient
       shackle
       smartparens
+      toml-mode
       treemacs
       treemacs-evil
       treemacs-magit
@@ -78,6 +81,7 @@
       vterm-toggle
       which-key
       winum
+      yaml-mode
       yasnippet
     ];
 }
