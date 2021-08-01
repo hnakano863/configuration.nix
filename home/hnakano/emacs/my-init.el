@@ -229,19 +229,12 @@
       (sp-local-pair 'org-mode "\\[" "\\]")))
   (leaf rainbow-delimiters
     :hook ((emacs-lisp-mode-hook org-mode-hook) . rainbow-delimiters-mode))
-  (leaf language-server
-    :doc "lsp-mode and its extentions"
-    :tag "lsp"
-    :config
-    (leaf lsp-mode
-      :hook
-      (lsp-mode-hook . lsp-enable-which-key-integration)
-      :custom
-      (lsp-keymap-prefix . "C-c C-l")
-      (lsp-auto-configure . t)
-      (lsp-enable-folding . t))
-    (leaf lsp-ui
-      :custom (lsp-ui-sideline-show-hover . t))))
+  (leaf lsp-mode
+    :hook
+    (lsp-mode-hook . lsp-enable-which-key-integration)
+    :custom
+    (lsp-keymap-prefix . "C-c C-l")
+    (lsp-auto-configure . t)))
 
 (leaf language
   :doc "programming language setup"
