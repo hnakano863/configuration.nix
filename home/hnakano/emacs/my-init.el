@@ -57,6 +57,9 @@
   (blink-cursor-mode -1)
   (add-hook 'term-mode-hook  #'(lambda () (setq-local global-hl-line-mode nil))))
 
+(leaf hideshow
+  :hook (emacs-lisp-mode-hook . hs-minor-mode))
+
 (leaf git-gutter
   :global-minor-mode global-git-gutter-mode)
 
