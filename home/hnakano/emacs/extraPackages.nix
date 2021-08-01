@@ -70,6 +70,7 @@
       selectrum-prescient
       shackle
       smartparens
+      symon
       toml-mode
       treemacs
       treemacs-evil
