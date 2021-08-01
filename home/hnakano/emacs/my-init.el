@@ -507,7 +507,8 @@ _j_: next _k_: previous _s_: stage _r_: revert _d_: popup diff"
 
 (leaf general
   :config
-  (general-def emacs-lisp-mode-map
+  (general-define-key
+    :keymaps '(emacs-lisp-mode-map lisp-interaction-mode-map)
     "C-c C-e" 'macrostep-expand)
   (general-def 'insert smartparens-mode-map
     "C-c [ s" 'sp-backward-slurp-sexp
