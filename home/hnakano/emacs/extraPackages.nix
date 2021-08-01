@@ -16,6 +16,7 @@
       dictionary
       docker
       dockerfile-mode
+      docker-compose-mode
       doom-modeline
       doom-themes
       ebib
