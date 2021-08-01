@@ -604,12 +604,16 @@ _j_: next _k_: previous _s_: stage _r_: revert _d_: popup diff"
       "h" 'hydra-git-gutter/body))
   (leaf my/bind-toggle
     :config
-   (my/bind
+    (my/bind
      :prefix "SPC t"
      "t" 'toggle-truncate-lines
      "l" 'display-line-numbers-mode
      "f" 'treemacs
-     "v" 'vterm-toggle))
+     "v" 'vterm-toggle)
+    (my/bind
+     :keymaps 'prog-mode-map
+     :prefix "SPC t"
+     "i" 'imenu-list-smart-toggle))
   (leaf my/bind-org
     :config
     (my/bind
