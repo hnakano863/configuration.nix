@@ -32,6 +32,7 @@
       gnuplot
       hydra
       idris-mode
+      imenu-list
       initchart
       julia-mode
       julia-repl
