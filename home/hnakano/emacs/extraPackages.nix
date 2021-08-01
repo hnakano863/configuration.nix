@@ -30,6 +30,7 @@
       general
       git-gutter
       gnuplot
+      helpful
       hydra
       idris-mode
       imenu-list

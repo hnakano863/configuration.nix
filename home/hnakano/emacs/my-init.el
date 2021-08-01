@@ -71,6 +71,14 @@
   :config
   (which-key-setup-side-window-bottom))
 
+(leaf helpful
+  :bind
+  ("C-h f" . helpful-callable)
+  ("C-h v" . helpful-variable)
+  ("C-h k" . helpful-key)
+  (:emacs-lisp-mode-map
+   ("C-c C-d" . helpful-at-point)))
+
 (leaf evil
   :global-minor-mode t
   :custom
@@ -581,9 +589,9 @@ _j_: next _k_: previous _s_: stage _r_: revert _d_: popup diff"
     (my/bind
       :prefix "SPC h"
       "a" 'consult-apropos
-      "f" 'describe-function
-      "v" 'describe-variable
-      "k" 'describe-key
+      "f" 'helpful-callable
+      "v" 'helpful-variable
+      "k" 'helpful-key
       "m" 'describe-mode
       "w" 'dictionary-match-words))
   (leaf my/bind-quit
