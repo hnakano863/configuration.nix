@@ -66,6 +66,9 @@
 (leaf undo-fu-session
   :global-minor-mode global-undo-fu-session-mode)
 
+(leaf symon
+  :global-minor-mode symon-mode)
+
 (leaf winum
   :global-minor-mode t)
 
@@ -246,7 +249,9 @@
     (lsp-mode-hook . lsp-enable-which-key-integration)
     :custom
     (lsp-keymap-prefix . "C-c C-l")
-    (lsp-auto-configure . t)))
+    (lsp-auto-configure . t))
+  (leaf yasnippet
+    :hook (lsp-mode-hook . yas-minor-mode)))
 
 (leaf language
   :doc "programming language setup"
