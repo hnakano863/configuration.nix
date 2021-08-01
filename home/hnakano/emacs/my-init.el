@@ -213,7 +213,7 @@
   (leaf envrc :global-minor-mode envrc-global-mode)
   (leaf company
     :hook
-    (emacs-lisp-mode-hook. company-mode)
+    (emacs-lisp-mode-hook . company-mode)
     :bind
     (:company-active-map
      ("C-n" . company-select-next)
@@ -222,8 +222,9 @@
     (leaf company-nixos-options
       :after company
       :defvar company-backends
-      :config
-      (add-to-list 'company-backends 'company-nixos-options)))
+      :hook (nix-mode-hook . (lambda ()
+			       (setq-local company-backends
+					   (cons 'company-nixos-options company-backends))))))
   (leaf smartparens
     :hook
     ((emacs-lisp-mode-hook org-mode-hook) . smartparens-mode)
