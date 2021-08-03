@@ -112,7 +112,12 @@
     prescient-persist-mode)
   (leaf consult
     :bind (("C-s" . consult-line)
-	   ("C-h a" . consult-apropos)))
+	   ("C-h a" . consult-apropos))
+    :config
+    (consult-customize
+     consult--source-file
+     consult-recent-file
+     :preview-key '(:debounce 0.5 any)))
   (leaf consult-selectrum
     :after consult selectrum
     :require t))
