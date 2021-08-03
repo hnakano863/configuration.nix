@@ -66,9 +66,6 @@
 (leaf undo-fu-session
   :global-minor-mode global-undo-fu-session-mode)
 
-(leaf symon
-  :global-minor-mode symon-mode)
-
 (leaf winum
   :global-minor-mode t)
 
@@ -635,7 +632,8 @@ _j_: next _k_: previous _s_: stage _r_: revert _d_: popup diff"
      "t" 'toggle-truncate-lines
      "l" 'display-line-numbers-mode
      "f" 'treemacs
-     "v" 'vterm-toggle)
+     "v" 'vterm-toggle
+     "s" 'symon-mode)
     (my/bind
      :keymaps 'prog-mode-map
      :prefix "SPC t"
