@@ -11,6 +11,7 @@
       company
       company-nixos-options
       consult
+      consult-flycheck
       ddskk
       ddskk-posframe
       dictionary

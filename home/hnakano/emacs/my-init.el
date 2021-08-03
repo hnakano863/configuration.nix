@@ -653,7 +653,17 @@ _j_: next _k_: previous _s_: stage _r_: revert _d_: popup diff"
       "I" 'org-roam-insert-immediate
       "t" 'org-roam-tag-add
       "r" 'org-roam
-      "g" 'org-roam-graph)))
+      "g" 'org-roam-graph))
+  (leaf my/bind-search
+    :config
+    (my/bind
+     :prefix "SPC s"
+     "b" 'consult-line
+     "i" 'consult-imenu)
+    (my/bind
+     :prefix "SPC s"
+     :keymaps 'flycheck-mode-map
+     "e" 'consult-flycheck)))
 
 (provide 'my-init)
 ;;; my-init.el ends here
