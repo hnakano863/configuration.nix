@@ -29,6 +29,7 @@
 (eval-when-compile
   (require 'smartparens)
   (require 'org)
+  (require 'consult)
   (general-create-definer my/bind
     :states '(motion normal)
     :keymaps 'override))
@@ -115,8 +116,7 @@
 	   ("C-h a" . consult-apropos))
     :config
     (consult-customize
-     consult--source-file
-     consult-recent-file
+     consult--source-file consult-recent-file
      :preview-key '(:debounce 0.5 any)))
   (leaf consult-selectrum
     :after consult selectrum
