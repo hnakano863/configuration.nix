@@ -49,7 +49,6 @@
   `(read-process-output-max . ,(* 3 1024 1024))
   (backup-directory-alist . '((".*" . "/tmp/")))
   (auto-save-file-name-transforms . '((".*" "/tmp/" t)))
-  :global-minor-mode global-hl-line-mode recentf-mode
   :hook
   (before-save-hook . delete-trailing-whitespace)
   (emacs-startup-hook . print-startup-stats)
@@ -58,22 +57,16 @@
   (blink-cursor-mode -1)
   (add-hook 'term-mode-hook  #'(lambda () (setq-local global-hl-line-mode nil))))
 
-(leaf hideshow
-  :hook (emacs-lisp-mode-hook . hs-minor-mode))
-
-(leaf git-gutter
-  :global-minor-mode global-git-gutter-mode)
-
-(leaf undo-fu-session
-  :global-minor-mode global-undo-fu-session-mode)
-
-(leaf winum
-  :global-minor-mode t)
+(leaf git-gutter :global-minor-mode global-git-gutter-mode)
+(leaf hideshow :hook (emacs-lisp-mode-hook . hs-minor-mode))
+(leaf hl-line :global-minor-mode global-hl-line-mode)
+(leaf recentf :global-minor-mode t)
+(leaf undo-fu-session :global-minor-mode global-undo-fu-session-mode)
+(leaf winum :global-minor-mode t)
 
 (leaf which-key
   :global-minor-mode t
-  :config
-  (which-key-setup-side-window-bottom))
+  :config (which-key-setup-side-window-bottom))
 
 (leaf helpful
   :bind
