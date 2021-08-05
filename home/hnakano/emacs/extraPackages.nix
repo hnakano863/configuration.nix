@@ -50,6 +50,7 @@
       lsp-ui
       macrostep
       magit
+      marginalia
       nix-mode
       nyan-mode
       ob-restclient

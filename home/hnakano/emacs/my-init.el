@@ -110,7 +110,11 @@
     :config
     (consult-customize
      consult--source-file consult-recent-file
-     :preview-key '(:debounce 0.5 any))))
+     :preview-key '(:debounce 0.5 any)))
+  (leaf marginalia
+    :global-minor-mode t
+    :bind ((:minibuffer-local-map
+	    ("M-c" . marginalia-cycle)))))
 
 (leaf projectile
   :global-minor-mode t
