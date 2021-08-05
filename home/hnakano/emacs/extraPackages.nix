@@ -53,6 +53,7 @@
       nix-mode
       nyan-mode
       ob-restclient
+      orderless
       org-bullets
       org-journal
       org-plus-contrib
@@ -67,8 +68,6 @@
       restart-emacs
       restclient
       rust-mode
-      selectrum
-      selectrum-prescient
       shackle
       smartparens
       symon
@@ -80,6 +79,7 @@
       undo-fu
       undo-fu-session
       undo-tree
+      vertico
       vterm
       vterm-toggle
       which-key

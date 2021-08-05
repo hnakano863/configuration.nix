@@ -104,23 +104,20 @@
   :doc "Settings for completion framework."
   :tag "completion"
   :config
-  (leaf selectrum
-    :global-minor-mode t)
-  (leaf selectrum-prescient
-    :after selectrum
-    :global-minor-mode
-    selectrum-prescient-mode
-    prescient-persist-mode)
+  (leaf savehist :global-minor-mode t)
+  (leaf orderless
+    :custom
+    (completion-styles . '(orderless))
+    (completion-category-defaults . nil)
+    (completion-category-overrides . '((file (styles partial-completion)))))
+  (leaf vertico :global-minor-mode t)
   (leaf consult
     :bind (("C-s" . consult-line)
 	   ("C-h a" . consult-apropos))
     :config
     (consult-customize
      consult--source-file consult-recent-file
-     :preview-key '(:debounce 0.5 any)))
-  (leaf consult-selectrum
-    :after consult selectrum
-    :require t))
+     :preview-key '(:debounce 0.5 any))))
 
 (leaf projectile
   :global-minor-mode t
