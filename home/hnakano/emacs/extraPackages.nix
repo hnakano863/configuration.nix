@@ -70,6 +70,7 @@
       restclient
       rust-mode
       shackle
+      slime
       smartparens
       symon
       toml-mode

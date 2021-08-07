@@ -331,7 +331,10 @@
   (leaf dockerfile-mode
     :mode "Dockerfile\\'")
   (leaf docker-compose-mode
-    :hook (docker-compose-mode-hook . company-mode)))
+    :hook (docker-compose-mode-hook . company-mode))
+  (leaf slime
+    :mode "\\.cl\\'" "\\.lisp\\'"
+    :custom (inferior-lisp-program . "sbcl")))
 
 (leaf org
   :doc "org-mode and its extentions"
