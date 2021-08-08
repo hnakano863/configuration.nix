@@ -122,7 +122,7 @@
   (projectile-indexing-method . 'alien)
   (projectile-sort-order . 'recentf-active)
   (projectile-enable-caching . t)
-  (projectile-project-search-path . '("~/repos/" "~/.config/" "~/experiments/")))
+  (projectile-project-search-path . '("~/repos/" "~/experiments/" "~/ghq/")))
 
 (leaf treemacs
   :doc "treemacs and its extentions"
