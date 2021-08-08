@@ -68,6 +68,7 @@
       rainbow-delimiters
       restart-emacs
       restclient
+      ripgrep
       rust-mode
       shackle
       slime
