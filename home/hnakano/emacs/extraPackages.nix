@@ -71,6 +71,7 @@
       rust-mode
       shackle
       slime
+      slime-company
       smartparens
       symon
       toml-mode

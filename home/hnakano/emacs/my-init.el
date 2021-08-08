@@ -332,9 +332,28 @@
     :mode "Dockerfile\\'")
   (leaf docker-compose-mode
     :hook (docker-compose-mode-hook . company-mode))
-  (leaf slime
+  (leaf lisp-mode
     :mode "\\.cl\\'" "\\.lisp\\'"
-    :custom (inferior-lisp-program . "sbcl")))
+    :custom (inferior-lisp-program . "sbcl")
+    :hook
+    (lisp-mode-hook . smartparens-mode)
+    (lisp-mode-hook . rainbow-delimiters-mode)
+    (lisp-mode-hook . company-mode)
+    (lisp-mode-hook . flycheck-mode)
+    :config
+    (leaf slime
+      :hook lisp-mode-hook
+      :config
+      (leaf slime-autodoc
+	:bind (:slime-autodoc-mode-map ("SPC" . nil)))
+      (leaf slime-company
+	:after company
+	:defvar company-backends
+	:require t
+	:hook
+	(slime-mode-hook . (lambda ()
+			     (setq-local company-backends
+					 (cons 'company-slime company-backends))))))))
 
 (leaf org
   :doc "org-mode and its extentions"
