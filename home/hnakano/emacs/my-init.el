@@ -504,15 +504,14 @@
     :hook (org-mode-hook . org-eldoc-load))
   (leaf org-roam
     :custom
-    (org-roam-directory . "~/Org/roam")
-    (emacsql-sqlite3-executable . "@sqlite@/bin/sqlite3")
+    (org-roam-v2-ack . t)
+    (org-roam-directory . "/home/hnakano/Org/roam/")
     (org-roam-graph-executable . "@graphviz@/bin/dot")
     (org-roam-graph-extra-config . '(("layout" . "neato")
 				     ("overlap" . "false")
 				     ("splines" . "true")))
-    :config
-    (with-eval-after-load 'org-roam
-      (org-roam-mode 1))))
+    :defer-config
+    (org-roam-setup)))
 
 (leaf hydra
   :config
@@ -669,12 +668,12 @@ _j_: next _k_: previous _s_: stage _r_: revert _d_: popup diff"
       "a" 'org-agenda
       "j" 'org-journal-new-entry
       "p" '(org-projectile-project-todo-completing-read :wk "project todo")
-      "f" 'org-roam-find-file
-      "i" 'org-roam-insert
-      "I" 'org-roam-insert-immediate
-      "t" 'org-roam-tag-add
-      "r" 'org-roam
-      "g" 'org-roam-graph))
+      "r" '(:ignore t :wk "org roam")
+      "r f" 'org-roam-node-find
+      "r i" 'org-roam-node-insert
+      "r t" 'org-roam-tag-add
+      "r r" 'org-roam-buffer-toggle
+      "r g" 'org-roam-graph))
   (leaf my/bind-search
     :config
     (my/bind
