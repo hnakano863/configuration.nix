@@ -636,7 +636,8 @@ _j_: next _k_: previous _s_: stage _r_: revert _d_: popup diff"
       "v" 'helpful-variable
       "k" 'helpful-key
       "m" 'describe-mode
-      "w" 'dictionary-match-words))
+      "w" 'dictionary-match-words
+      "i", 'info))
   (leaf my/bind-quit
     :config
     (my/bind
