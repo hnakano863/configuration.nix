@@ -185,9 +185,11 @@
 (leaf shackle
   :global-minor-mode t
   :custom
-  (shackle-rules . '(("*Help*" :align below :size 0.42 :select t :popup t)
+  (shackle-rules . '(("\\*Help\\*" :align below :size 0.42 :select t :popup t)
+		     (helpful-mode :align below :size 0.42 :select t :popup t)
                      (magit-status-mode :align right :select t :popup t)
-                     (vterm-mode :align below :size 0.35 :select t :popup t))))
+                     (vterm-mode :align below :size 0.35 :select t :popup t)
+		     (org-roam-mode :align right :size 0.33 :select nil :popup t))))
 
 (leaf vterm
   :hook
@@ -358,6 +360,8 @@
 (leaf org
   :doc "org-mode and its extentions"
   :tag "org"
+  :custom
+  (org-return-follows-link . t)
   :config
   (leaf org-startup
     :doc "startup settings"
@@ -504,13 +508,17 @@
     :hook (org-mode-hook . org-eldoc-load))
   (leaf org-roam
     :custom
+    `(org-roam-db-gc-threshold . ,most-positive-fixnum)
     (org-roam-v2-ack . t)
     (org-roam-directory . "/home/hnakano/Org/roam/")
     (org-roam-graph-executable . "@graphviz@/bin/dot")
     (org-roam-graph-extra-config . '(("layout" . "neato")
 				     ("overlap" . "false")
 				     ("splines" . "true")))
-    :defer-config
+    :bind (:org-roam-mode-map
+	   ("SPC" . nil)
+	   ("S-SPC" . nil))
+    :config
     (org-roam-setup)))
 
 (leaf hydra
@@ -669,10 +677,15 @@ _j_: next _k_: previous _s_: stage _r_: revert _d_: popup diff"
       "j" 'org-journal-new-entry
       "p" '(org-projectile-project-todo-completing-read :wk "project todo")
       "r" '(:ignore t :wk "org roam")
-      "r f" 'org-roam-node-find
+      "r a" 'org-roam-alias-add
+      "r b" 'org-roam-buffer-display-dedicated
+      "r d" 'org-roam-dailies-capture-today
+      "r D" 'org-roam-dailies-goto-date
+      "r n" 'org-roam-node-find
       "r i" 'org-roam-node-insert
       "r t" 'org-roam-tag-add
       "r r" 'org-roam-buffer-toggle
+      "r R" 'org-roam-ref-add
       "r g" 'org-roam-graph))
   (leaf my/bind-search
     :config
