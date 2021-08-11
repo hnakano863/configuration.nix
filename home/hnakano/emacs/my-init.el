@@ -124,6 +124,12 @@
   (projectile-enable-caching . t)
   (projectile-project-search-path . '("~/repos/" "~/experiments/" "~/ghq/")))
 
+(leaf ebib
+  :custom
+  (ebib-link-file-path-type . 'adaptive)
+  (ebib-default-directory . "~/Documents/bibliograhy")
+  (ebib-preload-bib-files . '("~/Documents/bibliograhy/default.bib")))
+
 (leaf treemacs
   :doc "treemacs and its extentions"
   :defun treemacs-git-mode
