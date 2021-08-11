@@ -60,6 +60,7 @@
       org-plus-contrib
       org-pomodoro
       org-projectile
+      org-ref
       org-roam
       pandoc
       pdf-tools
