@@ -664,6 +664,7 @@ _j_: next _k_: previous _s_: stage _r_: revert _d_: popup diff"
     :config
     (my/bind
      :prefix "SPC t"
+     "d" 'toggle-debug-on-error
      "t" 'toggle-truncate-lines
      "l" 'display-line-numbers-mode
      "f" 'treemacs
