@@ -420,9 +420,9 @@
 	 ("t" "Todo" entry (file+headline my/org-todo-file "Todos")
           "* TODO %?\n:PROPERTIES:\n:SCHEDULED: %^t\n:END:\n%i\n")
          ("f" "Fleeting Note" entry (file+headline my/org-fleeting-note-file "Fleeting Notes")
-          "* %?\n:PROPERTIES:\nTAGS: @note @fleeting\n:Entered: %U\n:END:\n%i\n")
+          "* %? :@note:@fleeting:\n:PROPERTIES:\n:Entered: %U\n:END:\n%i\n")
 	 ("l" "Literature Note" entry (file+headline my/org-literature-note-file "Literature Notes")
-          "* %?\n:PROPERTIES:\n:TAGS: @note @literature\n:Ref: %a\n:Entered: %U\n:END:\n%i\n"))))
+          "* %? :@note:@literature:\n:PROPERTIES:\n:Ref: %a\n:Entered: %U\n:END:\n%i\n"))))
   (leaf org-latex
     :doc "setting for org-latex"
     :custom
