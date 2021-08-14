@@ -386,9 +386,13 @@
     :doc "file, directory settings"
     :custom
     (org-directory . "~/Org")
-    (org-agenda-files . `,(list (concat (file-name-as-directory org-directory) "notes")))
+    (my/org-notes-directory . `,(concat (file-name-as-directory org-directory) "notes/"))
+    (org-default-notes-file . `,(concat  my/org-notes-directory "inbox.org"))
+    (my/org-todo-file . `,(concat my/org-notes-directory "todos.org"))
+    (my/org-fleeting-note-file . `,(concat my/org-notes-directory "fleeting-notes.org"))
+    (my/org-literature-note-file . `,(concat my/org-notes-directory "literature-notes.org"))
+    (org-agenda-files . `,(list my/org-notes-directory))
     (org-refile-targets . '((org-agenda-files :maxlevel . 1)))
-    (org-default-notes-file . `,(concat (file-name-as-directory org-directory) "inbox.org"))
     (org-archive-location . `,(concat (file-name-as-directory org-directory)
 				      "archives/%s_archive_"
 				      (format-time-string "%Y" (current-time))
@@ -411,10 +415,14 @@
     :doc "setting for org-capture"
     :custom
     (org-capture-templates
-     . '(("t" "Todo" entry (file+headline org-default-notes-file "Tasks")
-          "* TODO %?\n:PROPERTIES:\n:Entered:  %U\n:END:\n%i\n")
-         ("n" "Note" entry (file+headline org-default-notes-file "Notes")
-          "* %?\n:PROPERTIES:\n:Entered:  %U\n:END:\n%i\n"))))
+     . '(("c" "Inbox" entry (file+headline org-default-notes-file "Inbox")
+	  "* %?\n%i\n")
+	 ("t" "Todo" entry (file+headline my/org-todo-file "Todos")
+          "* TODO %?\n:PROPERTIES:\n:SCHEDULED: %^t\n:END:\n%i\n")
+         ("f" "Fleeting Note" entry (file+headline my/org-fleeting-note-file "Fleeting Notes")
+          "* %?\n:PROPERTIES:\nTAGS: @note @fleeting\n:Entered: %U\n:END:\n%i\n")
+	 ("l" "Literature Note" entry (file+headline my/org-literature-note-file "Literature Notes")
+          "* %?\n:PROPERTIES:\n:TAGS: @note @literature\n:Ref: %a\n:Entered: %U\n:END:\n%i\n"))))
   (leaf org-latex
     :doc "setting for org-latex"
     :custom
@@ -679,6 +687,7 @@ _j_: next _k_: previous _s_: stage _r_: revert _d_: popup diff"
      :prefix "SPC t"
      "i" 'imenu-list-smart-toggle))
   (leaf my/bind-org
+    :advice
     :config
     (my/bind
       :prefix "SPC o"
@@ -686,11 +695,8 @@ _j_: next _k_: previous _s_: stage _r_: revert _d_: popup diff"
       "a" 'org-agenda
       "l" 'org-store-link
       "n" '((lambda ()
-	      (interactive)
-	      (let ((default-directory (concat (file-name-as-directory org-directory)
-					       "notes/")))
-		(find-file-read-args "Open notes: "
-				     (confirm-nonexistent-file-or-buffer))))
+	      (let ((default-directory my/org-notes-directory)))
+		(call-interactively 'find-file))
 	    :wk "open notes")
       "j" 'org-journal-new-entry
       "p" '(org-projectile-project-todo-completing-read :wk "project todo")
