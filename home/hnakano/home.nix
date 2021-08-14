@@ -22,6 +22,7 @@
     fd
     fzf
     ghq
+    graphviz
     thunderbird
     R
     ripgrep
