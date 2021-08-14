@@ -105,6 +105,7 @@
       core.askPass = "";
       pull.rebase = false;
       init.defaultBranch = "main";
+      credential.helper = "${config.programs.git.package}/bin/git-credential-libsecret";
     };
   };
 
