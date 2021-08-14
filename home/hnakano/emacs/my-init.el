@@ -386,10 +386,11 @@
     :doc "file, directory settings"
     :custom
     (org-directory . "~/Org")
-    (org-agenda-files . '("~/Org/notes.org" "~/Org/knowledge"))
+    (org-agenda-files . `,(list (concat (file-name-as-directory org-directory) "notes")))
     (org-refile-targets . '((org-agenda-files :maxlevel . 1)))
-    (org-default-notes-file . "~/Org/notes.org")
-    `(org-archive-location . ,(concat "~/Org/archives/%s_archive_"
+    (org-default-notes-file . `,(concat (file-name-as-directory org-directory) "inbox.org"))
+    (org-archive-location . `,(concat (file-name-as-directory org-directory)
+				      "archives/%s_archive_"
 				      (format-time-string "%Y" (current-time))
 				      "::")))
   (leaf org-todo
@@ -410,7 +411,7 @@
     :doc "setting for org-capture"
     :custom
     (org-capture-templates
-     . '(("t" "Task" entry (file+headline org-default-notes-file "Tasks")
+     . '(("t" "Todo" entry (file+headline org-default-notes-file "Tasks")
           "* TODO %?\n:PROPERTIES:\n:Entered:  %U\n:END:\n%i\n")
          ("n" "Note" entry (file+headline org-default-notes-file "Notes")
           "* %?\n:PROPERTIES:\n:Entered:  %U\n:END:\n%i\n"))))
@@ -489,7 +490,9 @@
     :custom
     (org-journal-file-type . 'weekly)
     (org-journal-file-format . "%Y-%m-%d")
-    `(org-journal-dir . ,(concat "~/Org/journal/" (format-time-string "%Y" (current-time)))))
+    (org-journal-dir . `,(concat (file-name-as-directory org-directory)
+				 "journal/"
+				 (format-time-string "%Y" (current-time)))))
   (leaf org-pomodoro
     :custom
     (org-pomodoro-format . "🍅~%s")
@@ -500,8 +503,9 @@
     :custom
     (org-projectile-per-project-filepath . "todos.org")
     :config
-    (org-projectile-per-project)
-    (setq org-agenda-files (append org-agenda-files (org-projectile-todo-files))))
+    ;(org-projectile-per-project)
+    ;(setq org-agenda-files (append org-agenda-files (org-projectile-todo-files))))
+    )
   (leaf evil-org
     :hook
     (org-mode-hook . evil-org-mode)
@@ -679,22 +683,36 @@ _j_: next _k_: previous _s_: stage _r_: revert _d_: popup diff"
     (my/bind
       :prefix "SPC o"
       "c" 'org-capture
-      "n" '((lambda () (interactive) (find-file org-default-notes-file))
-	    :wk "open notes")
       "a" 'org-agenda
+      "l" 'org-store-link
+      "n" '((lambda ()
+	      (interactive)
+	      (let ((default-directory (concat (file-name-as-directory org-directory)
+					       "notes/")))
+		(find-file-read-args "Open notes: "
+				     (confirm-nonexistent-file-or-buffer))))
+	    :wk "open notes")
       "j" 'org-journal-new-entry
       "p" '(org-projectile-project-todo-completing-read :wk "project todo")
       "r" '(:ignore t :wk "org roam")
-      "r a" 'org-roam-alias-add
-      "r b" 'org-roam-buffer-display-dedicated
-      "r d" 'org-roam-dailies-capture-today
-      "r D" 'org-roam-dailies-goto-date
       "r n" 'org-roam-node-find
-      "r i" 'org-roam-node-insert
-      "r t" 'org-roam-tag-add
-      "r r" 'org-roam-buffer-toggle
-      "r R" 'org-roam-ref-add
-      "r g" 'org-roam-graph))
+      "r f" 'org-roam-node-find)
+    (my/bind
+     :prefix "SPC o r"
+     :keymaps 'org-mode-map
+       "r" 'org-roam-buffer-toggle
+       "b" 'org-roam-buffer-display-dedicated
+       "t" 'org-roam-tag-add
+       "i" 'org-roam-node-insert
+       "a" 'org-roam-alias-add
+       "g" 'org-roam-graph)
+    (my/bind
+     :prefix "SPC o i"
+     :keymaps 'org-mode-map
+     "l" 'org-insert-link
+     "c" 'org-ref-helm-insert-cite-link
+     "r" 'org-ref-helm-insert-ref-link
+     "L" 'org-ref-helm-insert-label-link))
   (leaf my/bind-search
     :config
     (my/bind
