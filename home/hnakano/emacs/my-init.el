@@ -697,6 +697,7 @@ _j_: next _k_: previous _s_: stage _r_: revert _d_: popup diff"
       "a" 'org-agenda
       "l" 'org-store-link
       "n" '((lambda ()
+	      (interactive)
 	      (let ((default-directory my/org-notes-directory)))
 		(call-interactively 'find-file))
 	    :wk "open notes")
