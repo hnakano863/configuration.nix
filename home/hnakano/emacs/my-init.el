@@ -689,7 +689,6 @@ _j_: next _k_: previous _s_: stage _r_: revert _d_: popup diff"
      :prefix "SPC t"
      "i" 'imenu-list-smart-toggle))
   (leaf my/bind-org
-    :advice
     :config
     (my/bind
       :prefix "SPC o"
@@ -698,8 +697,8 @@ _j_: next _k_: previous _s_: stage _r_: revert _d_: popup diff"
       "l" 'org-store-link
       "n" '((lambda ()
 	      (interactive)
-	      (let ((default-directory my/org-notes-directory)))
-		(call-interactively 'find-file))
+	      (let ((default-directory my/org-notes-directory))
+		(call-interactively 'find-file)))
 	    :wk "open notes")
       "j" 'org-journal-new-entry
       "p" '(org-projectile-project-todo-completing-read :wk "project todo")
