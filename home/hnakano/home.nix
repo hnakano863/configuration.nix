@@ -97,6 +97,7 @@
 
   programs.git = {
     enable = true;
+    package = pkgs.git.override { withLibsecret = true; };
     userName = "hnakano863";
     userEmail = "notchi863@gmail.com";
     ignores = [ "*~" "*.swp" ];
