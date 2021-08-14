@@ -529,7 +529,6 @@
     `(org-roam-db-gc-threshold . ,most-positive-fixnum)
     (org-roam-v2-ack . t)
     (org-roam-directory . "/home/hnakano/Org/roam/")
-    (org-roam-graph-executable . "@graphviz@/bin/dot")
     (org-roam-graph-extra-config . '(("layout" . "neato")
 				     ("overlap" . "false")
 				     ("splines" . "true")))
