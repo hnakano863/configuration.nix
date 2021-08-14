@@ -537,7 +537,10 @@
 	   ("SPC" . nil)
 	   ("S-SPC" . nil))
     :config
-    (org-roam-setup)))
+    (org-roam-setup))
+  (leaf org-ref
+    :custom
+    (org-ref-default-bibliography . "~/Documents/bibliograhy/default.bib")))
 
 (leaf hydra
   :config
