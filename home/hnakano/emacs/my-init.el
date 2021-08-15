@@ -422,7 +422,9 @@
          ("f" "Fleeting Note" entry (file+headline my/org-fleeting-note-file "Fleeting Notes")
           "* %? :@note:@fleeting:\n:PROPERTIES:\n:Entered: %U\n:END:\n%i\n")
 	 ("l" "Literature Note" entry (file+headline my/org-literature-note-file "Literature Notes")
-          "* %? :@note:@literature:\n:PROPERTIES:\n:Ref: %a\n:Entered: %U\n:END:\n%i\n"))))
+          "* %? :@note:@literature:\n:PROPERTIES:\n:Ref: %a\n:Entered: %U\n:END:\n%i\n")
+	 ("L" "Literature Note for Org protocol" entry (file+headline my/org-literature-note-file "Literature Notes")
+	  "* %:description :@note:@literature:\n:PROPERTIES:\n:Ref: %:link\n:Entered: %U\n:END:\n%i\n"))))
   (leaf org-latex
     :doc "setting for org-latex"
     :custom
@@ -540,7 +542,9 @@
   (leaf org-ref
     :custom
     (org-ref-default-bibliography . "~/Documents/bibliograhy/default.bib"))
-  (leaf org-protocol :require t))
+  (leaf org-protocol
+    :custom (org-protocol-default-template-key . "L")
+    :require t))
 
 (leaf hydra
   :config
