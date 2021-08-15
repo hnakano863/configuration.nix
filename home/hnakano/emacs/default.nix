@@ -12,6 +12,7 @@ in
   imports = [
     ./compileInit.nix
     ./extraPackages.nix
+    ./orgProtocol.nix
   ];
 
   programs.emacs.enable = true;
@@ -23,4 +24,6 @@ in
     initFile = init-el;
     earlyInitFile = ./my-early-init.el;
   };
+
+  programs.emacs.orgProtocol.enable = true;
 }

@@ -539,7 +539,8 @@
     (org-roam-setup))
   (leaf org-ref
     :custom
-    (org-ref-default-bibliography . "~/Documents/bibliograhy/default.bib")))
+    (org-ref-default-bibliography . "~/Documents/bibliograhy/default.bib"))
+  (leaf org-protocol :require t))
 
 (leaf hydra
   :config
