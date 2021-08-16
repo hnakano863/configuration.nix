@@ -25,7 +25,8 @@
 
 (eval-and-compile
   (package-initialize)
-  (require 'leaf))
+  (require 'leaf)
+  (require 'uuidgen))
 (eval-when-compile
   (require 'smartparens)
   (require 'org)
@@ -391,6 +392,7 @@
     (my/org-todo-file . `,(concat my/org-notes-directory "todos.org"))
     (my/org-fleeting-note-file . `,(concat my/org-notes-directory "fleeting-notes.org"))
     (my/org-literature-note-file . `,(concat my/org-notes-directory "literature-notes.org"))
+    (my/anki-card-file . `,(concat my/org-notes-directory "anki-cards.org"))
     (org-agenda-files . `,(list my/org-notes-directory))
     (org-refile-targets . '((org-agenda-files :maxlevel . 1)))
     (org-archive-location . `,(concat (file-name-as-directory org-directory)
@@ -424,7 +426,14 @@
 	 ("l" "Literature Note" entry (file+headline my/org-literature-note-file "Literature Notes")
           "* %? :@note:@literature:\n:PROPERTIES:\n:Ref: %a\n:Entered: %U\n:END:\n%i\n")
 	 ("L" "Literature Note for Org protocol" entry (file+headline my/org-literature-note-file "Literature Notes")
-	  "* %:description :@note:@literature:\n:PROPERTIES:\n:Ref: %:link\n:Entered: %U\n:END:\n%i\n"))))
+	  "* %:description :@note:@literature:\n:PROPERTIES:\n:Ref: %:link\n:Entered: %U\n:END:\n%i\n")
+	 ("a" "Anki Card")
+	 ("ab" "Anki Card [Basic]" entry (file+headline my/anki-card-file "Anki Cards")
+	  "* %(uuidgen-4)\n:PROPERTIES:\n:ANKI_NOTE_TYPE: Basic\n:END:\n** Front\n%?\n** Back\n")
+	 ("ar" "Anki Card [Basic and Reversed]" entry (file+headline my/anki-card-file "Anki Cards")
+	  "* %(uuidgen-4)\n:PROPERTIES:\n:ANKI_NOTE_TYPE: Basic (and reversed card)\n:END:\n** Front\n%?\n** Back\n")
+	 ("ac" "Anki Card [Cloze]" entry (file+headline my/anki-card-file "Anki Cards")
+	  "* %(uuidgen-4)\n:PROPERTIES:\n:ANKI_NOTE_TYPE: Cloze\n:END:\n** Text\n%?\n** Back Extra\n"))))
   (leaf org-latex
     :doc "setting for org-latex"
     :custom

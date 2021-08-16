@@ -8,6 +8,7 @@
   programs.emacs.compileInit.initPackages =
     epkgs: with epkgs; [
       all-the-icons
+      anki-editor
       company
       company-nixos-options
       consult
@@ -84,6 +85,7 @@
       undo-fu
       undo-fu-session
       undo-tree
+      uuidgen
       vertico
       vterm
       vterm-toggle
