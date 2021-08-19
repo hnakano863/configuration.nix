@@ -744,7 +744,14 @@ _j_: next _k_: previous _s_: stage _r_: revert _d_: popup diff"
     (my/bind
      :prefix "SPC s"
      :keymaps 'flycheck-mode-map
-     "e" 'consult-flycheck)))
+     "e" 'consult-flycheck))
+  (leaf my/bind-app
+    :config
+    (my/bind
+     :prefix "SPC a"
+     "e" 'ebib
+     "j" 'ein:run
+     "c" 'calc)))
 
 (provide 'my-init)
 ;;; my-init.el ends here
