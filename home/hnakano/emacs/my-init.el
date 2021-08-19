@@ -386,7 +386,7 @@
   (leaf org-files
     :doc "file, directory settings"
     :custom
-    (org-directory . "~/Org")
+    (org-directory . "~/Dropbox/Org")
     (my/org-notes-directory . `,(concat (file-name-as-directory org-directory) "notes/"))
     (org-default-notes-file . `,(concat  my/org-notes-directory "inbox.org"))
     (my/org-todo-file . `,(concat my/org-notes-directory "todos.org"))
