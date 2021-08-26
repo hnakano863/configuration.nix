@@ -9,6 +9,7 @@
     rnix-lsp
     deno
     sbcl
+    clisp
     elmPackages.elm
     elmPackages.elm-language-server
     elmPackages.elm-format
