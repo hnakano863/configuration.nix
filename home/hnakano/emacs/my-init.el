@@ -352,6 +352,7 @@
     :config
     (leaf slime
       :hook lisp-mode-hook
+      :bind (:slime-editing-map ("SPC" . nil))
       :config
       (leaf slime-autodoc
 	:bind (:slime-autodoc-mode-map ("SPC" . nil)))
