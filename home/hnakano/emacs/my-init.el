@@ -131,6 +131,10 @@
   (ebib-default-directory . "~/Documents/bibliograhy")
   (ebib-preload-bib-files . '("~/Documents/bibliograhy/default.bib")))
 
+(leaf bibtex-actions
+  :custom
+  (bibtex-actions-bibliography . '("~/Documents/bibliograhy/default.bib")))
+
 (leaf treemacs
   :doc "treemacs and its extentions"
   :defun treemacs-git-mode

@@ -9,6 +9,7 @@
     epkgs: with epkgs; [
       all-the-icons
       anki-editor
+      bibtex-actions
       company
       company-nixos-options
       consult
