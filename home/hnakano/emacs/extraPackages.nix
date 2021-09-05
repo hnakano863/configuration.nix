@@ -24,6 +24,8 @@
       doom-themes
       ebib
       ein
+      elfeed
+      elfeed-org
       elm-mode
       envrc
       ess

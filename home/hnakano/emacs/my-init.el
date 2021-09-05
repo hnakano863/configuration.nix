@@ -561,6 +561,14 @@
     :custom (org-protocol-default-template-key . "L")
     :require t))
 
+(leaf elfeed
+  :defer-config
+  (leaf elfeed-org
+    :custom
+    (rmh-elfeed-org-files . `(,(concat (file-name-as-directory org-directory) "elfeed.org")))
+    :config
+    (elfeed-org)))
+
 (leaf hydra
   :config
   (leaf hydra-gitgutter
@@ -595,6 +603,7 @@ _j_: next _k_: previous _s_: stage _r_: revert _d_: popup diff"
       "" nil
       "RET" 'vterm-toggle
       "SPC" 'consult-buffer
+      "a" '(:ignore t :wk "app")
       "b" '(:ignore t :wk "buffer")
       "f" '(:ignore t :wk "file")
       "g" '(:ignode t :wk "git")
@@ -756,6 +765,7 @@ _j_: next _k_: previous _s_: stage _r_: revert _d_: popup diff"
     (my/bind
      :prefix "SPC a"
      "e" 'ebib
+     "f" 'elfeed
      "j" 'ein:run
      "c" 'calc)))
 
