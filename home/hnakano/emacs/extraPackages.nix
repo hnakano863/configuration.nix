@@ -70,6 +70,7 @@
       pdf-tools
       posframe
       projectile
+      proof-general
       rainbow-delimiters
       restart-emacs
       restclient
