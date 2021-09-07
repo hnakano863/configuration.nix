@@ -17,39 +17,44 @@
     }:
     let
       lock = builtins.fromJSON (builtins.readFile ./flake.lock);
-    in
-    {
+
+      commonModules = [
+
+        home-manager.nixosModules.home-manager
+        ./configuration/configuration.nix
+        ./users.nix
+
+        { system.configurationRevision = nixpkgs.lib.mkIf (self ? rev) self.rev; }
+
+        {
+          home-manager.useGlobalPkgs = true;
+          home-manager.useUserPackages = true;
+          home-manager.users.hnakano = { config, pkgs ? pkgs, lib, ... }: {
+            imports = [ ./home/hnakano/home.nix  ];
+          };
+        }
+
+        {
+          nix.registry.nixpkgs.flake = nixpkgs;
+          nixpkgs.overlays = [
+            hnakano863.overlay
+            emacs-overlay.overlay
+            eijiro.overlay
+          ];
+        }
+
+      ];
+
+    in {
       nixosConfigurations.bravo = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
 
         modules = [
-
           nixpkgs.nixosModules.notDetected
-          home-manager.nixosModules.home-manager
-
-          ./configuration/configuration.nix
+          ./configuration/linux.nix
           ./hardware.nix
-          ./users.nix
           ./guix.nix
-
-          { system.configurationRevision = nixpkgs.lib.mkIf (self ? rev) self.rev; }
-          {
-            home-manager.useGlobalPkgs = true;
-            home-manager.useUserPackages = true;
-            home-manager.users.hnakano = { config, pkgs ? pkgs, lib, ... }: {
-              imports = [ ./home/hnakano/home.nix  ];
-            };
-          }
-          {
-            nix.registry.nixpkgs.flake = nixpkgs;
-            nixpkgs.overlays = [
-              hnakano863.overlay
-              emacs-overlay.overlay
-              eijiro.overlay
-            ];
-          }
-
-        ];
+        ] ++ commonModules;
       };
     };
 }

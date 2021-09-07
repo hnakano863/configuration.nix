@@ -34,4 +34,9 @@ in
 
   users.groups.guixbuild = {};
   users.users = genGuixBuildersFoldl (map toString (lib.range 1 10));
+
+  environment.variables = {
+    GUIX_PROFILE = "/root/.config/guix/current";
+    GUIX_LOCPATH = "/root/.guix-profile/lib/locale";
+  };
 }
