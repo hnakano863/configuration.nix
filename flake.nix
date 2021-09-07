@@ -21,7 +21,7 @@
       commonModules = [
 
         home-manager.nixosModules.home-manager
-        ./configuration/configuration.nix
+        ./configuration/common.nix
         ./users.nix
 
         { system.configurationRevision = nixpkgs.lib.mkIf (self ? rev) self.rev; }
