@@ -27,7 +27,7 @@
           nixpkgs.nixosModules.notDetected
           home-manager.nixosModules.home-manager
 
-          ./configuration.nix
+          ./configuration/configuration.nix
           ./hardware.nix
           ./users.nix
           ./guix.nix
