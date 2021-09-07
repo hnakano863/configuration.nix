@@ -3,8 +3,9 @@
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-21.05";
     home-manager.url = "github:nix-community/home-manager/release-21.05";
     emacs-overlay.url = "github:nix-community/emacs-overlay";
-    eijiro.url = "path:/home/hnakano/repos/eijiro.nix";
+    eijiro.url = "path:/home/hnakano/ghq/github.com/hnakano/eijiro.nix";
     hnakano863.url = "github:hnakano863/nixos-overlay";
+    nixos-wsl.url = "github:hnakano863/NixOS-WSL/develop";
   };
 
   outputs =
@@ -14,6 +15,7 @@
     , emacs-overlay
     , eijiro
     , hnakano863
+    , nixos-wsl
     }:
     let
       lock = builtins.fromJSON (builtins.readFile ./flake.lock);
@@ -54,6 +56,17 @@
           ./configuration/linux.nix
           ./hardware.nix
           ./guix.nix
+        ] ++ commonModules;
+      };
+
+      nixosConfigurations.nixos = nixpkgs.lib.nixosSystem {
+        system = "x86_64-linux";
+
+        modules = [
+          nixos-wsl.nixosModule
+          ./configuration/wsl2.nix
+
+          { wsl2.enable = true; wsl2.defaultUser = "hnakano"; }
         ] ++ commonModules;
       };
     };

@@ -5,12 +5,12 @@
         "nixpkgs": "nixpkgs"
       },
       "locked": {
-        "narHash": "sha256-yKV2kTCHhWA5/truKnIU8efRLDAt2TypDBGYN509zmU=",
-        "path": "/home/hnakano/repos/eijiro.nix",
+        "narHash": "sha256-JrwM497KTs3OjbH7DmqABl+mNNkXk1srn7hbffb3pmE=",
+        "path": "/home/hnakano/ghq/github.com/hnakano/eijiro.nix",
         "type": "path"
       },
       "original": {
-        "path": "/home/hnakano/repos/eijiro.nix",
+        "path": "/home/hnakano/ghq/github.com/hnakano/eijiro.nix",
         "type": "path"
       }
     },
@@ -63,6 +63,25 @@
         "type": "github"
       }
     },
+    "nixos-wsl": {
+      "inputs": {
+        "nixpkgs": "nixpkgs_3"
+      },
+      "locked": {
+        "lastModified": 1631010780,
+        "narHash": "sha256-M+UsqOwwYFehIJeda5/83KOWP6hQqtViIZJKPx9aFLs=",
+        "owner": "hnakano863",
+        "repo": "NixOS-WSL",
+        "rev": "feb8fdbbd2b06262d7b39a8452fde0835f542448",
+        "type": "github"
+      },
+      "original": {
+        "owner": "hnakano863",
+        "ref": "develop",
+        "repo": "NixOS-WSL",
+        "type": "github"
+      }
+    },
     "nixpkgs": {
       "locked": {
         "lastModified": 1616396939,
@@ -94,6 +113,22 @@
     },
     "nixpkgs_3": {
       "locked": {
+        "lastModified": 1630927478,
+        "narHash": "sha256-y2z+/r1QhRRkPr0Dzl0O7qXdZ0jfr32w7OlfXr2XNik=",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "fd6dba47199a7c249e64c1aa1fef01ee78e58481",
+        "type": "github"
+      },
+      "original": {
+        "owner": "NixOS",
+        "ref": "nixos-21.05",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
+    "nixpkgs_4": {
+      "locked": {
         "lastModified": 1629880082,
         "narHash": "sha256-RlQUhZ89btTIINW7xJ4GgX9QE83HhySkliaguz5xUus=",
         "owner": "NixOS",
@@ -114,7 +149,8 @@
         "emacs-overlay": "emacs-overlay",
         "hnakano863": "hnakano863",
         "home-manager": "home-manager",
-        "nixpkgs": "nixpkgs_3"
+        "nixos-wsl": "nixos-wsl",
+        "nixpkgs": "nixpkgs_4"
       }
     }
   },
