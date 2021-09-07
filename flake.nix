@@ -31,9 +31,6 @@
         {
           home-manager.useGlobalPkgs = true;
           home-manager.useUserPackages = true;
-          home-manager.users.hnakano = { config, pkgs ? pkgs, lib, ... }: {
-            imports = [ ./home/hnakano/home.nix  ];
-          };
         }
 
         {
@@ -56,6 +53,11 @@
           ./configuration/linux.nix
           ./hardware.nix
           ./guix.nix
+          {
+            home-manager.users.hnakano = { config, pkgs ? pkgs, lib, ... }: {
+              imports = [ ./home/hnakano/common.nix ./home/hnakano/linux.nix ];
+            };
+          }
         ] ++ commonModules;
       };
 
@@ -67,6 +69,11 @@
           ./configuration/wsl2.nix
 
           { wsl2.enable = true; wsl2.defaultUser = "hnakano"; }
+          {
+            home-manager.users.hnakano = { config, pkgs ? pkgs, lib, ... }: {
+              imports = [ ./home/hnakano/common.nix ./home/hnakano/wsl2.nix ];
+            };
+          }
         ] ++ commonModules;
       };
     };

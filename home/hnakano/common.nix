@@ -3,8 +3,6 @@
   imports = [
     ./emacs
     ./language
-    ./polybar
-    ./gnome
   ];
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
@@ -15,32 +13,21 @@
   home.homeDirectory = "/home/hnakano";
 
   home.packages = with pkgs; [
-    alacritty
-    anki
-    firefox-bin
     exa
     fd
     fzf
     ghq
     graphviz
-    thunderbird
     R
     ripgrep
     bat
-    gimp
     texlive.combined.scheme-medium
-    vlc
     emacs-all-the-icons-fonts
     pandoc
-    palemoon
-    vivaldi
     jupyterCommand
   ];
 
   home.sessionPath = [ "$HOME/.local/bin" ];
-  home.sessionVariables = {
-    GUIX_LOCPATH = "$HOME/.guix-profile/lib/locale";
-  };
 
   fonts.fontconfig.enable = true;
 
@@ -59,11 +46,6 @@
       vterm_printf.body = builtins.readFile ./fish_functions/vterm_printf.fish;
       mkprof.body = builtins.readFile ./fish_functions/mkprof.fish;
       swprof.body = builtins.readFile ./fish_functions/swprof.fish;
-      lsprof.body = ''
-      function lsprof;
-          ls $GUIX_EXTRA_PROFILES
-      end
-      '';
 
       gfz.body = "cd (ghq list -p | fzf)";
     };
@@ -79,13 +61,6 @@
         };
       }
     ];
-
-    interactiveShellInit = ''
-      set -gx GUIX_DEFAULT_PROFILE "$HOME/.guix-profile"
-      set -gx GUIX_EXTRA_PROFILES "$HOME/.guix-extra-profiles"
-      set -gx GUIX_PROFILE $GUIX_DEFAULT_PROFILE
-      bass source "$GUIX_PROFILE/etc/profile"
-    '';
   };
 
   programs.starship = {
@@ -98,8 +73,6 @@
   programs.git = {
     enable = true;
     package = pkgs.git.override { withLibsecret = true; };
-    userName = "hnakano863";
-    userEmail = "notchi863@gmail.com";
     ignores = [ "*~" "*.swp" ];
     extraConfig = {
       core.askPass = "";
@@ -120,13 +93,6 @@
     nix-direnv.enableFlakes = true;
     enableBashIntegration = true;
     enableFishIntegration = true;
-  };
-
-  programs.rofi = {
-    enable = false;
-    extraConfig.modi = "drun,window";
-    theme = "Pop-Dark";
-    terminal = "${pkgs.alacritty}/bin/alacritty";
   };
 
   services.dropbox.enable = true;
