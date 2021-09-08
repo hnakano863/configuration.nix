@@ -58,4 +58,6 @@
     terminal = "${pkgs.alacritty}/bin/alacritty";
   };
 
+  services.dropbox.enable = true;
+
 }
