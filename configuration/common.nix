@@ -55,7 +55,6 @@
   #   pinentryFlavor = "gnome3";
   # };
 
-  services.gnome.gnome-keyring.enable = true;
   services.mpd.enable = false;
 
   # Enable the OpenSSH daemon.

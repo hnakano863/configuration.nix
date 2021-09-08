@@ -42,8 +42,14 @@
     bass source "$GUIX_PROFILE/etc/profile"
   '';
 
-  programs.git.userName = "hnakano863";
-  programs.git.userEmail = "notchi863@gmail.com";
+  programs.git = {
+    package = pkgs.git.override { withLibsecret = true; };
+    userName = "hnakano863";
+    userEmail = "notchi863@gmail.com";
+    extraConfig.credential.helper =
+      "${config.programs.git.package}/bin/git-credential-libsecret";
+  };
+
 
   programs.rofi = {
     enable = false;

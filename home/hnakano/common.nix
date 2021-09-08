@@ -68,13 +68,11 @@
 
   programs.git = {
     enable = true;
-    package = pkgs.git.override { withLibsecret = true; };
     ignores = [ "*~" "*.swp" ];
     extraConfig = {
       core.askPass = "";
       pull.rebase = false;
       init.defaultBranch = "main";
-      credential.helper = "${config.programs.git.package}/bin/git-credential-libsecret";
     };
   };
 

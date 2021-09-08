@@ -3,8 +3,16 @@
 
 {
 
-  programs.git.userName = "hnakano";
-  programs.git.userEmail = "hnakano@tlv.co.jp";
+  home.packages = with pkgs; [
+    gopass
+    git-credential-gopass
+  ];
+
+  programs.git = {
+    userName = "hnakano";
+    userEmail = "hnakano@tlv.co.jp";
+    extraConfig.credential.helper = "gopass";
+  };
 
   programs.bash.initExtra = ''
     export DISPLAY=$(cat /etc/resolv.conf | grep nameserver | awk '{print $2}'):0
