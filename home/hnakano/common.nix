@@ -32,11 +32,6 @@
   fonts.fontconfig.enable = true;
 
   programs.bash.enable = true;
-  programs.bash.initExtra = ''
-    if [[ $SHLVL -eq 1 ]]; then
-      exec fish
-    fi
-  '';
 
   # programs.emacs.enable = true;
 
