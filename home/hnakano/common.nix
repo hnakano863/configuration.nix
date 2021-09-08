@@ -43,6 +43,7 @@
       swprof.body = builtins.readFile ./fish_functions/swprof.fish;
 
       gfz.body = "cd (ghq list -p | fzf)";
+      grt.body = "cd (ghq root)'/github.com/hnakano'";
     };
 
     plugins = [

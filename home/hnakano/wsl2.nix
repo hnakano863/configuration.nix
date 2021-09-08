@@ -14,4 +14,8 @@
     fi
   '';
 
+  programs.fish.functions = {
+    ec.body = "emacsclient -c";
+  };
+
 }
