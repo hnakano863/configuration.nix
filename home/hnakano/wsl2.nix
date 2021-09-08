@@ -6,6 +6,7 @@
   home.packages = with pkgs; [
     gopass
     git-credential-gopass
+    awscli2
   ];
 
   programs.git = {
