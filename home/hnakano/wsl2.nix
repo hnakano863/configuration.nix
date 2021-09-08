@@ -16,6 +16,7 @@
 
   programs.bash.initExtra = ''
     export DISPLAY=$(cat /etc/resolv.conf | grep nameserver | awk '{print $2}'):0
+    export GPG_TTY=$(tty)
 
     if [[ $SHLVL -eq 1 ]]; then
       exec fish
