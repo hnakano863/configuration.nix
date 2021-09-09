@@ -44,4 +44,7 @@ self: super: {
       sha256 = "dZt/3E0ZX8c1RsiLbilmDCbIVow1lagEPhsokOM0vb0=";
     };
   });
+
+  ox-zenn = self.callPackage ./ox-zenn {};
+
 }

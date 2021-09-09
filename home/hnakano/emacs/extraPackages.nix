@@ -66,6 +66,7 @@
       org-projectile
       org-ref
       org-roam
+      ox-zenn
       pandoc
       pdf-tools
       posframe
