@@ -6,10 +6,14 @@
 
 {
   # use nix unstable and enable nix flake
-  nix.package = pkgs.nixFlakes;
-  nix.extraOptions = ''
-    experimental-features = nix-command flakes
-  '';
+  nix = {
+    package = pkgs.nixFlakes;
+    extraOptions = ''
+      experimental-features = nix-command flakes
+      keep-outputs = true
+      keep-derivations = true
+    '';
+  };
 
   nixpkgs.config = {
     allowUnfree = true;
@@ -55,7 +59,6 @@
   #   pinentryFlavor = "gnome3";
   # };
 
-  services.gnome.gnome-keyring.enable = true;
   services.mpd.enable = false;
 
   # Enable the OpenSSH daemon.

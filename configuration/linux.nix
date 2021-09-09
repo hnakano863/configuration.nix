@@ -65,6 +65,8 @@
   # Enable dconf for gnome
   programs.dconf.enable = true;
 
+  services.gnome.gnome-keyring.enable = true;
+
   services.xserver = {
     # for configuration
     autorun = true;

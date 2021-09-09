@@ -32,11 +32,6 @@
   fonts.fontconfig.enable = true;
 
   programs.bash.enable = true;
-  programs.bash.initExtra = ''
-    if [[ $SHLVL -eq 1 ]]; then
-      exec fish
-    fi
-  '';
 
   # programs.emacs.enable = true;
 
@@ -48,6 +43,7 @@
       swprof.body = builtins.readFile ./fish_functions/swprof.fish;
 
       gfz.body = "cd (ghq list -p | fzf)";
+      grt.body = "cd (ghq root)'/github.com/hnakano'";
     };
 
     plugins = [
@@ -72,13 +68,11 @@
 
   programs.git = {
     enable = true;
-    package = pkgs.git.override { withLibsecret = true; };
     ignores = [ "*~" "*.swp" ];
     extraConfig = {
       core.askPass = "";
       pull.rebase = false;
       init.defaultBranch = "main";
-      credential.helper = "${config.programs.git.package}/bin/git-credential-libsecret";
     };
   };
 
@@ -94,8 +88,6 @@
     enableBashIntegration = true;
     enableFishIntegration = true;
   };
-
-  services.dropbox.enable = true;
 
   # This value determines the Home Manager release that your
   # configuration is compatible with. This helps avoid breakage

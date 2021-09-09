@@ -21,6 +21,12 @@
     GUIX_LOCPATH = "$HOME/.guix-profile/lib/locale";
   };
 
+  programs.bash.initExtra = ''
+    if [[ $SHLVL -eq 1 ]]; then
+      exec fish
+    fi
+  '';
+
   programs.fish.functions = {
     lsprof.body = ''
       function lsprof;
@@ -36,8 +42,14 @@
     bass source "$GUIX_PROFILE/etc/profile"
   '';
 
-  programs.git.userName = "hnakano863";
-  programs.git.userEmail = "notchi863@gmail.com";
+  programs.git = {
+    package = pkgs.git.override { withLibsecret = true; };
+    userName = "hnakano863";
+    userEmail = "notchi863@gmail.com";
+    extraConfig.credential.helper =
+      "${config.programs.git.package}/bin/git-credential-libsecret";
+  };
+
 
   programs.rofi = {
     enable = false;
@@ -45,5 +57,7 @@
     theme = "Pop-Dark";
     terminal = "${pkgs.alacritty}/bin/alacritty";
   };
+
+  services.dropbox.enable = true;
 
 }
