@@ -3,7 +3,7 @@
 {
   imports = [
     ./polybar
-    ./gnome
+    #./gnome
     ./skk
   ];
 
