@@ -5,10 +5,10 @@
     ./polybar
     #./gnome
     ./skk
+    ./alacritty.nix
   ];
 
   home.packages = with pkgs; [
-    alacritty
     anki
     firefox-bin
     thunderbird
@@ -55,7 +55,7 @@
     enable = true;
     extraConfig.modi = "drun,window";
     theme = "Pop-Dark";
-    terminal = "${pkgs.alacritty}/bin/alacritty";
+    terminal = "${config.programs.alacritty.package}/bin/alacritty";
   };
 
   services.dropbox.enable = true;
