@@ -7,7 +7,7 @@
     settings = {
 
       font = {
-        size = 11;
+        size = 10;
         normal.style = "Regular";
         normal.family = "Cica";
         bold.family = "Cica";
