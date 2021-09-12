@@ -4,6 +4,7 @@
   imports = [
     ./polybar
     ./gnome
+    ./skk
   ];
 
   home.packages = with pkgs; [
@@ -20,6 +21,10 @@
   home.sessionVariables = {
     GUIX_LOCPATH = "$HOME/.guix-profile/lib/locale";
   };
+
+  programs.bash.profileExtra = with pkgs; ''
+    ${yaskkserv2}/bin/yaskkserv2 --config-filename ${config.home.homeDirectory}/.config/yaskkserv2/yaskkserv2.conf
+  '';
 
   programs.bash.initExtra = ''
     if [[ $SHLVL -eq 1 ]]; then
@@ -49,7 +54,6 @@
     extraConfig.credential.helper =
       "${config.programs.git.package}/bin/git-credential-libsecret";
   };
-
 
   programs.rofi = {
     enable = false;
