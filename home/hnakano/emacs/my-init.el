@@ -154,24 +154,9 @@
     :require t))
 
 (leaf skk
-  :preface
-  (defun skk-open-server-decoding-utf-8 ()
-    "
-辞書サーバと接続する。サーバープロセスを返す。
-decoding coding-system が euc ではなく utf8 となる。
-https://github.com/wachikun/yaskkserv2のREADME.mdを参考に実装
-"
-    (unless (skk-server-live-p)
-      (setq skkserv-process (skk-open-server-1))
-      (when (skk-server-live-p)
-      (let ((code (cdr (assoc "euc" skk-coding-system-alist))))
-	(set-process-coding-system skkserv-process 'utf-8 code))))
-    skkserv-process)
-  :advice (:override skk-open-server skk-open-server-decoding-utf-8)
   :custom
-  (skk-jisyo-code . 'utf-8-unix)
-  (skk-server-host . "localhost")
-  (skk-server-portnum . 1178)
+  (skk-cdb-large-jisyo . "@skkdicts@/share/SKK-JISYO.combined+emoji.cdb")
+  (skk-cdb-coding-system . 'utf-8-unix)
   (skk-inhibit-ja-dic-search . t)
   (default-input-method . "japanese-skk")
   (skk-use-color-cursor . nil)
