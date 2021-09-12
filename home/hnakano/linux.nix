@@ -56,7 +56,7 @@
   };
 
   programs.rofi = {
-    enable = false;
+    enable = true;
     extraConfig.modi = "drun,window";
     theme = "Pop-Dark";
     terminal = "${pkgs.alacritty}/bin/alacritty";

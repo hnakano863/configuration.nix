@@ -38,7 +38,7 @@
 
   # List services that you want to enable:
   services.picom = {
-    enable = false;
+    enable = true;
     fade = true;
     inactiveOpacity = 0.8;
     fadeDelta = 6;
@@ -63,7 +63,7 @@
   powerManagement.enable = true;
 
   # Enable dconf for gnome
-  programs.dconf.enable = true;
+  programs.dconf.enable = false;
 
   services.gnome.gnome-keyring.enable = true;
 
@@ -81,7 +81,7 @@
 
     # desktop environment
     windowManager.i3 = {
-      enable = false;
+      enable = true;
       extraPackages = with pkgs; [
         networkmanagerapplet
         i3lock
@@ -90,13 +90,13 @@
       ];
     };
 
-    desktopManager.gnome.enable = true;
+    desktopManager.gnome.enable = false;
 
     displayManager = {
-      defaultSession = "gnome";
-      lightdm.enable = false;
-      gdm.enable = true;
-      gdm.wayland = true;
+      defaultSession = "none+i3";
+      lightdm.enable = true;
+      gdm.enable = false;
+      gdm.wayland = false;
     };
   };
 
