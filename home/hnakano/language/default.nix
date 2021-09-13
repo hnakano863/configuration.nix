@@ -14,5 +14,6 @@
     elmPackages.elm-language-server
     elmPackages.elm-format
     elmPackages.elm-test
+    dotnet-sdk_5
   ];
 }

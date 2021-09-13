@@ -34,6 +34,7 @@
       evil-org
       fish-mode
       flycheck
+      fsharp-mode
       geiser
       general
       git-gutter

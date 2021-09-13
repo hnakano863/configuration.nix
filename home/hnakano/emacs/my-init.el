@@ -369,7 +369,9 @@
 	:hook
 	(slime-mode-hook . (lambda ()
 			     (setq-local company-backends
-					 (cons 'company-slime company-backends))))))))
+					 (cons 'company-slime company-backends)))))))
+  (leaf fsharp-mode
+    :mode "\\.fs\\'"))
 
 (leaf org
   :doc "org-mode and its extentions"
