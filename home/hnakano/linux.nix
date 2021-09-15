@@ -16,6 +16,7 @@
     vlc
     palemoon
     vivaldi
+    dmenu
   ];
 
   home.sessionVariables = {

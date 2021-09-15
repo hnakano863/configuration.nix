@@ -90,6 +90,11 @@
       ];
     };
 
+    windowManager.xmonad = {
+      enable = true;
+      extraPackages = ps: with ps; [ xmonad-contrib ];
+    };
+
     desktopManager.gnome.enable = false;
 
     displayManager = {
