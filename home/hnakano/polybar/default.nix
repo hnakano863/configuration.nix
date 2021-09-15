@@ -31,6 +31,7 @@ with pkgs;
       tray-background = "\${colors.bg}";
       tray-position = "right";
       tray-maxsize = 16;
+      pseudo-transparency = true;
     };
 
     script = ''
