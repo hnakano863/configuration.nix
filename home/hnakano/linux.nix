@@ -19,6 +19,7 @@
     dmenu
     haskellPackages.xmobar
     xorg.xmessage
+    xmonad-log
   ];
 
   home.sessionVariables = {
