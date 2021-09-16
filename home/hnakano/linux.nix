@@ -17,6 +17,8 @@
     palemoon
     vivaldi
     dmenu
+    haskellPackages.xmobar
+    xorg.xmessage
   ];
 
   home.sessionVariables = {

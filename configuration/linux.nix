@@ -67,6 +67,8 @@
 
   services.gnome.gnome-keyring.enable = true;
 
+  services.smartd.notifications.x11.enable = true;
+
   services.xserver = {
     # for configuration
     autorun = true;
