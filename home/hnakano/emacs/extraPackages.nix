@@ -39,6 +39,7 @@
       general
       git-gutter
       gnuplot
+      haskell-mode
       helpful
       hydra
       idris-mode

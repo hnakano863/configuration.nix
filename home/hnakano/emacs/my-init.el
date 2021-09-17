@@ -371,7 +371,9 @@
 			     (setq-local company-backends
 					 (cons 'company-slime company-backends)))))))
   (leaf fsharp-mode
-    :mode "\\.fs\\'"))
+    :mode "\\.fs\\'")
+  (leaf haskell-mode
+    :mode "\\.hs\\'"))
 
 (leaf org
   :doc "org-mode and its extentions"
