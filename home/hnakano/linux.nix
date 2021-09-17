@@ -6,6 +6,7 @@
     #./gnome
     ./skk
     ./alacritty.nix
+    ./trayer.nix
   ];
 
   home.packages = with pkgs; [
