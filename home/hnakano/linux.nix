@@ -20,6 +20,7 @@
     haskellPackages.xmobar
     xorg.xmessage
     xmonad-log
+    htop
   ];
 
   home.sessionVariables = {
