@@ -100,7 +100,7 @@
     desktopManager.gnome.enable = false;
 
     displayManager = {
-      defaultSession = "none+i3";
+      defaultSession = "none+xmonad";
       lightdm.enable = true;
       gdm.enable = false;
       gdm.wayland = false;
