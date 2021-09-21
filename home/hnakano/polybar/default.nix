@@ -7,7 +7,7 @@ with pkgs;
     ./modules
   ];
   services.polybar = {
-    enable = true;
+    enable = false;
 
     package = polybarFull;
 
