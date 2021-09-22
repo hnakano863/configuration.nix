@@ -16,6 +16,7 @@
     vlc
     palemoon
     vivaldi
+    brave
     dmenu
     haskellPackages.xmobar
     xorg.xmessage
