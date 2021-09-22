@@ -54,8 +54,11 @@
     package = pkgs.git.override { withLibsecret = true; };
     userName = "hnakano863";
     userEmail = "notchi863@gmail.com";
-    extraConfig.credential.helper =
-      "${config.programs.git.package}/bin/git-credential-libsecret";
+    extraConfig = {
+      credential.helper =
+        "${config.programs.git.package}/bin/git-credential-libsecret";
+      init.defaultBranch = "main";
+    };
   };
 
   programs.rofi = {
