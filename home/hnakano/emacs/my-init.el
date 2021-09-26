@@ -510,6 +510,7 @@
        (shell . t)
        (gnuplot . t)
        (python . t)
+       (haskell . t)
        (julia . t)
        (jupyter . t)
        (restclient . t))))
