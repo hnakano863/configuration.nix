@@ -68,6 +68,7 @@
       org-projectile
       org-ref
       org-roam
+      ox-pandoc
       ox-zenn
       pandoc
       pdf-tools
