@@ -42,6 +42,7 @@
     fade = true;
     inactiveOpacity = 0.8;
     fadeDelta = 6;
+    settings.corner-radius = 10;
   };
 
   services.logind = {
