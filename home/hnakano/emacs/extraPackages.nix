@@ -14,6 +14,7 @@
       company-nixos-options
       consult
       consult-flycheck
+      csv-mode
       ddskk
       ddskk-posframe
       dictionary
