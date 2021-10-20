@@ -25,6 +25,7 @@
     emacs-all-the-icons-fonts
     pandoc
     jupyterCommand
+    plantuml
   ];
 
   home.sessionPath = [ "$HOME/.local/bin" ];

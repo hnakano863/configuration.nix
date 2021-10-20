@@ -375,7 +375,12 @@
   (leaf haskell-mode
     :mode "\\.hs\\'")
   (leaf csv-mode
-    :mode "\\.csv\\'"))
+    :mode "\\.csv\\'")
+  (leaf plantuml-mode
+    :custom
+    (plantuml-executable-path . "plantuml")
+    (plantuml-default-exec-mode . "executable")
+    :mode "\\.puml\\'"))
 
 (leaf org
   :doc "org-mode and its extentions"
