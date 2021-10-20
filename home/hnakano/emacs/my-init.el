@@ -379,7 +379,7 @@
   (leaf plantuml-mode
     :custom
     (plantuml-executable-path . "plantuml")
-    (plantuml-default-exec-mode . "executable")
+    (plantuml-default-exec-mode . 'executable)
     :mode "\\.puml\\'"))
 
 (leaf org
