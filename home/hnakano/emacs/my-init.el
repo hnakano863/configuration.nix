@@ -373,7 +373,9 @@
   (leaf fsharp-mode
     :mode "\\.fs\\'")
   (leaf haskell-mode
-    :mode "\\.hs\\'"))
+    :mode "\\.hs\\'")
+  (leaf csv-mode
+    :mode "\\.csv\\'"))
 
 (leaf org
   :doc "org-mode and its extentions"
