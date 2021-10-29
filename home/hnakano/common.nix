@@ -25,6 +25,7 @@
     emacs-all-the-icons-fonts
     pandoc
     jupyterCommand
+    electron
   ];
 
   home.sessionPath = [ "$HOME/.local/bin" ];
