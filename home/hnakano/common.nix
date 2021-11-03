@@ -26,6 +26,7 @@
     pandoc
     jupyterCommand
     plantuml
+    electron
   ];
 
   home.sessionPath = [ "$HOME/.local/bin" ];

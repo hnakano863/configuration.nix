@@ -455,7 +455,7 @@
   (leaf org-latex
     :doc "setting for org-latex"
     :custom
-    (org-latex-package-alist . '(("" "physics" t)))
+    (org-latex-packages-alist . '(("" "physics" t)))
     (org-format-latex-options
      . '(:foreground default
 		     :background default
