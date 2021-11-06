@@ -74,6 +74,7 @@
       core.askPass = "";
       pull.rebase = false;
       init.defaultBranch = "main";
+      github.user = "hnakano863";
     };
   };
 
