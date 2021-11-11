@@ -28,6 +28,7 @@
   ];
 
   fonts.enableDefaultFonts = true;
+  fonts.enableGhostscriptFonts = true;
   fonts.fontDir.enable = true;
   fonts.fonts = with pkgs; [
     noto-fonts

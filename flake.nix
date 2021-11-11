@@ -5,7 +5,7 @@
     emacs-overlay.url = "github:nix-community/emacs-overlay";
     eijiro.url = "path:/home/hnakano/ghq/github.com/hnakano/eijiro.nix";
     hnakano863.url = "github:hnakano863/nixos-overlay";
-    nixos-wsl.url = "github:hnakano863/NixOS-WSL/develop";
+    nixos-wsl.url = "github:hnakano863/NixOS-WSL";
   };
 
   outputs =

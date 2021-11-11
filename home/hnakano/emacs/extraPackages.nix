@@ -73,6 +73,7 @@
       ox-zenn
       pandoc
       pdf-tools
+      plantuml-mode
       posframe
       projectile
       proof-general

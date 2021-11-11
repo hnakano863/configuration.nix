@@ -11,4 +11,7 @@
 
   programs.gnupg.agent.enable = true;
   programs.gnupg.agent.pinentryFlavor = "tty";
+
+  services.xserver.enable = true;
+  services.xserver.autorun = false;
 }
