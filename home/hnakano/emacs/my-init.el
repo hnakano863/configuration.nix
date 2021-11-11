@@ -380,7 +380,9 @@
     :custom
     (plantuml-executable-path . "plantuml")
     (plantuml-default-exec-mode . 'executable)
-    :mode "\\.puml\\'"))
+    :mode "\\.puml\\'")
+  (leaf jupyter
+    :custom (jupyter-long-timeout . 100)))
 
 (leaf org
   :doc "org-mode and its extentions"
