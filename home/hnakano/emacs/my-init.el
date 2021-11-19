@@ -260,7 +260,11 @@
     (lsp-mode-hook . lsp-enable-which-key-integration)
     :custom
     (lsp-keymap-prefix . "C-c C-l")
-    (lsp-auto-configure . t))
+    (lsp-auto-configure . t)
+    :config
+    (leaf lsp-ui-doc
+      :custom
+      (lsp-ui-doc-delay . 2.0)))
   (leaf yasnippet
     :hook (lsp-mode-hook . yas-minor-mode)))
 
