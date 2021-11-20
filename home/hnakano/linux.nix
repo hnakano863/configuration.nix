@@ -30,7 +30,7 @@
   };
 
   programs.bash.initExtra = ''
-    if [[ -z "$IN_NIX_SHELL" || $SHLVL = 1 ]]; then
+    if [[ -z "$IN_NIX_SHELL" && $SHLVL = 1 ]]; then
       exec fish
     fi
   '';
