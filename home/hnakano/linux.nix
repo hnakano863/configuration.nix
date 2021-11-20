@@ -29,12 +29,6 @@
     GUIX_LOCPATH = "$HOME/.guix-profile/lib/locale";
   };
 
-  programs.bash.initExtra = ''
-    if [[ -z "$IN_NIX_SHELL" && $SHLVL = 1 ]]; then
-      exec fish
-    fi
-  '';
-
   programs.fish.functions = {
     lsprof.body = ''
       function lsprof;
