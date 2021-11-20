@@ -9,6 +9,7 @@
   ];
 
   home.packages = with pkgs; [
+    any-nix-shell
     anki
     firefox-bin
     thunderbird
@@ -42,6 +43,10 @@
     set -gx GUIX_EXTRA_PROFILES "$HOME/.guix-extra-profiles"
     set -gx GUIX_PROFILE $GUIX_DEFAULT_PROFILE
     bass source "$GUIX_PROFILE/etc/profile"
+  '';
+
+  programs.fish.promptInit = ''
+    any-nix-shell fish | source
   '';
 
   programs.git = {
