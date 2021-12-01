@@ -1,7 +1,7 @@
 {
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-21.05";
-    home-manager.url = "github:nix-community/home-manager/release-21.05";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-21.11";
+    home-manager.url = "github:nix-community/home-manager/release-21.11";
     emacs-overlay.url = "github:nix-community/emacs-overlay";
     eijiro.url = "path:/home/hnakano/ghq/github.com/hnakano/eijiro.nix";
     hnakano863.url = "github:hnakano863/nixos-overlay";
