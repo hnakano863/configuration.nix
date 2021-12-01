@@ -132,9 +132,9 @@
   (ebib-default-directory . "~/Documents/bibliograhy")
   (ebib-preload-bib-files . '("~/Documents/bibliograhy/default.bib")))
 
-(leaf bibtex-actions
+(leaf citar
   :custom
-  (bibtex-actions-bibliography . '("~/Documents/bibliograhy/default.bib")))
+  (citar-bibliography . '("~/Documents/bibliograhy/default.bib")))
 
 (leaf treemacs
   :doc "treemacs and its extentions"
