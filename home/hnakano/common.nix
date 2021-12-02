@@ -46,9 +46,9 @@
 
       gfz.body = "cd (ghq list -p | fzf)";
       grt.body = "cd (ghq root)'/github.com/hnakano'";
-
       pluto.body =
         "julia --startup-file=no --project=@. -e 'using Pluto; Pluto.run(launch_browser=false)'";
+      ll.body = "ls -lh";
     };
 
     plugins = [
