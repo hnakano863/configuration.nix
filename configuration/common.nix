@@ -27,6 +27,8 @@
     feh docker-compose
   ];
 
+  environment.pathsToLink = [ "/share/fish" ];
+
   fonts.enableDefaultFonts = true;
   fonts.enableGhostscriptFonts = true;
   fonts.fontDir.enable = true;
