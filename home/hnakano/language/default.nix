@@ -15,5 +15,6 @@
     elmPackages.elm-format
     elmPackages.elm-test
     dotnet-sdk_5
+    nodePackages.vscode-json-languageserver
   ];
 }

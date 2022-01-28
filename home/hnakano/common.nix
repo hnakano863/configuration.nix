@@ -92,7 +92,6 @@
     nix-direnv.enable = true;
     nix-direnv.enableFlakes = true;
     enableBashIntegration = true;
-    enableFishIntegration = true;
   };
 
   # This value determines the Home Manager release that your
