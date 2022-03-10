@@ -111,7 +111,7 @@
 	   ("C-h a" . consult-apropos))
     :config
     (consult-customize
-     consult--source-file consult-recent-file
+     consult-recent-file consult--source-recent-file consult--source-project-recent-file
      :preview-key '(:debounce 0.5 any)))
   (leaf marginalia
     :global-minor-mode t
