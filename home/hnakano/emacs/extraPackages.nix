@@ -64,7 +64,7 @@
       orderless
       org-bullets
       org-journal
-      org-plus-contrib
+      org-contrib
       org-pomodoro
       org-projectile
       org-ref
