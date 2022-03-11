@@ -11,6 +11,7 @@
       anki-editor
       citar
       company
+      company-coq
       company-nixos-options
       consult
       consult-flycheck
