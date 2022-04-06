@@ -17,4 +17,5 @@
 
   # Enable opengl
   hardware.opengl.enable = true;
+  hardware.opengl.extraPackages = [ pkgs.mesa.drivers ];
 }
