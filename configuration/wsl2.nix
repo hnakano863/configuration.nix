@@ -7,7 +7,7 @@
     keep-outputs = false
     keep-derivations = false
   '';
-  nix.autoOptimizeStore = true;
+  nix.autoOptimiseStore = true;
 
   # Configure network proxy if necessary
   # networking.proxy.default = "http://user:password@proxy:port/";
