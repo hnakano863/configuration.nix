@@ -272,6 +272,8 @@
   :doc "programming language setup"
   :tag "lang"
   :config
+  (leaf coq-mode
+    :hook (coq-mode-hook . company-coq-mode))
   (leaf elm-mode
     :mode "\\.elm\\'"
     :hook (elm-mode-hook . lsp-deferred))
