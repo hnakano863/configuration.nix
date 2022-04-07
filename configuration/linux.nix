@@ -3,6 +3,12 @@
 { config, pkgs, lib, ... }:
 
 {
+  nix.extraOptions = ''
+    experimental-features = nix-command flakes
+    keep-outputs = true
+    keep-derivations = true
+  '';
+
   boot.isContainer = false;
 
   # Use the systemd-boot EFI boot loader.
