@@ -4,7 +4,10 @@
 {
   nix.extraOptions = ''
     experimental-features = nix-command flakes
+    keep-outputs = false
+    keep-derivations = false
   '';
+  nix.autoOptimizeStore = true;
 
   # Configure network proxy if necessary
   # networking.proxy.default = "http://user:password@proxy:port/";
