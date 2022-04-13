@@ -6,14 +6,7 @@
 
 {
   # use nix unstable and enable nix flake
-  nix = {
-    package = pkgs.nixFlakes;
-    extraOptions = ''
-      experimental-features = nix-command flakes
-      keep-outputs = true
-      keep-derivations = true
-    '';
-  };
+  nix.package = pkgs.nixFlakes;
 
   nixpkgs.config = {
     allowUnfree = true;

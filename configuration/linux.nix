@@ -3,6 +3,12 @@
 { config, pkgs, lib, ... }:
 
 {
+  nix.extraOptions = ''
+    experimental-features = nix-command flakes
+    keep-outputs = true
+    keep-derivations = true
+  '';
+
   boot.isContainer = false;
 
   # Use the systemd-boot EFI boot loader.
@@ -107,6 +113,9 @@
       gdm.wayland = false;
     };
   };
+
+  # Enable opengl
+  hardware.opengl.enable = true;
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
