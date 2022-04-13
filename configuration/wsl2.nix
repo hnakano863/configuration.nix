@@ -14,7 +14,4 @@
 
   services.xserver.enable = true;
   services.xserver.autorun = false;
-
-  # Enable opengl
-  hardware.opengl.enable = true;
 }
