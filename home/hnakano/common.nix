@@ -27,6 +27,7 @@
     jupyterCommand
     plantuml
     electron
+    nix-index
   ];
 
   home.sessionPath = [ "$HOME/.local/bin" ];
