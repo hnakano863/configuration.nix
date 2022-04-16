@@ -3,9 +3,9 @@
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-21.11";
     home-manager.url = "github:nix-community/home-manager/release-21.11";
     emacs-overlay.url = "github:nix-community/emacs-overlay";
+    nixos-wsl.url = "github:nix-community/NixOS-WSL";
     eijiro.url = "path:/home/hnakano/ghq/github.com/hnakano/eijiro.nix";
     hnakano863.url = "github:hnakano863/nixos-overlay";
-    nixos-wsl.url = "github:hnakano863/NixOS-WSL";
     nix-ld = {
       url = "github:Mic92/nix-ld";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -21,9 +21,9 @@
     , nixpkgs
     , home-manager
     , emacs-overlay
+    , nixos-wsl
     , eijiro
     , hnakano863
-    , nixos-wsl
     , nix-ld
     , nix-alien
     }:
@@ -77,10 +77,11 @@
         system = "x86_64-linux";
 
         modules = [
-          nixos-wsl.nixosModule
+          nixos-wsl.nixosModules.wsl
           ./configuration/wsl2.nix
 
-          { wsl2.enable = true; wsl2.defaultUser = "hnakano"; }
+          { wsl.enable = true; wsl.defaultUser = "hnakano";
+            wsl.interop = { register = false; includePath = false;  }; }
           {
             home-manager.users.hnakano = { config, pkgs ? pkgs, lib, ... }: {
               imports = [ ./home/hnakano/common.nix ./home/hnakano/wsl2.nix ];
