@@ -6,6 +6,14 @@
     eijiro.url = "path:/home/hnakano/ghq/github.com/hnakano/eijiro.nix";
     hnakano863.url = "github:hnakano863/nixos-overlay";
     nixos-wsl.url = "github:hnakano863/NixOS-WSL";
+    nix-ld = {
+      url = "github:Mic92/nix-ld";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    nix-alien = {
+      url = "github:thiagokokada/nix-alien";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =
@@ -16,12 +24,15 @@
     , eijiro
     , hnakano863
     , nixos-wsl
+    , nix-ld
+    , nix-alien
     }:
     let
       lock = builtins.fromJSON (builtins.readFile ./flake.lock);
 
       commonModules = [
 
+        nix-ld.nixosModules.nix-ld
         home-manager.nixosModules.home-manager
         ./configuration/common.nix
         ./users.nix
@@ -39,6 +50,7 @@
             hnakano863.overlay
             emacs-overlay.overlay
             eijiro.overlay
+            nix-alien.overlay
           ];
         }
 
