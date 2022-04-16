@@ -121,7 +121,7 @@
         "type": "github"
       }
     },
-    "nixos-wsl": {
+    "nixos-wsl2": {
       "inputs": {
         "nixpkgs": "nixpkgs_3"
       },
@@ -233,7 +233,7 @@
         "home-manager": "home-manager",
         "nix-alien": "nix-alien",
         "nix-ld": "nix-ld",
-        "nixos-wsl": "nixos-wsl",
+        "nixos-wsl2": "nixos-wsl2",
         "nixpkgs": "nixpkgs_4"
       }
     },
