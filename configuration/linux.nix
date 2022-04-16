@@ -1,8 +1,15 @@
 # configuration fraction specific to linux.
 
-{ config, pkgs, lib, ... }:
+{ config, pkgs, lib, ... } @ attrs:
 
 {
+  imports = [
+    attrs.nixpkgs.nixosModules.notDetected
+    ./common.nix
+    ../hardware.nix
+    ../guix.nix
+  ];
+
   nix.extraOptions = ''
     experimental-features = nix-command flakes
     keep-outputs = true

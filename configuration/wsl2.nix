@@ -1,7 +1,12 @@
 # configuration fraction specific to wsl2.
-{ config, pkgs, lib, ... }:
+{ config, pkgs, lib, ... } @ attrs:
 
 {
+  imports = [
+    ./configuration/common.nix
+    attrs.nixos-wsl.nixosModules.wsl
+  ];
+
   # wsl
   wsl = {
     enable = true;

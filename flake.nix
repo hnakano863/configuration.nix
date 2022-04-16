@@ -34,35 +34,18 @@
     , hnakano863
     , eijiro
     } @ attrs:
-    let
 
-      commonModules = [
-        home-manager.nixosModules.home-manager
-        nix-ld.nixosModules.nix-ld
-        ./configuration/common.nix
-        ./users.nix
-      ];
-
-    in {
-
+    {
       nixosConfigurations.bravo = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
         specialArgs = attrs;
-        modules = [
-          nixpkgs.nixosModules.notDetected
-          ./configuration/linux.nix
-          ./hardware.nix
-          ./guix.nix
-        ] ++ commonModules;
+        modules = [ ./configuration/linux.nix ];
       };
 
       nixosConfigurations.nixos = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
         specialArgs = attrs;
-        modules = [
-          nixos-wsl.nixosModules.wsl
-          ./configuration/wsl2.nix
-        ] ++ commonModules;
+        modules = [ ./configuration/wsl2.nix ];
       };
 
     };

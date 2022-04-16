@@ -7,6 +7,12 @@
 {
   system.configurationRevision = with attrs; lib.mkIf (self ? rev) self.rev;
 
+  imports = with attrs; [
+    home-manager.nixosModules.home-manager
+    nix-ld.nixosModules.nix-ld
+    ../users.nix
+  ];
+
   # use nix unstable and enable nix flake
   nix.package = pkgs.nixFlakes;
   nix.registry.nixpkgs.flake = attrs.nixpkgs;
