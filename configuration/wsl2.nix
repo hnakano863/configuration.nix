@@ -2,6 +2,14 @@
 { config, pkgs, lib, ... }:
 
 {
+  # wsl
+  wsl = {
+    enable = true;
+    defaultUser = "hnakano";
+    interop = { register = false; includePath = false; };
+  };
+
+  # nix
   nix.extraOptions = ''
     experimental-features = nix-command flakes
     keep-outputs = false
@@ -26,4 +34,10 @@
 
   services.xserver.enable = true;
   services.xserver.autorun = false;
+
+  # home-manager configuration
+  home-manager.users.hnakano = { config, pkgs, lib, ... }: {
+    imports = [ ./../home/hnakano/wsl2.nix ];
+  };
+
 }

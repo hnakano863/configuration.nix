@@ -1,28 +1,26 @@
 {
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-21.11";
-    home-manager = {
-      url = "github:nix-community/home-manager/release-21.11";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+
+    home-manager.url = "github:nix-community/home-manager/release-21.11";
+    home-manager.inputs.nixpkgs.follows = "nixpkgs";
+
     emacs-overlay.url = "github:nix-community/emacs-overlay";
-    nixos-wsl = {
-      url = "github:nix-community/NixOS-WSL";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-    eijiro = {
-      url = "path:/home/hnakano/ghq/github.com/hnakano/eijiro.nix";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+
+    nixos-wsl.url = "github:nix-community/NixOS-WSL";
+    nixos-wsl.inputs.nixpkgs.follows = "nixpkgs";
+
+    nix-ld.url = "github:Mic92/nix-ld";
+    nix-ld.inputs.nixpkgs.follows = "nixpkgs";
+
+    nix-alien.url = "github:thiagokokada/nix-alien";
+    nix-alien.inputs.nixpkgs.follows = "nixpkgs";
+
     hnakano863.url = "github:hnakano863/nixos-overlay";
-    nix-ld = {
-      url = "github:Mic92/nix-ld";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-    nix-alien = {
-      url = "github:thiagokokada/nix-alien";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+
+    eijiro.url = "path:/home/hnakano/ghq/github.com/hnakano/eijiro.nix";
+    eijiro.inputs.nixpkgs.follows = "nixpkgs";
+
   };
 
   outputs =
@@ -31,72 +29,50 @@
     , home-manager
     , emacs-overlay
     , nixos-wsl
-    , eijiro
-    , hnakano863
     , nix-ld
     , nix-alien
+    , hnakano863
+    , eijiro
     }:
     let
-      lock = builtins.fromJSON (builtins.readFile ./flake.lock);
+      overlays = [
+        emacs-overlay.overlay
+        nix-alien.overlay
+        hnakano863.overlay
+        eijiro.overlay
+      ];
 
       commonModules = [
-
-        nix-ld.nixosModules.nix-ld
         home-manager.nixosModules.home-manager
+        nix-ld.nixosModules.nix-ld
         ./configuration/common.nix
         ./users.nix
-
-        { system.configurationRevision = nixpkgs.lib.mkIf (self ? rev) self.rev; }
-
         {
-          home-manager.useGlobalPkgs = true;
-          home-manager.useUserPackages = true;
-        }
-
-        {
+          system.configurationRevision = nixpkgs.lib.mkIf (self ? rev) self.rev;
           nix.registry.nixpkgs.flake = nixpkgs;
-          nixpkgs.overlays = [
-            hnakano863.overlay
-            emacs-overlay.overlay
-            eijiro.overlay
-            nix-alien.overlay
-          ];
+          nixpkgs.overlays = overlays;
         }
-
       ];
 
     in {
+
       nixosConfigurations.bravo = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
-
         modules = [
           nixpkgs.nixosModules.notDetected
           ./configuration/linux.nix
           ./hardware.nix
           ./guix.nix
-          {
-            home-manager.users.hnakano = { config, pkgs ? pkgs, lib, ... }: {
-              imports = [ ./home/hnakano/common.nix ./home/hnakano/linux.nix ];
-            };
-          }
         ] ++ commonModules;
       };
 
       nixosConfigurations.nixos = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
-
         modules = [
           nixos-wsl.nixosModules.wsl
           ./configuration/wsl2.nix
-
-          { wsl.enable = true; wsl.defaultUser = "hnakano";
-            wsl.interop = { register = false; includePath = false;  }; }
-          {
-            home-manager.users.hnakano = { config, pkgs ? pkgs, lib, ... }: {
-              imports = [ ./home/hnakano/common.nix ./home/hnakano/wsl2.nix ];
-            };
-          }
         ] ++ commonModules;
       };
+
     };
 }

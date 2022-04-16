@@ -27,7 +27,6 @@
     jupyterCommand
     plantuml
     electron
-    nix-index
     nix-index-update
     nix-alien
   ];
@@ -95,6 +94,12 @@
     nix-direnv.enable = true;
     nix-direnv.enableFlakes = true;
     enableBashIntegration = true;
+  };
+
+  programs.nix-index = {
+    enable = true;
+    enableBashIntegration = true;
+    enableFishIntegration = true;
   };
 
   # This value determines the Home Manager release that your

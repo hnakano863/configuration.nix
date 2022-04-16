@@ -80,4 +80,14 @@
 
   # enable docker
   virtualisation.docker.enable = true;
+
+  # home-manager configuration
+  home-manager = {
+    useGlobalPkgs = true;
+    useUserPackages = true;
+    users.hnakano = { config, pkgs, lib, ... }: {
+      imports = [ ./../home/hnakano/common.nix ];
+    };
+  };
+
 }
