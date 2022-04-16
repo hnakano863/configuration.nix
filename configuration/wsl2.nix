@@ -3,7 +3,7 @@
 
 {
   imports = [
-    ./configuration/common.nix
+    ./common.nix
     attrs.nixos-wsl.nixosModules.wsl
   ];
 
