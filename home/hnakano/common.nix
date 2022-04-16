@@ -28,6 +28,8 @@
     plantuml
     electron
     nix-index
+    nix-index-update
+    nix-alien
   ];
 
   home.sessionPath = [ "$HOME/.local/bin" ];
