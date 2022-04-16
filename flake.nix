@@ -1,10 +1,19 @@
 {
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-21.11";
-    home-manager.url = "github:nix-community/home-manager/release-21.11";
+    home-manager = {
+      url = "github:nix-community/home-manager/release-21.11";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     emacs-overlay.url = "github:nix-community/emacs-overlay";
-    nixos-wsl.url = "github:nix-community/NixOS-WSL";
-    eijiro.url = "path:/home/hnakano/ghq/github.com/hnakano/eijiro.nix";
+    nixos-wsl = {
+      url = "github:nix-community/NixOS-WSL";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    eijiro = {
+      url = "path:/home/hnakano/ghq/github.com/hnakano/eijiro.nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     hnakano863.url = "github:hnakano863/nixos-overlay";
     nix-ld = {
       url = "github:Mic92/nix-ld";
