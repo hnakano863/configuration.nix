@@ -6,8 +6,8 @@
   imports = [
     attrs.nixpkgs.nixosModules.notDetected
     ./common.nix
-    ../hardware.nix
-    ../guix.nix
+    ./hardware.nix
+    ./guix.nix
   ];
 
   nix.extraOptions = ''
@@ -126,7 +126,7 @@
 
   # home-manager configuration
   home-manager.users.hnakano = { config, pkgs, lib, ... }: {
-    imports = [ ./../home/hnakano/linux.nix ];
+    imports = [ ../home/hnakano/linux.nix ];
   };
 
   # This value determines the NixOS release from which the default

@@ -42,7 +42,7 @@
 
   # home-manager configuration
   home-manager.users.hnakano = { config, pkgs, lib, ... }: {
-    imports = [ ./../home/hnakano/wsl2.nix ];
+    imports = [ ../home/hnakano/wsl2.nix ];
   };
 
 }

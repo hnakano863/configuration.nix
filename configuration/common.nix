@@ -10,7 +10,7 @@
   imports = with attrs; [
     home-manager.nixosModules.home-manager
     nix-ld.nixosModules.nix-ld
-    ../users.nix
+    ./users.nix
   ];
 
   # use nix unstable and enable nix flake
@@ -102,7 +102,7 @@
     useGlobalPkgs = true;
     useUserPackages = true;
     users.hnakano = { config, pkgs, lib, ... }: {
-      imports = [ ./../home/hnakano/common.nix ];
+      imports = [ ../home/hnakano/common.nix ];
     };
   };
 
