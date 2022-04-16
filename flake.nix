@@ -5,7 +5,7 @@
     emacs-overlay.url = "github:nix-community/emacs-overlay";
     eijiro.url = "path:/home/hnakano/ghq/github.com/hnakano/eijiro.nix";
     hnakano863.url = "github:hnakano863/nixos-overlay";
-    nixos-wsl.url = "github:hnakano863/NixOS-WSL";
+    nixos-wsl2.url = "github:hnakano863/NixOS-WSL";
     nix-ld = {
       url = "github:Mic92/nix-ld";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -23,7 +23,7 @@
     , emacs-overlay
     , eijiro
     , hnakano863
-    , nixos-wsl
+    , nixos-wsl2
     , nix-ld
     , nix-alien
     }:
@@ -77,7 +77,7 @@
         system = "x86_64-linux";
 
         modules = [
-          nixos-wsl.nixosModule
+          nixos-wsl2.nixosModule
           ./configuration/wsl2.nix
 
           { wsl2.enable = true; wsl2.defaultUser = "hnakano"; }
