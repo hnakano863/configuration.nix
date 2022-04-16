@@ -2,16 +2,26 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, lib, ... }:
+{ config, pkgs, lib, ... } @ attrs:
 
 {
+  system.configurationRevision = with attrs; lib.mkIf (self ? rev) self.rev;
+
   # use nix unstable and enable nix flake
   nix.package = pkgs.nixFlakes;
+  nix.registry.nixpkgs.flake = attrs.nixpkgs;
 
   nixpkgs.config = {
     allowUnfree = true;
     allowBroken = true;
   };
+
+  nixpkgs.overlays = with attrs; [
+    emacs-overlay.overlay
+    nix-alien.overlay
+    hnakano863.overlay
+    eijiro.overlay
+  ];
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget

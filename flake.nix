@@ -33,31 +33,21 @@
     , nix-alien
     , hnakano863
     , eijiro
-    }:
+    } @ attrs:
     let
-      overlays = [
-        emacs-overlay.overlay
-        nix-alien.overlay
-        hnakano863.overlay
-        eijiro.overlay
-      ];
 
       commonModules = [
         home-manager.nixosModules.home-manager
         nix-ld.nixosModules.nix-ld
         ./configuration/common.nix
         ./users.nix
-        {
-          system.configurationRevision = nixpkgs.lib.mkIf (self ? rev) self.rev;
-          nix.registry.nixpkgs.flake = nixpkgs;
-          nixpkgs.overlays = overlays;
-        }
       ];
 
     in {
 
       nixosConfigurations.bravo = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
+        specialArgs = attrs;
         modules = [
           nixpkgs.nixosModules.notDetected
           ./configuration/linux.nix
