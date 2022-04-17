@@ -26,7 +26,8 @@
 (eval-and-compile
   (package-initialize)
   (require 'leaf)
-  (require 'uuidgen))
+  (require 'uuidgen)
+  (require 'inheritenv))
 (eval-when-compile
   (require 'smartparens)
   (require 'org)
@@ -388,7 +389,9 @@
     (plantuml-default-exec-mode . 'executable)
     :mode "\\.puml\\'")
   (leaf jupyter
-    :custom (jupyter-long-timeout . 100)))
+    :custom (jupyter-long-timeout . 100)
+    :config
+    (inheritenv-add-advice #'jupyter-command)))
 
 (leaf org
   :doc "org-mode and its extentions"
