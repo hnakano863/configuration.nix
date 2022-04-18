@@ -47,6 +47,7 @@
       idris-mode
       imenu-list
       initchart
+      inheritenv
       julia-mode
       julia-repl
       jupyter
