@@ -488,7 +488,7 @@
 						      (:session . "py")
 						      (:results . "scalar")
 						      (:display . "text/plain")))
-    (org-babel-default-header-args:jupyter-julia . '((:kernel . "julia-1.6")
+    (org-babel-default-header-args:jupyter-julia . '((:kernel . "julia-1.7")
 						     (:async . "yes")
 						     (:session . "jl")
 						     (:results . "scalar")
