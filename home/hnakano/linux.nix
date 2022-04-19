@@ -1,5 +1,5 @@
 # configuraion fraction specific to linux home.
-{ config, pkgs, lib, ... }:
+{ config, pkgs, lib, pkgs-unstable, ... }:
 {
   imports = [
     ./polybar
@@ -23,6 +23,7 @@
     xmonad-log
     htop
     trayer
+    pkgs-unstable.nyxt
   ];
 
   home.sessionVariables = {
