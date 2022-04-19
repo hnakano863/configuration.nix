@@ -131,7 +131,7 @@
 
   home-manager.extraSpecialArgs = let
     ps = attrs.nixpkgs-unstable.legacyPackages;
-    sys = config.nixpkgs.localSystem;
+    sys = config.nixpkgs.localSystem.system;
   in {
     pkgs-unstable = ps."${sys}";
   };
