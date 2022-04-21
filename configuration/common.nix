@@ -16,6 +16,10 @@
   # use nix unstable and enable nix flake
   nix.package = pkgs.nixFlakes;
   nix.registry.nixpkgs.flake = attrs.nixpkgs;
+  nix.nixPath = [
+    "nixpkgs=${attrs.nixpkgs}"
+    "nixpkgs-unstable=${attrs.nixpkgs-unstable}"
+  ];
 
   nixpkgs.config = {
     allowUnfree = true;
