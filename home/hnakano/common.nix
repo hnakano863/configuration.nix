@@ -1,9 +1,14 @@
-{ config, pkgs, lib, ... }:
+{ config, pkgs, lib, pkgs-unstable, ... }:
 {
   imports = [
     ./emacs
     ./language
   ];
+
+  nixpkgs.overlays = [
+    (final: prev: { nix-direnv = pkgs-unstable.nix-direnv; })
+  ];
+
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
 
