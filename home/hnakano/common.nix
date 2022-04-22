@@ -29,13 +29,23 @@
     electron
     nix-index-update
     nix-alien
+    direnv
+    nix-direnv
   ];
 
   home.sessionPath = [ "$HOME/.local/bin" ];
 
   fonts.fontconfig.enable = true;
 
-  programs.bash.enable = true;
+  programs.bash = {
+    enable = true;
+    initExtra = lib.mkAfter ''
+      eval "$(${pkgs.direnv}/bin/direnv hook bash)"
+    '';
+  };
+  xdg.configFile."direnv/direnvrc".text = ''
+    source ${pkgs.nix-direnv}/share/nix-direnv/direnvrc
+  '';
 
   # programs.emacs.enable = true;
 
@@ -87,12 +97,6 @@
   programs.vim = {
     enable = true;
     plugins = with pkgs.vimPlugins; [ vim-nix ];
-  };
-
-  programs.direnv = {
-    enable = true;
-    nix-direnv.enable = true;
-    enableBashIntegration = true;
   };
 
   programs.nix-index = {
