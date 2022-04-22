@@ -11,6 +11,9 @@
     nixos-wsl.url = "github:nix-community/NixOS-WSL";
     nixos-wsl.inputs.nixpkgs.follows = "nixpkgs";
 
+    nix-direnv.url = "github:nix-community/nix-direnv";
+    nix-direnv.inputs.nixpkgs.follows = "nixpkgs-unstable";
+
     nix-ld.url = "github:Mic92/nix-ld";
     nix-ld.inputs.nixpkgs.follows = "nixpkgs";
 
@@ -31,6 +34,7 @@
     , home-manager
     , emacs-overlay
     , nixos-wsl
+    , nix-direnv
     , nix-ld
     , nix-alien
     , hnakano863

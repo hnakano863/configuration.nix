@@ -31,6 +31,7 @@
     nix-alien.overlay
     hnakano863.overlay
     eijiro.overlay
+    nix-direnv.overlay
   ];
 
   # List packages installed in system profile. To search, run:
@@ -108,14 +109,6 @@
     users.hnakano = { config, pkgs, lib, ... }: {
       imports = [ ../home/hnakano/common.nix ];
     };
-
-    extraSpecialArgs = let
-      ps = attrs.nixpkgs-unstable.legacyPackages;
-      sys = config.nixpkgs.localSystem.system;
-    in {
-      pkgs-unstable = ps."${sys}";
-    };
-
   };
 
 }
