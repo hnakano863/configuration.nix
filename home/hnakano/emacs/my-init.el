@@ -791,7 +791,6 @@ _j_: next _k_: previous _s_: stage _r_: revert _d_: popup diff"
      :prefix "SPC a"
      "e" 'ebib
      "f" 'elfeed
-     "j" 'ein:run
      "c" 'calc)))
 
 (provide 'my-init)
