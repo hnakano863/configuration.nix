@@ -1,6 +1,5 @@
 { pkgs }:
 self: super: {
-  initchart = self.callPackage ./initchart {};
   evil = self.melpaPackages.evil;
   ddskk = pkgs.callPackage ./ddskk {};
   gnuplot = super.gnuplot.overrideAttrs (old: {

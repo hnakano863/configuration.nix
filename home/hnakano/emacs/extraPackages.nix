@@ -2,7 +2,7 @@
 {
   programs.emacs.compileInit.earlyInitPackages =
     epkgs: with epkgs; [
-      initchart
+      benchmark-init
     ];
 
   programs.emacs.compileInit.initPackages =
