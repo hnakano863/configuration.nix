@@ -53,6 +53,7 @@
       credential.helper =
         "${config.programs.git.package}/bin/git-credential-libsecret";
       init.defaultBranch = "main";
+      safe.directory = "/home/hnakano/repos/configuration.nix";
     };
   };
 
