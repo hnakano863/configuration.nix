@@ -319,6 +319,7 @@
       :bind (:julia-repl-mode-map
 	     ("C-c C-l" . nil))
       :config
+      (inheritenv-add-advice #'julia-repl-inferior-buffer)
       (julia-repl-set-terminal-backend 'vterm))
     (require 'smartparens-python)
     (sp-with-modes 'julia-mode
