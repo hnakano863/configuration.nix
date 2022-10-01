@@ -312,7 +312,7 @@
       :require t
       :custom
       (lsp-julia-package-dir . nil)
-      (lsp-julia-default-environment . "~/.julia/environments/v1.7")
+      (lsp-julia-default-environment . "~/.julia/environments/v1.8")
       (lsp-julia-flags . `("--startup-file=no" "--history-file=no")))
     (leaf julia-repl
       :hook (julia-mode-hook . julia-repl-mode)
