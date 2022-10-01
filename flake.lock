@@ -113,11 +113,11 @@
     },
     "hnakano863": {
       "locked": {
-        "lastModified": 1659847596,
-        "narHash": "sha256-ROaQ1i8mG/T6JdWEFO0kLklIt8/u4ptlG/LlxfKX0dA=",
+        "lastModified": 1664599255,
+        "narHash": "sha256-NIOQLuOsoqvMPisuy7lXJAMqtIws7MsU2b0V9DesSYA=",
         "owner": "hnakano863",
         "repo": "nixos-overlay",
-        "rev": "0fc29116e18f779cf4e6f68bcc5cba4cba09476e",
+        "rev": "1e46b6b1282b5febbd3d7022cf664b3a1fc2e0ef",
         "type": "github"
       },
       "original": {
