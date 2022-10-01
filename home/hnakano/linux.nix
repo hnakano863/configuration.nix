@@ -24,6 +24,7 @@
     htop
     trayer
     pkgs-unstable.nyxt
+    glxinfo
   ];
 
   home.sessionVariables = {
