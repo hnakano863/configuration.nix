@@ -3,6 +3,8 @@ let
         "EDITOR" => "emacseditor",
         "JUPYTER" => "@jupyterCommand@/bin/jupyter",
         "FREETYPE_ABSTRACTION_FONT_PATH" => "/run/current-system/sw/share/X11/fonts",
+        # see github.com/JuliaLang/NetworkOptions.jl/issues/24
+        "JULIA_SSL_CA_ROOTS_PATH" => "/etc/ssl/certs/ca-bundle.crt"
     )
 
     for (k, v) in pairs(custom_envvars)
