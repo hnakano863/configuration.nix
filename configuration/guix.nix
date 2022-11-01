@@ -5,7 +5,7 @@ let
       group = "guixbuild";
       extraGroups = [ "guixbuild" ];
       home = "/var/empty";
-      shell = pkgs.nologin;
+      shell = pkgs.shadow;
       description = "Guix build user ${n}";
       isSystemUser = true;
     };
