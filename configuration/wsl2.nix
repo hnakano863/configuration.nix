@@ -34,9 +34,6 @@
   i18n.defaultLocale = "ja_JP.UTF-8";
   time.timeZone = "Asia/Tokyo";
 
-  programs.gnupg.agent.enable = true;
-  programs.gnupg.agent.pinentryFlavor = "tty";
-
   services.xserver.enable = true;
   services.xserver.autorun = false;
 
