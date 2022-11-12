@@ -72,7 +72,7 @@
   # programs.mtr.enable = true;
 
   programs.gnupg.agent.enable = true;
-  programs.gnupg.agent.pinentryFlavor = "tty";
+  programs.gnupg.agent.pinentryFlavor = "emacs";
 
   services.mpd.enable = false;
 
