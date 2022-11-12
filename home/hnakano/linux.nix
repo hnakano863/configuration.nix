@@ -44,6 +44,8 @@
     set -gx GUIX_EXTRA_PROFILES "$HOME/.guix-extra-profiles"
     set -gx GUIX_PROFILE $GUIX_DEFAULT_PROFILE
     bass source "$GUIX_PROFILE/etc/profile"
+
+    set -gx GPG_TTY "$(tty)"
   '';
 
   programs.git = {
