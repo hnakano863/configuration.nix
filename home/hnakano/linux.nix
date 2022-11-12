@@ -57,6 +57,11 @@
     };
   };
 
+  home.file.".config/pass-git-helper/git-pass-mapping.ini".text = ''
+  [github.com*]
+  target=dev/github.com
+  '';
+
   programs.rofi = {
     enable = true;
     extraConfig.modi = "drun,window";
