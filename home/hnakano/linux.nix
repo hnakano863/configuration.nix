@@ -47,12 +47,11 @@
   '';
 
   programs.git = {
-    package = pkgs.git.override { withLibsecret = true; };
     userName = "hnakano863";
     userEmail = "notchi863@gmail.com";
     extraConfig = {
       credential.helper =
-        "${config.programs.git.package}/bin/git-credential-libsecret";
+        "${pkgs.pass-git-helper.out}/bin/pass-git-helper";
       init.defaultBranch = "main";
       safe.directory = "/home/hnakano/repos/configuration.nix";
     };
