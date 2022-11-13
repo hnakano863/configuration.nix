@@ -38,7 +38,7 @@
   # $ nix search wget
   environment.systemPackages = with pkgs; [
     git wget vim gnupg mkpasswd psmisc file
-    feh docker-compose
+    feh
   ];
 
   environment.pathsToLink = [ "/share/fish" ];
@@ -98,7 +98,7 @@
   services.emacs.package = config.home-manager.users.hnakano.programs.emacs.finalPackage;
 
   # enable docker
-  virtualisation.docker.enable = true;
+  # virtualisation.docker.enable = true;
 
   # home-manager configuration
   home-manager = {
