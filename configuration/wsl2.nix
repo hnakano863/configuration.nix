@@ -11,6 +11,7 @@
   wsl = {
     enable = true;
     defaultUser = "hnakano";
+    automountPath = "/mnt";
     interop = { register = false; includePath = false; };
   };
 
@@ -20,12 +21,6 @@
     keep-outputs = false
     keep-derivations = false
   '';
-  nix.autoOptimiseStore = true;
-  nix.gc = {
-    automatic = true;
-    dates = "weekly";
-    options = "--delete-older-than 60d";
-  };
 
   # Configure network proxy if necessary
   # networking.proxy.default = "http://user:password@proxy:port/";
