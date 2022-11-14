@@ -13,6 +13,7 @@
     defaultUser = "hnakano";
     automountPath = "/mnt";
     interop = { register = false; includePath = false; };
+    docker-native = { enable = true; addToDockerGroup = true; };
   };
 
   # nix
