@@ -55,7 +55,6 @@
     unifont
     siji
     nerdfonts
-    #feather-icon-font
     material-icons
   ];
 
