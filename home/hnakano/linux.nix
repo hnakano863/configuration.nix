@@ -67,7 +67,7 @@
   programs.rofi = {
     enable = true;
     extraConfig.modi = "drun,window";
-    # theme = "Pop-Dark";
+    theme = "gruvbox-dark";
     terminal = "${config.programs.alacritty.package}/bin/alacritty";
   };
 
