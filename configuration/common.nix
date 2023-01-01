@@ -51,7 +51,7 @@
     noto-fonts-cjk
     noto-fonts-emoji
     source-han-code-jp
-    cica
+    # cica
     unifont
     siji
     nerdfonts

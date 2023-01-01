@@ -59,7 +59,7 @@
 (push '(vertical-scroll-bars . nil) default-frame-alist)
 
 ;; Set font
-(push '(font . "Cica-14") default-frame-alist)
+; (push '(font . "Cica-14") default-frame-alist)
 
 ;; Fullscreen at startup
 (push '(fullscreen . maximized) initial-frame-alist)

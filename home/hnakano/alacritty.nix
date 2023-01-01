@@ -9,9 +9,9 @@
       font = {
         size = 10;
         normal.style = "Regular";
-        normal.family = "Cica";
-        bold.family = "Cica";
-        italic.family = "Cica";
+        # normal.family = "Cica";
+        # bold.family = "Cica";
+        # italic.family = "Cica";
       };
 
       colors.bright = {
