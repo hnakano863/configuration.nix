@@ -108,8 +108,8 @@
     (completion-category-overrides . '((file (styles partial-completion)))))
   (leaf vertico :global-minor-mode t)
   (leaf consult
-    :bind (("C-s" . consult-line)
-	   ("C-h a" . consult-apropos))
+    :bind (("C-s" . consult-line))
+	   ;("C-h a" . consult-apropos))
     :config
     (consult-customize
      consult-recent-file consult--source-recent-file consult--source-project-recent-file
@@ -706,7 +706,7 @@ _j_: next _k_: previous _s_: stage _r_: revert _d_: popup diff"
     :config
     (my/bind
       :prefix "SPC h"
-      "a" 'consult-apropos
+      ;"a" 'consult-apropos
       "f" 'helpful-callable
       "v" 'helpful-variable
       "k" 'helpful-key
