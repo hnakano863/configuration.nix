@@ -7,11 +7,11 @@
     settings = {
 
       font = {
-        size = 10;
+        size = 9;
         normal.style = "Regular";
-        # normal.family = "Cica";
-        # bold.family = "Cica";
-        # italic.family = "Cica";
+        normal.family = "HackGen35 Console";
+        bold.family = "HackGen35 Console";
+        italic.family = "HackGen35 Console";
       };
 
       colors.bright = {
