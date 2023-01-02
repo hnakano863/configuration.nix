@@ -155,6 +155,7 @@
     :require t))
 
 (leaf skk
+  :require (skk-autoloads skk-setup)
   :custom
   (skk-cdb-large-jisyo . "@skkdicts@/share/SKK-JISYO.combined+emoji.cdb")
   (skk-cdb-coding-system . 'utf-8-unix)
