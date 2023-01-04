@@ -10,6 +10,8 @@
     deno
     sbcl
     clisp
+    idris
+    (haskellPackages.ghcWithPackages (p: [ p.cabal-install ]))
     elmPackages.elm
     elmPackages.elm-language-server
     elmPackages.elm-format
