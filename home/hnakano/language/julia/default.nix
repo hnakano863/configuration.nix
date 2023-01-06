@@ -8,7 +8,7 @@ let
 in
 {
   home.packages = [
-    julia-bin
+    pkgs-unstable.julia
   ];
 
   home.file.".julia/config/startup.jl".source = startup-jl;

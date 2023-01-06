@@ -4,7 +4,7 @@ with lib;
 let
   init-el = runCommand "my-init.el" {
     inherit gnuplot idris;
-    julia = julia-bin;
+    julia = pkgs-unstable.julia;
     skkdicts = skk-dicts-cdb;
   } ''substituteAll "${./my-init.el}" $out '';
 in
