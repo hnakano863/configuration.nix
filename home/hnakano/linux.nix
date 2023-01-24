@@ -9,7 +9,6 @@
   ];
 
   home.packages = with pkgs; [
-    anki
     firefox-bin
     thunderbird
     gimp

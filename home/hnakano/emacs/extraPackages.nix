@@ -8,11 +8,8 @@
   programs.emacs.compileInit.initPackages =
     epkgs: with epkgs; [
       all-the-icons
-      anki-editor
-      citar
       company
       company-coq
-      company-nixos-options
       consult
       consult-flycheck
       csv-mode
@@ -24,9 +21,6 @@
       docker-compose-mode
       doom-modeline
       doom-themes
-      ebib
-      elfeed
-      elfeed-org
       elm-mode
       envrc
       ess
@@ -51,10 +45,6 @@
       jupyter
       leaf
       leaf-convert
-      lsp-julia
-      lsp-mode
-      lsp-pyright
-      lsp-ui
       macrostep
       magit
       marginalia
@@ -63,11 +53,7 @@
       ob-restclient
       orderless
       org-bullets
-      org-journal
       org-contrib
-      org-pomodoro
-      org-projectile
-      org-ref
       org-roam
       ox-pandoc
       ox-zenn
@@ -86,7 +72,6 @@
       slime
       slime-company
       smartparens
-      symon
       toml-mode
       treemacs
       treemacs-evil

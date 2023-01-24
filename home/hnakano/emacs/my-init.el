@@ -26,7 +26,6 @@
 (eval-and-compile
   (package-initialize)
   (require 'leaf)
-  (require 'uuidgen)
   (require 'inheritenv))
 (eval-when-compile
   (require 'smartparens)
@@ -108,16 +107,12 @@
     (completion-category-overrides . '((file (styles partial-completion)))))
   (leaf vertico :global-minor-mode t)
   (leaf consult
-    :bind (("C-s" . consult-line))
-	   ;("C-h a" . consult-apropos))
+    :bind ("C-s" . consult-line)
     :config
     (consult-customize
      consult-recent-file consult--source-recent-file consult--source-project-recent-file
      :preview-key '(:debounce 0.5 any)))
-  (leaf marginalia
-    :global-minor-mode t
-    :bind ((:minibuffer-local-map
-	    ("M-c" . marginalia-cycle)))))
+  (leaf marginalia :global-minor-mode t))
 
 (leaf projectile
   :global-minor-mode t
@@ -126,16 +121,6 @@
   (projectile-sort-order . 'recentf-active)
   (projectile-enable-caching . t)
   (projectile-project-search-path . '("~/repos/" "~/experiments/" "~/ghq/")))
-
-(leaf ebib
-  :custom
-  (ebib-link-file-path-type . 'adaptive)
-  (ebib-default-directory . "~/Documents/bibliograhy")
-  (ebib-preload-bib-files . '("~/Documents/bibliograhy/default.bib")))
-
-(leaf citar
-  :custom
-  (citar-bibliography . '("~/Documents/bibliograhy/default.bib")))
 
 (leaf treemacs
   :doc "treemacs and its extentions"
@@ -214,8 +199,7 @@
     :after evil
     :custom (vterm-toggle-cd-auto-create-buffer . t)))
 
-(leaf pdf-tools
- :mode ("\\.pdf\\'" . pdf-view-mode))
+(leaf pdf-tools :mode ("\\.pdf\\'" . pdf-view-mode))
 
 (leaf dictionary
   :custom
@@ -236,14 +220,7 @@
     :bind
     (:company-active-map
      ("C-n" . company-select-next)
-     ("C-p" . company-select-previous))
-    :config
-    (leaf company-nixos-options
-      :after company
-      :defvar company-backends
-      :hook (nix-mode-hook . (lambda ()
-			       (setq-local company-backends
-					   (cons 'company-nixos-options company-backends))))))
+     ("C-p" . company-select-previous)))
   (leaf smartparens
     :hook
     ((emacs-lisp-mode-hook org-mode-hook) . smartparens-mode)
@@ -256,19 +233,7 @@
       :config
       (sp-local-pair 'org-mode "\\[" "\\]")))
   (leaf rainbow-delimiters
-    :hook ((emacs-lisp-mode-hook org-mode-hook) . rainbow-delimiters-mode))
-  (leaf lsp-mode
-    :hook
-    (lsp-mode-hook . lsp-enable-which-key-integration)
-    :custom
-    (lsp-keymap-prefix . "C-c C-l")
-    (lsp-auto-configure . t)
-    :config
-    (leaf lsp-ui-doc
-      :custom
-      (lsp-ui-doc-delay . 2.0)))
-  (leaf yasnippet
-    :hook (lsp-mode-hook . yas-minor-mode)))
+    :hook ((emacs-lisp-mode-hook org-mode-hook) . rainbow-delimiters-mode)))
 
 (leaf language
   :doc "programming language setup"
@@ -276,9 +241,7 @@
   :config
   (leaf coq-mode
     :hook (coq-mode-hook . company-coq-mode))
-  (leaf elm-mode
-    :mode "\\.elm\\'"
-    :hook (elm-mode-hook . lsp-deferred))
+  (leaf elm-mode :mode "\\.elm\\'")
   (leaf ess-site
     :mode ("\\.R\\'" . R-mode))
   (leaf fish-mode
@@ -298,27 +261,16 @@
   (leaf js
     :custom (js-indent-level . 2)
     :hook
-    (js-mode-hook . lsp-deferred)
     (js-mode-hook . smartparens-mode))
   (leaf julia-mode
     :mode "\\.jl\\'"
     :hook
-    (julia-mode-hook . lsp-deferred)
     (julia-mode-hook . smartparens-mode)
     :custom
     (inferior-julia-program-name . "@julia@/bin/julia")
     :config
-    (leaf lsp-julia
-      :after lsp-mode
-      :require t
-      :custom
-      (lsp-julia-package-dir . nil)
-      (lsp-julia-default-environment . "~/.julia/environments/v1.8")
-      (lsp-julia-flags . `("--startup-file=no" "--history-file=no")))
     (leaf julia-repl
       :hook (julia-mode-hook . julia-repl-mode)
-      :bind (:julia-repl-mode-map
-	     ("C-c C-l" . nil))
       :config
       (inheritenv-add-advice #'julia-repl-inferior-buffer)
       (julia-repl-set-terminal-backend 'vterm))
@@ -329,7 +281,6 @@
   (leaf nix-mode
     :mode "\\.nix\\'"
     :hook
-    (nix-mode-hook . lsp-deferred)
     (nix-mode-hook . smartparens-mode)
     :config
     (sp-with-modes 'nix-mode
@@ -342,18 +293,10 @@
     (python-shell-interpreter . "ipython")
     :mode "\\.py\\'"
     :hook
-    (python-mode-hook . lsp-deferred)
-    (python-mode-hook . smartparens-mode)
-    :config
-    (leaf lsp-pyright
-      :after lsp-mode
-      :require t))
-  (leaf toml-mode
-    :mode "\\.toml\\'")
-  (leaf yaml-mode
-    :mode "\\.ya?ml\\'")
-  (leaf dockerfile-mode
-    :mode "Dockerfile\\'")
+    (python-mode-hook . smartparens-mode))
+  (leaf toml-mode :mode "\\.toml\\'")
+  (leaf yaml-mode :mode "\\.ya?ml\\'")
+  (leaf dockerfile-mode :mode "Dockerfile\\'")
   (leaf docker-compose-mode
     :hook (docker-compose-mode-hook . company-mode))
   (leaf lisp-mode
@@ -379,12 +322,9 @@
 	(slime-mode-hook . (lambda ()
 			     (setq-local company-backends
 					 (cons 'company-slime company-backends)))))))
-  (leaf fsharp-mode
-    :mode "\\.fs\\'")
-  (leaf haskell-mode
-    :mode "\\.hs\\'")
-  (leaf csv-mode
-    :mode "\\.csv\\'")
+  (leaf fsharp-mode :mode "\\.fs\\'")
+  (leaf haskell-mode :mode "\\.hs\\'")
+  (leaf csv-mode :mode "\\.csv\\'")
   (leaf plantuml-mode
     :custom
     (plantuml-executable-path . "plantuml")
@@ -423,7 +363,6 @@
     (my/org-todo-file . `,(concat my/org-notes-directory "todos.org"))
     (my/org-fleeting-note-file . `,(concat my/org-notes-directory "fleeting-notes.org"))
     (my/org-literature-note-file . `,(concat my/org-notes-directory "literature-notes.org"))
-    (my/anki-card-file . `,(concat my/org-notes-directory "anki-cards.org"))
     (org-agenda-files . `,(list my/org-notes-directory))
     (org-refile-targets . '((org-agenda-files :maxlevel . 1)))
     (org-archive-location . `,(concat (file-name-as-directory org-directory)
@@ -457,14 +396,7 @@
 	 ("l" "Literature Note" entry (file+headline my/org-literature-note-file "Literature Notes")
           "* %? :@note:@literature:\n:PROPERTIES:\n:Ref: %a\n:Entered: %U\n:END:\n%i\n")
 	 ("L" "Literature Note for Org protocol" entry (file+headline my/org-literature-note-file "Literature Notes")
-	  "* %:description :@note:@literature:\n:PROPERTIES:\n:Ref: %:link\n:Entered: %U\n:END:\n%i\n")
-	 ("a" "Anki Card")
-	 ("ab" "Anki Card [Basic]" entry (file+headline my/anki-card-file "Anki Cards")
-	  "* %(uuidgen-4)\n:PROPERTIES:\n:ANKI_NOTE_TYPE: Basic\n:END:\n** Front\n%?\n** Back\n")
-	 ("ar" "Anki Card [Basic and Reversed]" entry (file+headline my/anki-card-file "Anki Cards")
-	  "* %(uuidgen-4)\n:PROPERTIES:\n:ANKI_NOTE_TYPE: Basic (and reversed card)\n:END:\n** Front\n%?\n** Back\n")
-	 ("ac" "Anki Card [Cloze]" entry (file+headline my/anki-card-file "Anki Cards")
-	  "* %(uuidgen-4)\n:PROPERTIES:\n:ANKI_NOTE_TYPE: Cloze\n:END:\n** Text\n%?\n** Back Extra\n"))))
+	  "* %:description :@note:@literature:\n:PROPERTIES:\n:Ref: %:link\n:Entered: %U\n:END:\n%i\n"))))
   (leaf org-latex
     :doc "setting for org-latex"
     :custom
@@ -545,19 +477,6 @@
     (org-journal-dir . `,(concat (file-name-as-directory org-directory)
 				 "journal/"
 				 (format-time-string "%Y" (current-time)))))
-  (leaf org-pomodoro
-    :custom
-    (org-pomodoro-format . "🍅~%s")
-    (org-pomodoro-length . 20)
-    (org-pomodoro-play-sounds . nil))
-  (leaf org-projectile
-    :after org-agenda
-    :custom
-    (org-projectile-per-project-filepath . "todos.org")
-    :config
-    ;(org-projectile-per-project)
-    ;(setq org-agenda-files (append org-agenda-files (org-projectile-todo-files))))
-    )
   (leaf evil-org
     :hook
     (org-mode-hook . evil-org-mode)
@@ -580,21 +499,7 @@
 	   ("SPC" . nil)
 	   ("S-SPC" . nil))
     :config
-    (org-roam-setup))
-  (leaf org-ref
-    :custom
-    (org-ref-default-bibliography . "~/Documents/bibliograhy/default.bib"))
-  (leaf org-protocol
-    :custom (org-protocol-default-template-key . "L")
-    :require t))
-
-(leaf elfeed
-  :defer-config
-  (leaf elfeed-org
-    :custom
-    (rmh-elfeed-org-files . `(,(concat (file-name-as-directory org-directory) "elfeed.org")))
-    :config
-    (elfeed-org)))
+    (org-roam-setup)))
 
 (leaf hydra
   :config
@@ -630,13 +535,13 @@ _j_: next _k_: previous _s_: stage _r_: revert _d_: popup diff"
       "" nil
       "RET" 'vterm-toggle
       "SPC" 'consult-buffer
-      "a" '(:ignore t :wk "app")
       "b" '(:ignore t :wk "buffer")
       "f" '(:ignore t :wk "file")
       "g" '(:ignode t :wk "git")
       "h" '(:ignore t :wk "help")
       "o" '(:ignore t :wk "org")
       "q" '(:ignore t :wk "quit")
+      "s" '(:ignore t :wk "search")
       "t" '(:ignore t :wk "toggle")
       "w" '(:ignore t :wk "window"))
     (my/bind 'projectile-mode-map
@@ -737,9 +642,7 @@ _j_: next _k_: previous _s_: stage _r_: revert _d_: popup diff"
      "d" 'toggle-debug-on-error
      "t" 'toggle-truncate-lines
      "l" 'display-line-numbers-mode
-     "f" 'treemacs
-     "v" 'vterm-toggle
-     "s" 'symon-mode)
+     "f" 'treemacs)
     (my/bind
      :keymaps 'prog-mode-map
      :prefix "SPC t"
@@ -750,14 +653,11 @@ _j_: next _k_: previous _s_: stage _r_: revert _d_: popup diff"
       :prefix "SPC o"
       "c" 'org-capture
       "a" 'org-agenda
-      "l" 'org-store-link
       "n" '((lambda ()
 	      (interactive)
 	      (let ((default-directory my/org-notes-directory))
 		(call-interactively 'find-file)))
 	    :wk "open notes")
-      "j" 'org-journal-new-entry
-      "p" '(org-projectile-project-todo-completing-read :wk "project todo")
       "r" '(:ignore t :wk "org roam")
       "r n" 'org-roam-node-find
       "r f" 'org-roam-node-find)
@@ -769,14 +669,7 @@ _j_: next _k_: previous _s_: stage _r_: revert _d_: popup diff"
        "t" 'org-roam-tag-add
        "i" 'org-roam-node-insert
        "a" 'org-roam-alias-add
-       "g" 'org-roam-graph)
-    (my/bind
-     :prefix "SPC o i"
-     :keymaps 'org-mode-map
-     "l" 'org-insert-link
-     "c" 'org-ref-helm-insert-cite-link
-     "r" 'org-ref-helm-insert-ref-link
-     "L" 'org-ref-helm-insert-label-link))
+       "g" 'org-roam-graph))
   (leaf my/bind-search
     :config
     (my/bind
@@ -786,14 +679,7 @@ _j_: next _k_: previous _s_: stage _r_: revert _d_: popup diff"
     (my/bind
      :prefix "SPC s"
      :keymaps 'flycheck-mode-map
-     "e" 'consult-flycheck))
-  (leaf my/bind-app
-    :config
-    (my/bind
-     :prefix "SPC a"
-     "e" 'ebib
-     "f" 'elfeed
-     "c" 'calc)))
+     "e" 'consult-flycheck)))
 
 (provide 'my-init)
 ;;; my-init.el ends here
