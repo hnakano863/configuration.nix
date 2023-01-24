@@ -21,6 +21,7 @@
       docker-compose-mode
       doom-modeline
       doom-themes
+      eglot
       elm-mode
       envrc
       ess
