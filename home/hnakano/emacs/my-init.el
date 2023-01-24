@@ -212,6 +212,7 @@
   :doc "provide ide-like features"
   :tag "ide" "company" "flycheck" "lsp"
   :config
+  (leaf eglot :custom (eglot-connect-timeout . 180))
   (leaf flycheck :hook (emacs-lisp-mode-hook . flycheck-mode))
   (leaf envrc :global-minor-mode envrc-global-mode)
   (leaf company
@@ -275,6 +276,8 @@
       (inheritenv-add-advice #'julia-repl-inferior-buffer)
       (julia-repl-set-terminal-backend 'vterm))
     (leaf eglot-jl
+      :custom
+      (eglot-jl-language-server-project . "~/.julia/environments/v1.8/")
       :config
       (eglot-jl-init))
     (require 'smartparens-python)
