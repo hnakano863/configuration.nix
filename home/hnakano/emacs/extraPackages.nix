@@ -22,6 +22,7 @@
       doom-modeline
       doom-themes
       eglot
+      eglot-jl
       elm-mode
       envrc
       ess

@@ -274,6 +274,9 @@
       :config
       (inheritenv-add-advice #'julia-repl-inferior-buffer)
       (julia-repl-set-terminal-backend 'vterm))
+    (leaf eglot-jl
+      :config
+      (eglot-jl-init))
     (require 'smartparens-python)
     (sp-with-modes 'julia-mode
       (sp-local-pair "\"" "\"" :post-handlers '(:add sp-python-fix-triple-quotes))
