@@ -279,7 +279,7 @@
       :custom
       (eglot-jl-language-server-project . "~/.julia/environments/v1.8/")
       :hook (julia-mode-hook . eglot-ensure)
-      :config
+      :init
       (eglot-jl-init))
     (require 'smartparens-python)
     (sp-with-modes 'julia-mode
