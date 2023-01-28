@@ -12,6 +12,7 @@ in {
   home.packages = [
     globalPython
     nodePackages.pyright
+    poetry
   ];
 
   home.file.".ipython/profile_default/ipython_config.py".source =
