@@ -278,6 +278,7 @@
     (leaf eglot-jl
       :custom
       (eglot-jl-language-server-project . "~/.julia/environments/v1.8/")
+      :hook (julia-mode-hook . eglot-ensure)
       :config
       (eglot-jl-init))
     (require 'smartparens-python)
@@ -288,6 +289,7 @@
     :mode "\\.nix\\'"
     :hook
     (nix-mode-hook . smartparens-mode)
+    (nix-mode-hook . eglot-ensure)
     :config
     (sp-with-modes 'nix-mode
       (sp-local-pair "[ " " ]")
@@ -299,7 +301,8 @@
     (python-shell-interpreter . "ipython")
     :mode "\\.py\\'"
     :hook
-    (python-mode-hook . smartparens-mode))
+    (python-mode-hook . smartparens-mode)
+    (python-mode-hook . eglot-ensure))
   (leaf toml-mode :mode "\\.toml\\'")
   (leaf yaml-mode :mode "\\.ya?ml\\'")
   (leaf dockerfile-mode :mode "Dockerfile\\'")
