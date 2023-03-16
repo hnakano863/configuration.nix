@@ -255,6 +255,8 @@
   (leaf gnuplot
     :mode ("\\.gp\\'" . gnuplot-mode)
     :custom (gnuplot-program . "@gnuplot@/bin/gnuplot"))
+  (leaf haskell-mode
+    :mode "\\.hs\\'")
   (leaf idris-mode
     :mode "\\.idr\\'"
     :custom
@@ -431,7 +433,7 @@
 						      (:session . "py")
 						      (:results . "scalar")
 						      (:display . "text/plain")))
-    (org-babel-default-header-args:jupyter-julia . '((:kernel . "julia-1.7")
+    (org-babel-default-header-args:jupyter-julia . '((:kernel . "julia-1.8")
 						     (:async . "yes")
 						     (:session . "jl")
 						     (:results . "scalar")
@@ -458,7 +460,7 @@
     (org-babel-after-execute-hook . ek/babel-ansi)
     :config
     (let ((cmds '(("jj" . "src jupyter-julia\n")
-		  ("jd" . "src jupyter-julia :display image/svg\n")
+		  ("jd" . "src jupyter-julia :display image/png\n")
 		  ("pp" . "src jupyter-python\n")
 		  ("pd" . "src jupyter-python :display image/png\n"))))
       (dolist (cmd cmds)
