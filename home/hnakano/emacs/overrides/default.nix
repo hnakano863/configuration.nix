@@ -8,7 +8,7 @@ self: super: {
 
   eglot = super.eglot.overrideAttrs (old: {
     name = "emacs-eglot-1.9";
-    src = fetchurl {
+    src = pkgs.fetchurl {
       name = "eglot-1.9.tar";
       url = "https://elpa.gnu.org/packages/eglot-1.9.tar.lz";
       sha256 = "Wpk1eA0EvX+QjSKtEQ/64ZyeJOsFZ2q2rh0gw8b01+w=";
