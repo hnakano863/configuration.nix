@@ -13,7 +13,7 @@ self: super: {
       url = "https://elpa.gnu.org/packages/eglot-1.9.tar.lz";
       sha256 = "Wpk1eA0EvX+QjSKtEQ/64ZyeJOsFZ2q2rh0gw8b01+w=";
       postFetch = ''
-        ${lzip}/bin/lzip -c -d $out > uncompressed
+        ${pkgs.lzip}/bin/lzip -c -d $out > uncompressed
         mv unc    ompressed $out
       '';
     };
