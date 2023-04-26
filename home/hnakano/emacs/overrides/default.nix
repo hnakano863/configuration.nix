@@ -6,19 +6,6 @@ self: super: {
     nativeBuildInputs = [ ];
   });
 
-  eglot = super.eglot.overrideAttrs (old: {
-    name = "emacs-eglot-1.9";
-    src = pkgs.fetchurl {
-      name = "eglot-1.9.tar";
-      url = "https://elpa.gnu.org/packages/eglot-1.9.tar.lz";
-      sha256 = "Wpk1eA0EvX+QjSKtEQ/64ZyeJOsFZ2q2rh0gw8b01+w=";
-      postFetch = ''
-        ${pkgs.lzip}/bin/lzip -c -d $out > uncompressed
-        mv unc    ompressed $out
-      '';
-    };
-  });
-
   geiser = super.geiser.overrideAttrs (old: {
     src = pkgs.fetchFromGitHub {
       owner = "emacsmirror";
