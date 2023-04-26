@@ -11,7 +11,7 @@
   wsl = {
     enable = true;
     defaultUser = "hnakano";
-    automountPath = "/mnt";
+    wslConf.automount.root = "/mnt";
     interop = { register = false; includePath = false; };
     docker-native = { enable = true; addToDockerGroup = true; };
   };
