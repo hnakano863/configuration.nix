@@ -22,7 +22,7 @@
     xmonad-log
     htop
     trayer
-    pkgs-unstable.nyxt
+    nyxt
     glxinfo
   ];
 
