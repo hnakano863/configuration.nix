@@ -56,6 +56,7 @@
       orderless
       org-bullets
       org-contrib
+      org-journal
       org-roam
       ox-pandoc
       ox-zenn
