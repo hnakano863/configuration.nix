@@ -50,6 +50,7 @@
       macrostep
       magit
       marginalia
+      nerd-icons
       nix-mode
       nyan-mode
       ob-restclient
