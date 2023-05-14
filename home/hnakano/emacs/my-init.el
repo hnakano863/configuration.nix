@@ -507,6 +507,14 @@
     (org-roam-graph-extra-config . '(("layout" . "neato")
 				     ("overlap" . "false")
 				     ("splines" . "true")))
+    (org-roam-capture-templates . '(("d" "default" plain "%?"
+				     :target (file+head "%<%Y%m%d%H%M%S>-${slug}.org"
+							"#+title: ${title}\n")
+				     :unnarrowed t)
+				    ("s" "study" plain (file "~/Dropbox/Org/roam/templates/study.org")
+				     :target (file+head "%<%Y%m%d%H%M%S>-${slug}.org"
+							"#+title: ${title}\n")
+				     :unnarrowed t)))
     :bind (:org-roam-mode-map
 	   ("SPC" . nil)
 	   ("S-SPC" . nil))
