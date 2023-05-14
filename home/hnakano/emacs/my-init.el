@@ -511,7 +511,14 @@
 	   ("SPC" . nil)
 	   ("S-SPC" . nil))
     :config
-    (org-roam-setup)))
+    (org-roam-setup))
+  (leaf org-cite
+    :custom
+    (org-cite-global-bibliography . '("~/Dropbox/bibliograhy/default.bib"))
+    (citar-bibliography . '("~/Dropbox/bibliograhy/default.bib"))
+    (org-cite-insert-processor . 'citar)
+    (org-cite-follow-processor . 'citar)
+    (org-cite-activate-processor . 'citar)))
 
 (leaf hydra
   :config
