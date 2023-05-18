@@ -1,5 +1,5 @@
 # configuraion fraction specific to wsl2 home.
-{ config, pkgs, lib, ... }:
+{ config, pkgs, lib, pkgs-unstable, ... }:
 
 {
 
@@ -7,6 +7,7 @@
     gopass
     git-credential-gopass
     awscli2
+    pkgs-unstable.google-cloud-sdk
   ];
 
   programs.git = {
