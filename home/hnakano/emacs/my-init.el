@@ -280,7 +280,7 @@
       (julia-repl-set-terminal-backend 'vterm))
     (leaf eglot-jl
       :custom
-      (eglot-jl-language-server-project . "~/.julia/environments/v1.8/")
+      (eglot-jl-language-server-project . "~/.julia/environments/v1.9/")
       :hook (julia-mode-hook . eglot-ensure)
       :init
       (eglot-jl-init))
@@ -434,7 +434,7 @@
 						      (:session . "py")
 						      (:results . "scalar")
 						      (:display . "text/plain")))
-    (org-babel-default-header-args:jupyter-julia . '((:kernel . "julia-1.8")
+    (org-babel-default-header-args:jupyter-julia . '((:kernel . "julia-1.9")
 						     (:async . "yes")
 						     (:session . "jl")
 						     (:results . "scalar")
