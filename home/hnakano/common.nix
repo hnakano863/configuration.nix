@@ -53,8 +53,6 @@
     enable = true;
     functions = {
       vterm_printf.body = builtins.readFile ./fish_functions/vterm_printf.fish;
-      mkprof.body = builtins.readFile ./fish_functions/mkprof.fish;
-      swprof.body = builtins.readFile ./fish_functions/swprof.fish;
 
       gfz.body = "cd (ghq list -p | fzf)";
       grt.body = "cd (ghq root)'/github.com/hnakano'";
