@@ -39,9 +39,7 @@
   };
 
   programs.fish.interactiveShellInit = ''
-    set -gx GUIX_DEFAULT_PROFILE "$HOME/.guix-profile"
-    set -gx GUIX_EXTRA_PROFILES "$HOME/.guix-extra-profiles"
-    set -gx GUIX_PROFILE $GUIX_DEFAULT_PROFILE
+    set -gx GUIX_PROFILE "$HOME/.config/guix/current"
     bass source "$GUIX_PROFILE/etc/profile"
 
     set -gx GPG_TTY "$(tty)"
