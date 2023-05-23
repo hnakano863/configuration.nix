@@ -496,7 +496,9 @@
     :config
     (leaf evil-org-agenda
       :after org-agenda
-      :require t))
+      :require t
+      :config
+      (evil-org-agenda-set-keys)))
   (leaf org-eldoc
     :hook (org-mode-hook . org-eldoc-load))
   (leaf org-roam
