@@ -66,6 +66,7 @@
       pdf-tools
       plantuml-mode
       posframe
+      prism
       projectile
       proof-general
       rainbow-delimiters
