@@ -499,10 +499,10 @@
     (evil-org-mode-hook . evil-org-set-key-theme)
     :config
     (leaf evil-org-agenda
-      :after org-agenda
-      :require t
       :config
-      (evil-org-agenda-set-keys)))
+      (evil-org-agenda-set-keys)
+      (evil-define-key 'org-agenda-mode 'motion
+	"w" 'org-save-all-org-buffers)))
   (leaf org-eldoc
     :hook (org-mode-hook . org-eldoc-load))
   (leaf org-roam
