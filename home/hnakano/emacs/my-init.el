@@ -238,7 +238,7 @@
   (leaf rainbow-delimiters
     :hook ((emacs-lisp-mode-hook org-mode-hook) . rainbow-delimiters-mode))
   (leaf prism
-    :config
+    :defer-config
     (prism-set-colors :lightens '(0 5 10) :desaturations '(-2.5 0 2.5)
       :colors (-map #'doom-color '(red orange yellow green blue violet)))))
 
