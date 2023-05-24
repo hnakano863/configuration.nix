@@ -34,7 +34,8 @@
   (require 'skk-server)
   (general-create-definer my/bind
     :states '(motion normal)
-    :keymaps 'override))
+    :keymaps 'override)
+  (require 'evil))
 
 (make-variable-buffer-local 'global-hl-line-mode)
 (leaf cus-edit
@@ -496,13 +497,7 @@
   (leaf evil-org
     :hook
     (org-mode-hook . evil-org-mode)
-    (evil-org-mode-hook . evil-org-set-key-theme)
-    :config
-    (leaf evil-org-agenda
-      :config
-      (evil-org-agenda-set-keys)
-      (evil-define-key 'org-agenda-mode 'motion
-	"w" 'org-save-all-org-buffers)))
+    (evil-org-mode-hook . evil-org-set-key-theme))
   (leaf org-eldoc
     :hook (org-mode-hook . org-eldoc-load))
   (leaf org-roam
@@ -712,7 +707,14 @@ _j_: next _k_: previous _s_: stage _r_: revert _d_: popup diff"
     (my/bind
      :prefix "SPC s"
      :keymaps 'flycheck-mode-map
-     "e" 'consult-flycheck)))
+     "e" 'consult-flycheck))
+  (leaf evil-org-agenda
+    :require t
+    :config
+    (evil-org-agenda-set-keys)
+    (evil-define-key 'motion org-agenda-mode-map
+      "w" 'org-save-all-org-buffers)))
+
 
 (provide 'my-init)
 ;;; my-init.el ends here

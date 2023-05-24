@@ -7,6 +7,12 @@ self: super: {
     nativeBuildInputs = [ ];
   });
 
+  evil-org = super.evil-org.overrideAttrs (old: {
+    postPatch = (old.postPacth or "") + ''
+      substituteInPlace evil-org-agenda.el --replace "(require 'org)" ""
+    '';
+  });
+
   geiser = super.geiser.overrideAttrs (old: {
     src = pkgs.fetchFromGitHub {
       owner = "emacsmirror";
