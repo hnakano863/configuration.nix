@@ -210,6 +210,10 @@
   (dictionary-default-strategy . "re")
   (dictionary-default-popup-strategy . "re"))
 
+(leaf elfeed
+  :custom elfeed-feeds '("https://tech.andpad.co.jp/feed"
+			 "https://www.juliabloggers.com/feed"))
+
 (leaf ide
   :doc "provide ide-like features"
   :tag "ide" "company" "flycheck" "lsp"

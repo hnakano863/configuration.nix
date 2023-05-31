@@ -24,6 +24,7 @@
       doom-themes
       eglot
       eglot-jl
+      elfeed
       elm-mode
       envrc
       ess
