@@ -52,6 +52,7 @@
       macrostep
       magit
       marginalia
+      markdown-mode
       nerd-icons
       nix-mode
       nyan-mode

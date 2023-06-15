@@ -356,7 +356,10 @@
   (leaf jupyter
     :custom (jupyter-long-timeout . 100)
     :config
-    (inheritenv-add-advice #'jupyter-command)))
+    (inheritenv-add-advice #'jupyter-command))
+  (leaf markdown-mode
+    :mode ("\\.md\\'" . gfm-mode)
+    :custom (markdown-command . "pandoc --from gfm")))
 
 (leaf org
   :doc "org-mode and its extentions"
