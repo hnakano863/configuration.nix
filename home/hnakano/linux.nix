@@ -3,7 +3,6 @@
 {
   imports = [
     ./polybar
-    #./gnome
     ./skk
     ./alacritty.nix
   ];
