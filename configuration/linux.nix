@@ -39,8 +39,8 @@
 
   # Select internationalisation properties.
   i18n.defaultLocale = "ja_JP.UTF-8";
-  i18n.inputMethod.enabled = "fcitx";
-  i18n.inputMethod.fcitx.engines = with pkgs.fcitx-engines; [ skk ];
+  i18n.inputMethod.enabled = "fcitx5";
+  i18n.inputMethod.fcitx5.addons = with pkgs.fcitx-engines; [ fcitx5-skk ];
   console = {
     font = "Lat2-Terminus16";
     useXkbConfig = true;

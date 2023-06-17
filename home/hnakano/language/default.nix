@@ -16,7 +16,7 @@
     elmPackages.elm-language-server
     elmPackages.elm-format
     elmPackages.elm-test
-    dotnet-sdk_5
+    dotnet-sdk_6
     nodePackages.vscode-json-languageserver
   ];
 }

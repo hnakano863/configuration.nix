@@ -13,7 +13,6 @@
     thunderbird
     gimp
     vlc
-    palemoon
     vivaldi
     brave
     dmenu

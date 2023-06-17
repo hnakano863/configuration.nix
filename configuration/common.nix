@@ -99,6 +99,9 @@
   # enable docker
   virtualisation.docker.enable = true;
 
+  # enable fish shell
+  programs.fish.enable = true;
+
   # home-manager configuration
   home-manager = {
     useGlobalPkgs = true;
