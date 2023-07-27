@@ -359,7 +359,8 @@
     (inheritenv-add-advice #'jupyter-command))
   (leaf markdown-mode
     :mode ("\\.md\\'" . gfm-mode)
-    :custom (markdown-command . "pandoc --from gfm")))
+    :custom (markdown-command . "pandoc --from gfm"))
+  (leaf lean-mode :mode "\\.lean\\'"))
 
 (leaf org
   :doc "org-mode and its extentions"
