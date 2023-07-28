@@ -8,7 +8,7 @@
 , s
 }:
 
-trivialBuild {
+trivialBuild rec {
 
   pname = "lean4-mode";
   version = "unstable";
@@ -23,5 +23,13 @@ trivialBuild {
   };
 
   packageRequires = [ dash f flycheck lsp-mode magit-section s ];
+
+  installPhase = ''
+    LISPDIR=$out/share/emacs/site-lisp/lean4-mode
+    install -d $LISPDIR/data
+    install *.el *.elc $LISPDIR
+    install data/* $LISPDIR/data
+    emacs --batch -l package --eval "(package-generate-autoloads \"${pname}\" \"$LISPDIR\")"
+  '';
 
 }
