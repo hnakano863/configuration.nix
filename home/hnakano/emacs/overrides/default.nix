@@ -93,4 +93,8 @@ self: super: {
     '';
   });
 
+  # https://github.com/leanprover/lean4-mode/issues/18
+  # if lean4-mode is added to melpa, I don't need it.
+  lean4-mode = self.callPackage ./lean4-mode {};
+
 }
