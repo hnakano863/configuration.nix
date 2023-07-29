@@ -38,13 +38,6 @@
     imports = [ ../home/hnakano/wsl2.nix ];
   };
 
-  home-manager.extraSpecialArgs = let
-    ps = attrs.nixpkgs-unstable.legacyPackages;
-    sys = config.nixpkgs.localSystem.system;
-  in {
-    pkgs-unstable = ps."${sys}";
-  };
-
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
   # on your system were taken. It‘s perfectly fine and recommended to leave

@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, lean-packages, ... }:
 {
   programs.emacs.compileInit.earlyInitPackages =
     epkgs: with epkgs; [
@@ -49,7 +49,7 @@
       jupyter
       leaf
       leaf-convert
-      lean4-mode
+      lean-packages.lean4-mode
       macrostep
       magit
       marginalia

@@ -109,6 +109,11 @@
     users.hnakano = { config, pkgs, lib, ... }: {
       imports = [ ../home/hnakano/common.nix ];
     };
+    extraSpecialArgs = let
+      sys = config.nixpkgs.localSystem.system;
+    in {
+      pkgs-unstable = attrs.nixpkgs-unstable.legacyPackages."${sys}";
+      lean-packages = attrs.lean4.packages."${sys}";
+    };
   };
-
 }
