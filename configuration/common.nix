@@ -15,11 +15,16 @@
 
   # use nix unstable and enable nix flake
   nix.package = pkgs.nixFlakes;
-  nix.registry.nixpkgs.flake = attrs.nixpkgs;
   nix.nixPath = [
     "nixpkgs=${attrs.nixpkgs}"
     "nixpkgs-unstable=${attrs.nixpkgs-unstable}"
   ];
+
+  # nix registry config
+  nix.registry = {
+    nixpkgs.flake = attrs.nixpkgs;
+    lean.flake = attrs.lean4;
+  };
 
   nixpkgs.config = {
     allowUnfree = true;
