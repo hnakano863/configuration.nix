@@ -172,7 +172,6 @@
     (doom-modeline-def-modeline doom-modeline-set-modeline)
     :custom
     (nerd-icons-scale-factor . 1.1)
-    (all-the-icons-scale-factor . 1.1) ; remove when doom-modeline update
     (doom-modeline-height . 1)
     (doom-modeline-bar-width . 3)
     (doom-modeline-buffer-file-name-style . 'truncate-with-project)
