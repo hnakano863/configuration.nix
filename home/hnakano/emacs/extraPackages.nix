@@ -7,6 +7,7 @@
 
   programs.emacs.compileInit.initPackages =
     epkgs: with epkgs; [
+      all-the-icons
       citar
       company
       company-coq
