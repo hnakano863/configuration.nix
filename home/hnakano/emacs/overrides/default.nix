@@ -49,30 +49,6 @@ self: super: {
     };
   });
 
-  # https://github.com/nix-community/emacs-overlay/issues/229
-  transient = super.transient.overrideAttrs (attrs : {
-    buildInputs =
-      (attrs.buildInputs or []) ++
-      (with pkgs; [gnumake texinfo texi2html texi2mdoc texlive.combined.scheme-medium]);
-
-    preBuild = (attrs.preBuild or "") + ''
-      make all
-      mv lisp/* ./
-    '';
-
-  });
-
-  with-editor = super.with-editor.overrideAttrs (attrs : {
-    buildInputs =
-      (attrs.buildInputs or []) ++
-      (with pkgs; [gnumake texinfo texi2html texi2mdoc texlive.combined.scheme-medium]);
-
-    preBuild = (attrs.preBuild or "") + ''
-      make all
-      mv lisp/* ./
-    '';
-  });
-
   # https://github.com/nix-community/emacs-overlay/issues/298
   # this patch is already applied to nixos-unstable branch
   # remove when nixos stable branch is updated
