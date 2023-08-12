@@ -48,23 +48,4 @@ self: super: {
       sha256 = "dZt/3E0ZX8c1RsiLbilmDCbIVow1lagEPhsokOM0vb0=";
     };
   });
-
-  # https://github.com/nix-community/emacs-overlay/issues/298
-  # this patch is already applied to nixos-unstable branch
-  # remove when nixos stable branch is updated
-  emacsql = super.emacsql.overrideAttrs (attrs : {
-    buildInputs = attrs.buildInputs ++ [ pkgs.sqlite ];
-
-    postBuild = ''
-      cd source/sqlite
-      make
-      cd -
-    '';
-
-    postInstall = (attrs.postInstall or "") + "\n" + ''
-      install -m=755 -D source/sqlite/emacsql-sqlite \
-        $out/share/emacs/site-lisp/elpa/emacsql-${attrs.version}/sqlite/emacsql-sqlite
-    '';
-  });
-
 }
