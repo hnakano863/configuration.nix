@@ -49,8 +49,6 @@ self: super: {
     };
   });
 
-  ox-zenn = self.callPackage ./ox-zenn {};
-
   # https://github.com/nix-community/emacs-overlay/issues/229
   transient = super.transient.overrideAttrs (attrs : {
     buildInputs =
