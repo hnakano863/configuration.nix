@@ -1,4 +1,4 @@
-{ pkgs, lean-packages, ... }:
+{ pkgs, ... }:
 {
   imports = [
     ./julia
@@ -18,6 +18,5 @@
     elmPackages.elm-test
     dotnet-sdk_6
     nodePackages.vscode-json-languageserver
-    lean-packages.lean-all
   ];
 }

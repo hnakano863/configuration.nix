@@ -23,7 +23,6 @@
   # nix registry config
   nix.registry = {
     nixpkgs.flake = attrs.nixpkgs;
-    lean.flake = attrs.lean4;
   };
 
   nixpkgs.config = {
@@ -118,7 +117,6 @@
       sys = config.nixpkgs.localSystem.system;
     in {
       pkgs-unstable = attrs.nixpkgs-unstable.legacyPackages."${sys}";
-      lean-packages = attrs.lean4.packages."${sys}";
     };
   };
 }
