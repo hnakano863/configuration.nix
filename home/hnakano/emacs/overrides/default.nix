@@ -2,6 +2,8 @@
 self: super: {
   evil = self.melpaPackages.evil;
   ddskk = pkgs.callPackage ./ddskk {};
+  # waiting github.com/Alexander-Miller/treemacs/issues/1047 to be fixed
+  treemacs = self.melpaStablePackages.treemacs;
   gnuplot = super.gnuplot.overrideAttrs (old: {
     nativeBuildInputs = [ ];
   });
