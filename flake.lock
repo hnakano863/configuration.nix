@@ -195,9 +195,7 @@
     "lean4": {
       "inputs": {
         "flake-utils": "flake-utils_2",
-        "lean4-mode": [
-          "lean4-mode"
-        ],
+        "lean4-mode": "lean4-mode",
         "nix": "nix",
         "nixpkgs": "nixpkgs_3"
       },
@@ -493,7 +491,6 @@
         "hnakano863": "hnakano863",
         "home-manager": "home-manager",
         "lean4": "lean4",
-        "lean4-mode": "lean4-mode",
         "nix-alien": "nix-alien",
         "nix-direnv": "nix-direnv",
         "nix-ld": "nix-ld",
