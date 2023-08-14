@@ -1,4 +1,4 @@
-{ pkgs }:
+{ pkgs, lean4-packages, ... }:
 self: super: {
   evil = self.melpaPackages.evil;
   ddskk = pkgs.callPackage ./ddskk {};
@@ -13,5 +13,10 @@ self: super: {
       substituteInPlace evil-org-agenda.el --replace "(require 'org)" ""
     '';
   });
+
+  lean4-mode = self.melpaBuild {
+    inherit (lean4-packages.lean4-mode) pname version commit src recipe;
+    packageRequires = with self; [ dash f flycheck magit-section lsp-mode s ];
+  };
 
 }

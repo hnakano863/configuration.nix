@@ -117,6 +117,7 @@
       sys = config.nixpkgs.localSystem.system;
     in {
       pkgs-unstable = attrs.nixpkgs-unstable.legacyPackages."${sys}";
+      lean4-packages = attrs.lean4.packages.${sys};
     };
   };
 }

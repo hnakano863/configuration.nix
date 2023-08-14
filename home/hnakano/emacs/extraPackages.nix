@@ -49,6 +49,7 @@
       jupyter
       leaf
       leaf-convert
+      lean4-mode
       macrostep
       magit
       marginalia
