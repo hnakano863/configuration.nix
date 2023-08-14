@@ -23,6 +23,7 @@
   # nix registry config
   nix.registry = {
     nixpkgs.flake = attrs.nixpkgs;
+    lean4.flake = attrs.lean4;
   };
 
   nixpkgs.config = {
