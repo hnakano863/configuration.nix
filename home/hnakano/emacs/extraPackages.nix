@@ -89,6 +89,7 @@
       undo-fu
       undo-fu-session
       undo-tree
+      use-package
       uuidgen
       vertico
       vterm
