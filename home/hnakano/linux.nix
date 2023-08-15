@@ -2,7 +2,6 @@
 { config, pkgs, lib, pkgs-unstable, ... }:
 {
   imports = [
-    ./polybar
     ./skk
     ./alacritty.nix
   ];
