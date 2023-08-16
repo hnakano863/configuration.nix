@@ -13,6 +13,7 @@
   programs.git = {
     userName = "hnakano863";
     userEmail = "notchi863@gmail.com";
+    extraConfig.credential.helper = "gopass";
   };
 
   programs.fish.functions = {
