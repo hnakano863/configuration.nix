@@ -14,6 +14,7 @@
     wslConf.automount.root = "/mnt";
     interop = { register = false; includePath = false; };
     docker-native = { enable = true; addToDockerGroup = true; };
+    nativeSystemd = true;
   };
 
   # nix
