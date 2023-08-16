@@ -21,7 +21,6 @@
   };
 
   programs.fish.interactiveShellInit = ''
-    set -gx DISPLAY (cat /etc/resolv.conf | grep nameserver | awk '{print $2}'):0
     set -gx GPG_TTY (tty)
   '';
 }

@@ -37,7 +37,7 @@
   time.timeZone = "Asia/Tokyo";
 
   services.xserver.enable = true;
-  services.xserver.autorun = false;
+  services.xserver.autorun = true;
 
   # home-manager configuration
   home-manager.users.hnakano = { config, pkgs, lib, ... }: {
