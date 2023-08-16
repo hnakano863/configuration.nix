@@ -11,9 +11,8 @@
   ];
 
   programs.git = {
-    userName = "hnakano";
-    userEmail = "hnakano@tlv.co.jp";
-    extraConfig.credential.helper = "gopass";
+    userName = "hnakano863";
+    userEmail = "notchi863@gmail.com";
   };
 
   programs.fish.functions = {
