@@ -28,10 +28,13 @@
   };
 
   programs.fish.functions = {
-    lsprof.body = ''
-      function lsprof;
-          ls $GUIX_EXTRA_PROFILES
-      end
+    lsprof.body = "ls $GUIX_EXTRA_PROFILES";
+
+    xmonad_rescue.body = ''
+      set -l procpath /proc/(pgrep -f 'xmonad')/fd/
+      set -l arr (ls $procpath | string join ,)
+      cat ($procpath)(math max arr) > /dev/null &
+      kill $last_pid
     '';
   };
 
