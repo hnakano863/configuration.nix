@@ -33,7 +33,7 @@
     xmonad_rescue.body = ''
       set -l procpath /proc/(pgrep -f 'xmonad')/fd/
       set -l arr (ls $procpath | string join ,)
-      cat ($procpath)(math max arr) > /dev/null &
+      cat ($procpath)(math max $arr) > /dev/null &
       kill $last_pid
     '';
   };
