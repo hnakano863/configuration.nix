@@ -18,6 +18,7 @@
     elmPackages.elm-test
     dotnet-sdk_6
     nodePackages.vscode-json-languageserver
+    nodePackages.mermaid-cli
     lean4-packages.lean-all
   ];
 }
