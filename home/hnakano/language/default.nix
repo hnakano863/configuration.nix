@@ -20,5 +20,8 @@
     nodePackages.vscode-json-languageserver
     nodePackages.mermaid-cli
     lean4-packages.lean-all
+    # rust
+    rustc
+    cargo
   ];
 }
