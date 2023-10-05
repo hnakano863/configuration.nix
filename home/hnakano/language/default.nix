@@ -23,5 +23,6 @@
     # rust
     rustc
     cargo
+    gcc
   ];
 }
