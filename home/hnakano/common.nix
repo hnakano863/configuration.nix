@@ -13,7 +13,7 @@
   home.homeDirectory = "/home/hnakano";
 
   home.packages = with pkgs; [
-    exa
+    eza
     fd
     fzf
     ghq
