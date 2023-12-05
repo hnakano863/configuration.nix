@@ -36,7 +36,7 @@
     nix-alien.overlays.default
     hnakano863.overlay
     eijiro.overlay
-    nix-direnv.overlay
+    nix-direnv.overlays.default
   ];
 
   # List packages installed in system profile. To search, run:
