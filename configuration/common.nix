@@ -33,7 +33,7 @@
 
   nixpkgs.overlays = with attrs; [
     emacs-overlay.overlay
-    nix-alien.overlay
+    nix-alien.overlays.default
     hnakano863.overlay
     eijiro.overlay
     nix-direnv.overlay
