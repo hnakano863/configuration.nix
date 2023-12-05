@@ -255,7 +255,8 @@
       :after smartparens
       :require t
       :config
-      (sp-local-pair 'org-mode "\\[" "\\]")))
+      (sp-local-pair 'org-mode "\\[" "\\]")
+      (sp-local-pair 'org-mode "<" nil :actions :rem)))
   (leaf rainbow-delimiters
     :hook ((emacs-lisp-mode-hook org-mode-hook) . rainbow-delimiters-mode))
   (leaf prism
@@ -385,6 +386,12 @@
   :tag "org"
   :custom
   (org-return-follows-link . t)
+  :preface
+  (defun org-syntax-table-modify ()
+    "Modify `org-mode-syntax-table' for the current org buffer."
+    (modify-syntax-entry ?< "." org-mode-syntax-table)
+    (modify-syntax-entry ?> "." org-mode-syntax-table))
+  :hook (org-mode-hook . org-syntax-table-modify)
   :config
   (leaf org-startup
     :doc "startup settings"
