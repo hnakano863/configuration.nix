@@ -48,6 +48,7 @@ in
     programs.emacs.extraPackages = epkgs: [
       (epkgs.trivialBuild {
         pname = "my-early-init";
+        version = "2023-12-06";
         src = cfg.earlyInitFile;
         packageRequires = cfg.earlyInitPackages epkgs;
         preferLocalBuild = true;
@@ -55,6 +56,7 @@ in
       })
       (epkgs.trivialBuild {
         pname = "my-init";
+        version = "2023-12-06";
         src = cfg.initFile;
         packageRequires = cfg.initPackages epkgs;
         preferLocalBuild = true;
