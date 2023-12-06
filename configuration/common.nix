@@ -48,10 +48,10 @@
 
   environment.pathsToLink = [ "/share/fish" ];
 
-  fonts.enableDefaultFonts = true;
+  fonts.enableDefaultPackages = true;
   fonts.enableGhostscriptFonts = true;
   fonts.fontDir.enable = true;
-  fonts.fonts = with pkgs; [
+  fonts.packages = with pkgs; [
     noto-fonts
     noto-fonts-cjk
     noto-fonts-emoji
