@@ -17,7 +17,7 @@ in
 
   programs.emacs.enable = true;
   programs.emacs.overrides = import ./overrides { inherit pkgs lean4-packages; };
-  programs.emacs.package = emacs;
+  programs.emacs.package = emacs29;
 
   programs.emacs.compileInit = {
     enable = true;
