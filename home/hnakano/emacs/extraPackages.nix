@@ -41,7 +41,6 @@
       haskell-mode
       helpful
       hydra
-      idris-mode
       imenu-list
       inheritenv
       julia-mode

@@ -3,7 +3,7 @@ with pkgs;
 with lib;
 let
   init-el = runCommand "my-init.el" {
-    inherit gnuplot idris;
+    inherit gnuplot;
     julia = pkgs-unstable.julia;
     skkdicts = skk-dicts-cdb;
   } ''substituteAll "${./my-init.el}" $out '';

@@ -286,10 +286,6 @@
     :custom (gnuplot-program . "@gnuplot@/bin/gnuplot"))
   (leaf haskell-mode
     :mode "\\.hs\\'")
-  (leaf idris-mode
-    :mode "\\.idr\\'"
-    :custom
-    (idris-interpreter-path . "@idris@/bin/idris"))
   (leaf js
     :custom (js-indent-level . 2)
     :hook
