@@ -26,6 +26,8 @@
       eglot-jl
       elfeed
       elm-mode
+      embark
+      embark-consult
       envrc
       ess
       evil
