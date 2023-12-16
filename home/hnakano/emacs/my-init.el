@@ -117,7 +117,7 @@
   (leaf embark
     :bind
     ("C-." . embark-act)
-    ("M-." . embark-dwim)
+    ("C-;" . embark-dwim)
     ("C-h b" . embark-bindings)
     :config
     (setq prefix-help-command #'embark-prefix-help-command))
