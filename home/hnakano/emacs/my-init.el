@@ -114,6 +114,9 @@
      consult-recent-file consult--source-recent-file consult--source-project-recent-file
      :preview-key '(:debounce 0.5 any)))
   (leaf marginalia :global-minor-mode t)
+  (leaf embark
+    :config
+    (setq prefix-help-command #'embark-prefix-help-command))
   (leaf embark-consult
     :hook (embark-collect-mode-hook . consult-preview-at-point-mode)))
 
