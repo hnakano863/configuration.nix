@@ -382,7 +382,7 @@
   (leaf markdown-mode
     :mode ("\\.md\\'" . gfm-mode)
     :custom (markdown-command . "pandoc --from gfm"))
-  (leaf lean4-mode :mode "\\.lean\\'")
+  ;(leaf lean4-mode :mode "\\.lean\\'")
   (leaf mermaid-mode :mode "\\.mermaid\\'")
   (leaf rust-mode :mode "\\.rs\\'")
   (leaf js-mode :mode "\\.gs\\'"))
