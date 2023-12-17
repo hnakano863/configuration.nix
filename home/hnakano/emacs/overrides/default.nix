@@ -18,9 +18,6 @@ self: super: {
     '';
   });
 
-#  lean4-mode = self.melpaBuild {
-#    inherit (lean4-packages.lean4-mode) pname version commit src recipe;
-#    packageRequires = with self; [ dash f flycheck magit-section lsp-mode s ];
-#  };
+  lean4-mode = self.callPackage ./lean4-mode.nix { inherit (pkgs) fetchFromGitHub writeText; };
 
 }
