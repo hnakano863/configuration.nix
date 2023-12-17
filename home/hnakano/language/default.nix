@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, pkgs-unstable, ... }:
 {
   imports = [
     ./julia
@@ -18,6 +18,7 @@
     dotnet-sdk_6
     nodePackages.vscode-json-languageserver
     nodePackages.mermaid-cli
+    pkgs-unstable.lean4
     # rust
     rustc
     cargo
