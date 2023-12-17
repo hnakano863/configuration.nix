@@ -25,12 +25,6 @@
     eijiro.url = "path:/home/hnakano/ghq/github.com/hnakano/eijiro.nix";
     eijiro.inputs.nixpkgs.follows = "nixpkgs";
 
-    lean4.url = "github:leanprover/lean4";
-    lean4.inputs.lean4-mode = {
-      url = "github:leanprover/lean4-mode";
-      flake = false;
-    };
-
   };
 
   outputs =
@@ -45,7 +39,6 @@
     , nix-alien
     , hnakano863
     , eijiro
-    , lean4
     } @ attrs:
 
     {

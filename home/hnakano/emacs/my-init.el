@@ -113,7 +113,16 @@
     (consult-customize
      consult-recent-file consult--source-recent-file consult--source-project-recent-file
      :preview-key '(:debounce 0.5 any)))
-  (leaf marginalia :global-minor-mode t))
+  (leaf marginalia :global-minor-mode t)
+  (leaf embark
+    :bind
+    ("C-." . embark-act)
+    ("C-;" . embark-dwim)
+    ("C-h b" . embark-bindings)
+    :config
+    (setq prefix-help-command #'embark-prefix-help-command))
+  (leaf embark-consult
+    :hook (embark-collect-mode-hook . consult-preview-at-point-mode)))
 
 (leaf projectile
   :global-minor-mode t
@@ -678,7 +687,8 @@ _j_: next _k_: previous _s_: stage _r_: revert _d_: popup diff"
       "k" 'helpful-key
       "m" 'describe-mode
       "w" 'dictionary-match-words
-      "i" 'info))
+      "i" 'info
+      "b" 'embark-bindings))
   (leaf my/bind-quit
     :config
     (my/bind
