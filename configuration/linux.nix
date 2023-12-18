@@ -40,11 +40,13 @@
 
   # Select internationalisation properties.
   i18n.defaultLocale = "ja_JP.UTF-8";
-  i18n.inputMethod.enabled = "fcitx5";
-  i18n.inputMethod.fcitx5.addons = with pkgs; [
-    fcitx5-gtk
-    fcitx5-skk
-  ];
+  i18n.inputMethod = {
+    enabled = "fcitx5";
+    fcitx5.addons = with pkgs; [
+      fcitx5-gtk
+      fcitx5-mozc
+    ];
+  };
   console = {
     font = "Lat2-Terminus16";
     useXkbConfig = true;
@@ -115,7 +117,10 @@
       extraPackages = ps: with ps; [ xmonad-contrib ];
     };
 
-    desktopManager.gnome.enable = false;
+    desktopManager = {
+      gnome.enable = false;
+      runXdgAutostartIfNone = true;
+    };
 
     displayManager = {
       defaultSession = "none+xmonad";
