@@ -219,6 +219,8 @@
 		     (org-roam-mode :align right :size 0.33 :select nil :popup t))))
 
 (leaf vterm
+  :custom
+  (vterm-shell . "fish")
   :hook
   (vterm-mode-hook . (lambda () (setq-local global-hl-line-mode nil)))
   :config

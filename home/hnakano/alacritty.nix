@@ -6,6 +6,8 @@
 
     settings = {
 
+      shell = "fish";
+
       font = {
         size = 9;
         normal.style = "Regular";
