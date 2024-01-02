@@ -64,18 +64,6 @@
         "julia --startup-file=no --project=@. -e 'using Pluto; Pluto.run(launch_browser=false)'";
       ll.body = "ls -lh";
     };
-
-    plugins = [
-      {
-        name = "bass";
-        src = pkgs.fetchFromGitHub {
-          owner = "edc";
-          repo = "bass";
-          rev = "df4a1ebf8c0536e4bd7b7828a4c0dcb2b7b5d22b";
-          sha256 = "VBqfBhHj0OyUmDzjak7OpSNxXlB0Xp1oG31To35u/rU=";
-        };
-      }
-    ];
   };
 
   programs.starship = {
