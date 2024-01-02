@@ -33,7 +33,7 @@
     nix-direnv
   ];
 
-  home.sessionPath = [ "$HOME/.local/bin" ];
+  home.sessionPath = [ "${config.home.homeDirectory}/.local/bin" ];
 
   home.sessionVariables = {
     GPG_TTY = "$(tty)";

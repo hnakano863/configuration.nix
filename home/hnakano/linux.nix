@@ -24,8 +24,8 @@
   ];
 
   home.sessionVariables = {
-    GUIX_LOCPATH = "$HOME/.guix-profile/lib/locale";
-    GUIX_PROFILE = "$HOME/.config/guix/current";
+    GUIX_LOCPATH = "${config.home.homeDirectory}/.guix-profile/lib/locale";
+    GUIX_PROFILE = "${config.home.homeDirectory}/.config/guix/current";
   };
 
   programs.bash = {
