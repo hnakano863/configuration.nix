@@ -35,6 +35,10 @@
 
   home.sessionPath = [ "$HOME/.local/bin" ];
 
+  home.sessionVariables = {
+    GPG_TTY = "$(tty)";
+  };
+
   fonts.fontconfig.enable = true;
 
   programs.bash = {

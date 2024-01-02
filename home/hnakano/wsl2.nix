@@ -19,8 +19,4 @@
   programs.fish.functions = {
     ec.body = "emacsclient -c";
   };
-
-  programs.fish.interactiveShellInit = ''
-    set -gx GPG_TTY (tty)
-  '';
 }

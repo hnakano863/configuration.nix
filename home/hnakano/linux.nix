@@ -25,18 +25,18 @@
 
   home.sessionVariables = {
     GUIX_LOCPATH = "$HOME/.guix-profile/lib/locale";
+    GUIX_PROFILE = "$HOME/.config/guix/current";
+  };
+
+  programs.bash = {
+    profileExtra = ''
+      source "$GUIX_PROFILE/etc/profile"
+    '';
   };
 
   programs.fish.functions = {
     lsprof.body = "ls $GUIX_EXTRA_PROFILES";
   };
-
-  programs.fish.interactiveShellInit = ''
-    set -gx GUIX_PROFILE "$HOME/.config/guix/current"
-    bass source "$GUIX_PROFILE/etc/profile"
-
-    set -gx GPG_TTY "$(tty)"
-  '';
 
   programs.git = {
     userName = "hnakano863";
