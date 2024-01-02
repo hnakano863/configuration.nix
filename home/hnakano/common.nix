@@ -35,14 +35,13 @@
 
   home.sessionPath = [ "${config.home.homeDirectory}/.local/bin" ];
 
-  home.sessionVariables = {
-    GPG_TTY = "$(tty)";
-  };
-
   fonts.fontconfig.enable = true;
 
   programs.bash = {
     enable = true;
+    profileExtra = lib.mkAfter ''
+      export GPG_TTY=$(tty)
+    '';
     initExtra = lib.mkAfter ''
       eval "$(${pkgs.direnv}/bin/direnv hook bash)"
     '';
