@@ -64,7 +64,7 @@
     LIBRARY_PATH = with pkgs; builtins.concatStringsSep ":" [
       "${lib.getLib stdenv.cc.cc}/lib"
       "${lib.getLib pkgs.glibc}/lib"
-      "${lib.getLib libgccjit}/lib/gcc/x86_64-unknown-linux-gnu/9.3.0"
+      "${lib.getLib libgccjit}/lib/gcc/x86_64-unknown-linux-gnu/${libgccjit.version}"
     ];
   };
 
