@@ -36,6 +36,10 @@
 
   home.sessionPath = [ "${config.home.homeDirectory}/.local/bin" ];
 
+  home.sessionVariables = {
+    EDITOR = "emacseditor";
+  };
+
   fonts.fontconfig.enable = true;
 
   programs.bash.enable = true;
