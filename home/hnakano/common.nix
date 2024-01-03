@@ -13,6 +13,7 @@
   home.homeDirectory = "/home/hnakano";
 
   home.packages = with pkgs; [
+    babelfish
     eza
     fd
     fzf
@@ -37,15 +38,8 @@
 
   fonts.fontconfig.enable = true;
 
-  programs.bash = {
-    enable = true;
-    profileExtra = lib.mkAfter ''
-      export GPG_TTY=$(tty)
-    '';
-    initExtra = lib.mkAfter ''
-      eval "$(${pkgs.direnv}/bin/direnv hook bash)"
-    '';
-  };
+  programs.bash.enable = true;
+
   xdg.configFile."direnv/direnvrc".text = ''
     source ${pkgs.nix-direnv}/share/nix-direnv/direnvrc
   '';
