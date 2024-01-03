@@ -24,26 +24,26 @@
   ];
 
   home.sessionVariables = {
-    GUIX_LOCPATH = "$HOME/.guix-profile/lib/locale";
+    GUIX_LOCPATH = "${config.home.homeDirectory}/.guix-profile/lib/locale";
+    GUIX_PROFILE = "${config.home.homeDirectory}/.config/guix/current";
+    GUIX_EXTRA_PROFILES = "${config.home.homeDirectory}/.guix-extra-profiles";
+  };
+
+  programs.bash = {
+    profileExtra = lib.mkAfter ''
+      source "$GUIX_PROFILE/etc/profile"
+    '';
+    # シェルの起動時スクリプトは共通化しない
+    initExtra = lib.mkAfter ''
+      export GPG_TTY=$(tty)
+      eval "$(${pkgs.direnv}/bin/direnv hook bash)"
+      exec fish
+    '';
   };
 
   programs.fish.functions = {
     lsprof.body = "ls $GUIX_EXTRA_PROFILES";
-
-    xmonad_rescue.body = ''
-      set -l procpath /proc/(pgrep -f 'xmonad')/fd/
-      set -l arr (ls $procpath | string join ,)
-      cat ($procpath)(math max $arr) > /dev/null &
-      kill $last_pid
-    '';
   };
-
-  programs.fish.interactiveShellInit = ''
-    set -gx GUIX_PROFILE "$HOME/.config/guix/current"
-    bass source "$GUIX_PROFILE/etc/profile"
-
-    set -gx GPG_TTY "$(tty)"
-  '';
 
   programs.git = {
     userName = "hnakano863";

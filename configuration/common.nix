@@ -45,8 +45,6 @@
     feh docker-compose
   ];
 
-  environment.pathsToLink = [ "/share/fish" ];
-
   fonts.enableDefaultPackages = true;
   fonts.enableGhostscriptFonts = true;
   fonts.fontDir.enable = true;
@@ -66,7 +64,7 @@
     LIBRARY_PATH = with pkgs; builtins.concatStringsSep ":" [
       "${lib.getLib stdenv.cc.cc}/lib"
       "${lib.getLib pkgs.glibc}/lib"
-      "${lib.getLib libgccjit}/lib/gcc/x86_64-unknown-linux-gnu/9.3.0"
+      "${lib.getLib libgccjit}/lib/gcc/x86_64-unknown-linux-gnu/${libgccjit.version}"
     ];
   };
 
@@ -102,9 +100,6 @@
 
   # enable docker
   virtualisation.docker.enable = true;
-
-  # enable fish shell
-  programs.fish.enable = true;
 
   # home-manager configuration
   home-manager = {
