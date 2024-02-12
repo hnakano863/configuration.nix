@@ -458,7 +458,8 @@
   (leaf org-latex
     :doc "setting for org-latex"
     :custom
-    (org-latex-packages-alist . '(("" "physics" t)))
+    (org-latex-packages-alist . '(("" "physics" t)
+				  ("" "mhchem" t)))
     (org-format-latex-options
      . '(:foreground default
 		     :background default
