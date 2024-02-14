@@ -9,6 +9,10 @@
     pkgs-unstable.google-cloud-sdk
   ];
 
+  home.sessionVariables = {
+    AWS_VAULT_BACKEND = "pass";
+  };
+
   # シェルの起動時スクリプトは共通化しない
   programs.bash.initExtra = lib.mkAfter ''
     export GPG_TTY=$(tty)
