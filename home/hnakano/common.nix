@@ -82,7 +82,6 @@
       github.user = "hnakano863";
       credential.helper =
         "${pkgs.pass-git-helper.out}/bin/pass-git-helper";
-      init.defaultBranch = "main";
     };
   };
 
