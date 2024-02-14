@@ -7,6 +7,7 @@
     gopass
     git-credential-gopass
     awscli2
+    aws-vault
     pkgs-unstable.google-cloud-sdk
   ];
 
