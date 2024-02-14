@@ -16,11 +16,14 @@
     extraConfig.credential.helper = "gopass";
   };
 
+  # シェルの起動時スクリプトは共通化しない
+  programs.bash.initExtra = lib.mkAfter ''
+    export GPG_TTY=$(tty)
+    eval "$(${pkgs.direnv}/bin/direnv hook bash)"
+    exec fish
+  '';
+
   programs.fish.functions = {
     ec.body = "emacsclient -c";
   };
-
-  programs.fish.interactiveShellInit = ''
-    set -gx GPG_TTY (tty)
-  '';
 }

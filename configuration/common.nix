@@ -23,7 +23,6 @@
   # nix registry config
   nix.registry = {
     nixpkgs.flake = attrs.nixpkgs;
-    lean4.flake = attrs.lean4;
   };
 
   nixpkgs.config = {
@@ -46,8 +45,6 @@
     feh docker-compose
   ];
 
-  environment.pathsToLink = [ "/share/fish" ];
-
   fonts.enableDefaultPackages = true;
   fonts.enableGhostscriptFonts = true;
   fonts.fontDir.enable = true;
@@ -67,7 +64,7 @@
     LIBRARY_PATH = with pkgs; builtins.concatStringsSep ":" [
       "${lib.getLib stdenv.cc.cc}/lib"
       "${lib.getLib pkgs.glibc}/lib"
-      "${lib.getLib libgccjit}/lib/gcc/x86_64-unknown-linux-gnu/9.3.0"
+      "${lib.getLib libgccjit}/lib/gcc/x86_64-unknown-linux-gnu/${libgccjit.version}"
     ];
   };
 
@@ -104,9 +101,6 @@
   # enable docker
   virtualisation.docker.enable = true;
 
-  # enable fish shell
-  programs.fish.enable = true;
-
   # home-manager configuration
   home-manager = {
     useGlobalPkgs = true;
@@ -118,7 +112,6 @@
       sys = config.nixpkgs.localSystem.system;
     in {
       pkgs-unstable = attrs.nixpkgs-unstable.legacyPackages."${sys}";
-      lean4-packages = attrs.lean4.packages.${sys};
     };
   };
 }

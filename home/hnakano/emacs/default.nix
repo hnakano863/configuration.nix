@@ -1,4 +1,4 @@
-{ config, pkgs, lib, pkgs-unstable, lean4-packages, ... }:
+{ config, pkgs, lib, pkgs-unstable, ... }:
 with pkgs;
 with lib;
 let
@@ -16,7 +16,7 @@ in
   ];
 
   programs.emacs.enable = true;
-  programs.emacs.overrides = import ./overrides { inherit pkgs lean4-packages; };
+  programs.emacs.overrides = import ./overrides { inherit pkgs; };
   programs.emacs.package = emacs29;
 
   programs.emacs.compileInit = {

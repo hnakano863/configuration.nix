@@ -15,10 +15,6 @@
     keep-outputs = true
     keep-derivations = true
     max-jobs = auto  # Allow building multiple derivations in parallel
-
-    # Allow fetching build results from the Lean Cachix cache
-    trusted-substituters = https://lean4.cachix.org/
-    trusted-public-keys = cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY= lean4.cachix.org-1:mawtxSxcaiWE24xCXXgh3qnvlTkyU7evRRnGeAhD4Wk=
   '';
 
   boot.isContainer = false;
@@ -44,11 +40,13 @@
 
   # Select internationalisation properties.
   i18n.defaultLocale = "ja_JP.UTF-8";
-  i18n.inputMethod.enabled = "fcitx5";
-  i18n.inputMethod.fcitx5.addons = with pkgs; [
-    fcitx5-gtk
-    fcitx5-skk
-  ];
+  i18n.inputMethod = {
+    enabled = "fcitx5";
+    fcitx5.addons = with pkgs; [
+      fcitx5-gtk
+      fcitx5-mozc
+    ];
+  };
   console = {
     font = "Lat2-Terminus16";
     useXkbConfig = true;
@@ -119,7 +117,10 @@
       extraPackages = ps: with ps; [ xmonad-contrib ];
     };
 
-    desktopManager.gnome.enable = false;
+    desktopManager = {
+      gnome.enable = false;
+      runXdgAutostartIfNone = true;
+    };
 
     displayManager = {
       defaultSession = "none+xmonad";
