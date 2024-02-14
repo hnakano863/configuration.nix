@@ -4,18 +4,10 @@
 {
 
   home.packages = with pkgs; [
-    gopass
-    git-credential-gopass
     awscli2
     aws-vault
     pkgs-unstable.google-cloud-sdk
   ];
-
-  programs.git = {
-    userName = "hnakano863";
-    userEmail = "notchi863@gmail.com";
-    extraConfig.credential.helper = "gopass";
-  };
 
   # シェルの起動時スクリプトは共通化しない
   programs.bash.initExtra = lib.mkAfter ''

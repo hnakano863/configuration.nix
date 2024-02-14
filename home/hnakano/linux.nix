@@ -46,20 +46,8 @@
   };
 
   programs.git = {
-    userName = "hnakano863";
-    userEmail = "notchi863@gmail.com";
-    extraConfig = {
-      credential.helper =
-        "${pkgs.pass-git-helper.out}/bin/pass-git-helper";
-      init.defaultBranch = "main";
-      safe.directory = "/home/hnakano/repos/configuration.nix";
-    };
+    extraConfig.safe.directory = "/home/hnakano/repos/configuration.nix";
   };
-
-  home.file.".config/pass-git-helper/git-pass-mapping.ini".text = ''
-  [github.com*]
-  target=dev/github.com
-  '';
 
   programs.rofi = {
     enable = true;
@@ -67,8 +55,6 @@
     theme = "gruvbox-dark";
     terminal = "${config.programs.alacritty.package}/bin/alacritty";
   };
-
-  programs.password-store.enable = true;
 
   services.dropbox.enable = true;
 

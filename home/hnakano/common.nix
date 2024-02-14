@@ -72,14 +72,24 @@
 
   programs.git = {
     enable = true;
+    userName = "hnakano863";
+    userEmail = "notchi863@gmail.com";
     ignores = [ "*~" "*.swp" ];
     extraConfig = {
       core.askPass = "";
       pull.rebase = false;
       init.defaultBranch = "main";
       github.user = "hnakano863";
+      credential.helper =
+        "${pkgs.pass-git-helper.out}/bin/pass-git-helper";
+      init.defaultBranch = "main";
     };
   };
+
+  home.file.".config/pass-git-helper/git-pass-mapping.ini".text = ''
+  [github.com*]
+  target=dev/github.com
+  '';
 
   programs.vim = {
     enable = true;
@@ -91,6 +101,8 @@
     enableBashIntegration = true;
     enableFishIntegration = true;
   };
+
+  programs.password-store.enable = true;
 
   # This value determines the Home Manager release that your
   # configuration is compatible with. This helps avoid breakage
