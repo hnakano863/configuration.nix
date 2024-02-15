@@ -17,7 +17,7 @@
   programs.bash.initExtra = lib.mkAfter ''
     export GPG_TTY=$(tty)
     eval "$(${pkgs.direnv}/bin/direnv hook bash)"
-    exec fish
+    if [ $SHLVL -eq 1 ]; then exec fish fi
   '';
 
   programs.fish.functions = {
