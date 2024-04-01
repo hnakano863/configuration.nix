@@ -7,6 +7,7 @@
     awscli2
     aws-vault
     pkgs-unstable.google-cloud-sdk
+    terraform
   ];
 
   home.sessionVariables = {
