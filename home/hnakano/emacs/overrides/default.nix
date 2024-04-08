@@ -20,4 +20,6 @@ self: super: {
 
   lean4-mode = self.callPackage ./lean4-mode.nix { inherit (pkgs) fetchFromGitHub writeText; };
 
+  copilot = self.callPackage ./copilot.nix { inherit (pkgs) fetchFromGitHub writeText; };
+
 }

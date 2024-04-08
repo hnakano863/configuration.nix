@@ -13,6 +13,7 @@
       company-coq
       consult
       consult-flycheck
+      copilot
       csv-mode
       ddskk
       ddskk-posframe
