@@ -608,7 +608,7 @@ _j_: next _k_: previous _s_: stage _r_: revert _d_: popup diff"
       "SPC" 'consult-buffer
       "b" '(:ignore t :wk "buffer")
       "f" '(:ignore t :wk "file")
-      "g" '(:ignode t :wk "git")
+      "g" '(:ignore t :wk "git")
       "h" '(:ignore t :wk "help")
       "o" '(:ignore t :wk "org")
       "q" '(:ignore t :wk "quit")
