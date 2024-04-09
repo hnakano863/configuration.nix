@@ -32,6 +32,7 @@
     nix-alien
     direnv
     nix-direnv
+    nodejs_21 # for copilot.el
   ];
 
   home.sessionPath = [ "${config.home.homeDirectory}/.local/bin" ];
