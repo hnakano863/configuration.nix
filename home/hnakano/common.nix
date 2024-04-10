@@ -32,6 +32,7 @@
     nix-alien
     direnv
     nix-direnv
+    terraform
   ];
 
   home.sessionPath = [ "${config.home.homeDirectory}/.local/bin" ];
