@@ -84,6 +84,7 @@
       slime
       slime-company
       smartparens
+      terraform-mode
       toml-mode
       treemacs
       treemacs-evil
