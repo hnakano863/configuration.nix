@@ -34,6 +34,7 @@
     nix-direnv
     nodejs_21 # for copilot.el
     terraform
+    docker-credential-helpers
   ];
 
   home.sessionPath = [ "${config.home.homeDirectory}/.local/bin" ];
@@ -90,6 +91,12 @@
   home.file.".config/pass-git-helper/git-pass-mapping.ini".text = ''
   [github.com*]
   target=dev/github.com
+  '';
+
+  home.file.".docker/config.json".text = ''
+  {
+      "credStore": "pass"
+  }
   '';
 
   programs.vim = {
