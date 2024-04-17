@@ -93,12 +93,6 @@
   target=dev/github.com
   '';
 
-  home.file.".docker/config.json".text = ''
-  {
-      "credStore": "pass"
-  }
-  '';
-
   programs.vim = {
     enable = true;
     plugins = with pkgs.vimPlugins; [ vim-nix ];
