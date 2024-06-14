@@ -22,8 +22,8 @@
 
     hnakano863.url = "github:hnakano863/nixos-overlay";
 
-    eijiro.url = "path:/home/hnakano/ghq/github.com/hnakano/eijiro.nix";
-    eijiro.inputs.nixpkgs.follows = "nixpkgs";
+    # eijiro.url = "path:/home/hnakano/ghq/github.com/hnakano/eijiro.nix";
+    # eijiro.inputs.nixpkgs.follows = "nixpkgs";
 
   };
 
@@ -38,7 +38,7 @@
     , nix-ld
     , nix-alien
     , hnakano863
-    , eijiro
+    # , eijiro
     } @ attrs:
 
     {

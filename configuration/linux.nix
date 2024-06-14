@@ -7,7 +7,7 @@
     attrs.nixpkgs.nixosModules.notDetected
     ./common.nix
     ./hardware.nix
-    ./guix.nix
+    # ./guix.nix
   ];
 
   nix.extraOptions = ''
@@ -27,11 +27,8 @@
   networking.networkmanager.enable = true;
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
-  # The global useDHCP flag is deprecated, therefore explicitly set to false here.
-  # Per-interface useDHCP will be mandatory in the future, so this generated config
-  # replicates the default behaviour.
   networking.useDHCP = false;
-  networking.interfaces.enp3s0.useDHCP = true;
+  networking.interfaces.enp1s0.useDHCP = true;
   networking.interfaces.wlp2s0.useDHCP = true;
 
   # Configure network proxy if necessary
@@ -123,7 +120,7 @@
     };
 
     displayManager = {
-      defaultSession = "none+xmonad";
+      defaultSession = "none+i3";
       lightdm.enable = true;
       gdm.enable = false;
       gdm.wayland = false;
@@ -144,6 +141,6 @@
   # this value at the release version of the first install of this system.
   # Before changing this value read the documentation for this option
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
-  system.stateVersion = "20.03"; # Did you read the comment?
+  system.stateVersion = "24.05"; # Did you read the comment?
 
 }

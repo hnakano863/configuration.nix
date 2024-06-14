@@ -34,7 +34,7 @@
     emacs-overlay.overlay
     nix-alien.overlays.default
     hnakano863.overlay
-    eijiro.overlay
+    # eijiro.overlay
     nix-direnv.overlays.default
   ];
 
@@ -92,7 +92,7 @@
   # dictd service
   services.dictd = {
     enable = true;
-    DBs = with pkgs.dictdDBs; [ wiktionary wordnet eng2jpn eijiro ];
+    DBs = with pkgs.dictdDBs; [ wiktionary wordnet eng2jpn ]; # eijiro ];
   };
 
   services.emacs.enable = true;

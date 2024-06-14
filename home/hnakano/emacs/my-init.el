@@ -231,7 +231,7 @@
 (leaf dictionary
   :custom
   (dictionary-server . "localhost")
-  (dictionary-default-dictionary . "dictd-db-eijiro")
+  ; (dictionary-default-dictionary . "dictd-db-eijiro")
   (dictionary-default-strategy . "re")
   (dictionary-default-popup-strategy . "re"))
 
@@ -285,11 +285,11 @@
     :mode ("\\.R\\'" . R-mode))
   (leaf fish-mode
     :mode "\\.fish\\'")
-  (leaf geiser
-    :pre-setq
-    (geiser-active-implementations . '(guile))
-    :custom
-    (geiser-guile-binary . "~/.guix-profile/bin/guile"))
+;  (leaf geiser
+;    :pre-setq
+;    (geiser-active-implementations . '(guile))
+;    :custom
+;    (geiser-guile-binary . "~/.guix-profile/bin/guile"))
   (leaf gnuplot
     :mode ("\\.gp\\'" . gnuplot-mode)
     :custom (gnuplot-program . "@gnuplot@/bin/gnuplot"))

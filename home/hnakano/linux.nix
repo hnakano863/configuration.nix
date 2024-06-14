@@ -24,15 +24,15 @@
   ];
 
   home.sessionVariables = {
-    GUIX_LOCPATH = "${config.home.homeDirectory}/.guix-profile/lib/locale";
-    GUIX_PROFILE = "${config.home.homeDirectory}/.config/guix/current";
-    GUIX_EXTRA_PROFILES = "${config.home.homeDirectory}/.guix-extra-profiles";
+    # GUIX_LOCPATH = "${config.home.homeDirectory}/.guix-profile/lib/locale";
+    # GUIX_PROFILE = "${config.home.homeDirectory}/.config/guix/current";
+    # GUIX_EXTRA_PROFILES = "${config.home.homeDirectory}/.guix-extra-profiles";
   };
 
   programs.bash = {
-    profileExtra = lib.mkAfter ''
-      source "$GUIX_PROFILE/etc/profile"
-    '';
+    # profileExtra = lib.mkAfter ''
+    #   source "$GUIX_PROFILE/etc/profile"
+    # '';
     # シェルの起動時スクリプトは共通化しない
     initExtra = lib.mkAfter ''
       export GPG_TTY=$(tty)
