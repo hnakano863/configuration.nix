@@ -566,8 +566,8 @@
     (org-roam-setup))
   (leaf org-cite
     :custom
-    (org-cite-global-bibliography . '("~/Dropbox/bibliograhy/default.bib"))
-    (citar-bibliography . '("~/Dropbox/bibliograhy/default.bib"))
+    (org-cite-global-bibliography . '("~/Dropbox/bibliography/default.bib"))
+    (citar-bibliography . '("~/Dropbox/bibliography/default.bib"))
     (org-cite-insert-processor . 'citar)
     (org-cite-follow-processor . 'citar)
     (org-cite-activate-processor . 'citar)))
