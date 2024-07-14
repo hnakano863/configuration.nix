@@ -116,7 +116,7 @@
 
     windowManager.xmonad = {
       enable = true;
-      extraPackages = ps: with ps; [ xmonad-contrib ];
+      enableContribAndExtras = true;
     };
 
     desktopManager = {
