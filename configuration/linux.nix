@@ -117,6 +117,7 @@
     windowManager.xmonad = {
       enable = true;
       enableContribAndExtras = true;
+      config = builtins.readFile ./xmonad/xmonad.hs;
     };
 
     desktopManager = {
