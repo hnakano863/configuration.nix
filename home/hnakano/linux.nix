@@ -57,6 +57,8 @@
     terminal = "${config.programs.alacritty.package}/bin/alacritty";
   };
 
+  programs.autorandr.enable = true;
+
   services.dropbox.enable = true;
 
 }
