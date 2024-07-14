@@ -51,9 +51,10 @@
 
   programs.rofi = {
     enable = true;
-    extraConfig.modi = "drun,window";
+    extraConfig.modi = "drun,window,power-menu:rofi-power-menu";
     theme = "gruvbox-dark";
     terminal = "${config.programs.alacritty.package}/bin/alacritty";
+    plugins = with pkgs; [ rofi-power-menu ];
   };
 
   services.dropbox.enable = true;
