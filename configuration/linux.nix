@@ -55,7 +55,7 @@
 
   # List services that you want to enable:
   services.picom = {
-    enable = false;
+    enable = true;
     fade = true;
     inactiveOpacity = 0.8;
     fadeDelta = 6;
