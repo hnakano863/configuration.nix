@@ -75,7 +75,7 @@
   # programs.mtr.enable = true;
 
   programs.gnupg.agent.enable = true;
-  programs.gnupg.agent.pinentryFlavor = "tty";
+  programs.gnupg.agent.pinentryPackage = pkgs.pinentry-tty;
 
   services.mpd.enable = false;
 
