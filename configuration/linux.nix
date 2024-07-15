@@ -8,6 +8,7 @@
     ./common.nix
     ./hardware.nix
     # ./guix.nix
+    ./xmonad
   ];
 
   nix.extraOptions = ''
@@ -112,12 +113,6 @@
         pavucontrol
         alacritty
       ];
-    };
-
-    windowManager.xmonad = {
-      enable = true;
-      enableContribAndExtras = true;
-      config = builtins.readFile ./xmonad/xmonad.hs;
     };
 
     desktopManager = {

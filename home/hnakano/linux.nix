@@ -14,10 +14,8 @@
     vivaldi
     brave
     dmenu
-    haskellPackages.xmobar
     rofi-power-menu
     xorg.xmessage
-    xmonad-log
     htop
     trayer
     nyxt
