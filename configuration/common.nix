@@ -9,7 +9,6 @@
 
   imports = with attrs; [
     home-manager.nixosModules.home-manager
-    nix-ld.nixosModules.nix-ld
     ./users.nix
   ];
 
@@ -67,6 +66,9 @@
       "${lib.getLib libgccjit}/lib/gcc/x86_64-unknown-linux-gnu/${libgccjit.version}"
     ];
   };
+
+  # enable nix-ld
+  programs.nix-ld.enable = true;
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
