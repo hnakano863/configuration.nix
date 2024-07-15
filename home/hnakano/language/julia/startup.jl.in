@@ -12,24 +12,5 @@ let
     end
 end
 
-atreplinit() do repl
-    try
-        @eval using OhMyREPL
-    catch e
-        @warn "error while importing OhMyREPL" e
-    end
-end
-
-using PkgTemplates
-
-template = Template(
-    dir = "~/ghq/github.com/hnakano863",
-    julia = v"1.2.0",
-    plugins = [
-        !CompatHelper,
-        !TagBot,
-        Readme(badge_order = DataType[]),
-    ],
-)
-
+using OhMyREPL
 using Revise
