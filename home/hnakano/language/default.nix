@@ -6,7 +6,7 @@
   ];
 
   home.packages = with pkgs; [
-    rnix-lsp
+    nixd
     deno
     sbcl
     clisp
