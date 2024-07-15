@@ -92,17 +92,17 @@
 
   services.smartd.notifications.x11.enable = true;
 
+  # define default session
+  services.displayManager.defaultSession = "none+xmonad";
+
   services.xserver = {
     # for configuration
     autorun = true;
 
     # Enable the X11 windowing system.
     enable = true;
-    layout = "jp";
-    xkbOptions = "ctrl:swapcaps";
-
-    # Enable touchpad support.
-    libinput.enable = true;
+    xkb.layout = "jp";
+    xkb.options = "ctrl:swapcaps";
 
     # desktop environment
     windowManager.i3 = {
@@ -121,12 +121,14 @@
     };
 
     displayManager = {
-      defaultSession = "none+xmonad";
       lightdm.enable = true;
       gdm.enable = false;
       gdm.wayland = false;
     };
   };
+
+  # Enable touchpad support.
+  services.libinput.enable = true;
 
   # Enable opengl
   hardware.opengl.enable = true;
