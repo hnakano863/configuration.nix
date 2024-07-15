@@ -32,7 +32,7 @@
     nix-alien
     direnv
     nix-direnv
-    nodejs_21 # for copilot.el
+    nodejs_22 # for copilot.el
     terraform
   ];
 
