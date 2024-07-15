@@ -11,8 +11,7 @@ final: prev: {
   # my vivaldi
   myVivaldi = prev.vivaldi.override {
     proprietaryCodecs = true;
-    inherit (prev) vivaldi-ffmpeg-codecs;
     enableWidevine = true;
-    widevine-cdm = (prev) widevine-cdm;
+    inherit (prev) vivaldi-ffmpeg-codecs widevine-cdm;
   };
 }
