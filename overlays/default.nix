@@ -8,4 +8,9 @@ final: prev: {
   yaskkserv2 = final.callPackage ./skk-dicts/yaskkserv2.nix {};
   dbskkd-cdb = final.callPackage ./skk-dicts/dbskkd-cdb.nix {};
 
+  # my vivaldi
+  myVivaldi = prev.vivaldi.override {
+    proprietaryCodecs = true;
+    inherit (prev) vivaldi-ffmpeg-codecs;
+  };
 }

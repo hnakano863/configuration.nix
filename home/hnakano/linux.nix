@@ -11,10 +11,7 @@
     thunderbird
     gimp
     vlc
-    (vivaldi.override {
-      proprietaryCodecs = true;
-      inherit vivaldi-ffmpeg-codecs;
-    })
+    myVivaldi
     brave
     dmenu
     rofi-power-menu
