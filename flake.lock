@@ -160,21 +160,6 @@
         "type": "github"
       }
     },
-    "hnakano863": {
-      "locked": {
-        "lastModified": 1673012307,
-        "narHash": "sha256-5nOZyhsS7IkAiPVSu+2RJnZv18+CSabVJuhdg/t6YPw=",
-        "owner": "hnakano863",
-        "repo": "nixos-overlay",
-        "rev": "26d0f8648211adf8827bcb0edcb2bd8d0ab46ab1",
-        "type": "github"
-      },
-      "original": {
-        "owner": "hnakano863",
-        "repo": "nixos-overlay",
-        "type": "github"
-      }
-    },
     "home-manager": {
       "inputs": {
         "nixpkgs": [
@@ -402,7 +387,6 @@
     "root": {
       "inputs": {
         "emacs-overlay": "emacs-overlay",
-        "hnakano863": "hnakano863",
         "home-manager": "home-manager",
         "nix-alien": "nix-alien",
         "nix-direnv": "nix-direnv",
