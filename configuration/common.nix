@@ -9,7 +9,6 @@
 
   imports = with attrs; [
     home-manager.nixosModules.home-manager
-    nix-ld.nixosModules.nix-ld
     ./users.nix
   ];
 
@@ -33,9 +32,9 @@
   nixpkgs.overlays = with attrs; [
     emacs-overlay.overlay
     nix-alien.overlays.default
-    hnakano863.overlay
-    eijiro.overlay
+    # eijiro.overlay
     nix-direnv.overlays.default
+    (import ../overlays)
   ];
 
   # List packages installed in system profile. To search, run:
@@ -68,12 +67,15 @@
     ];
   };
 
+  # enable nix-ld
+  programs.nix-ld.enable = true;
+
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
   # programs.mtr.enable = true;
 
   programs.gnupg.agent.enable = true;
-  programs.gnupg.agent.pinentryFlavor = "tty";
+  programs.gnupg.agent.pinentryPackage = pkgs.pinentry-tty;
 
   services.mpd.enable = false;
 
@@ -92,7 +94,7 @@
   # dictd service
   services.dictd = {
     enable = true;
-    DBs = with pkgs.dictdDBs; [ wiktionary wordnet eng2jpn eijiro ];
+    DBs = with pkgs.dictdDBs; [ wiktionary wordnet eng2jpn ]; # eijiro ];
   };
 
   services.emacs.enable = true;

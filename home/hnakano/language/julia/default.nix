@@ -1,16 +1,29 @@
-{ config, pkgs, lib, pkgs-unstable, ... }:
+{ config, pkgs, lib, ... }:
+
 with pkgs;
 with lib;
+
 let
+
   startup-jl = runCommand "startup.jl" {
     inherit jupyterCommand;
   } ''substituteAll "${./startup.jl.in}" $out '';
+
+  myJulia = julia.withPackages [
+    "BenchmarkTools"
+    "DrWatson"
+    "IJulia"
+    "LanguageServer"
+    "OhMyREPL"
+    "Pluto"
+    "Revise"
+  ];
+
 in
 {
   home.packages = [
-    pkgs-unstable.julia
+    myJulia
   ];
 
   home.file.".julia/config/startup.jl".source = startup-jl;
-  home.file.".julia/environments/v1.9".source = ./environments/v1.9;
 }

@@ -1,9 +1,9 @@
 {
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-23.11";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-24.05";
     nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
 
-    home-manager.url = "github:nix-community/home-manager/release-23.11";
+    home-manager.url = "github:nix-community/home-manager/release-24.05";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
     emacs-overlay.url = "github:nix-community/emacs-overlay";
@@ -20,10 +20,8 @@
     nix-alien.url = "github:thiagokokada/nix-alien";
     nix-alien.inputs.nixpkgs.follows = "nixpkgs";
 
-    hnakano863.url = "github:hnakano863/nixos-overlay";
-
-    eijiro.url = "path:/home/hnakano/ghq/github.com/hnakano/eijiro.nix";
-    eijiro.inputs.nixpkgs.follows = "nixpkgs";
+    # eijiro.url = "path:/home/hnakano/ghq/github.com/hnakano/eijiro.nix";
+    # eijiro.inputs.nixpkgs.follows = "nixpkgs";
 
   };
 
@@ -37,8 +35,7 @@
     , nix-direnv
     , nix-ld
     , nix-alien
-    , hnakano863
-    , eijiro
+    # , eijiro
     } @ attrs:
 
     {

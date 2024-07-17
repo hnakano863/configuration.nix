@@ -7,7 +7,8 @@
     attrs.nixpkgs.nixosModules.notDetected
     ./common.nix
     ./hardware.nix
-    ./guix.nix
+    # ./guix.nix
+    ./xmonad
   ];
 
   nix.extraOptions = ''
@@ -27,11 +28,8 @@
   networking.networkmanager.enable = true;
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
-  # The global useDHCP flag is deprecated, therefore explicitly set to false here.
-  # Per-interface useDHCP will be mandatory in the future, so this generated config
-  # replicates the default behaviour.
   networking.useDHCP = false;
-  networking.interfaces.enp3s0.useDHCP = true;
+  networking.interfaces.enp1s0.useDHCP = true;
   networking.interfaces.wlp2s0.useDHCP = true;
 
   # Configure network proxy if necessary
@@ -82,6 +80,11 @@
   # Enable power management
   powerManagement.enable = true;
 
+  # Enable bluetooth
+  hardware.bluetooth.enable = true;
+  hardware.bluetooth.powerOnBoot = true;
+  services.blueman.enable = true;
+
   # Enable dconf for gnome
   programs.dconf.enable = false;
 
@@ -89,17 +92,17 @@
 
   services.smartd.notifications.x11.enable = true;
 
+  # define default session
+  services.displayManager.defaultSession = "none+xmonad";
+
   services.xserver = {
     # for configuration
     autorun = true;
 
     # Enable the X11 windowing system.
     enable = true;
-    layout = "jp";
-    xkbOptions = "ctrl:swapcaps";
-
-    # Enable touchpad support.
-    libinput.enable = true;
+    xkb.layout = "jp";
+    xkb.options = "ctrl:swapcaps";
 
     # desktop environment
     windowManager.i3 = {
@@ -112,23 +115,20 @@
       ];
     };
 
-    windowManager.xmonad = {
-      enable = true;
-      extraPackages = ps: with ps; [ xmonad-contrib ];
-    };
-
     desktopManager = {
       gnome.enable = false;
       runXdgAutostartIfNone = true;
     };
 
     displayManager = {
-      defaultSession = "none+xmonad";
       lightdm.enable = true;
       gdm.enable = false;
       gdm.wayland = false;
     };
   };
+
+  # Enable touchpad support.
+  services.libinput.enable = true;
 
   # Enable opengl
   hardware.opengl.enable = true;
@@ -144,6 +144,6 @@
   # this value at the release version of the first install of this system.
   # Before changing this value read the documentation for this option
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
-  system.stateVersion = "20.03"; # Did you read the comment?
+  system.stateVersion = "24.05"; # Did you read the comment?
 
 }
