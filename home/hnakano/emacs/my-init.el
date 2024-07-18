@@ -83,7 +83,9 @@
 (leaf magit
   :custom
   (magit-process-find-password-functions . '(magit-process-password-auth-source))
-  :hook (after-save-hook . magit-after-save-refresh-status))
+  :hook (after-save-hook . magit-after-save-refresh-status)
+  :config
+  (setenv "PASSWORD_STORE_DIR" "/home/hnakano/.local/share/password-store"))
 
 (leaf which-key
   :global-minor-mode t
