@@ -52,6 +52,7 @@
   `(read-process-output-max . ,(* 3 1024 1024))
   (backup-directory-alist . '((".*" . "/tmp/")))
   (auto-save-file-name-transforms . '((".*" "/tmp/" t)))
+  (epg-pinentry-mode . 'loopback)
   :hook
   (before-save-hook . delete-trailing-whitespace)
   (emacs-startup-hook . print-startup-stats)
