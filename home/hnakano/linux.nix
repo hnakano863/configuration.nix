@@ -34,7 +34,6 @@
     # '';
     # シェルの起動時スクリプトは共通化しない
     initExtra = lib.mkAfter ''
-      export GPG_TTY=$(tty)
       eval "$(${pkgs.direnv}/bin/direnv hook bash)"
       exec fish
     '';
@@ -42,10 +41,6 @@
 
   programs.fish.functions = {
     lsprof.body = "ls $GUIX_EXTRA_PROFILES";
-  };
-
-  programs.git = {
-    extraConfig.safe.directory = "/home/hnakano/repos/configuration.nix";
   };
 
   programs.rofi = {

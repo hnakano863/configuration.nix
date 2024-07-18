@@ -52,6 +52,7 @@
   `(read-process-output-max . ,(* 3 1024 1024))
   (backup-directory-alist . '((".*" . "/tmp/")))
   (auto-save-file-name-transforms . '((".*" "/tmp/" t)))
+  (epg-pinentry-mode . 'loopback)
   :hook
   (before-save-hook . delete-trailing-whitespace)
   (emacs-startup-hook . print-startup-stats)
@@ -66,6 +67,19 @@
 (leaf recentf :global-minor-mode t)
 (leaf undo-fu-session :global-minor-mode global-undo-fu-session-mode)
 (leaf winum :global-minor-mode t)
+
+(leaf auth-source
+  :custom
+  (auth-source-pass-filename . "~/.local/share/password-store")
+  :config
+  (auth-source-pass-enable))
+
+(leaf magit
+  :custom
+  (magit-process-find-password-functions . '(magit-process-password-auth-source))
+  :hook (after-save-hook . magit-after-save-refresh-status)
+  :config
+  (setenv "PASSWORD_STORE_DIR" "/home/hnakano/.local/share/password-store"))
 
 (leaf which-key
   :global-minor-mode t
