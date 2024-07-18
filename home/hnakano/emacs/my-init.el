@@ -73,7 +73,17 @@
 (leaf recentf :global-minor-mode t)
 (leaf undo-fu-session :global-minor-mode global-undo-fu-session-mode)
 (leaf winum :global-minor-mode t)
-(leaf magit :hook (after-save-hook . magit-after-save-refresh-status))
+
+(leaf auth-source
+  :custom
+  (auth-source-pass-filename . "~/.local/share/password-store")
+  :config
+  (auth-source-pass-enable))
+
+(leaf magit
+  :custom
+  (magit-process-find-password-functions . '(magit-process-password-auth-source))
+  :hook (after-save-hook . magit-after-save-refresh-status))
 
 (leaf which-key
   :global-minor-mode t
