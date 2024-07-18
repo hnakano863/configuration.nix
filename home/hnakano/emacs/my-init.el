@@ -61,6 +61,12 @@
   (blink-cursor-mode -1)
   (add-hook 'term-mode-hook  #'(lambda () (setq-local global-hl-line-mode nil))))
 
+(leaf auth-source
+  :custom
+  (auth-source-pass-filename . "~/.local/share/.password-store")
+  :config
+  (auth-source-pass-enable))
+
 (leaf git-gutter :global-minor-mode global-git-gutter-mode)
 (leaf hideshow :hook (emacs-lisp-mode-hook . hs-minor-mode))
 (leaf hl-line :global-minor-mode global-hl-line-mode)
