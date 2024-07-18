@@ -43,10 +43,6 @@
     lsprof.body = "ls $GUIX_EXTRA_PROFILES";
   };
 
-  programs.git = {
-    extraConfig.safe.directory = "/home/hnakano/repos/configuration.nix";
-  };
-
   programs.rofi = {
     enable = true;
     extraConfig.modi = "drun,window,power-menu:rofi-power-menu";
