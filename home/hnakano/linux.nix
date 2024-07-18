@@ -34,7 +34,6 @@
     # '';
     # シェルの起動時スクリプトは共通化しない
     initExtra = lib.mkAfter ''
-      export GPG_TTY=$(tty)
       eval "$(${pkgs.direnv}/bin/direnv hook bash)"
       exec fish
     '';
