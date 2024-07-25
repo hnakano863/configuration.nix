@@ -7,6 +7,7 @@
 
   home.packages = with pkgs; [
     nixd
+    coq
     deno
     sbcl
     clisp
