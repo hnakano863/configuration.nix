@@ -1,3 +1,4 @@
+{ config }:
 final: prev: {
 
   jupyterCommand = import ./jupyter-command { pkgs = prev; };
@@ -14,4 +15,10 @@ final: prev: {
     enableWidevine = true;
     inherit (prev) vivaldi-ffmpeg-codecs widevine-cdm;
   };
+
+  dataform-cli = (import ./dataform-cli {
+    pkgs = final;
+    system = config.nixpkgs.localSystem.system;
+    inherit (final) nodejs;
+  }).package;
 }

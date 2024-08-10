@@ -35,6 +35,7 @@
     nodejs_22 # for copilot.el
     terraform
     docker-credential-helpers
+    dataform-cli
   ];
 
   home.sessionPath = [ "${config.home.homeDirectory}/.local/bin" ];

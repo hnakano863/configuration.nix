@@ -34,7 +34,7 @@
     nix-alien.overlays.default
     # eijiro.overlay
     nix-direnv.overlays.default
-    (import ../overlays)
+    (import ../overlays { inherit config; })
   ];
 
   # List packages installed in system profile. To search, run:
