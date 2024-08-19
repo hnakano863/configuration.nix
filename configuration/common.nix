@@ -33,7 +33,6 @@
     emacs-overlay.overlay
     nix-alien.overlays.default
     # eijiro.overlay
-    nix-direnv.overlays.default
     (import ../overlays { inherit config; })
   ];
 

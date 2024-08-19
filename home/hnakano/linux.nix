@@ -34,7 +34,6 @@
     # '';
     # シェルの起動時スクリプトは共通化しない
     initExtra = lib.mkAfter ''
-      eval "$(${pkgs.direnv}/bin/direnv hook bash)"
       if [ $SHLVL -eq 1 ]; then
         exec fish
       fi

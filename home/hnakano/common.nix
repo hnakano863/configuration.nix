@@ -30,8 +30,6 @@
     electron
     nix-index-update
     nix-alien
-    direnv
-    nix-direnv
     nodejs_22 # for copilot.el
     terraform
     docker-credential-helpers
@@ -47,10 +45,6 @@
   fonts.fontconfig.enable = true;
 
   programs.bash.enable = true;
-
-  xdg.configFile."direnv/direnvrc".text = ''
-    source ${pkgs.nix-direnv}/share/nix-direnv/direnvrc
-  '';
 
   # programs.emacs.enable = true;
 
@@ -103,6 +97,13 @@
     enable = true;
     enableBashIntegration = true;
     enableFishIntegration = true;
+  };
+
+  programs.direnv = {
+    enable = true;
+    enableBashIntegration = true;
+    # enableFishIntegration = true; default
+    nix-direnv.enable = true;
   };
 
   programs.password-store.enable = true;
