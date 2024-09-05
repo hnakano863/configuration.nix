@@ -32,7 +32,7 @@
   nixpkgs.overlays = with attrs; [
     emacs-overlay.overlay
     nix-alien.overlays.default
-    # eijiro.overlay
+    eijiro.overlay
     (import ../overlays { inherit config; })
   ];
 
