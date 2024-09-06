@@ -17,8 +17,8 @@
     nix-alien.url = "github:thiagokokada/nix-alien";
     nix-alien.inputs.nixpkgs.follows = "nixpkgs";
 
-    # eijiro.url = "path:/home/hnakano/ghq/github.com/hnakano/eijiro.nix";
-    # eijiro.inputs.nixpkgs.follows = "nixpkgs";
+    eijiro.url = "path:/home/hnakano/ghq/github.com/hnakano/eijiro.nix";
+    eijiro.inputs.nixpkgs.follows = "nixpkgs";
 
   };
 
@@ -31,7 +31,7 @@
     , nixos-wsl
     , nix-ld
     , nix-alien
-    # , eijiro
+    , eijiro
     } @ attrs:
 
     {

@@ -93,7 +93,7 @@
   # dictd service
   services.dictd = {
     enable = true;
-    DBs = with pkgs.dictdDBs; [ wiktionary wordnet eng2jpn ]; # eijiro ];
+    DBs = with pkgs.dictdDBs; [ wiktionary wordnet eng2jpn eijiro ];
   };
 
   services.emacs.enable = true;

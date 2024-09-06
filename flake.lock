@@ -1,5 +1,22 @@
 {
   "nodes": {
+    "eijiro": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1725620077,
+        "narHash": "sha256-APu8jvRRHsDZyxzW7GFVnrUzZsRX8aRuoJa1AdeVqj8=",
+        "path": "/home/hnakano/ghq/github.com/hnakano/eijiro.nix",
+        "type": "path"
+      },
+      "original": {
+        "path": "/home/hnakano/ghq/github.com/hnakano/eijiro.nix",
+        "type": "path"
+      }
+    },
     "emacs-overlay": {
       "inputs": {
         "flake-utils": "flake-utils",
@@ -330,6 +347,7 @@
     },
     "root": {
       "inputs": {
+        "eijiro": "eijiro",
         "emacs-overlay": "emacs-overlay",
         "home-manager": "home-manager",
         "nix-alien": "nix-alien",
