@@ -36,6 +36,7 @@
     dataform-cli
     kubectl
     kind
+    jq
   ];
 
   home.sessionPath = [ "${config.home.homeDirectory}/.local/bin" ];
