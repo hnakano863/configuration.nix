@@ -34,6 +34,8 @@
     terraform
     docker-credential-helpers
     dataform-cli
+    kubectl
+    kind
   ];
 
   home.sessionPath = [ "${config.home.homeDirectory}/.local/bin" ];

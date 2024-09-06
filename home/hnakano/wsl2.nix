@@ -7,7 +7,6 @@
     awscli2
     aws-vault
     pkgs-unstable.google-cloud-sdk
-    kubectl
     kubernetes-helm
     eksctl
   ];
