@@ -9,6 +9,7 @@
     pkgs-unstable.google-cloud-sdk
     kubernetes-helm
     eksctl
+    minikube
   ];
 
   home.sessionVariables = {
