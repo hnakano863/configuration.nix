@@ -1,12 +1,18 @@
 # configuraion fraction specific to wsl2 home.
 { config, pkgs, lib, pkgs-unstable, ... }:
 
-{
+let
+  gcloud = pkgs-unstable.google-cloud-sdk;
+  gcloudWithComp = gcloud.withExtraComponents (with gcloud.components; [
+    gke-gcloud-auth-plugin
+  ]);
+
+in {
 
   home.packages = with pkgs; [
     awscli2
     aws-vault
-    pkgs-unstable.google-cloud-sdk
+    gcloudWithComp
     kubernetes-helm
     eksctl
     minikube
