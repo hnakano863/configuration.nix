@@ -1584,7 +1584,10 @@ let
     name = "_at_dataform_slash_cli";
     packageName = "@dataform/cli";
     version = "3.0.7";
-    src = ./.;
+    src = fetchurl {
+      url = "https://registry.npmjs.org/@dataform/cli/-/cli-3.0.7.tgz";
+      sha512 = "94CZoB6V4mEvW58yz9sh9QB7sJB57q1pjv1vuM4yq6vdy9puzJlTqSdfHZSFPOBdw1pB0Ge5pfWFBNaZZ5G6ew==";
+    };
     dependencies = [
       sources."@google-cloud/bigquery-5.12.0"
       sources."@google-cloud/common-3.10.0"
