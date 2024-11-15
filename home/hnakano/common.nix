@@ -37,6 +37,7 @@
     kubectl
     kind
     jq
+    look-at-me-sideways
   ];
 
   home.sessionPath = [ "${config.home.homeDirectory}/.local/bin" ];
