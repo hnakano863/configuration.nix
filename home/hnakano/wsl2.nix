@@ -16,6 +16,7 @@ in {
     kubernetes-helm
     eksctl
     minikube
+    look-at-me-sideways
   ];
 
   home.sessionVariables = {
