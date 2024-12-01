@@ -12,16 +12,18 @@
     ./users.nix
   ];
 
-  # use nix unstable and enable nix flake
-  nix.package = pkgs.nixFlakes;
-  nix.nixPath = [
-    "nixpkgs=${attrs.nixpkgs}"
-    "nixpkgs-unstable=${attrs.nixpkgs-unstable}"
-  ];
-
-  # nix registry config
-  nix.registry = {
-    nixpkgs.flake = attrs.nixpkgs;
+  nix = {
+    settings = {
+      experimental-features = ["nix-command" "flakes"];
+      max-jobs = "auto";
+    };
+    registry = {
+      nixpkgs.flake = attrs.nixpkgs;
+    };
+    nixPath = [
+      "nixpkgs=${attrs.nixpkgs}"
+      "nixpkgs-unstable=${attrs.nixpkgs-unstable}"
+    ];
   };
 
   nixpkgs.config = {

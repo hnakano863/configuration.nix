@@ -11,12 +11,11 @@
     ./xmonad
   ];
 
-  nix.extraOptions = ''
-    experimental-features = nix-command flakes
-    keep-outputs = true
-    keep-derivations = true
-    max-jobs = auto  # Allow building multiple derivations in parallel
-  '';
+  # extra settings for linux
+  nix.settings = {
+    keep-outputs = true;
+    keep-derivations = true;
+  };
 
   boot.isContainer = false;
 
