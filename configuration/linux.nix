@@ -69,10 +69,6 @@
     '';
   };
 
-  # Enable sound.
-  sound.enable = true;
-  hardware.pulseaudio.enable = true;
-
   #Enable backlight
   programs.light.enable = true;
 
