@@ -204,7 +204,7 @@
   (skk-cdb-coding-system . 'utf-8-unix)
   (skk-inhibit-ja-dic-search . t)
   (default-input-method . "japanese-skk")
-  (skk-use-color-cursor . nil)
+  (skk-use-color-cursor . t)
   :config
   (leaf ddskk-posframe
     :hook skk-mode-hook))
