@@ -181,7 +181,24 @@
     :require t))
 
 (leaf skk
-  :require (skk-autoloads skk-setup)
+  :preface
+  (defun skk-isearch-setup-maybe ()
+    (require 'skk-vars)
+    (when (or (eq skk-isearch-mode-enable 'always)
+              (and (boundp 'skk-mode)
+                   skk-mode
+                   skk-isearch-mode-enable))
+      (skk-isearch-mode-setup)))
+  (defun skk-isearch-cleanup-maybe ()
+    (require 'skk-vars)
+    (when (and (featurep 'skk-isearch)
+               skk-isearch-mode-enable)
+      (skk-isearch-mode-cleanup)))
+  :hook
+  (isearch-mode-hook . skk-isearch-setup-maybe)
+  (isearch-mode-end-hook . skk-isearch-cleanup-maybe)
+  :bind
+  ("C-x C-j" . skk-mode)
   :custom
   (skk-cdb-large-jisyo . "@skkdicts@/share/SKK-JISYO.combined+emoji.cdb")
   (skk-cdb-coding-system . 'utf-8-unix)
