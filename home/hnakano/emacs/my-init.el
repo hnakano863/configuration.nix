@@ -31,7 +31,6 @@
   (require 'smartparens)
   (require 'org)
   (require 'consult)
-  (require 'skk-server)
   (general-create-definer my/bind
     :states '(motion normal)
     :keymaps 'override)
