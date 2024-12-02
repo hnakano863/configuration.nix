@@ -397,7 +397,6 @@
 	(slime-mode-hook . (lambda ()
 			     (setq-local company-backends
 					 (cons 'company-slime company-backends)))))))
-  (leaf fsharp-mode :mode "\\.fs\\'")
   (leaf haskell-mode :mode "\\.hs\\'")
   (leaf csv-mode :mode "\\.csv\\'")
   (leaf plantuml-mode
