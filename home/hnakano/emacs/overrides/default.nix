@@ -1,7 +1,6 @@
 { pkgs, ... }:
 self: super: {
   evil = self.melpaPackages.evil;
-  ddskk = pkgs.callPackage ./ddskk {};
 
   treemacs = self.melpaBuild {
     inherit (super.treemacs) pname ename commit version src recipe meta;
