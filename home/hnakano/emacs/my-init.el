@@ -199,7 +199,7 @@
   :bind
   ("C-x C-j" . skk-mode)
   :custom
-  (skk-cdb-large-jisyo . "@skkdicts@/share/SKK-JISYO.combined+emoji.cdb")
+  (skk-cdb-large-jisyo . "@skkdicts@/share/skk/SKK-JISYO.combined.utf8.cdb")
   (skk-cdb-coding-system . 'utf-8-unix)
   (skk-inhibit-ja-dic-search . t)
   (default-input-method . "japanese-skk")

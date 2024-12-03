@@ -12,8 +12,11 @@ in {
   jupyterCommand = import ./jupyter-command { pkgs = prev; };
 
   # SKK dicts
-  skk-dicts = final.callPackage ./skk-dicts/override.nix { inherit (prev) skk-dicts; };
-  skk-dicts-cdb = final.callPackage ./skk-dicts/skk-dicts-cdb.nix {};
+  skkDictionariesUtf8 = prev.callPackage ./skk-dicts/utf8.nix { inherit (prev) skkDictionaries; };
+  skkDictionariesUtf8Cdb = prev.callPackage ./skk-dicts/cdb.nix {
+    skkDictionaries = final.skkDictionariesUtf8;
+  };
+
 
   # my vivaldi
   myVivaldi = prev.vivaldi.override {
