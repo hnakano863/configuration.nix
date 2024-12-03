@@ -14,13 +14,7 @@ NixOSでの利用を前提としています。
 ```nix /etc/nixos/configuration.nix
 { config, pkgs, lib, ... }:
 {
-  nix = {
-    package = pkgs.nixFlakes;
-	extraOptions = ''
-	  experimental-features nix-command flakes
-    '';
-  };
-
+  nix.settings.experimental-features = [ "nix-command" "flakes" ];
   environment.systemPackages = with pkgs; [ git ];
 
   ...
@@ -60,13 +54,7 @@ NixOSのシェルを再起動して、`/etc/nixos/configuration.nix`を編集し
 ```nix /etc/nixos/configuration.nix
 { config, pkgs, lib, ... }:
 {
-  nix = {
-    package = pkgs.nixFlakes;
-	extraOptions = ''
-	  experimental-features nix-command flakes
-    '';
-  };
-
+  nix.settings.experimental-features = [ "nix-command" "flakes" ];
   environment.systemPackages = with pkgs; [ git ];
 
   # WSL上のときだけ必要
