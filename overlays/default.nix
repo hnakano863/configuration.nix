@@ -18,7 +18,7 @@ in {
       owner = "skk-dev";
       repo = "skktools";
       rev = "1e8c457c2796c2e3d84badcf41386506d5010a7e";
-      sha256 = "1s8w7kwkyd8mn27dr8bvlrf0f2d3mykh33bhycgn0ck3q16v0yjn";
+      hash = "sha256-8sG6fMqoKjZ7c0S6O8Nf/GWv1y3TzZmE3FaJgp0YoRg=";
     };
   });
 
