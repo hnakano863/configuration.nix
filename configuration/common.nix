@@ -50,7 +50,7 @@
   fonts.fontDir.enable = true;
   fonts.packages = with pkgs; [
     noto-fonts
-    noto-fonts-cjk
+    noto-fonts-cjk-sans
     noto-fonts-emoji
     source-han-code-jp
     hackgen-font

@@ -38,7 +38,7 @@
   # Select internationalisation properties.
   i18n.defaultLocale = "ja_JP.UTF-8";
   i18n.inputMethod = {
-    enabled = "fcitx5";
+    type = "fcitx5";
     fcitx5.addons = with pkgs; [
       fcitx5-gtk
       fcitx5-mozc
@@ -125,8 +125,8 @@
   # Enable touchpad support.
   services.libinput.enable = true;
 
-  # Enable opengl
-  hardware.opengl.enable = true;
+  # Enable graphics
+  hardware.graphics.enable = true;
 
   # home-manager configuration
   home-manager.users.hnakano = { config, pkgs, lib, ... }: {
