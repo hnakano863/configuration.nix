@@ -11,12 +11,11 @@
     ./xmonad
   ];
 
-  nix.extraOptions = ''
-    experimental-features = nix-command flakes
-    keep-outputs = true
-    keep-derivations = true
-    max-jobs = auto  # Allow building multiple derivations in parallel
-  '';
+  # extra settings for linux
+  nix.settings = {
+    keep-outputs = true;
+    keep-derivations = true;
+  };
 
   boot.isContainer = false;
 
@@ -39,7 +38,7 @@
   # Select internationalisation properties.
   i18n.defaultLocale = "ja_JP.UTF-8";
   i18n.inputMethod = {
-    enabled = "fcitx5";
+    type = "fcitx5";
     fcitx5.addons = with pkgs; [
       fcitx5-gtk
       fcitx5-mozc
@@ -69,10 +68,6 @@
       HandlePowerKey=ignore
     '';
   };
-
-  # Enable sound.
-  sound.enable = true;
-  hardware.pulseaudio.enable = true;
 
   #Enable backlight
   programs.light.enable = true;
@@ -130,8 +125,8 @@
   # Enable touchpad support.
   services.libinput.enable = true;
 
-  # Enable opengl
-  hardware.opengl.enable = true;
+  # Enable graphics
+  hardware.graphics.enable = true;
 
   # home-manager configuration
   home-manager.users.hnakano = { config, pkgs, lib, ... }: {

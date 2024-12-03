@@ -16,13 +16,11 @@
     nativeSystemd = true;
   };
 
-  # nix
-  nix.extraOptions = ''
-    experimental-features = nix-command flakes
-    keep-outputs = false
-    keep-derivations = false
-    max-jobs = auto  # Allow building multiple derivations in parallel
-  '';
+  # extra settings for WSL2
+  nix.settings = {
+    keep-outputs = false;
+    keep-derivations = false;
+  };
 
   # Configure network proxy if necessary
   # networking.proxy.default = "http://user:password@proxy:port/";

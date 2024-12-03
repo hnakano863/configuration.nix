@@ -11,7 +11,7 @@ let
 in {
   home.packages = [
     globalPython
-    nodePackages.pyright
+    pyright
     poetry
   ];
 
