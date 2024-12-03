@@ -1,13 +1,13 @@
 { runCommand
 , skkDictionaries
-, python
+, python3
 , skktools
 }:
 
 let
 
   mkCdbFile = name: value: runCommand "skk-jisyo-cdb-${name}-unstable" {
-    buildInputs = [ python ];
+    buildInputs = [ python3 ];
   } ''
     for s in $(ls ${value}/share/skk | grep SKK-JISYO | basename); do
       python ${skktools.src}/skk2cdb.py -f cdb.tmp \
