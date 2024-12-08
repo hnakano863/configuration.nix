@@ -105,9 +105,8 @@
   (leaf evil-collection
     :after evil
     :custom (evil-collection-magit-state . 'normal)
-    :hook
-    (pdf-view-mode-hook . evil-collection-pdf-setup)
-    (magit-mode-hook . evil-collection-magit-setup)))
+    :config
+    (evil-collection-init '(pdf-view magit vterm))))
 
 (leaf completion-framework
   :doc "Settings for completion framework."
