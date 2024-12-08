@@ -12,7 +12,7 @@
     enable = true;
     defaultUser = "hnakano";
     wslConf.automount.root = "/mnt";
-    interop = { register = false; includePath = false; };
+    interop = { register = true; includePath = false; };
     nativeSystemd = true;
   };
 
