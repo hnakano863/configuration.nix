@@ -592,6 +592,8 @@
 				    ("ri" "add item" entry
 				     (file "~/Dropbox/Org/roam/templates/research-log-item")
 				     :target (file "${slug}.org"))))
+    (org-roam-node-display-template . `,(concat "${title:60} "
+						(propertize "${tags:*}" 'face 'org-tag)))
     :bind (:org-roam-mode-map
 	   ("SPC" . nil)
 	   ("S-SPC" . nil))
