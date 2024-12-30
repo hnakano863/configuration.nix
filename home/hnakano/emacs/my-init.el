@@ -583,10 +583,15 @@
 				     :target (file+head "%<%Y%m%d%H%M%S>-${slug}.org"
 							"#+title: ${title}\n")
 				     :unnarrowed t)
-				    ("s" "study" plain (file "~/Dropbox/Org/roam/templates/study.org")
+				    ("r" "research log")
+				    ("rf" "create file" plain
+				     (file "~/Dropbox/Org/roam/templates/research-log")
 				     :target (file+head "%<%Y%m%d%H%M%S>-${slug}.org"
 							"#+title: ${title}\n")
-				     :unnarrowed t)))
+				     :unnarrowed t)
+				    ("ri" "add item" entry
+				     (file "~/Dropbox/Org/roam/templates/research-log-item")
+				     :target (file "${slug}.org"))))
     :bind (:org-roam-mode-map
 	   ("SPC" . nil)
 	   ("S-SPC" . nil))
@@ -760,7 +765,8 @@ _j_: next _k_: previous _s_: stage _r_: revert _d_: popup diff"
 	    :wk "open notes")
       "r" '(:ignore t :wk "org roam")
       "r n" 'org-roam-node-find
-      "r f" 'org-roam-node-find)
+      "r f" 'org-roam-node-find
+      "r c" 'org-roam-capture)
     (my/bind
      :prefix "SPC o r"
      :keymaps 'org-mode-map
