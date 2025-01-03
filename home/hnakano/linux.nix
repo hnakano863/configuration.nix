@@ -19,6 +19,7 @@
     trayer
     nyxt
     glxinfo
+    anki
   ];
 
   home.sessionVariables = {
