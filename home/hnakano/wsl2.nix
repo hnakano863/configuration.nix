@@ -17,6 +17,7 @@ in {
     eksctl
     minikube
     look-at-me-sideways
+    sqlfluff
   ];
 
   home.sessionVariables = {
