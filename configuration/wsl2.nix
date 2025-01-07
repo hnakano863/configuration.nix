@@ -5,6 +5,7 @@
   imports = [
     ./common.nix
     attrs.nixos-wsl.nixosModules.wsl
+    attrs.vscode-server.nixosModules.default
   ];
 
   # wsl
@@ -31,6 +32,9 @@
 
   services.xserver.enable = true;
   services.xserver.autorun = true;
+
+  # vscode
+  services.vscode-server.enable = true;
 
   # home-manager configuration
   home-manager.users.hnakano = { config, pkgs, lib, ... }: {

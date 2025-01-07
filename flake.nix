@@ -20,6 +20,8 @@
     eijiro.url = "path:/home/hnakano/ghq/github.com/hnakano/eijiro.nix";
     eijiro.inputs.nixpkgs.follows = "nixpkgs";
 
+    vscode-server.url = "github:nix-community/nixos-vscode-server";
+
   };
 
   outputs =
@@ -32,6 +34,7 @@
     , nix-ld
     , nix-alien
     , eijiro
+    , vscode-server
     } @ attrs:
 
     {
