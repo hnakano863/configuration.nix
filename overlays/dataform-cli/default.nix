@@ -1730,7 +1730,7 @@ let
     version = "3.0.9";
     src = fetchurl {
       url = "https://registry.npmjs.org/@dataform/cli/-/cli-3.0.9.tgz";
-      sha512 = "94CZoB6V4mEvW58yz9sh9QB7sJB57q1pjv1vuM4yq6vdy9puzJlTqSdfHZSFPOBdw1pB0Ge5pfWFBNaZZ5G6ew==";
+      sha512 = "YPg6+v9zQtgwhBC118SEN9Kv6KB8IE2GyumhMA3aaAU4RJizkHWdgUgckG7Uh2RBgaz0/sK52Nbs7dauThI5aQ==";
     };
     dependencies = [
       sources."@google-cloud/bigquery-5.12.0"
