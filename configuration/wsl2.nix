@@ -14,7 +14,6 @@
     wslConf.automount.root = "/mnt";
     interop = { register = true; includePath = false; };
     nativeSystemd = true;
-    vscode-remote-workaround.enable = true;
   };
 
   # extra settings for WSL2
