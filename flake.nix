@@ -50,5 +50,9 @@
         modules = [ ./configuration/wsl2.nix ];
       };
 
+      devShells.x86_64-linux.default = let
+        pkgs = nixpkgs.legacyPackages.x86_64-linux;
+      in import ./shell.nix { inherit pkgs; };
+
     };
 }
