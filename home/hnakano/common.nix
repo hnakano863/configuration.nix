@@ -33,7 +33,6 @@
     nodejs_22 # for copilot.el
     terraform
     docker-credential-helpers
-    dataform-cli
     kubectl
     kind
     jq

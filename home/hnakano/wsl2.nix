@@ -16,6 +16,7 @@ in {
     kubernetes-helm
     eksctl
     minikube
+    dataform-cli
     look-at-me-sideways
     sqlfluff
   ];
