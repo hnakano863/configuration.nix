@@ -4,6 +4,24 @@
 
 let
   sources = {
+    "@jsep-plugin/assignment-1.3.0" = {
+      name = "_at_jsep-plugin_slash_assignment";
+      packageName = "@jsep-plugin/assignment";
+      version = "1.3.0";
+      src = fetchurl {
+        url = "https://registry.npmjs.org/@jsep-plugin/assignment/-/assignment-1.3.0.tgz";
+        sha512 = "VVgV+CXrhbMI3aSusQyclHkenWSAm95WaiKrMxRFam3JSUiIaQjoMIw2sEs/OX4XifnqeQUN4DYbJjlA8EfktQ==";
+      };
+    };
+    "@jsep-plugin/regex-1.0.4" = {
+      name = "_at_jsep-plugin_slash_regex";
+      packageName = "@jsep-plugin/regex";
+      version = "1.0.4";
+      src = fetchurl {
+        url = "https://registry.npmjs.org/@jsep-plugin/regex/-/regex-1.0.4.tgz";
+        sha512 = "q7qL4Mgjs1vByCaTnDFcBnV9HS7GVPJX5vyVoCgZHNSC9rjwIlmbXG5sUuorR5ndfHAIlJ8pVStxvjXHbNvtUg==";
+      };
+    };
     "argparse-2.0.1" = {
       name = "argparse";
       packageName = "argparse";
@@ -112,13 +130,22 @@ let
         sha512 = "wpxZs9NoxZaJESJGIZTyDEaYpl0FKSA+FB9aJiyemKhMwkxQg63h4T1KJgUGHpTqPDNRcmmYLugrRjJlBtWvRA==";
       };
     };
-    "jsonpath-plus-7.2.0" = {
+    "jsep-1.4.0" = {
+      name = "jsep";
+      packageName = "jsep";
+      version = "1.4.0";
+      src = fetchurl {
+        url = "https://registry.npmjs.org/jsep/-/jsep-1.4.0.tgz";
+        sha512 = "B7qPcEVE3NVkmSJbaYxvv4cHkVW7DQsZz13pUMrfS8z8Q/BuShN+gcTXrUlPiGqM2/t/EEaI030bpxMqY8gMlw==";
+      };
+    };
+    "jsonpath-plus-10.2.0" = {
       name = "jsonpath-plus";
       packageName = "jsonpath-plus";
-      version = "7.2.0";
+      version = "10.2.0";
       src = fetchurl {
-        url = "https://registry.npmjs.org/jsonpath-plus/-/jsonpath-plus-7.2.0.tgz";
-        sha512 = "zBfiUPM5nD0YZSBT/o/fbCUlCcepMIdP0CJZxM1+KgA4f2T206f6VAg9e7mX35+KlMaIc5qXW34f3BnwJ3w+RA==";
+        url = "https://registry.npmjs.org/jsonpath-plus/-/jsonpath-plus-10.2.0.tgz";
+        sha512 = "T9V+8iNYKFL2n2rF+w02LBOT2JjDnTjioaNFrxRy0Bv1y/hNsqR/EBK7Ojy2ythRHwmz2cRIls+9JitQGZC/sw==";
       };
     };
     "liyad-0.2.4" = {
@@ -130,13 +157,13 @@ let
         sha512 = "490GSJDZ/K7Paxflg3naejlmsPri6Af4+FgXlcQiktY0TSQjj+QBu0qP3pKRFGGjOwT7CTK5CTEoanAyzbq+Wg==";
       };
     };
-    "lookml-parser-6.10.0" = {
+    "lookml-parser-6.11.0" = {
       name = "lookml-parser";
       packageName = "lookml-parser";
-      version = "6.10.0";
+      version = "6.11.0";
       src = fetchurl {
-        url = "https://registry.npmjs.org/lookml-parser/-/lookml-parser-6.10.0.tgz";
-        sha512 = "eA8+zt7wUKXnkx+7M86Z7mRqta3+TZhMkYTVmyMau+F7a5SzjMhsXzQqWmQgyZmD/iRElWyb+6LQ2b/5SSwBaQ==";
+        url = "https://registry.npmjs.org/lookml-parser/-/lookml-parser-6.11.0.tgz";
+        sha512 = "NIw+ViMopuuuBfP8XHpzJl57UYGMfuQ4FQp2vdAbAIVUzYlfIex19/6ZAwOOPRf3O7uOm+CVF92zw9Hkfk9yOA==";
       };
     };
     "minimatch-3.1.2" = {
@@ -203,15 +230,14 @@ let
       };
     };
   };
-  args = {
+  args = rec {
     name = "_at_looker_slash_look-at-me-sideways";
     packageName = "@looker/look-at-me-sideways";
-    version = "3.4.0";
-    src = fetchurl {
-      url = "https://registry.npmjs.org/@looker/look-at-me-sideways/-/look-at-me-sideways-3.4.0.tgz";
-      sha512 = "W+tqePJWNdCthjXVqQHw0MpAqZXXfu7CRCkMy3n5b2OKGr1p4S6Y99xS217sx9kFs06TBve2EzqoLTfHWM9gcg==";
-    };
+    version = "4.0.0";
+    src = import ./src.nix { inherit fetchurl version; };
     dependencies = [
+      sources."@jsep-plugin/assignment-1.3.0"
+      sources."@jsep-plugin/regex-1.0.4"
       sources."argparse-2.0.1"
       sources."balanced-match-1.0.2"
       sources."bluebird-3.7.2"
@@ -224,9 +250,10 @@ let
       sources."inflight-1.0.6"
       sources."inherits-2.0.4"
       sources."js-yaml-4.1.0"
-      sources."jsonpath-plus-7.2.0"
+      sources."jsep-1.4.0"
+      sources."jsonpath-plus-10.2.0"
       sources."liyad-0.2.4"
-      sources."lookml-parser-6.10.0"
+      sources."lookml-parser-6.11.0"
       sources."minimatch-3.1.2"
       sources."minimist-1.2.8"
       sources."once-1.4.0"
