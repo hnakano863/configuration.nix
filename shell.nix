@@ -3,18 +3,34 @@ with pkgs;
 
 let
 
-  updators = {
-
-    dataform-cli = writeShellApplication {
-      name = "dataform-cli-updator";
+  mkNode2NixUpdator =
+    { name
+    , repos
+    , package
+    , template ? ./update-scripts/node2nix-template.sh
+    }:
+    let
+      script = runCommand "script.sh" {
+        inherit repos package;
+      } ''substituteAll "${template}" $out'';
+    in writeShellApplication {
+      inherit name;
       runtimeInputs = [ node2nix nodejs wget ];
-      text = builtins.readFile ./update-scripts/dataform-cli.sh;
+      text = builtins.readFile script.out;
     };
 
-    look-at-me-sideways = writeShellApplication {
+  updators = {
+
+    dataform-cli = mkNode2NixUpdator {
+      name = "dataform-cli-updator";
+      repos = "@dataform";
+      package = "cli";
+    };
+
+    look-at-me-sideways = mkNode2NixUpdator {
       name = "lams-updator";
-      runtimeInputs = [ node2nix nodejs wget ];
-      text = builtins.readFile ./update-scripts/look-at-me-sideways.sh;
+      repos = "@looker";
+      package = "look-at-me-sideways";
     };
 
   };

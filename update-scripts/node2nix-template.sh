@@ -1,7 +1,7 @@
 mkdir tmp
 cd ./tmp
-wget "$(npm view @dataform/cli dist.tarball)"
-tar xf cli-*.tgz
+wget "$(npm view @repos@/@package@ dist.tarball)"
+tar xf @package@-*.tgz
 cd ./package
 node2nix
 sed -i 's/args = {/args = rec {/' node-packages.nix
