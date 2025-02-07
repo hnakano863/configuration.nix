@@ -36,6 +36,7 @@
     kubectl
     kind
     jq
+    ispell # for forge.el
   ];
 
   home.sessionPath = [ "${config.home.homeDirectory}/.local/bin" ];
