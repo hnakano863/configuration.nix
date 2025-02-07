@@ -36,6 +36,7 @@
       evil-org
       fish-mode
       flycheck
+      forge
       geiser
       general
       git-gutter
