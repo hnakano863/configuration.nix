@@ -57,7 +57,7 @@
       vterm_printf.body = builtins.readFile ./fish_functions/vterm_printf.fish;
 
       gfz.body = "cd (ghq list -p | fzf)";
-      grt.body = "cd (ghq root)'/github.com/hnakano'";
+      grt.body = "cd (git rev-parse --show-toplevel)";
       pluto.body =
         "julia --startup-file=no --project=@. -e 'using Pluto; Pluto.run(launch_browser=false)'";
       ll.body = "ls -lh";
