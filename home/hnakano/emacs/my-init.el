@@ -236,7 +236,7 @@
     :config
     (doom-modeline-def-modeline 'my/main
       '(bar window-number modals buffer-info " " buffer-position)
-      '(misc-info process checker repl lsp vcs indent-info buffer-encoding "   "))
+      '(misc-info process repl lsp vcs indent-info buffer-encoding "   "))
     (doom-modeline-set-modeline 'my/main t)
     (set-face-attribute 'mode-line nil :family "HackGen" :height 120)
     (set-face-attribute 'mode-line-inactive nil :family "HackGen" :height 120)))
