@@ -303,7 +303,10 @@
   (leaf prism
     :defer-config
     (prism-set-colors :lightens '(0 5 10) :desaturations '(-2.5 0 2.5)
-      :colors (-map #'doom-color '(red orange yellow green blue violet)))))
+      :colors (-map #'doom-color '(red orange yellow green blue violet))))
+  (leaf yasnippet
+    :defer-config
+    (yas-reload-all)))
 
 (leaf language
   :doc "programming language setup"
@@ -416,10 +419,30 @@
   (leaf mermaid-mode :mode "\\.mermaid\\'")
   (leaf rust-mode :mode "\\.rs\\'")
   (leaf js-mode :mode "\\.gs\\'")
-  (leaf dataform
-    :mode ("\\.sqlx\\'" . prism-mode))
-  (leaf lookml
-    :mode ("\\.lkml\\'" . prism-mode)))
+  (leaf dataform-mode
+    :custom
+    (yas-indent-line . 'fixed)
+    :preface
+    (define-derived-mode dataform-mode prog-mode "Dataform"
+      "Major mode for dataform"
+      (setq-local tab-width 2)
+      (setq indent-tabs-mode nil))
+    :mode "\\.sqlx\\'"
+    :hook
+    (dataform-mode-hook . prism-mode)
+    (dataform-mode-hook . yas-minor-mode))
+  (leaf lookml-mode
+    :custom
+    (yas-indent-line . 'fixed)
+    :preface
+    (define-derived-mode lookml-mode prog-mode "LookML"
+      "Major mode for LookML"
+      (setq-local tab-width 2)
+      (setq indent-tabs-mode nil))
+    :mode "\\.lkml\\'"
+    :hook
+    (lookml-mode-hook . prism-mode)
+    (lookml-mode-hook . yas-minor-mode)))
 
 (leaf org
   :doc "org-mode and its extentions"
