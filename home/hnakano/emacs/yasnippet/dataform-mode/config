@@ -1,0 +1,18 @@
+# -*- mode: snippet -*-
+# name: config { ... }
+# key: config
+# --
+config {
+  type: "table",
+  name: "${1:name}",
+  schema: "${2:schema}",
+  description: "${3:description}",
+  columns: {
+    name: "",
+  },
+  assertions: {
+    uniqueKey: [""],
+    nonNull: [""]
+  },
+  tags: ["daily"]
+}
