@@ -1,0 +1,11 @@
+# -*- mode: snippet -*-
+# name: pre_operations { declare min_dt default ( ... ) }
+# key: min_dt
+# --
+pre_operations {
+  declare min_dt default (
+    ${when(incremental(),
+      "",
+      "")}
+  )
+}

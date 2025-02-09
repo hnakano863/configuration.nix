@@ -236,7 +236,7 @@
     :config
     (doom-modeline-def-modeline 'my/main
       '(bar window-number modals buffer-info " " buffer-position)
-      '(misc-info process checker repl lsp vcs indent-info buffer-encoding "   "))
+      '(misc-info process repl lsp vcs indent-info buffer-encoding "   "))
     (doom-modeline-set-modeline 'my/main t)
     (set-face-attribute 'mode-line nil :family "HackGen" :height 120)
     (set-face-attribute 'mode-line-inactive nil :family "HackGen" :height 120)))
@@ -301,10 +301,12 @@
   (leaf rainbow-delimiters
     :hook ((emacs-lisp-mode-hook org-mode-hook) . rainbow-delimiters-mode))
   (leaf prism
-    :mode (("\\.sqlx\\'" "\\.lkml\\'") . prism-mode)
     :defer-config
     (prism-set-colors :lightens '(0 5 10) :desaturations '(-2.5 0 2.5)
-      :colors (-map #'doom-color '(red orange yellow green blue violet)))))
+      :colors (-map #'doom-color '(red orange yellow green blue violet))))
+  (leaf yasnippet
+    :defer-config
+    (yas-reload-all)))
 
 (leaf language
   :doc "programming language setup"
@@ -416,7 +418,31 @@
   (leaf lean4-mode :mode "\\.lean\\'")
   (leaf mermaid-mode :mode "\\.mermaid\\'")
   (leaf rust-mode :mode "\\.rs\\'")
-  (leaf js-mode :mode "\\.gs\\'"))
+  (leaf js-mode :mode "\\.gs\\'")
+  (leaf dataform-mode
+    :custom
+    (yas-indent-line . 'fixed)
+    :preface
+    (define-derived-mode dataform-mode prog-mode "Dataform"
+      "Major mode for dataform"
+      (setq-local tab-width 2)
+      (setq indent-tabs-mode nil))
+    :mode "\\.sqlx\\'"
+    :hook
+    (dataform-mode-hook . prism-mode)
+    (dataform-mode-hook . yas-minor-mode))
+  (leaf lookml-mode
+    :custom
+    (yas-indent-line . 'fixed)
+    :preface
+    (define-derived-mode lookml-mode prog-mode "LookML"
+      "Major mode for LookML"
+      (setq-local tab-width 2)
+      (setq indent-tabs-mode nil))
+    :mode "\\.lkml\\'"
+    :hook
+    (lookml-mode-hook . prism-mode)
+    (lookml-mode-hook . yas-minor-mode)))
 
 (leaf org
   :doc "org-mode and its extentions"

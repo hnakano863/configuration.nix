@@ -9,6 +9,8 @@ let
 
 in {
 
+  imports = [ ./emacs/yasnippet ];
+
   home.packages = with pkgs; [
     awscli2
     aws-vault
