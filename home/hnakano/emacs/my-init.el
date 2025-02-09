@@ -301,7 +301,6 @@
   (leaf rainbow-delimiters
     :hook ((emacs-lisp-mode-hook org-mode-hook) . rainbow-delimiters-mode))
   (leaf prism
-    :mode (("\\.sqlx\\'" "\\.lkml\\'") . prism-mode)
     :defer-config
     (prism-set-colors :lightens '(0 5 10) :desaturations '(-2.5 0 2.5)
       :colors (-map #'doom-color '(red orange yellow green blue violet)))))
@@ -416,7 +415,11 @@
   (leaf lean4-mode :mode "\\.lean\\'")
   (leaf mermaid-mode :mode "\\.mermaid\\'")
   (leaf rust-mode :mode "\\.rs\\'")
-  (leaf js-mode :mode "\\.gs\\'"))
+  (leaf js-mode :mode "\\.gs\\'")
+  (leaf dataform
+    :mode ("\\.sqlx\\'" . prism-mode))
+  (leaf lookml
+    :mode ("\\.lkml\\'" . prism-mode)))
 
 (leaf org
   :doc "org-mode and its extentions"
