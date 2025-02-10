@@ -3,6 +3,7 @@
 {
   imports = [
     ./alacritty.nix
+    ./nyxt
   ];
 
   home.packages = with pkgs; [
