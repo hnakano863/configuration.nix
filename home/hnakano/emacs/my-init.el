@@ -498,7 +498,7 @@
       :after org-agenda
       :config
       (evil-org-agenda-set-keys)
-      (evil-difine-key 'motion org-agenda-mode-map
+      (evil-define-key 'motion org-agenda-mode-map
         "w" 'org-save-all-org-buffers
 	"gw" 'org-agenda-week-view
 	"gW" 'org-agenda-day-view
