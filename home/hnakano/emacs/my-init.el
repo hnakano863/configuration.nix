@@ -474,44 +474,21 @@
     :custom
     (org-directory . "~/Dropbox/Org")
     (my/org-notes-directory . `,(concat (file-name-as-directory org-directory) "notes/"))
-    (org-default-notes-file . `,(concat  my/org-notes-directory "inbox.org"))
-    (my/org-todo-file . `,(concat my/org-notes-directory "todos.org"))
-    (my/org-fleeting-note-file . `,(concat my/org-notes-directory "fleeting-notes.org"))
-    (my/org-literature-note-file . `,(concat my/org-notes-directory "literature-notes.org"))
+    (org-default-notes-file . `,(concat  my/org-notes-directory "todos.org"))
     (org-agenda-files . `,(list my/org-notes-directory))
     (org-refile-targets . '((org-agenda-files :maxlevel . 1)))
     (org-archive-location . `,(concat (file-name-as-directory org-directory)
 				      "archives/%s_archive_"
 				      (format-time-string "%Y" (current-time))
 				      "::")))
-  (leaf org-todo
-    :doc "setting for org-todo"
-    :custom
-    (org-todo-keywords . '((sequence "TODO(t)"
-				     "STRT(s)"
-				     "WAIT(w)"
-				     "HOLD(h)"
-				     "|"
-				     "DONE(d)"
-				     "KILL(k)")))
-    (org-todo-keyword-faces . '(("TODO" . org-todo)
-				("STRT" . org-todo)
-				("WAIT" . warning)
-				("HOLD" . warning))))
   (leaf org-capture
     :doc "setting for org-capture"
     :custom
+    (org-todo-keywords . '((sequence "TODO(t)" "WAIT(w)" "|" "DONE(d)" "KILL(k)")))
+    (org-todo-keyword-faces . '(("TODO" . org-todo) ("WAIT" . warning))))
     (org-capture-templates
-     . '(("c" "Inbox" entry (file+headline org-default-notes-file "Inbox")
-	  "* %?\n%i\n")
-	 ("t" "Todo" entry (file+headline my/org-todo-file "Todos")
-          "* TODO %?\n:PROPERTIES:\n:SCHEDULED: %^t\n:END:\n%i\n")
-         ("f" "Fleeting Note" entry (file+headline my/org-fleeting-note-file "Fleeting Notes")
-          "* %? :@note:@fleeting:\n:PROPERTIES:\n:Entered: %U\n:END:\n%i\n")
-	 ("l" "Literature Note" entry (file+headline my/org-literature-note-file "Literature Notes")
-          "* %? :@note:@literature:\n:PROPERTIES:\n:Ref: %a\n:Entered: %U\n:END:\n%i\n")
-	 ("L" "Literature Note for Org protocol" entry (file+headline my/org-literature-note-file "Literature Notes")
-	  "* %:description :@note:@literature:\n:PROPERTIES:\n:Ref: %:link\n:Entered: %U\n:END:\n%i\n"))))
+     . '(("c" "Todo" entry (file+headline org-default-notes-file "Todos")
+          "* TODO %?"))))
   (leaf org-latex
     :doc "setting for org-latex"
     :custom
