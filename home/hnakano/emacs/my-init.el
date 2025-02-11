@@ -474,8 +474,6 @@
     :custom
     (org-directory . "~/Dropbox/Org")
     (my/org-notes-directory . `,(concat (file-name-as-directory org-directory) "notes/"))
-    (org-default-notes-file . `,(concat  my/org-notes-directory "todos.org"))
-    (org-agenda-files . `,(list my/org-notes-directory))
     (org-refile-targets . '((org-agenda-files :maxlevel . 1)))
     (org-archive-location . `,(concat (file-name-as-directory org-directory)
 				      "archives/%s_archive_"
@@ -485,10 +483,31 @@
     :doc "setting for org-capture"
     :custom
     (org-todo-keywords . '((sequence "TODO(t)" "WAIT(w)" "|" "DONE(d)" "KILL(k)")))
-    (org-todo-keyword-faces . '(("TODO" . org-todo) ("WAIT" . warning))))
+    (org-todo-keyword-faces . '(("TODO" . org-todo) ("WAIT" . warning)))
+    (org-default-notes-file . `,(concat  my/org-notes-directory "todos.org"))
     (org-capture-templates
      . '(("c" "Todo" entry (file+headline org-default-notes-file "Todos")
           "* TODO %?"))))
+  (leaf org-agenda
+    :custom
+    (org-agenda-files . `,(list my/org-notes-directory))
+    (org-agenda-span . 'day)
+    :config
+    (leaf evil-org-agenda
+      :require t
+      :after org-agenda
+      :config
+      (evil-org-agenda-set-keys)
+      (evil-difine-key 'motion org-agenda-mode-map
+        "w" 'org-save-all-org-buffers
+	"gw" 'org-agenda-week-view
+	"gW" 'org-agenda-day-view
+	"ci" 'org-agenda-clock-in
+	"co" 'org-agenda-clock-out
+	"cs" 'org-agenda-schedule
+	"cd" 'org-agenda-deadline
+	"cC" 'org-agenda-clock-cancel
+	"cc" 'org-agenda-set-tags)))
   (leaf org-latex
     :doc "setting for org-latex"
     :custom
@@ -764,8 +783,12 @@ _j_: next _k_: previous _s_: stage _r_: revert _d_: popup diff"
     :config
     (my/bind
       :prefix "SPC o"
-      "c" 'org-capture
-      "a" 'org-agenda
+      "c" '((lambda () (interactive) (org-capture nil "c"))
+	    :wk "capture todos")
+      "C" 'org-capture
+      "a" 'org-agenda-list
+      "A" 'org-agenda
+      "t" 'org-todo-list
       "n" '((lambda ()
 	      (interactive)
 	      (let ((default-directory my/org-notes-directory))
@@ -793,13 +816,7 @@ _j_: next _k_: previous _s_: stage _r_: revert _d_: popup diff"
     (my/bind
      :prefix "SPC s"
      :keymaps 'flycheck-mode-map
-     "e" 'consult-flycheck))
-  (leaf evil-org-agenda
-    :require t
-    :config
-    (evil-org-agenda-set-keys)
-    (evil-define-key 'motion org-agenda-mode-map
-      "w" 'org-save-all-org-buffers)))
+     "e" 'consult-flycheck)))
 
 
 (provide 'my-init)
