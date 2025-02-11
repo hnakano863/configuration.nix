@@ -42,7 +42,8 @@
 				     "space b r" 'reload-current-buffer
 				     "space b d" 'delete-current-buffer
 				     "space b D" 'delete-buffer
-				     "space q q" 'quit)))))
+				     "space q q" 'quit
+				     "y f" 'copy-hint-url)))))
 
 (define-configuration document-mode
   ((keyscheme-map
