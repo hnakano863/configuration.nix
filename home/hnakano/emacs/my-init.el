@@ -487,6 +487,8 @@
     (org-default-notes-file . `,(concat  my/org-notes-directory "todos.org"))
     (org-capture-templates
      . '(("c" "Todo" entry (file+headline org-default-notes-file "Todos")
+          "* TODO %?\n:PROPERTIES:\n:Project:%^{Project}p\n:END:")
+	 ("t" "Todo witout properties" entry (file+headline org-default-notes-file "Todos")
           "* TODO %?"))))
   (leaf org-agenda
     :custom
