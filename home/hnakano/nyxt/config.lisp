@@ -75,10 +75,12 @@
     (define-keyscheme-map "my-prompt-buffer" (list :import %slot-value%)
       nyxt/keyscheme:vi-normal (list "C-n" 'next-suggestion
 				     "C-p" 'previous-suggestion
-				     "C-g" 'quit-prompt-buffer)
+				     "C-g" 'quit-prompt-buffer
+				     "C-return" 'toggle-mark-forwards)
       nyxt/keyscheme:vi-insert (list "C-n" 'next-suggestion
 				     "C-p" 'previous-suggestion
-				     "C-g" 'quit-prompt-buffer)))))
+				     "C-g" 'quit-prompt-buffer
+				     "C-return" 'toggle-mark-forwards)))))
 
 ;; prompt-buffer-modeではdefault以外のkeyschemeが定義されていない
 ;; そのため、prompt-buffer-modeでkeyschemeを定義した場合、同じものを再定義しないとエラーになる
@@ -87,7 +89,9 @@
     (define-keyscheme-map "my-hint-prompt-buffer" nil
       nyxt/keyscheme:vi-normal (list "C-n" 'next-suggestion
 				     "C-p" 'previous-suggestion
-				     "C-g" 'quit-prompt-buffer)
+				     "C-g" 'quit-prompt-buffer
+				     "C-return" 'toggle-mark-forwards)
       nyxt/keyscheme:vi-insert (list "C-n" 'next-suggestion
 				     "C-p" 'previous-suggestion
-				     "C-g" 'quit-prompt-buffer)))))
+				     "C-g" 'quit-prompt-buffer
+				     "C-return" 'toggle-mark-forwards)))))
