@@ -17,7 +17,6 @@
     xorg.xmessage
     htop
     trayer
-    nyxt
     glxinfo
     anki
   ];

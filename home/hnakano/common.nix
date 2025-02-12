@@ -38,6 +38,7 @@
     kind
     jq
     ispell # for forge.el
+    nyxt
   ];
 
   home.sessionPath = [ "${config.home.homeDirectory}/.local/bin" ];
