@@ -7,9 +7,12 @@
 		   %slot-value%))))
 
 ;; 基本的にvimキーバインドで移動する
+;; blocker-modeで広告もブロックする
 (define-configuration buffer
   ((default-modes
-    (pushnew 'nyxt/mode/vi:vi-normal-mode %slot-value%))))
+    (append '(nyxt/mode/vi:vi-normal-mode
+	      nyxt/mode/blocker:blocker-mode)
+	    %slot-value%))))
 
 ;; execute-commandをM-xにbindする
 (define-configuration input-buffer
