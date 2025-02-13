@@ -198,6 +198,8 @@
   :hook
   (isearch-mode-hook . skk-isearch-setup-maybe)
   (isearch-mode-end-hook . skk-isearch-cleanup-maybe)
+  (evil-insert-state-entry-hook . (lambda () (skk-mode 1)))
+  (evil-insert-state-exit-hook . (lambda () (skk-mode -1)))
   :bind
   ("C-x C-j" . skk-mode)
   :custom
