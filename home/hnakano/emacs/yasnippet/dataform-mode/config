@@ -4,8 +4,8 @@
 # --
 config {
   type: "table",
-  name: "${1:name}",
   schema: "${2:schema}",
+  name: "${1:name}",
   description: "${3:description}",
   columns: {
     name: "",
