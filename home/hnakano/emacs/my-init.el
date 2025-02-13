@@ -791,6 +791,7 @@ _j_: next _k_: previous _s_: stage _r_: revert _d_: popup diff"
       "a" 'org-agenda-list
       "A" 'org-agenda
       "t" 'org-todo-list
+      "x" 'org-mru-clock-in
       "n" '((lambda ()
 	      (interactive)
 	      (let ((default-directory my/org-notes-directory))
