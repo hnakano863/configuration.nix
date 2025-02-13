@@ -208,7 +208,11 @@
   (skk-use-color-cursor . t)
   :config
   (leaf ddskk-posframe
-    :hook skk-mode-hook))
+    :hook skk-mode-hook)
+  (leaf context-skk
+    :hook
+    (skk-load-hook . (lambda () (require 'context-skk)))
+    (skk-mode-hook . context-skk-mode)))
 
 (leaf doom
   :doc "doom-relative setups"
