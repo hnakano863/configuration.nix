@@ -64,6 +64,7 @@
       orderless
       org-bullets
       org-contrib
+      org-mru-clock
       org-journal
       org-roam
       ox-pandoc

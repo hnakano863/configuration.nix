@@ -198,6 +198,8 @@
   :hook
   (isearch-mode-hook . skk-isearch-setup-maybe)
   (isearch-mode-end-hook . skk-isearch-cleanup-maybe)
+  (evil-insert-state-entry-hook . (lambda () (skk-mode 1)))
+  (evil-insert-state-exit-hook . (lambda () (skk-mode -1)))
   :bind
   ("C-x C-j" . skk-mode)
   :custom
@@ -208,7 +210,11 @@
   (skk-use-color-cursor . t)
   :config
   (leaf ddskk-posframe
-    :hook skk-mode-hook))
+    :hook skk-mode-hook)
+  (leaf context-skk
+    :hook
+    (skk-load-hook . (lambda () (require 'context-skk)))
+    (skk-mode-hook . context-skk-mode)))
 
 (leaf doom
   :doc "doom-relative setups"
@@ -791,6 +797,7 @@ _j_: next _k_: previous _s_: stage _r_: revert _d_: popup diff"
       "a" 'org-agenda-list
       "A" 'org-agenda
       "t" 'org-todo-list
+      "x" 'org-mru-clock-in
       "n" '((lambda ()
 	      (interactive)
 	      (let ((default-directory my/org-notes-directory))
