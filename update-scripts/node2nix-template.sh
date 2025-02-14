@@ -1,7 +1,7 @@
 mkdir tmp
 cd ./tmp
 wget "$(npm view @repos@/@package@ dist.tarball)"
-tar xf @package@-*.tgz
+tar xf "$(echo '@package@' | cut -d'@' -f1)"-*.tgz
 cd ./package
 node2nix
 sed -i 's/args = {/args = rec {/' node-packages.nix

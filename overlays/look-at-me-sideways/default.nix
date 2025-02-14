@@ -139,13 +139,13 @@ let
         sha512 = "B7qPcEVE3NVkmSJbaYxvv4cHkVW7DQsZz13pUMrfS8z8Q/BuShN+gcTXrUlPiGqM2/t/EEaI030bpxMqY8gMlw==";
       };
     };
-    "jsonpath-plus-10.2.0" = {
+    "jsonpath-plus-10.3.0" = {
       name = "jsonpath-plus";
       packageName = "jsonpath-plus";
-      version = "10.2.0";
+      version = "10.3.0";
       src = fetchurl {
-        url = "https://registry.npmjs.org/jsonpath-plus/-/jsonpath-plus-10.2.0.tgz";
-        sha512 = "T9V+8iNYKFL2n2rF+w02LBOT2JjDnTjioaNFrxRy0Bv1y/hNsqR/EBK7Ojy2ythRHwmz2cRIls+9JitQGZC/sw==";
+        url = "https://registry.npmjs.org/jsonpath-plus/-/jsonpath-plus-10.3.0.tgz";
+        sha512 = "8TNmfeTCk2Le33A3vRRwtuworG/L5RrgMvdjhKZxvyShO+mBu2fP50OWUjRLNtvw344DdDarFh9buFAZs5ujeA==";
       };
     };
     "liyad-0.2.4" = {
@@ -233,7 +233,7 @@ let
   args = rec {
     name = "_at_looker_slash_look-at-me-sideways";
     packageName = "@looker/look-at-me-sideways";
-    version = "4.0.0";
+    version = "3.4.3";
     src = import ./src.nix { inherit fetchurl version; };
     dependencies = [
       sources."@jsep-plugin/assignment-1.3.0"
@@ -251,7 +251,7 @@ let
       sources."inherits-2.0.4"
       sources."js-yaml-4.1.0"
       sources."jsep-1.4.0"
-      sources."jsonpath-plus-10.2.0"
+      sources."jsonpath-plus-10.3.0"
       sources."liyad-0.2.4"
       sources."lookml-parser-6.11.0"
       sources."minimatch-3.1.2"
