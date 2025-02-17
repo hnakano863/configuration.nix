@@ -157,13 +157,13 @@ let
         sha512 = "490GSJDZ/K7Paxflg3naejlmsPri6Af4+FgXlcQiktY0TSQjj+QBu0qP3pKRFGGjOwT7CTK5CTEoanAyzbq+Wg==";
       };
     };
-    "lookml-parser-6.11.0" = {
+    "lookml-parser-6.11.1" = {
       name = "lookml-parser";
       packageName = "lookml-parser";
-      version = "6.11.0";
+      version = "6.11.1";
       src = fetchurl {
-        url = "https://registry.npmjs.org/lookml-parser/-/lookml-parser-6.11.0.tgz";
-        sha512 = "NIw+ViMopuuuBfP8XHpzJl57UYGMfuQ4FQp2vdAbAIVUzYlfIex19/6ZAwOOPRf3O7uOm+CVF92zw9Hkfk9yOA==";
+        url = "https://registry.npmjs.org/lookml-parser/-/lookml-parser-6.11.1.tgz";
+        sha512 = "UXqmqbSlKWwnCy1x3gMIkPRq5EXJk92ZGDwZjjzO3F3Mbdq3u/xWXNfwXjIvzSmf266i1NszaJtbGSig3ZaE3A==";
       };
     };
     "minimatch-3.1.2" = {
@@ -233,7 +233,7 @@ let
   args = rec {
     name = "_at_looker_slash_look-at-me-sideways";
     packageName = "@looker/look-at-me-sideways";
-    version = "3.4.3";
+    version = "3.4.1";
     src = import ./src.nix { inherit fetchurl version; };
     dependencies = [
       sources."@jsep-plugin/assignment-1.3.0"
@@ -253,7 +253,7 @@ let
       sources."jsep-1.4.0"
       sources."jsonpath-plus-10.3.0"
       sources."liyad-0.2.4"
-      sources."lookml-parser-6.11.0"
+      sources."lookml-parser-6.11.1"
       sources."minimatch-3.1.2"
       sources."minimist-1.2.8"
       sources."once-1.4.0"

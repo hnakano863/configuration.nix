@@ -30,7 +30,7 @@ let
     look-at-me-sideways = mkNode2NixUpdator {
       name = "lams-updator";
       repos = "@looker";
-      package = "look-at-me-sideways@3.4.3";
+      package = "look-at-me-sideways@3.4.1";
     };
 
   };
