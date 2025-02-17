@@ -1,5 +1,5 @@
 { fetchurl, version }:
 fetchurl {
   url = "https://registry.npmjs.org/@looker/look-at-me-sideways/-/look-at-me-sideways-${version}.tgz";
-  sha512 = "G79jEgRvsG1kM2qa1qNXxvZ+54bd37TFS6ndHjnGmoq1FTliOlG6I55v7OT+RthHaselpTWS0f/kNzp1vLMaHA==";
+  sha512 = "ewF2PiYV3J0hNufm67sRnND4sgckeBse5Y0pkK9rb3y7tMIfiDOE9AyEKC13vIlvrg3Y9C5zOUnw94/eE+iTSQ==";
 }
