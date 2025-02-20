@@ -508,6 +508,7 @@
       (evil-org-agenda-set-keys)
       (evil-define-key 'motion org-agenda-mode-map
         "w" 'org-save-all-org-buffers
+	"l" 'org-agenda-log-mode
 	"gw" 'org-agenda-week-view
 	"gW" 'org-agenda-day-view
 	"ci" 'org-agenda-clock-in
