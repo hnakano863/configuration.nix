@@ -214,7 +214,11 @@
   (leaf context-skk
     :hook
     (skk-load-hook . (lambda () (require 'context-skk)))
-    (skk-mode-hook . context-skk-mode)))
+    (skk-mode-hook . context-skk-mode)
+    :config
+    (setq context-skk-programming-mode
+	  (append context-skk-programming-mode
+		  '(dataform-mode lookml-mode)))))
 
 (leaf doom
   :doc "doom-relative setups"
