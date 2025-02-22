@@ -29,8 +29,6 @@
     jupyterCommand
     plantuml
     electron
-    nix-index-update
-    nix-alien
     nodejs_22 # for copilot.el
     terraform
     docker-credential-helpers

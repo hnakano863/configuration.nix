@@ -14,9 +14,6 @@
     nix-ld.url = "github:Mic92/nix-ld";
     nix-ld.inputs.nixpkgs.follows = "nixpkgs";
 
-    nix-alien.url = "github:thiagokokada/nix-alien";
-    nix-alien.inputs.nixpkgs.follows = "nixpkgs";
-
     eijiro.url = "path:/home/hnakano/ghq/github.com/hnakano/eijiro.nix";
     eijiro.inputs.nixpkgs.follows = "nixpkgs";
 
@@ -32,7 +29,6 @@
     , emacs-overlay
     , nixos-wsl
     , nix-ld
-    , nix-alien
     , eijiro
     , vscode-server
     } @ attrs:
