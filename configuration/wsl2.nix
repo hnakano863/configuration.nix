@@ -14,7 +14,6 @@
     defaultUser = "hnakano";
     wslConf.automount.root = "/mnt";
     interop = { register = true; includePath = false; };
-    nativeSystemd = true;
   };
 
   # extra settings for WSL2
