@@ -4,7 +4,6 @@ with epkgs; [
   citar
   company
   company-coq
-  consult
   consult-flycheck
   copilot
   csv-mode
@@ -45,14 +44,12 @@ with epkgs; [
   leaf-convert
   lean4-mode
   macrostep
-  marginalia
   markdown-mode
   mermaid-mode
   nerd-icons
   nix-mode
   nyan-mode
   ob-restclient
-  orderless
   org-bullets
   org-contrib
   org-mru-clock
@@ -87,7 +84,6 @@ with epkgs; [
   undo-tree
   use-package
   uuidgen
-  vertico
   vterm
   vterm-toggle
   yaml-mode

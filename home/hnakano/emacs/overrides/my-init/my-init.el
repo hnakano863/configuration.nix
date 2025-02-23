@@ -75,34 +75,6 @@
     :config
     (evil-collection-init '(pdf-view magit vterm))))
 
-(leaf completion-framework
-  :doc "Settings for completion framework."
-  :tag "completion"
-  :config
-  (leaf savehist :global-minor-mode t)
-  (leaf orderless
-    :custom
-    (completion-styles . '(orderless))
-    (completion-category-defaults . nil)
-    (completion-category-overrides . '((file (styles partial-completion)))))
-  (leaf vertico :global-minor-mode t)
-  (leaf consult
-    :bind ("C-s" . consult-line)
-    :config
-    (consult-customize
-     consult-recent-file consult--source-recent-file consult--source-project-recent-file
-     :preview-key '(:debounce 0.5 any)))
-  (leaf marginalia :global-minor-mode t)
-  (leaf embark
-    :bind
-    ("C-." . embark-act)
-    ("C-;" . embark-dwim)
-    ("C-h b" . embark-bindings)
-    :config
-    (setq prefix-help-command #'embark-prefix-help-command))
-  (leaf embark-consult
-    :hook (embark-collect-mode-hook . consult-preview-at-point-mode)))
-
 (leaf projectile
   :global-minor-mode t
   :custom

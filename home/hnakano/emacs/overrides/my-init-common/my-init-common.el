@@ -24,7 +24,8 @@
 ;;; Code:
 
 (eval-when-compile
-  (require 'use-package))
+  (require 'use-package)
+  (require 'consult)) ;to compile consult-customize
 
 (defun print-startup-stats ()
   "Prints some basic startup statistics."
@@ -74,6 +75,36 @@
   (add-hook 'after-save-hook #'magit-after-save-refresh-status))
 
 (use-package forge :after magit)
+
+;;; Completions
+;; Cool completion UI
+(use-package vertico
+  :custom
+  (vertico-cycle t)
+  (enable-recursive-minibuffers t)
+  :config
+  (vertico-mode 1))
+
+;; Orderless completion style
+(use-package orderless
+  :defer t
+  :custom
+  (completion-styles '(orderless basic))
+  (completion-category-defaults nil)
+  (completion-category-overrides '((file (styles partial-completion)))))
+
+;; Useful completion commands
+(use-package consult
+  :bind ("C-s" . consult-line)
+  :config
+  (consult-customize
+   consult-recent-file consult--source-recent-file consult--source-project-recent-file
+   :preview-key '(:debounce 0.5 any)))
+
+;; Rich minibuffer annotations
+(use-package marginalia
+  :config
+  (marginalia-mode 1))
 
 (provide 'my-init-common)
 ;;; my-init-common.el ends here
