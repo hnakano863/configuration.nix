@@ -35,56 +35,21 @@
     :keymaps 'override)
   (require 'evil))
 
+(require 'my-init-common)
+
 (make-variable-buffer-local 'global-hl-line-mode)
 (leaf cus-edit
   :doc "tools for customizing Emacs and Lisp packages"
   :tag "builtin" "faces" "help"
-  :preface
-  (defun print-startup-stats ()
-    "Prints some basic startup statistics."
-    (let ((elapsed (float-time (time-subtract after-init-time before-init-time))))
-      (message "Startup took %.2fs with %d GCs" elapsed gcs-done)))
-  :custom
-  `(custom-file . ,(locate-user-emacs-file "custom.el"))
-  (auto-save-list-file-prefix . nil)
-  `(read-process-output-max . ,(* 3 1024 1024))
-  (backup-directory-alist . '((".*" . "/tmp/")))
-  (auto-save-file-name-transforms . '((".*" "/tmp/" t)))
-  (epg-pinentry-mode . 'loopback)
   :hook
-  (before-save-hook . delete-trailing-whitespace)
-  (emacs-startup-hook . print-startup-stats)
   (term-mode-hook . eterm-256color-mode)
   :init
-  (blink-cursor-mode -1)
   (add-hook 'term-mode-hook  #'(lambda () (setq-local global-hl-line-mode nil))))
 
 (leaf git-gutter :global-minor-mode global-git-gutter-mode)
 (leaf hideshow :hook (emacs-lisp-mode-hook . hs-minor-mode))
 (leaf hl-line :global-minor-mode global-hl-line-mode)
-(leaf recentf :global-minor-mode t)
 (leaf undo-fu-session :global-minor-mode global-undo-fu-session-mode)
-(leaf winum :global-minor-mode t)
-
-(leaf auth-source
-  :custom
-  (auth-source-pass-filename . "~/.local/share/password-store")
-  :config
-  (auth-source-pass-enable))
-
-(leaf magit
-  :custom
-  (magit-process-find-password-functions . '(magit-process-password-auth-source))
-  :hook (after-save-hook . magit-after-save-refresh-status)
-  :config
-  (setenv "PASSWORD_STORE_DIR" "/home/hnakano/.local/share/password-store")
-  (leaf forge
-    :after magit
-    :require t))
-
-(leaf which-key
-  :global-minor-mode t
-  :config (which-key-setup-side-window-bottom))
 
 (leaf helpful
   :bind

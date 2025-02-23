@@ -29,7 +29,6 @@ with epkgs; [
   evil-org
   fish-mode
   flycheck
-  forge
   geiser
   general
   git-gutter
@@ -46,7 +45,6 @@ with epkgs; [
   leaf-convert
   lean4-mode
   macrostep
-  magit
   marginalia
   markdown-mode
   mermaid-mode
@@ -92,8 +90,6 @@ with epkgs; [
   vertico
   vterm
   vterm-toggle
-  which-key
-  winum
   yaml-mode
   yasnippet
 ]

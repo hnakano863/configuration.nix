@@ -4,6 +4,7 @@
 , julia
 , skkdicts
 , epkgs
+, my-init-common
 }:
 
 let
@@ -18,7 +19,7 @@ trivialBuild {
    pname = "my-init";
    version = "2025-02-23";
    src = init-el;
-   packageRequires = deps;
+   packageRequires = deps ++ [ my-init-common ];
    preferLocalBuild = true;
    allowSubstitute = false;
 }
