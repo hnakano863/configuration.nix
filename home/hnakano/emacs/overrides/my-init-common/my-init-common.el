@@ -44,8 +44,9 @@
   (add-hook 'emacs-startup-hook #'print-startup-stats)
   (blink-cursor-mode -1))
 
-;;; Global minor modes
+;;; Useful functionalities
 (use-package recentf
+  :unless noninteractive ; avoid load when byte compile
   :config
   (recentf-mode 1))
 
@@ -58,13 +59,26 @@
   (which-key-setup-side-window-bottom)
   (which-key-mode 1))
 
-;;; Auth source
+;; auth source
 (use-package auth-source-pass
   :after auth-source
   :custom
   (auth-source-pass-filename "~/.local/share/password-store")
   :config
   (auth-source-pass-enable))
+
+;;; Undo systems
+(use-package undo-fu
+  :defer t
+  :custom
+  (undo-limit 67108864) ; 64mb.
+  (undo-strong-limit 100663296) ; 96mb.
+  (undo-outer-limit 1006632960)) ; 960mb.
+
+(use-package undo-fu-session
+  :unless noninteractive ; avoid load when byte compile
+  :config
+  (undo-fu-session-global-mode 1))
 
 ;;; Version Control Systems
 (use-package magit
@@ -105,6 +119,15 @@
 (use-package marginalia
   :config
   (marginalia-mode 1))
+
+;;; Evil
+(use-package evil
+  :custom
+  (evil-want-keybinding nil) ; for evil-collection
+  (evil-want-C-u-scroll t)
+  (evil-undo-system 'undo-fu)
+  :config
+  (evil-mode 1))
 
 (provide 'my-init-common)
 ;;; my-init-common.el ends here

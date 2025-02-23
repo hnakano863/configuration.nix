@@ -23,7 +23,6 @@ with epkgs; [
   embark-consult
   envrc
   ess
-  evil
   evil-collection
   evil-org
   fish-mode
@@ -79,9 +78,6 @@ with epkgs; [
   treemacs-evil
   treemacs-magit
   treemacs-projectile
-  undo-fu
-  undo-fu-session
-  undo-tree
   use-package
   uuidgen
   vterm

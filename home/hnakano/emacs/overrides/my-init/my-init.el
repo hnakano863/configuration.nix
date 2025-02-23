@@ -49,7 +49,6 @@
 (leaf git-gutter :global-minor-mode global-git-gutter-mode)
 (leaf hideshow :hook (emacs-lisp-mode-hook . hs-minor-mode))
 (leaf hl-line :global-minor-mode global-hl-line-mode)
-(leaf undo-fu-session :global-minor-mode global-undo-fu-session-mode)
 
 (leaf helpful
   :bind
@@ -60,12 +59,6 @@
    ("C-c C-d" . helpful-at-point)))
 
 (leaf evil
-  :global-minor-mode t
-  :custom
-  (evil-want-keybinding . nil)
-  (evil-want-integration . t)
-  (evil-want-C-u-scroll . t)
-  (evil-undo-system . 'undo-fu)
   :defun evil-set-initial-state
   :config
   (evil-set-initial-state 'vterm-mode 'insert)
