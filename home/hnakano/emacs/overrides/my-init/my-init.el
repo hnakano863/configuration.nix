@@ -105,44 +105,11 @@
     :after treemacs
     :require t))
 
-(leaf skk
-  :preface
-  (defun skk-isearch-setup-maybe ()
-    (require 'skk-vars)
-    (when (or (eq skk-isearch-mode-enable 'always)
-              (and (boundp 'skk-mode)
-                   skk-mode
-                   skk-isearch-mode-enable))
-      (skk-isearch-mode-setup)))
-  (defun skk-isearch-cleanup-maybe ()
-    (require 'skk-vars)
-    (when (and (featurep 'skk-isearch)
-               skk-isearch-mode-enable)
-      (skk-isearch-mode-cleanup)))
-  :hook
-  (isearch-mode-hook . skk-isearch-setup-maybe)
-  (isearch-mode-end-hook . skk-isearch-cleanup-maybe)
-  (evil-insert-state-entry-hook . (lambda () (skk-mode 1)))
-  (evil-insert-state-exit-hook . (lambda () (skk-mode -1)))
-  :bind
-  ("C-x C-j" . skk-mode)
-  :custom
-  (skk-cdb-large-jisyo . "@skkdicts@/share/skk/SKK-JISYO.combined.utf8.cdb")
-  (skk-cdb-coding-system . 'utf-8-unix)
-  (skk-inhibit-ja-dic-search . t)
-  (default-input-method . "japanese-skk")
-  (skk-use-color-cursor . t)
+(leaf context-skk
   :config
-  (leaf ddskk-posframe
-    :hook skk-mode-hook)
-  (leaf context-skk
-    :hook
-    (skk-load-hook . (lambda () (require 'context-skk)))
-    (skk-mode-hook . context-skk-mode)
-    :config
-    (setq context-skk-programming-mode
-	  (append context-skk-programming-mode
-		  '(dataform-mode lookml-mode)))))
+  (setq context-skk-programming-mode
+	(append context-skk-programming-mode
+		'(dataform-mode lookml-mode))))
 
 (leaf doom
   :doc "doom-relative setups"

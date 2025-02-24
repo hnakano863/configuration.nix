@@ -131,12 +131,56 @@
   :config
   (global-hl-line-mode 1))
 
+;;; Input Methods
+;; helper functions
+(defun skk-isearch-setup-maybe ()
+  "Isearchでskkを使えるようにする."
+  (require 'skk-vars)
+  (when (or (eq skk-isearch-mode-enable 'always)
+            (and (boundp 'skk-mode)
+                 skk-mode
+                 skk-isearch-mode-enable))
+    (skk-isearch-mode-setup)))
+
+(defun skk-isearch-cleanup-maybe ()
+  "Isearchから抜けるときの処理."
+  (require 'skk-vars)
+  (when (and (featurep 'skk-isearch)
+             skk-isearch-mode-enable)
+    (skk-isearch-mode-cleanup)))
+
+;; SKK
+(use-package skk
+  :custom
+  (skk-cdb-large-jisyo "@skkdicts@/share/skk/SKK-JISYO.combined.utf8.cdb")
+  (skk-cdb-coding-system 'utf-8-unix)
+  (skk-inhibit-ja-dic-search t)
+  (default-input-method "japanese-skk")
+  (skk-use-color-cursor t)
+  :hook
+  (isearch-mode . skk-isearch-setup-maybe)
+  (isearch-mode-end . skk-isearch-cleanup-maybe)
+  :bind ("C-x C-j" . skk-mode))
+
+(use-package context-skk
+  :defer t
+  :hook
+  (skk-load . (lambda () (require 'context-skk))))
+
+(use-package ddskk-posframe
+  :defer t
+  :hook skk-mode)
+
 ;;; Evil
 (use-package evil
   :custom
   (evil-want-keybinding nil) ; for evil-collection
   (evil-want-C-u-scroll t)
   (evil-undo-system 'undo-fu)
+  :hook
+  ;; insert modeに入ったときの入力メソッドが自動でSKKになるようにする
+  (evil-insert-state-entry . (lambda () (skk-mode 1)))
+  (evil-insert-state-exit . (lambda () (skk-mode -1)))
   :config
   (evil-mode 1))
 

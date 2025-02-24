@@ -7,8 +7,6 @@ with epkgs; [
   consult-flycheck
   copilot
   csv-mode
-  ddskk
-  ddskk-posframe
   dictionary
   docker
   dockerfile-mode

@@ -1,6 +1,8 @@
 { epkgs }:
 with epkgs; [
   consult
+  ddskk
+  ddskk-posframe
   evil
   forge
   git-gutter
