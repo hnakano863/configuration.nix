@@ -63,36 +63,9 @@
     :config
     (evil-collection-init '(pdf-view magit vterm))))
 
-(leaf projectile
-  :global-minor-mode t
-  :custom
-  (projectile-indexing-method . 'alien)
-  (projectile-sort-order . 'recentf-active)
-  (projectile-enable-caching . t)
-  (projectile-project-search-path . '("~/repos/" "~/experiments/" "~/ghq/"))
-  ; fix for https://github.com/bbatsov/projectile/issues/1777
-  (projectile-globally-ignored-directories . '(".idea"
-					       ".vscode"
-					       ".ensime_cache"
-					       ".eunit"
-					       ".git"
-					       ".hg"
-					       ".fslckout"
-					       "_FOSSIL_"
-					       ".bzr"
-					       "_darcs"
-					       ".tox"
-					       ".svn"
-					       ".stack-work"
-					       ".ccls-cache"
-					       ".cache"
-					       ".clangd")))
-
 (leaf treemacs
   :doc "treemacs and its extentions"
   :defun treemacs-git-mode
-  :custom
-  (treemacs-width . 30)
   :hook (treemacs-mode-hook . (lambda () (treemacs-git-mode 'deferred)))
   :config
   (leaf treemacs-magit

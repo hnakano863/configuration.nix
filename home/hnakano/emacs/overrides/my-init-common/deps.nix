@@ -9,6 +9,7 @@ with epkgs; [
   magit
   marginalia
   orderless
+  projectile
   treemacs
   treemacs-evil
   undo-fu

@@ -138,12 +138,22 @@
   :defer t
   :hook skk-mode)
 
-;;; File Search
+;;; Files
 ;; recent files
 (use-package recentf
   :unless noninteractive ; avoid load when byte compile
   :config
   (recentf-mode 1))
+
+;; project interaction
+(use-package projectile
+  :custom
+  (projectile-indexing-method 'hybrid)
+  (projectile-sort-order 'recentf-active)
+  (projectile-enable-caching 'persistent)
+  (projectile-project-search-path '("~/ghq/"))
+  :config
+  (projectile-mode 1))
 
 ;; file tree
 (use-package treemacs
