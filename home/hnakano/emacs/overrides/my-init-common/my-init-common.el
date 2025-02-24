@@ -25,7 +25,8 @@
 
 (eval-when-compile
   (require 'use-package)
-  (require 'consult)) ;to compile consult-customize
+  (require 'consult) ; to compile consult-customize
+  (require 'evil-core)) ; to compile evil-define-key
 
 (defun print-startup-stats ()
   "Prints some basic startup statistics."
@@ -119,6 +120,62 @@
   :defer t
   :hook skk-mode)
 
+;;; Org Mode
+(use-package org
+  :defer t
+  :custom
+  ;; file settings
+  (org-directory "~/Dropbox/Org")
+  (my/org-notes-directory (concat (file-name-as-directory org-directory) "notes/"))
+  (org-archive-location (concat (file-name-as-directory org-directory)
+				"archives/%s_archive_"
+				(format-time-string "%Y" (current-time))
+				"::"))
+  (org-refile-targets '((org-agenda-files :maxlevel . 1)))
+  ;; faces
+  (org-indent-indentation-per-level 1)
+  (org-hide-emphasis-markers nil)
+  (org-pretty-entities t)
+  (org-fontify-quote-and-verse-blocks t)
+  ;; startup settings
+  (org-startup-indented t)
+  (org-startup-folded nil)
+  (org-startup-with-inline-images t)
+  (org-startup-with-latex-preview t)
+  ;; latex
+  (org-latex-packages-alist '(("" "physics" t) ("" "mhchem" t)))
+  (org-format-latex-options '(:foreground default
+			      :background default
+			      :scale 1.6
+			      :html-foreground "Black"
+			      :html-background "Transparent"
+			      :html-scale 1.6
+			      :matchers ("begin" "$1" "$" "$$" "\\(" "\\[")))
+  ;; command behavior
+  (org-return-follows-link t)
+  :config
+  ;; don't use <> as brackets
+  (modify-syntax-entry ?< "_" org-mode-syntax-table)
+  (modify-syntax-entry ?> "_" org-mode-syntax-table))
+
+;; todo management
+(use-package org-capture
+  :defer t
+  :custom
+  (org-default-notes-file (concat my/org-notes-directory "todos.org"))
+  (org-todo-keywords '((sequence "TODO(t)" "WAIT(w)" "|" "DONE(d)" "KILL(k)")))
+  (org-todo-keyword-faces '(("TODO" . org-todo) ("WAIT" . warning)))
+  (org-capture-templates '(("c" "Todo" entry (file+headline org-default-notes-file "Todos")
+			    "* TODO %?\n:PROPERTIES:\n:Project:%^{Project}p\n:END:")
+			   ("t" "Todo witout properties" entry (file+headline org-default-notes-file "Todos")
+			    "* TODO %?"))))
+
+(use-package org-agenda
+  :defer t
+  :custom
+  (org-agenda-files '(my/org-notes-directory))
+  (org-agenda-span 'day))
+
 ;;; Files
 ;; recent files
 (use-package recentf
@@ -168,6 +225,7 @@
    :preview-key '(:debounce 0.5 any)))
 
 ;; TODO install consult-projectile for projectile integration
+;; TODO install org-agenda integration
 
 ;; rich minibuffer annotations
 (use-package marginalia
@@ -210,9 +268,26 @@
   :config
   (evil-mode 1))
 
+;; org-agenda integration
+(use-package evil-org-agenda
+  :after evil org-agenda
+  :config
+  (evil-org-agenda-set-keys)
+  (evil-define-key 'motion org-agenda-mode-map
+    "w" 'org-save-all-org-buffers
+    "l" 'org-agenda-log-mode
+    "gw" 'org-agenda-week-view
+    "gW" 'org-agenda-day-view
+    "ci" 'org-agenda-clock-in
+    "co" 'org-agenda-clock-out
+    "cs" 'org-agenda-schedule
+    "cd" 'org-agenda-deadline
+    "cC" 'org-agenda-clock-cancel
+    "cc" 'org-agenda-set-tags))
+
 ;; treemacs integration
 (use-package treemacs-evil
-  :after treemacs evil)
+  :after evil treemacs)
 
 (provide 'my-init-common)
 ;;; my-init-common.el ends here

@@ -4,11 +4,14 @@ with epkgs; [
   ddskk
   ddskk-posframe
   evil
+  evil-collection
+  evil-org # 不要か？
   forge
   git-gutter
   magit
   marginalia
   orderless
+  org-contrib
   projectile
   treemacs
   treemacs-evil

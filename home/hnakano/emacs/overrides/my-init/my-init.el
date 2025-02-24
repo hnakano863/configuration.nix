@@ -116,6 +116,7 @@
     (set-face-attribute 'mode-line nil :family "HackGen" :height 120)
     (set-face-attribute 'mode-line-inactive nil :family "HackGen" :height 120)))
 
+;; TODO remove shackle
 (leaf shackle
   :global-minor-mode t
   :custom
@@ -318,85 +319,7 @@
     (lookml-mode-hook . yas-minor-mode)))
 
 (leaf org
-  :doc "org-mode and its extentions"
-  :tag "org"
-  :custom
-  (org-return-follows-link . t)
-  :preface
-  (defun org-syntax-table-modify ()
-    "Modify `org-mode-syntax-table' for the current org buffer."
-    (modify-syntax-entry ?< "." org-mode-syntax-table)
-    (modify-syntax-entry ?> "." org-mode-syntax-table))
-  :hook (org-mode-hook . org-syntax-table-modify)
   :config
-  (leaf org-startup
-    :doc "startup settings"
-    :custom
-    (org-startup-indented . t)
-    (org-startup-folded . nil)
-    (org-startup-with-inline-images . t))
-  (leaf org-appearance
-    :doc "indentation, fontify, etc"
-    :custom
-    (org-indent-indentation-per-level . 1)
-    (org-hide-emphasis-markers . t)
-    (org-pretty-entities . t)
-    (org-fontify-quote-and-verse-blocks . t))
-  (leaf org-files
-    :doc "file, directory settings"
-    :custom
-    (org-directory . "~/Dropbox/Org")
-    (my/org-notes-directory . `,(concat (file-name-as-directory org-directory) "notes/"))
-    (org-refile-targets . '((org-agenda-files :maxlevel . 1)))
-    (org-archive-location . `,(concat (file-name-as-directory org-directory)
-				      "archives/%s_archive_"
-				      (format-time-string "%Y" (current-time))
-				      "::")))
-  (leaf org-capture
-    :doc "setting for org-capture"
-    :custom
-    (org-todo-keywords . '((sequence "TODO(t)" "WAIT(w)" "|" "DONE(d)" "KILL(k)")))
-    (org-todo-keyword-faces . '(("TODO" . org-todo) ("WAIT" . warning)))
-    (org-default-notes-file . `,(concat  my/org-notes-directory "todos.org"))
-    (org-capture-templates
-     . '(("c" "Todo" entry (file+headline org-default-notes-file "Todos")
-          "* TODO %?\n:PROPERTIES:\n:Project:%^{Project}p\n:END:")
-	 ("t" "Todo witout properties" entry (file+headline org-default-notes-file "Todos")
-          "* TODO %?"))))
-  (leaf org-agenda
-    :custom
-    (org-agenda-files . `,(list my/org-notes-directory))
-    (org-agenda-span . 'day)
-    :config
-    (leaf evil-org-agenda
-      :require t
-      :after org-agenda
-      :config
-      (evil-org-agenda-set-keys)
-      (evil-define-key 'motion org-agenda-mode-map
-        "w" 'org-save-all-org-buffers
-	"l" 'org-agenda-log-mode
-	"gw" 'org-agenda-week-view
-	"gW" 'org-agenda-day-view
-	"ci" 'org-agenda-clock-in
-	"co" 'org-agenda-clock-out
-	"cs" 'org-agenda-schedule
-	"cd" 'org-agenda-deadline
-	"cC" 'org-agenda-clock-cancel
-	"cc" 'org-agenda-set-tags)))
-  (leaf org-latex
-    :doc "setting for org-latex"
-    :custom
-    (org-latex-packages-alist . '(("" "physics" t)
-				  ("" "mhchem" t)))
-    (org-format-latex-options
-     . '(:foreground default
-		     :background default
-		     :scale 1.6
-		     :html-foreground "Black"
-		     :html-background "Transparent"
-		     :html-scale 1.6
-		     :matchers ("begin" "$1" "$" "$$" "\\(" "\\["))))
   (leaf ob
     :doc "setting for org-babel"
     :after org
@@ -455,10 +378,6 @@
        (julia . t)
        (jupyter . t)
        (restclient . t))))
-  (leaf org-bullets
-    :hook (org-mode-hook . org-bullets-mode)
-    :custom
-    (org-bullets-bullet-list . '("✿" "◉" "✸" "○")))
   (leaf org-journal
     :custom
     (org-journal-file-type . 'weekly)

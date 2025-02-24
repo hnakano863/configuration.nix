@@ -21,8 +21,6 @@ with epkgs; [
   embark-consult
   envrc
   ess
-  evil-collection
-  evil-org
   fish-mode
   flycheck
   geiser
@@ -46,8 +44,6 @@ with epkgs; [
   nix-mode
   nyan-mode
   ob-restclient
-  org-bullets
-  org-contrib
   org-mru-clock
   org-journal
   org-roam
