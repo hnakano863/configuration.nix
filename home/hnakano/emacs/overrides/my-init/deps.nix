@@ -45,8 +45,6 @@ with epkgs; [
   nyan-mode
   ob-restclient
   org-mru-clock
-  org-journal
-  org-roam
   ox-pandoc
   ox-zenn
   pandoc

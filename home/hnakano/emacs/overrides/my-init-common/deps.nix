@@ -12,6 +12,8 @@ with epkgs; [
   marginalia
   orderless
   org-contrib
+  org-journal
+  org-roam
   projectile
   treemacs
   treemacs-evil

@@ -176,6 +176,30 @@
   (org-agenda-files '(my/org-notes-directory))
   (org-agenda-span 'day))
 
+;; diary/journal
+(use-package org-journal
+  :defer t
+  :custom
+  (org-journal-file-type 'weekly)
+  (org-journal-file-format "%Y-%m-%d")
+  (org-journal-dir (concat (file-name-as-directory org-directory)
+			   "journal/"
+			   (format-time-string "%Y" (current-time)))))
+
+;; knowledge base
+(use-package org-roam
+  :defer t
+  :custom
+  (org-roam-directory (concat (file-name-as-directory org-directory) "roam/"))
+  (org-roam-db-gc-threshold most-positive-fixnum)
+  (org-roam-v2-ack t)
+  (org-roam-node-display-template (concat "${title:60} " (propertize "${tags:*}" 'face 'org-tag)))
+  (org-roam-graph-extra-config '(("layout" . "neato")
+				 ("overlap" . "false")
+				 ("splines" . "true")))
+  :config
+  (org-roam-setup))
+
 ;;; Files
 ;; recent files
 (use-package recentf
@@ -267,6 +291,12 @@
   (evil-insert-state-exit . (lambda () (skk-mode -1)))
   :config
   (evil-mode 1))
+
+;; org-mode integration
+(use-package evil-org
+  :hook
+  (org-mode . evil-org-mode)
+  (evil-org-mode . evil-org-set-key-theme))
 
 ;; org-agenda integration
 (use-package evil-org-agenda

@@ -378,27 +378,11 @@
        (julia . t)
        (jupyter . t)
        (restclient . t))))
-  (leaf org-journal
-    :custom
-    (org-journal-file-type . 'weekly)
-    (org-journal-file-format . "%Y-%m-%d")
-    (org-journal-dir . `,(concat (file-name-as-directory org-directory)
-				 "journal/"
-				 (format-time-string "%Y" (current-time)))))
-  (leaf evil-org
-    :hook
-    (org-mode-hook . evil-org-mode)
-    (evil-org-mode-hook . evil-org-set-key-theme))
+
   (leaf org-eldoc
     :hook (org-mode-hook . org-eldoc-load))
   (leaf org-roam
     :custom
-    `(org-roam-db-gc-threshold . ,most-positive-fixnum)
-    (org-roam-v2-ack . t)
-    (org-roam-directory . `,(concat (file-name-as-directory org-directory) "roam/"))
-    (org-roam-graph-extra-config . '(("layout" . "neato")
-				     ("overlap" . "false")
-				     ("splines" . "true")))
     (org-roam-capture-templates . '(("d" "default" plain "%?"
 				     :target (file+head "%<%Y%m%d%H%M%S>-${slug}.org"
 							"#+title: ${title}\n")
@@ -412,13 +396,9 @@
 				    ("ri" "add item" entry
 				     (file "~/Dropbox/Org/roam/templates/research-log-item")
 				     :target (file "${slug}.org"))))
-    (org-roam-node-display-template . `,(concat "${title:60} "
-						(propertize "${tags:*}" 'face 'org-tag)))
     :bind (:org-roam-mode-map
 	   ("SPC" . nil)
-	   ("S-SPC" . nil))
-    :config
-    (org-roam-setup))
+	   ("S-SPC" . nil)))
   (leaf org-cite
     :custom
     (org-cite-global-bibliography . '("~/Dropbox/bibliography/default.bib"))
