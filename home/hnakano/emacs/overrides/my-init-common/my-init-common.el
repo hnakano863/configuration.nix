@@ -28,7 +28,7 @@
   (require 'consult) ; to compile consult-customize
   (require 'evil-core)) ; to compile evil-define-key
 
-(defun print-startup-stats ()
+(defun my/print-startup-stats ()
   "Prints some basic startup statistics."
   (let ((elapsed (float-time (time-subtract after-init-time before-init-time))))
     (message "Startup took %.2fs with %d GCs" elapsed gcs-done)))
@@ -42,7 +42,7 @@
   (read-process-output-max (* 3 1024 1024))
   :init
   (add-hook 'before-save-hook #'delete-trailing-whitespace)
-  (add-hook 'emacs-startup-hook #'print-startup-stats)
+  (add-hook 'emacs-startup-hook #'my/print-startup-stats)
   (blink-cursor-mode -1))
 
 ;;; Auth Source
