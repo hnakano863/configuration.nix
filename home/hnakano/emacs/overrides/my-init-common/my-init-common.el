@@ -121,12 +121,13 @@
   :hook skk-mode)
 
 ;;; Org Mode
+;; file settings
+(setq org-directory "~/Dropbox/Org")
+(setq my/org-notes-directory (concat (file-name-as-directory org-directory) "notes/"))
+
 (use-package org
   :defer t
   :custom
-  ;; file settings
-  (org-directory "~/Dropbox/Org")
-  (my/org-notes-directory (concat (file-name-as-directory org-directory) "notes/"))
   (org-archive-location (concat (file-name-as-directory org-directory)
 				"archives/%s_archive_"
 				(format-time-string "%Y" (current-time))
@@ -173,7 +174,7 @@
 (use-package org-agenda
   :defer t
   :custom
-  (org-agenda-files '(my/org-notes-directory))
+  (org-agenda-files (list my/org-notes-directory))
   (org-agenda-span 'day))
 
 ;; diary/journal
