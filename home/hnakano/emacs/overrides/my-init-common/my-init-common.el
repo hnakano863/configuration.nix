@@ -122,6 +122,7 @@
 
 ;;; Org Mode
 ;; file settings
+;; 複数の設定で使い回すのでtoplevelで定義
 (setq org-directory "~/Dropbox/Org")
 (setq my/org-notes-directory (concat (file-name-as-directory org-directory) "notes/"))
 
