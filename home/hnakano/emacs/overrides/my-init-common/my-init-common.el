@@ -120,6 +120,13 @@
   :config
   (marginalia-mode 1))
 
+;;; Highlight
+(use-package hl-line
+  :hook
+  ((vterm-mode eshell-mode comint-mode term-mode) . (lambda () (hl-line-mode -1)))
+  :config
+  (global-hl-line-mode 1))
+
 ;;; Evil
 (use-package evil
   :custom

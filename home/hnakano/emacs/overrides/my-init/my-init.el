@@ -37,14 +37,11 @@
 
 (require 'my-init-common)
 
-(make-variable-buffer-local 'global-hl-line-mode)
 (leaf cus-edit
   :doc "tools for customizing Emacs and Lisp packages"
   :tag "builtin" "faces" "help"
   :hook
-  (term-mode-hook . eterm-256color-mode)
-  :init
-  (add-hook 'term-mode-hook  #'(lambda () (setq-local global-hl-line-mode nil))))
+  (term-mode-hook . eterm-256color-mode))
 
 (leaf git-gutter :global-minor-mode global-git-gutter-mode)
 (leaf hideshow :hook (emacs-lisp-mode-hook . hs-minor-mode))
@@ -190,8 +187,6 @@
 		     (org-roam-mode :align right :size 0.33 :select nil :popup t))))
 
 (leaf vterm
-  :hook
-  (vterm-mode-hook . (lambda () (setq-local global-hl-line-mode nil)))
   :config
   (leaf vterm-toggle
     :after evil
