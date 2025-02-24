@@ -44,26 +44,7 @@
   (add-hook 'emacs-startup-hook #'print-startup-stats)
   (blink-cursor-mode -1))
 
-;;; Useful functionalities
-;; window number
-(use-package winum
-  :config
-  (winum-mode 1))
-
-;; highlight
-(use-package hl-line
-  :hook
-  ((vterm-mode eshell-mode comint-mode term-mode) . (lambda () (hl-line-mode -1)))
-  :config
-  (global-hl-line-mode 1))
-
-;; key bind help
-(use-package which-key
-  :config
-  (which-key-setup-side-window-bottom)
-  (which-key-mode 1))
-
-;; auth source
+;;; Auth Source
 (use-package auth-source-pass
   :after auth-source
   :custom
@@ -71,7 +52,7 @@
   :config
   (auth-source-pass-enable))
 
-;;; Undo systems
+;;; Undo Systems
 (use-package undo-fu
   :defer t
   :custom
@@ -186,12 +167,37 @@
    consult-recent-file consult--source-recent-file consult--source-project-recent-file
    :preview-key '(:debounce 0.5 any)))
 
+;; TODO install consult-projectile for projectile integration
+
 ;; rich minibuffer annotations
 (use-package marginalia
   :config
   (marginalia-mode 1))
 
-;;; Evil
+;;; Window Management
+;; window number
+(use-package winum
+  :config
+  (winum-mode 1))
+
+;; TODO install popper for popup window
+
+;;; User Interface
+;; highlight
+(use-package hl-line
+  :hook
+  ((vterm-mode eshell-mode comint-mode term-mode) . (lambda () (hl-line-mode -1)))
+  :config
+  (global-hl-line-mode 1))
+
+;;; Key Bindings
+;; key bind help
+(use-package which-key
+  :config
+  (which-key-setup-side-window-bottom)
+  (which-key-mode 1))
+
+;; evil: vi-like keybindings
 (use-package evil
   :custom
   (evil-want-keybinding nil) ; for evil-collection
