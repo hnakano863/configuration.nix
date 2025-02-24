@@ -7,7 +7,6 @@ with epkgs; [
   consult-flycheck
   copilot
   csv-mode
-  dictionary
   docker
   dockerfile-mode
   docker-compose-mode
@@ -27,7 +26,6 @@ with epkgs; [
   general
   gnuplot
   haskell-mode
-  helpful
   hydra
   imenu-list
   inheritenv

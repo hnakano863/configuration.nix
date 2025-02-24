@@ -258,6 +258,21 @@
   :config
   (marginalia-mode 1))
 
+;;; Help System
+(use-package helpful
+  :bind
+  ("C-h f" . helpful-callable)
+  ("C-h v" . helpful-variable)
+  ("C-h k" . helpful-key))
+
+(use-package dictionary
+  :defer t
+  :custom
+  (dictionary-server "localhost")
+  (dictionary-default-dictionary "dictd-db-eijiro")
+  (dictionary-default-strategy "re")
+  (dictionary-default-popup-strategy "re"))
+
 ;;; Window Management
 ;; window number
 (use-package winum

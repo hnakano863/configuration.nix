@@ -46,14 +46,6 @@
 
 (leaf hideshow :hook (emacs-lisp-mode-hook . hs-minor-mode))
 
-(leaf helpful
-  :bind
-  ("C-h f" . helpful-callable)
-  ("C-h v" . helpful-variable)
-  ("C-h k" . helpful-key)
-  (:emacs-lisp-mode-map
-   ("C-c C-d" . helpful-at-point)))
-
 (leaf evil
   :defun evil-set-initial-state
   :config
@@ -133,13 +125,6 @@
     :custom (vterm-toggle-cd-auto-create-buffer . t)))
 
 (leaf pdf-tools :mode ("\\.pdf\\'" . pdf-view-mode))
-
-(leaf dictionary
-  :custom
-  (dictionary-server . "localhost")
-  (dictionary-default-dictionary . "dictd-db-eijiro")
-  (dictionary-default-strategy . "re")
-  (dictionary-default-popup-strategy . "re"))
 
 (leaf elfeed
   :custom

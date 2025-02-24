@@ -3,11 +3,13 @@ with epkgs; [
   consult
   ddskk
   ddskk-posframe
+  dictionary
   evil
   evil-collection
   evil-org # 不要か？
   forge
   git-gutter
+  helpful
   magit
   marginalia
   orderless
