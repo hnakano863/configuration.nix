@@ -1,6 +1,5 @@
 { trivialBuild
 , runCommand
-, gnuplot
 , julia
 , epkgs
 , my-init-common
@@ -8,7 +7,7 @@
 
 let
   src = runCommand "my-init.el" {
-    inherit gnuplot julia;
+    inherit julia;
   } ''substituteAll "${./my-init.el}" $out'';
 
   deps = import ./deps.nix { inherit epkgs; };

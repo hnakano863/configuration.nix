@@ -24,7 +24,7 @@ self: super: {
     epkgs = self;
   };
   my-init = self.callPackage ./my-init {
-    inherit (pkgs) runCommand gnuplot julia;
+    inherit (pkgs) runCommand julia;
     epkgs = self;
   };
 

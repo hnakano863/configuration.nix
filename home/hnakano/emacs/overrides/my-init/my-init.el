@@ -183,9 +183,6 @@
 ;    (geiser-active-implementations . '(guile))
 ;    :custom
 ;    (geiser-guile-binary . "~/.guix-profile/bin/guile"))
-  (leaf gnuplot
-    :mode ("\\.gp\\'" . gnuplot-mode)
-    :custom (gnuplot-program . "@gnuplot@/bin/gnuplot"))
   (leaf haskell-mode
     :mode "\\.hs\\'")
   (leaf js
@@ -357,7 +354,6 @@
        (lisp . t)
        (dot . t)
        (shell . t)
-       (gnuplot . t)
        (python . t)
        (haskell . t)
        (julia . t)

@@ -24,7 +24,6 @@ with epkgs; [
   flycheck
   geiser
   general
-  gnuplot
   haskell-mode
   hydra
   imenu-list
