@@ -44,7 +44,6 @@
   (term-mode-hook . eterm-256color-mode))
 
 (leaf hideshow :hook (emacs-lisp-mode-hook . hs-minor-mode))
-(leaf hl-line :global-minor-mode global-hl-line-mode)
 
 (leaf helpful
   :bind
