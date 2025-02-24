@@ -43,7 +43,6 @@
   :hook
   (term-mode-hook . eterm-256color-mode))
 
-(leaf git-gutter :global-minor-mode global-git-gutter-mode)
 (leaf hideshow :hook (emacs-lisp-mode-hook . hs-minor-mode))
 (leaf hl-line :global-minor-mode global-hl-line-mode)
 

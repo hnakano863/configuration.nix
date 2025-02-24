@@ -29,7 +29,6 @@ with epkgs; [
   flycheck
   geiser
   general
-  git-gutter
   gnuplot
   haskell-mode
   helpful

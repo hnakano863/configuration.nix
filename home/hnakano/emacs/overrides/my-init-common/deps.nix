@@ -3,6 +3,7 @@ with epkgs; [
   consult
   evil
   forge
+  git-gutter
   magit
   marginalia
   orderless
