@@ -154,7 +154,7 @@
   ;; command behavior
   (org-return-follows-link t)
   :config
-  ;; don't use <> as brackets
+  ;; <>が括弧として認識されないようにする
   (modify-syntax-entry ?< "_" org-mode-syntax-table)
   (modify-syntax-entry ?> "_" org-mode-syntax-table))
 
