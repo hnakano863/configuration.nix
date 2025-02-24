@@ -71,8 +71,6 @@ with epkgs; [
   smartparens
   terraform-mode
   toml-mode
-  treemacs
-  treemacs-evil
   treemacs-magit
   treemacs-projectile
   use-package

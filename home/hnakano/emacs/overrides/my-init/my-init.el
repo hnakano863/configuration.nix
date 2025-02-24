@@ -95,9 +95,6 @@
   (treemacs-width . 30)
   :hook (treemacs-mode-hook . (lambda () (treemacs-git-mode 'deferred)))
   :config
-  (leaf treemacs-evil
-    :after treemacs
-    :require t)
   (leaf treemacs-magit
     :after treemacs
     :require t)

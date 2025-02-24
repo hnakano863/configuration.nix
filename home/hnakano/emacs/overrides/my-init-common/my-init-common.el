@@ -45,11 +45,6 @@
   (blink-cursor-mode -1))
 
 ;;; Useful functionalities
-(use-package recentf
-  :unless noninteractive ; avoid load when byte compile
-  :config
-  (recentf-mode 1))
-
 ;; window number
 (use-package winum
   :config
@@ -103,36 +98,6 @@
   :config
   (global-git-gutter-mode 1))
 
-;;; Completions
-;; cool completion UI
-(use-package vertico
-  :custom
-  (vertico-cycle t)
-  (enable-recursive-minibuffers t)
-  :config
-  (vertico-mode 1))
-
-;; orderless completion style
-(use-package orderless
-  :defer t
-  :custom
-  (completion-styles '(orderless basic))
-  (completion-category-defaults nil)
-  (completion-category-overrides '((file (styles partial-completion)))))
-
-;; useful completion commands
-(use-package consult
-  :bind ("C-s" . consult-line)
-  :config
-  (consult-customize
-   consult-recent-file consult--source-recent-file consult--source-project-recent-file
-   :preview-key '(:debounce 0.5 any)))
-
-;; rich minibuffer annotations
-(use-package marginalia
-  :config
-  (marginalia-mode 1))
-
 ;;; Input Methods
 ;; helper functions
 (defun skk-isearch-setup-maybe ()
@@ -173,6 +138,49 @@
   :defer t
   :hook skk-mode)
 
+;;; File Search
+;; recent files
+(use-package recentf
+  :unless noninteractive ; avoid load when byte compile
+  :config
+  (recentf-mode 1))
+
+;; file tree
+(use-package treemacs
+  :defer t
+  :custom
+  (treemacs-width 30))
+
+;;; Completions
+;; cool completion UI
+(use-package vertico
+  :custom
+  (vertico-cycle t)
+  (enable-recursive-minibuffers t)
+  :config
+  (vertico-mode 1))
+
+;; orderless completion style
+(use-package orderless
+  :defer t
+  :custom
+  (completion-styles '(orderless basic))
+  (completion-category-defaults nil)
+  (completion-category-overrides '((file (styles partial-completion)))))
+
+;; useful completion commands
+(use-package consult
+  :bind ("C-s" . consult-line)
+  :config
+  (consult-customize
+   consult-recent-file consult--source-recent-file consult--source-project-recent-file
+   :preview-key '(:debounce 0.5 any)))
+
+;; rich minibuffer annotations
+(use-package marginalia
+  :config
+  (marginalia-mode 1))
+
 ;;; Evil
 (use-package evil
   :custom
@@ -185,6 +193,10 @@
   (evil-insert-state-exit . (lambda () (skk-mode -1)))
   :config
   (evil-mode 1))
+
+;; treemacs integration
+(use-package treemacs-evil
+  :after treemacs evil)
 
 (provide 'my-init-common)
 ;;; my-init-common.el ends here

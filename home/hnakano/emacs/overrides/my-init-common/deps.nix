@@ -9,6 +9,8 @@ with epkgs; [
   magit
   marginalia
   orderless
+  treemacs
+  treemacs-evil
   undo-fu
   undo-fu-session
   vertico
