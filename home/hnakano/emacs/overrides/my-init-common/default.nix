@@ -1,13 +1,21 @@
 { trivialBuild
+, runCommand
+, skkdicts
 , epkgs
 }:
 
-let deps = import ./deps.nix { inherit epkgs; }; in
+let
+  src = runCommand "my-init-common.el" {
+    inherit skkdicts;
+  } ''substituteAll "${./my-init-common.el}" $out'';
+
+  deps = import ./deps.nix { inherit epkgs; };
+in
 
 trivialBuild {
+   inherit src;
    pname = "my-init-common";
    version = "2025-02-23";
-   src = ./my-init-common.el;
    packageRequires = deps;
    preferLocalBuild = true;
    allowSubstitute = false;

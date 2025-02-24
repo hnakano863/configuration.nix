@@ -18,10 +18,13 @@ self: super: {
   copilot = self.callPackage ./copilot.nix { inherit (pkgs) fetchFromGitHub writeText; };
 
   my-early-init = self.callPackage ./my-early-init { };
-  my-init-common = self.callPackage ./my-init-common { epkgs = self; };
+  my-init-common = self.callPackage ./my-init-common {
+    inherit (pkgs) runCommand;
+    skkdicts = pkgs.skkDictionariesUtf8Cdb.combined;
+    epkgs = self;
+  };
   my-init = self.callPackage ./my-init {
     inherit (pkgs) runCommand gnuplot julia;
-    skkdicts = pkgs.skkDictionariesUtf8Cdb.combined;
     epkgs = self;
   };
 
