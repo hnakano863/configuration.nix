@@ -50,10 +50,19 @@
   :config
   (recentf-mode 1))
 
+;; window number
 (use-package winum
   :config
   (winum-mode 1))
 
+;; highlight
+(use-package hl-line
+  :hook
+  ((vterm-mode eshell-mode comint-mode term-mode) . (lambda () (hl-line-mode -1)))
+  :config
+  (global-hl-line-mode 1))
+
+;; key bind help
 (use-package which-key
   :config
   (which-key-setup-side-window-bottom)
@@ -95,7 +104,7 @@
   (global-git-gutter-mode 1))
 
 ;;; Completions
-;; Cool completion UI
+;; cool completion UI
 (use-package vertico
   :custom
   (vertico-cycle t)
@@ -103,7 +112,7 @@
   :config
   (vertico-mode 1))
 
-;; Orderless completion style
+;; orderless completion style
 (use-package orderless
   :defer t
   :custom
@@ -111,7 +120,7 @@
   (completion-category-defaults nil)
   (completion-category-overrides '((file (styles partial-completion)))))
 
-;; Useful completion commands
+;; useful completion commands
 (use-package consult
   :bind ("C-s" . consult-line)
   :config
@@ -119,17 +128,10 @@
    consult-recent-file consult--source-recent-file consult--source-project-recent-file
    :preview-key '(:debounce 0.5 any)))
 
-;; Rich minibuffer annotations
+;; rich minibuffer annotations
 (use-package marginalia
   :config
   (marginalia-mode 1))
-
-;;; Highlight
-(use-package hl-line
-  :hook
-  ((vterm-mode eshell-mode comint-mode term-mode) . (lambda () (hl-line-mode -1)))
-  :config
-  (global-hl-line-mode 1))
 
 ;;; Input Methods
 ;; helper functions
@@ -149,7 +151,7 @@
              skk-isearch-mode-enable)
     (skk-isearch-mode-cleanup)))
 
-;; SKK
+;; skk
 (use-package skk
   :custom
   (skk-cdb-large-jisyo "@skkdicts@/share/skk/SKK-JISYO.combined.utf8.cdb")
