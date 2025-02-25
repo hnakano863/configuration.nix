@@ -1,6 +1,5 @@
 { epkgs }:
 with epkgs; [
-  all-the-icons
   citar
   company
   company-coq
@@ -10,8 +9,6 @@ with epkgs; [
   docker
   dockerfile-mode
   docker-compose-mode
-  doom-modeline
-  doom-themes
   eglot
   eglot-jl
   elfeed
@@ -35,7 +32,6 @@ with epkgs; [
   mermaid-mode
   nerd-icons
   nix-mode
-  nyan-mode
   ob-restclient
   ox-pandoc
   ox-zenn
@@ -57,9 +53,7 @@ with epkgs; [
   toml-mode
   treemacs-magit
   treemacs-projectile
-  use-package
   uuidgen
-  vterm
   vterm-toggle
   yaml-mode
   yasnippet

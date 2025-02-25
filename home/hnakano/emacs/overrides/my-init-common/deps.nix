@@ -1,9 +1,12 @@
 { epkgs }:
 with epkgs; [
+  all-the-icons
   consult
   ddskk
   ddskk-posframe
   dictionary
+  doom-modeline
+  doom-themes
   evil
   evil-collection
   evil-org # 不要か？
@@ -14,6 +17,7 @@ with epkgs; [
   hydra
   magit
   marginalia
+  nyan-mode
   orderless
   org-contrib
   org-journal
@@ -26,6 +30,7 @@ with epkgs; [
   undo-fu
   undo-fu-session
   vertico
+  vterm
   which-key
   winum
 ]

@@ -77,37 +77,6 @@
 	(append context-skk-programming-mode
 		'(dataform-mode lookml-mode))))
 
-(leaf doom
-  :doc "doom-relative setups"
-  :tag "doom"
-  :config
-  (leaf doom-themes
-    :config
-    (load-theme 'doom-opera t)
-    (leaf doom-themes-ext-treemacs
-      :custom
-      (doom-themes-treemacs-theme . "doom-colors")
-      :config
-      (doom-themes-treemacs-config)))
-  (leaf nyan-mode
-    :global-minor-mode t)
-  (leaf doom-modeline
-    :global-minor-mode t
-    :defun
-    (doom-modeline-def-modeline doom-modeline-set-modeline)
-    :custom
-    (nerd-icons-scale-factor . 1.1)
-    (doom-modeline-height . 1)
-    (doom-modeline-bar-width . 3)
-    (doom-modeline-buffer-file-name-style . 'truncate-with-project)
-    :config
-    (doom-modeline-def-modeline 'my/main
-      '(bar window-number modals buffer-info " " buffer-position)
-      '(misc-info process repl lsp vcs indent-info buffer-encoding "   "))
-    (doom-modeline-set-modeline 'my/main t)
-    (set-face-attribute 'mode-line nil :family "HackGen" :height 120)
-    (set-face-attribute 'mode-line-inactive nil :family "HackGen" :height 120)))
-
 ;; TODO remove shackle
 (leaf shackle
   :global-minor-mode t

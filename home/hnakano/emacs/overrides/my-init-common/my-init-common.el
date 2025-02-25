@@ -22,13 +22,13 @@
 ;; My init configurations common with Linux and WSL2 machines.
 
 ;;; Code:
+(require 'hydra)
+(require 'general)
 
 (eval-when-compile
   (require 'use-package)
   (require 'consult) ; to compile consult-customize
-  (require 'evil-core) ; to compile evil-define-key
-  (require 'hydra)
-  (require 'general))
+  (require 'evil-core)) ; to compile evil-define-key
 
 (defun my/print-startup-stats ()
   "Prints some basic startup statistics."
@@ -297,8 +297,42 @@
   :hook
   (prog-mode . display-line-numbers-mode))
 
+;;; Doom Emacs like interface
+(use-package doom-themes
+  :config
+  (load-theme 'doom-opera))
+
+;; treemacs theme
+(use-package doom-themes-ext-treemacs
+  :after doom-themes treemacs
+  :custom
+  (doom-themes-treemacs-theme "doom-colors")
+  :config
+  (doom-themes-treemacs-config))
+
+;;; Mode Line
+(use-package doom-modeline
+  :custom
+  (nerd-icons-scale-factor 1.1)
+  (doom-modeline-height 1)
+  (doom-modeline-bar-width 3)
+  (doom-modeline-buffer-file-name-style 'truncate-with-project)
+  :config
+  ;; TODO: modelineに表示する情報を精査する
+  (doom-modeline-def-modeline 'my/main
+    '(bar window-number modals buffer-info " " buffer-position)
+    '(misc-info process repl lsp vcs indent-info buffer-encoding "   "))
+  (doom-modeline-set-modeline 'my/main t)
+  (set-face-attribute 'mode-line nil :family "HackGen" :height 120)
+  (set-face-attribute 'mode-line-inactive nil :family "HackGen" :height 120)
+  (doom-modeline-mode 1))
+
+(use-package nyan-mode
+  :config
+  (nyan-mode 1))
+
 ;;; Key Bindings
-;; key bind help
+;; key bind hel
 (use-package which-key
   :config
   (which-key-setup-side-window-bottom)
