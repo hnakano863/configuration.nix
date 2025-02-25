@@ -26,7 +26,9 @@
 (eval-when-compile
   (require 'use-package)
   (require 'consult) ; to compile consult-customize
-  (require 'evil-core)) ; to compile evil-define-key
+  (require 'evil-core) ; to compile evil-define-key
+  (require 'hydra)
+  (require 'general))
 
 (defun my/print-startup-stats ()
   "Prints some basic startup statistics."
@@ -258,6 +260,8 @@
   :config
   (marginalia-mode 1))
 
+;; TODO embarkを使うかどうかを考える
+
 ;;; Help System
 (use-package helpful
   :bind
@@ -288,6 +292,10 @@
   ((vterm-mode eshell-mode comint-mode term-mode) . (lambda () (hl-line-mode -1)))
   :config
   (global-hl-line-mode 1))
+
+(use-package display-line-numbers
+  :hook
+  (prog-mode . display-line-numbers-mode))
 
 ;;; Key Bindings
 ;; key bind help
@@ -335,6 +343,173 @@
 ;; treemacs integration
 (use-package treemacs-evil
   :after evil treemacs)
+
+;;; General.el definitions
+;; definer
+(general-create-definer my/bind
+  :states '(motion normal)
+  :keymaps 'override)
+
+;; root
+(my/bind
+ :prefix "SPC"
+ "" nil
+ "SPC" 'consult-buffer
+ "b" '(:ignore t :wk "buffer")
+ "f" '(:ignore t :wk "file")
+ "g" '(:ignore t :wk "git")
+ "h" '(:ignore t :wk "help")
+ "o" '(:ignore t :wk "org")
+ "q" '(:ignore t :wk "quit")
+ "s" '(:ignore t :wk "search")
+ "t" '(:ignore t :wk "toggle")
+ "w" '(:ignore t :wk "window"))
+
+;; projectile
+(my/bind
+ 'projectile-mode-map
+ :prefix "SPC"
+ "p" '(:keymap projectile-command-map :wk "projectile"))
+
+;; buffer
+(defun switch-to-scratch-buffer ()
+  "Switch or create *scratch* buffer."
+  (interactive)
+  (switch-to-buffer (get-buffer-create "*scratch*"))
+  (lisp-interaction-mode)
+  (message "switched to *scratch* buffer"))
+
+(defun revert-buffer-no-confirm ()
+  "Revert buffer but no confirm."
+  (interactive)
+  (if (not (buffer-modified-p))
+      (revert-buffer :ignore-auto :noconfirm)
+    (error "The buffer has been modified"))
+  (if (not (buffer-modified-p))
+      (revert-buffer :ignore-auto :noconfirm)
+    (error "The buffer has been modified")))
+
+(my/bind
+ :prefix "SPC b"
+ "b" 'switch-to-buffer
+ "d" 'kill-current-buffer
+ "l" 'evil-switch-to-windows-last-buffer
+ "r" 'revert-buffer-no-confirm
+ "s" 'switch-to-scratch-buffer)
+
+;; file
+(my/bind
+ :prefix "SPC f"
+ "f" 'find-file
+ "r" 'consult-recent-file
+ "t" 'treemacs)
+
+;; git
+(defhydra hydra-git-gutter (:color red :hint nil)
+  "
+_j_: next _k_: previous _s_: stage _r_: revert _d_: popup diff"
+  ("j" git-gutter:next-hunk)
+  ("k" git-gutter:previous-hunk)
+  ("s" git-gutter:stage-hunk)
+  ("r" git-gutter:revert-hunk)
+  ("d" git-gutter:popup-hunk)
+  ("q" nil :exit t)
+  ("ESC" nil :exit t))
+
+(my/bind
+ :prefix "SPC g"
+ "g" 'magit-status
+ "s" 'magit-status
+ "h" 'hydra-git-gutter/body)
+
+;; help
+(my/bind
+ :prefix "SPC h"
+ "f" 'helpful-callable
+ "v" 'helpful-variable
+ "k" 'helpful-key
+ "m" 'describe-mode
+ "w" 'dictionary-match-words
+ "i" 'info)
+
+;; org
+(my/bind
+ :prefix "SPC o"
+ "c" '((lambda () (interactive) (org-capture nil "c"))
+       :wk "capture todos")
+ "C" 'org-capture
+ "a" 'org-agenda-list
+ "A" 'org-agenda
+ "t" 'org-todo-list
+ "x" 'org-mru-clock-in
+ ;; TODO replace with bookmark
+ "n" '((lambda ()
+	 (interactive)
+	 (let ((default-directory my/org-notes-directory))
+	   (call-interactively 'find-file)))
+       :wk "open notes")
+ "r" '(:ignore t :wk "org roam")
+ "r n" 'org-roam-node-find
+ "r f" 'org-roam-node-find
+ "r c" 'org-roam-capture)
+
+;; TODO 整理したい
+(my/bind
+ :prefix "SPC o r"
+ :keymaps 'org-mode-map
+ "r" 'org-roam-buffer-toggle ; なんだっけ？
+ "b" 'org-roam-buffer-display-dedicated ; なんだっけ？
+ "t" 'org-roam-tag-add
+ "i" 'org-roam-node-insert
+ "a" 'org-roam-alias-add
+ "g" 'org-roam-graph) ; つかわないかも
+
+;; quit
+(my/bind
+ :prefix "SPC q"
+ "q" 'save-buffers-kill-terminal
+ "Q" 'evil-quit-all-with-error-code
+ "r" 'restart-emacs
+ "R" '((lambda () (interactive "P") (restart-emacs '("--debug-init")))
+       :wk "restart-debug-init"))
+
+;; search
+(my/bind
+ :prefix "SPC s"
+ "b" 'consult-line
+ "i" 'consult-imenu) ; 使わないかも？
+
+;; toggle
+(my/bind
+ :prefix "SPC t"
+ "d" 'toggle-debug-on-error
+ "t" 'toggle-truncate-lines
+ "l" 'display-line-numbers-mode
+ "f" 'treemacs)
+
+;; window
+(my/bind
+ :prefix "SPC w"
+ "h" 'evil-window-left
+ "j" 'evil-window-down
+ "k" 'evil-window-up
+ "l" 'evil-window-right
+ "H" 'evil-window-move-far-left
+ "J" 'evil-window-move-very-bottom
+ "K" 'evil-window-move-very-top
+ "L" 'evil-window-move-far-right
+ "s" 'evil-window-split
+ "v" 'evil-window-vsplit
+ "d" 'evil-window-delete
+ "D" 'delete-other-windows
+ "<" 'evil-window-decrease-width
+ ">" 'evil-window-increase-width
+ "0" 'treemacs-select-window
+ "1" 'winum-select-window-1
+ "2" 'winum-select-window-2
+ "3" 'winum-select-window-3
+ "4" 'winum-select-window-4
+ "w" 'winum-select-window-by-number)
 
 (provide 'my-init-common)
 ;;; my-init-common.el ends here

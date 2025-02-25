@@ -388,23 +388,6 @@
     (org-cite-follow-processor . 'citar)
     (org-cite-activate-processor . 'citar)))
 
-(leaf hydra
-  :config
-  (leaf hydra-gitgutter
-    :defun
-    (git-gutter:next-hunk git-gutter:previous-hunk
-     git-gutter:stage-hunk git-gutter:revert-hunk git-gutter:popup-hunk)
-    :config
-    (defhydra hydra-git-gutter (:color red :hint nil)
-      "
-_j_: next _k_: previous _s_: stage _r_: revert _d_: popup diff"
-      ("j" git-gutter:next-hunk)
-      ("k" git-gutter:previous-hunk)
-      ("s" git-gutter:stage-hunk)
-      ("r" git-gutter:revert-hunk)
-      ("d" git-gutter:popup-hunk)
-      ("ESC" nil :exit t))))
-
 (leaf general
   :config
   (general-define-key
@@ -419,162 +402,20 @@ _j_: next _k_: previous _s_: stage _r_: revert _d_: popup diff"
     :config
     (my/bind
       :prefix "SPC"
-      "" nil
-      "RET" 'vterm-toggle
-      "SPC" 'consult-buffer
-      "b" '(:ignore t :wk "buffer")
-      "f" '(:ignore t :wk "file")
-      "g" '(:ignore t :wk "git")
-      "h" '(:ignore t :wk "help")
-      "o" '(:ignore t :wk "org")
-      "q" '(:ignore t :wk "quit")
-      "s" '(:ignore t :wk "search")
-      "t" '(:ignore t :wk "toggle")
-      "w" '(:ignore t :wk "window"))
-    (my/bind 'projectile-mode-map
-      :prefix "SPC"
-      "p" '(:keymap projectile-command-map :wk "projectile")))
-  (leaf my/bind-buffer
-    :preface
-    (defun switch-to-scratch-buffer ()
-      "Switch or create *scratch* buffer."
-      (interactive)
-      (switch-to-buffer (get-buffer-create "*scratch*"))
-      (lisp-interaction-mode)
-      (message "switched to *scratch* buffer"))
-    (defun revert-buffer-no-confirm ()
-      "Revert buffer but no confirm."
-      (interactive)
-      ;;(message "force-reverting value is %s" force-reverting)
-      (if (not (buffer-modified-p))
-	  (revert-buffer :ignore-auto :noconfirm)
-	(error "The buffer has been modified"))
-      (if (not (buffer-modified-p))
-      (revert-buffer :ignore-auto :noconfirm)
-      (error "The buffer has been modified")))
-    :config
-    (my/bind
-      :prefix "SPC b"
-      "b" 'switch-to-buffer
-      "d" 'kill-current-buffer
-      "l" 'evil-switch-to-windows-last-buffer
-      "r" 'revert-buffer-no-confirm
-      "s" 'switch-to-scratch-buffer))
-  (leaf my/bind-file
-    :config
-    (my/bind
-      :prefix "SPC f"
-      "f" 'find-file
-      "r" 'consult-recent-file
-      "t" 'treemacs
-      "u" 'undo-tree-visualize))
-  (leaf my/bind
-    :config
-    (my/bind
-     :prefix "SPC w"
-     "h" 'evil-window-left
-     "j" 'evil-window-down
-     "k" 'evil-window-up
-     "l" 'evil-window-right
-     "H" 'evil-window-move-far-left
-     "J" 'evil-window-move-very-bottom
-     "K" 'evil-window-move-very-top
-     "L" 'evil-window-move-far-right
-     "s" 'evil-window-split
-     "v" 'evil-window-vsplit
-     "d" 'evil-window-delete
-     "D" 'delete-other-windows
-     "0" 'treemacs-select-window
-     "1" 'winum-select-window-1
-     "2" 'winum-select-window-2
-     "3" 'winum-select-window-3
-     "4" 'winum-select-window-4
-     "5" 'winum-select-window-5
-     "6" 'winum-select-window-6
-     "7" 'winum-select-window-7
-     "8" 'winum-select-window-8
-     "9" 'winum-select-window-9
-     "w" 'winum-select-window-by-number))
-  (leaf my/bind-help
-    :config
-    (my/bind
-      :prefix "SPC h"
-      ;"a" 'consult-apropos
-      "f" 'helpful-callable
-      "v" 'helpful-variable
-      "k" 'helpful-key
-      "m" 'describe-mode
-      "w" 'dictionary-match-words
-      "i" 'info
-      "b" 'embark-bindings))
-  (leaf my/bind-quit
-    :config
-    (my/bind
-      :prefix "SPC q"
-      "q" 'save-buffers-kill-terminal
-      "Q" 'evil-quit-all-with-error-code
-      "r" 'restart-emacs
-      "R" '((lambda () (interactive "P") (restart-emacs '("--debug-init")))
-	    :wk "restart-debug-init")))
-  (leaf my/bind-git
-    :config
-    (my/bind
-      :prefix "SPC g"
-      "g" 'magit-status
-      "s" 'magit-status
-      "h" 'hydra-git-gutter/body))
+      "RET" 'vterm-toggle))
   (leaf my/bind-toggle
     :config
     (my/bind
-     :prefix "SPC t"
-     "d" 'toggle-debug-on-error
-     "t" 'toggle-truncate-lines
-     "l" 'display-line-numbers-mode
-     "f" 'treemacs)
-    (my/bind
      :keymaps 'prog-mode-map
      :prefix "SPC t"
+     ;; TODO imenuを使うかどうか
      "i" 'imenu-list-smart-toggle))
-  (leaf my/bind-org
-    :config
-    (my/bind
-      :prefix "SPC o"
-      "c" '((lambda () (interactive) (org-capture nil "c"))
-	    :wk "capture todos")
-      "C" 'org-capture
-      "a" 'org-agenda-list
-      "A" 'org-agenda
-      "t" 'org-todo-list
-      "x" 'org-mru-clock-in
-      "n" '((lambda ()
-	      (interactive)
-	      (let ((default-directory my/org-notes-directory))
-		(call-interactively 'find-file)))
-	    :wk "open notes")
-      "r" '(:ignore t :wk "org roam")
-      "r n" 'org-roam-node-find
-      "r f" 'org-roam-node-find
-      "r c" 'org-roam-capture)
-    (my/bind
-     :prefix "SPC o r"
-     :keymaps 'org-mode-map
-       "r" 'org-roam-buffer-toggle
-       "b" 'org-roam-buffer-display-dedicated
-       "t" 'org-roam-tag-add
-       "i" 'org-roam-node-insert
-       "a" 'org-roam-alias-add
-       "g" 'org-roam-graph))
   (leaf my/bind-search
     :config
     (my/bind
      :prefix "SPC s"
-     "b" 'consult-line
-     "i" 'consult-imenu)
-    (my/bind
-     :prefix "SPC s"
      :keymaps 'flycheck-mode-map
-     "e" 'consult-flycheck)))
-
+     "e" 'consult-flycheck))) ; TODO: 見直しす
 
 (provide 'my-init)
 ;;; my-init.el ends here

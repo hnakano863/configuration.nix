@@ -10,13 +10,16 @@ with epkgs; [
   forge
   git-gutter
   helpful
+  hydra
   magit
   marginalia
   orderless
   org-contrib
   org-journal
+  org-mru-clock
   org-roam
   projectile
+  restart-emacs
   treemacs
   treemacs-evil
   undo-fu

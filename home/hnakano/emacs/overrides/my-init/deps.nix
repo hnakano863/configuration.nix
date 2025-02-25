@@ -16,8 +16,6 @@ with epkgs; [
   eglot-jl
   elfeed
   elm-mode
-  embark
-  embark-consult
   envrc
   ess
   fish-mode
@@ -25,7 +23,6 @@ with epkgs; [
   geiser
   general
   haskell-mode
-  hydra
   imenu-list
   inheritenv
   julia-mode
@@ -41,7 +38,6 @@ with epkgs; [
   nix-mode
   nyan-mode
   ob-restclient
-  org-mru-clock
   ox-pandoc
   ox-zenn
   pandoc
@@ -51,7 +47,6 @@ with epkgs; [
   prism
   proof-general
   rainbow-delimiters
-  restart-emacs
   restclient
   ripgrep
   rust-mode
