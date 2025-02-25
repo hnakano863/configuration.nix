@@ -21,7 +21,6 @@ with epkgs; [
   fish-mode
   flycheck
   geiser
-  general
   haskell-mode
   imenu-list
   inheritenv

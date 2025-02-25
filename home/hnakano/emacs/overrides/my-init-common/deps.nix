@@ -8,6 +8,7 @@ with epkgs; [
   evil-collection
   evil-org # 不要か？
   forge
+  general
   git-gutter
   helpful
   hydra
