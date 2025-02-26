@@ -71,6 +71,20 @@
   :config
   (undo-fu-session-global-mode 1))
 
+;;; Restart Emacs
+(use-package restart-emacs
+  :commands (restart-emacs-debug-init)
+  :init
+  (with-eval-after-load 'files
+    ;; files.elがrestart-emacsを提供しているのでunboundする
+    (fmakunbound 'restart-emacs)
+    (autoload 'restart-emacs "restart-emacs"))
+  :config
+  (defun restart-emacs-debug-init (&optional args)
+    "Restart emacs with --debug-init option"
+    (interactive)
+    (restart-emacs (cons "--debug-init" args))))
+
 ;;; Version Control Systems
 (use-package magit
   :commands magit-after-save-refresh-status
@@ -604,8 +618,7 @@ _j_: next _k_: previous _s_: stage _r_: revert _d_: popup diff"
   "q" 'save-buffers-kill-terminal
   "Q" 'evil-quit-all-with-error-code
   "r" 'restart-emacs
-  "R" '((lambda () (interactive "P") (restart-emacs '("--debug-init"))) ; FIXME
-	:wk "restart-debug-init"))
+  "R" 'restart-emacs-debug-init)
 
 ;; search
 (my/bind
