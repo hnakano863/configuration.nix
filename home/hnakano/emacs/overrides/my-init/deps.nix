@@ -1,7 +1,6 @@
 { epkgs }:
 with epkgs; [
   citar
-  company
   company-coq
   consult-flycheck
   copilot
@@ -9,14 +8,11 @@ with epkgs; [
   docker
   dockerfile-mode
   docker-compose-mode
-  eglot
   eglot-jl
   elfeed
   elm-mode
-  envrc
   ess
   fish-mode
-  flycheck
   geiser
   haskell-mode
   imenu-list
@@ -27,28 +23,19 @@ with epkgs; [
   leaf
   leaf-convert
   lean4-mode
-  macrostep
-  markdown-mode
   mermaid-mode
-  nerd-icons
-  nix-mode
   ob-restclient
   ox-pandoc
   ox-zenn
   pandoc
-  pdf-tools
   plantuml-mode
   posframe
-  prism
   proof-general
-  rainbow-delimiters
   restclient
-  ripgrep
   rust-mode
   shackle
   slime
   slime-company
-  smartparens
   terraform-mode
   toml-mode
   treemacs-magit
@@ -56,5 +43,4 @@ with epkgs; [
   uuidgen
   vterm-toggle
   yaml-mode
-  yasnippet
 ]

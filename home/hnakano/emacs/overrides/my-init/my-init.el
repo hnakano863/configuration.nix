@@ -44,17 +44,8 @@
   ;; TODO eterm-256color-modeが入ってない
   (term-mode-hook . eterm-256color-mode))
 
+;; 使わないかも
 (leaf hideshow :hook (emacs-lisp-mode-hook . hs-minor-mode))
-
-(leaf evil
-  :defun evil-set-initial-state
-  :config
-  (evil-set-initial-state 'vterm-mode 'insert)
-  (leaf evil-collection
-    :after evil
-    :custom (evil-collection-magit-state . 'normal)
-    :config
-    (evil-collection-init '(pdf-view magit vterm))))
 
 (leaf treemacs
   :doc "treemacs and its extentions"
@@ -93,48 +84,10 @@
     :after evil
     :custom (vterm-toggle-cd-auto-create-buffer . t)))
 
-(leaf pdf-tools :mode ("\\.pdf\\'" . pdf-view-mode))
-
 (leaf elfeed
   :custom
   (elfeed-feeds . '("https://tech.andpad.co.jp/feed"
 		    "https://www.juliabloggers.com/feed")))
-
-(leaf ide
-  :doc "provide ide-like features"
-  :tag "ide" "company" "flycheck" "lsp"
-  :config
-  (leaf eglot :custom (eglot-connect-timeout . 180))
-  (leaf flycheck :hook (emacs-lisp-mode-hook . flycheck-mode))
-  (leaf envrc :global-minor-mode envrc-global-mode)
-  (leaf company
-    :hook
-    (emacs-lisp-mode-hook . company-mode)
-    :bind
-    (:company-active-map
-     ("C-n" . company-select-next)
-     ("C-p" . company-select-previous)))
-  (leaf smartparens
-    :hook
-    ((emacs-lisp-mode-hook org-mode-hook) . smartparens-mode)
-    :config
-    (leaf smartparens-config
-      :defun
-      (sp-local-pair sp-with-modes)
-      :after smartparens
-      :require t
-      :config
-      (sp-local-pair 'org-mode "\\[" "\\]")
-      (sp-local-pair 'org-mode "<" nil :actions :rem)))
-  (leaf rainbow-delimiters
-    :hook ((emacs-lisp-mode-hook org-mode-hook) . rainbow-delimiters-mode))
-  (leaf prism
-    :defer-config
-    (prism-set-colors :lightens '(0 5 10) :desaturations '(-2.5 0 2.5)
-      :colors (-map #'doom-color '(red orange yellow green blue violet))))
-  (leaf yasnippet
-    :defer-config
-    (yas-reload-all)))
 
 (leaf language
   :doc "programming language setup"
@@ -180,16 +133,6 @@
     (sp-with-modes 'julia-mode
       (sp-local-pair "\"" "\"" :post-handlers '(:add sp-python-fix-triple-quotes))
       (sp-local-pair "\"\"\"" "\"\"\"")))
-  (leaf nix-mode
-    :mode "\\.nix\\'"
-    :hook
-    (nix-mode-hook . smartparens-mode)
-    (nix-mode-hook . eglot-ensure)
-    :config
-    (sp-with-modes 'nix-mode
-      (sp-local-pair "[ " " ]")
-      (sp-local-pair "{ " " }")
-      (sp-local-pair "( " " )")))
   (leaf python
     :custom
     (python-guess-indent . nil)
@@ -237,9 +180,6 @@
     :custom (jupyter-long-timeout . 100)
     :config
     (inheritenv-add-advice #'jupyter-command))
-  (leaf markdown-mode
-    :mode ("\\.md\\'" . gfm-mode)
-    :custom (markdown-command . "pandoc --from gfm"))
   (leaf lean4-mode :mode "\\.lean\\'")
   (leaf mermaid-mode :mode "\\.mermaid\\'")
   (leaf rust-mode :mode "\\.rs\\'")
@@ -359,14 +299,7 @@
 
 (leaf general
   :config
-  (general-define-key
-    :keymaps '(emacs-lisp-mode-map lisp-interaction-mode-map)
-    "C-c C-e" 'macrostep-expand)
-  (general-def 'insert smartparens-mode-map
-    "C-c [ s" 'sp-backward-slurp-sexp
-    "C-c [ b" 'sp-backward-barf-sexp
-    "C-c ] s" 'sp-forward-slurp-sexp
-    "C-c ] b" 'sp-forward-barf-sexp)
+
   (leaf my/bind-root
     :config
     (my/bind

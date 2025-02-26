@@ -22,12 +22,15 @@
 ;; My init configurations common with Linux and WSL2 machines.
 
 ;;; Code:
+
+;; TODO: Cannot open load file (flycheck)
 (require 'hydra)
 (require 'general)
 
 (eval-when-compile
   (require 'use-package)
   (require 'consult) ; to compile consult-customize
+  (require 'smartparens) ; to compile sp-with-modes
   (require 'evil-core)) ; to compile evil-define-key
 
 (defun my/print-startup-stats ()
@@ -119,8 +122,81 @@
   (skk-load . (lambda () (require 'context-skk))))
 
 (use-package ddskk-posframe
-  :defer t
   :hook skk-mode)
+
+;;; Development Support
+(use-package eglot
+  :defer t
+  :custom
+  (eglot-connect-timeout 180))
+
+(use-package yasnippet
+  :defer t
+  :config
+  (yas-reload-all))
+
+(use-package envrc
+  :config
+  (envrc-global-mode 1))
+
+(use-package company
+  :bind
+  (:map company-active-map
+   ("C-n" . company-select-next)
+   ("C-p" . company-select-previous)))
+
+(use-package prism
+  :defer t
+  :after doom-themes
+  :config
+  (prism-set-colors
+   :lightens '(0 5 10)
+   :desaturations '(-2.5 0 2.5)
+   :colors (-map #'doom-color
+		 '(red orange yellow green blue violet))))
+
+(use-package smartparens
+  :defer t
+  :config
+  (general-def 'insert smartparens-mode-map
+    "C-c [ s" 'sp-backward-slurp-sexp
+    "C-c [ b" 'sp-backward-barf-sexp
+    "C-c ] s" 'sp-forward-slurp-sexp
+    "C-c ] b" 'sp-forward-barf-sexp))
+
+;;; Programming Languages
+(use-package elisp-mode
+  :hook
+  (emacs-lisp-mode . company-mode)
+  (emacs-lisp-mode . flycheck-mode)
+  (emacs-lisp-mode . smartparens-mode)
+  (emacs-lisp-mode . rainbow-delimiters-mode)
+  :bind
+  (:map emacs-lisp-mode-map
+   ("C-c C-e" . 'macrostep-expand))
+  (:map lisp-interaction-mode-map
+   ("C-c C-e" . 'macrostep-expand)))
+
+(use-package nix-mode
+  :mode "\\.nix\\'"
+  :hook
+  (nix-mode . eglot-ensure)
+  (nix-mode . smartparens-mode)
+  (nix-mode . rainbow-delimiters-mode)
+  :config
+  (eval-after-load 'smartparens
+    (sp-with-modes 'nix-mode
+      (sp-local-pair "[ " " ]")
+      (sp-local-pair "{ " " }")
+      (sp-local-pair "( " " )"))))
+
+;;; Editor Support
+(use-package pdf-tools
+  :mode ("\\.pdf\\'" . pdf-view-mode))
+
+(use-package markdown-mode
+  :mode ("\\.md\\'" . gfm-mode)
+  :custom (markdown-command "pandoc --from gfm"))
 
 ;;; Org Mode
 ;; file settings
@@ -157,10 +233,16 @@
 			      :matchers ("begin" "$1" "$" "$$" "\\(" "\\[")))
   ;; command behavior
   (org-return-follows-link t)
+  :hook
+  (org-mode . smartparens-mode)
   :config
   ;; <>が括弧として認識されないようにする
   (modify-syntax-entry ?< "_" org-mode-syntax-table)
-  (modify-syntax-entry ?> "_" org-mode-syntax-table))
+  (modify-syntax-entry ?> "_" org-mode-syntax-table)
+  (eval-after-load 'smartparens
+    (sp-with-modes 'org-mode
+      (sp-local-pair "\\[" "\\]")
+      (sp-local-pair "<" nil :actions :rem))))
 
 ;; todo management
 (use-package org-capture
@@ -349,6 +431,7 @@
   (evil-insert-state-entry . (lambda () (skk-mode 1)))
   (evil-insert-state-exit . (lambda () (skk-mode -1)))
   :config
+  (evil-set-initial-state 'vterm-mode 'insert) ; vterm-modeではinsert-modeで入る
   (evil-mode 1))
 
 ;; org-mode integration
@@ -378,6 +461,14 @@
 (use-package treemacs-evil
   :after evil treemacs)
 
+;; misc
+(use-package evil-collection
+  :after evil
+  :custom
+  (evil-collection-magit-state 'normal)
+  :config
+  (evil-collection-init '(pdf-view magit vterm)))
+
 ;;; General.el definitions
 ;; definer
 (general-create-definer my/bind
@@ -386,24 +477,24 @@
 
 ;; root
 (my/bind
- :prefix "SPC"
- "" nil
- "SPC" 'consult-buffer
- "b" '(:ignore t :wk "buffer")
- "f" '(:ignore t :wk "file")
- "g" '(:ignore t :wk "git")
- "h" '(:ignore t :wk "help")
- "o" '(:ignore t :wk "org")
- "q" '(:ignore t :wk "quit")
- "s" '(:ignore t :wk "search")
- "t" '(:ignore t :wk "toggle")
- "w" '(:ignore t :wk "window"))
+  :prefix "SPC"
+  "" nil
+  "SPC" 'consult-buffer
+  "b" '(:ignore t :wk "buffer")
+  "f" '(:ignore t :wk "file")
+  "g" '(:ignore t :wk "git")
+  "h" '(:ignore t :wk "help")
+  "o" '(:ignore t :wk "org")
+  "q" '(:ignore t :wk "quit")
+  "s" '(:ignore t :wk "search")
+  "t" '(:ignore t :wk "toggle")
+  "w" '(:ignore t :wk "window"))
 
 ;; projectile
 (my/bind
- 'projectile-mode-map
- :prefix "SPC"
- "p" '(:keymap projectile-command-map :wk "projectile"))
+  'projectile-mode-map
+  :prefix "SPC"
+  "p" '(:keymap projectile-command-map :wk "projectile"))
 
 ;; buffer
 (defun switch-to-scratch-buffer ()
@@ -424,19 +515,19 @@
     (error "The buffer has been modified")))
 
 (my/bind
- :prefix "SPC b"
- "b" 'switch-to-buffer
- "d" 'kill-current-buffer
- "l" 'evil-switch-to-windows-last-buffer
- "r" 'revert-buffer-no-confirm
- "s" 'switch-to-scratch-buffer)
+  :prefix "SPC b"
+  "b" 'switch-to-buffer
+  "d" 'kill-current-buffer
+  "l" 'evil-switch-to-windows-last-buffer
+  "r" 'revert-buffer-no-confirm
+  "s" 'switch-to-scratch-buffer)
 
 ;; file
 (my/bind
- :prefix "SPC f"
- "f" 'find-file
- "r" 'consult-recent-file
- "t" 'treemacs)
+  :prefix "SPC f"
+  "f" 'find-file
+  "r" 'consult-recent-file
+  "t" 'treemacs)
 
 ;; git
 (defhydra hydra-git-gutter (:color red :hint nil)
@@ -451,99 +542,101 @@ _j_: next _k_: previous _s_: stage _r_: revert _d_: popup diff"
   ("ESC" nil :exit t))
 
 (my/bind
- :prefix "SPC g"
- "g" 'magit-status
- "s" 'magit-status
- "h" 'hydra-git-gutter/body)
+  :prefix "SPC g"
+  "g" 'magit-status
+  "s" 'magit-status
+  "h" 'hydra-git-gutter/body)
 
 ;; help
 (my/bind
- :prefix "SPC h"
- "f" 'helpful-callable
- "v" 'helpful-variable
- "k" 'helpful-key
- "m" 'describe-mode
- "w" 'dictionary-match-words
- "i" 'info)
+  :prefix "SPC h"
+  "f" 'helpful-callable
+  "v" 'helpful-variable
+  "k" 'helpful-key
+  "m" 'describe-mode
+  "w" 'dictionary-match-words
+  "i" 'info)
 
 ;; org
 (my/bind
- :prefix "SPC o"
- "c" '((lambda () (interactive) (org-capture nil "c"))
-       :wk "capture todos")
- "C" 'org-capture
- "a" 'org-agenda-list
- "A" 'org-agenda
- "t" 'org-todo-list
- "x" 'org-mru-clock-in
- ;; TODO replace with bookmark
- "n" '((lambda ()
-	 (interactive)
-	 (let ((default-directory my/org-notes-directory))
-	   (call-interactively 'find-file)))
-       :wk "open notes")
- "r" '(:ignore t :wk "org roam")
- "r n" 'org-roam-node-find
- "r f" 'org-roam-node-find
- "r c" 'org-roam-capture)
+  :prefix "SPC o"
+  "c" '((lambda () (interactive) (org-capture nil "c"))
+	:wk "capture todos")
+  "C" 'org-capture
+  "a" 'org-agenda-list
+  "A" 'org-agenda
+  "t" 'org-todo-list
+  "x" 'org-mru-clock-in
+  ;; TODO replace with bookmark
+  "n" '((lambda ()
+	  (interactive)
+	  (let ((default-directory my/org-notes-directory))
+	    (call-interactively 'find-file)))
+	:wk "open notes")
+  "r" '(:ignore t :wk "org roam")
+  "r n" 'org-roam-node-find
+  "r f" 'org-roam-node-find
+  "r c" 'org-roam-capture)
 
 ;; TODO 整理したい
 (my/bind
- :prefix "SPC o r"
- :keymaps 'org-mode-map
- "r" 'org-roam-buffer-toggle ; なんだっけ？
- "b" 'org-roam-buffer-display-dedicated ; なんだっけ？
- "t" 'org-roam-tag-add
- "i" 'org-roam-node-insert
- "a" 'org-roam-alias-add
- "g" 'org-roam-graph) ; つかわないかも
+  :prefix "SPC o r"
+  :keymaps 'org-mode-map
+  "r" 'org-roam-buffer-toggle ; なんだっけ？
+  "b" 'org-roam-buffer-display-dedicated ; なんだっけ？
+  "t" 'org-roam-tag-add
+  "i" 'org-roam-node-insert
+  "a" 'org-roam-alias-add
+  "g" 'org-roam-graph) ; つかわないかも
 
 ;; quit
 (my/bind
- :prefix "SPC q"
- "q" 'save-buffers-kill-terminal
- "Q" 'evil-quit-all-with-error-code
- "r" 'restart-emacs
- "R" '((lambda () (interactive "P") (restart-emacs '("--debug-init")))
-       :wk "restart-debug-init"))
+  :prefix "SPC q"
+  "q" 'save-buffers-kill-terminal
+  "Q" 'evil-quit-all-with-error-code
+  "r" 'restart-emacs
+  "R" '((lambda () (interactive "P") (restart-emacs '("--debug-init")))
+	:wk "restart-debug-init"))
 
 ;; search
 (my/bind
- :prefix "SPC s"
- "b" 'consult-line
- "i" 'consult-imenu) ; 使わないかも？
+  :prefix "SPC s"
+  "b" 'consult-line
+  "i" 'consult-imenu) ; 使わないかも？
 
 ;; toggle
 (my/bind
- :prefix "SPC t"
- "d" 'toggle-debug-on-error
- "t" 'toggle-truncate-lines
- "l" 'display-line-numbers-mode
- "f" 'treemacs)
+  :prefix "SPC t"
+  "d" 'toggle-debug-on-error
+  "t" 'toggle-truncate-lines
+  "l" 'display-line-numbers-mode
+  "f" 'treemacs
+  (:map prog-mode-map
+   ("p" 'prism-mode)))
 
 ;; window
 (my/bind
- :prefix "SPC w"
- "h" 'evil-window-left
- "j" 'evil-window-down
- "k" 'evil-window-up
- "l" 'evil-window-right
- "H" 'evil-window-move-far-left
- "J" 'evil-window-move-very-bottom
- "K" 'evil-window-move-very-top
- "L" 'evil-window-move-far-right
- "s" 'evil-window-split
- "v" 'evil-window-vsplit
- "d" 'evil-window-delete
- "D" 'delete-other-windows
- "<" 'evil-window-decrease-width
- ">" 'evil-window-increase-width
- "0" 'treemacs-select-window
- "1" 'winum-select-window-1
- "2" 'winum-select-window-2
- "3" 'winum-select-window-3
- "4" 'winum-select-window-4
- "w" 'winum-select-window-by-number)
+  :prefix "SPC w"
+  "h" 'evil-window-left
+  "j" 'evil-window-down
+  "k" 'evil-window-up
+  "l" 'evil-window-right
+  "H" 'evil-window-move-far-left
+  "J" 'evil-window-move-very-bottom
+  "K" 'evil-window-move-very-top
+  "L" 'evil-window-move-far-right
+  "s" 'evil-window-split
+  "v" 'evil-window-vsplit
+  "d" 'evil-window-delete
+  "D" 'delete-other-windows
+  "<" 'evil-window-decrease-width
+  ">" 'evil-window-increase-width
+  "0" 'treemacs-select-window
+  "1" 'winum-select-window-1
+  "2" 'winum-select-window-2
+  "3" 'winum-select-window-3
+  "4" 'winum-select-window-4
+  "w" 'winum-select-window-by-number)
 
 (provide 'my-init-common)
 ;;; my-init-common.el ends here
