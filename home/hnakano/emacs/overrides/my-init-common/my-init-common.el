@@ -53,8 +53,6 @@
 ;;; Auth Source
 (use-package auth-source-pass
   :after auth-source
-  :custom
-  (auth-source-pass-filename "~/.local/share/password-store") ; FIXME ここには書かない
   :config
   (auth-source-pass-enable))
 
@@ -188,8 +186,7 @@
   (nix-mode . smartparens-mode)
   (nix-mode . rainbow-delimiters-mode)
   :config
-  ;; FIXME: nix-mode config
-  (eval-after-load 'smartparens
+  (with-eval-after-load 'smartparens
     (sp-with-modes 'nix-mode
       (sp-local-pair "[ " " ]")
       (sp-local-pair "{ " " }")
@@ -241,11 +238,10 @@
   :hook
   (org-mode . smartparens-mode)
   :config
-  ;; FIXME: org-mode
   ;; <>が括弧として認識されないようにする
   (modify-syntax-entry ?< "_" org-mode-syntax-table)
   (modify-syntax-entry ?> "_" org-mode-syntax-table)
-  (eval-after-load 'smartparens
+  (with-eval-after-load 'smartparens
     (sp-with-modes 'org-mode
       (sp-local-pair "\\[" "\\]")
       (sp-local-pair "<" nil :actions :rem))))
