@@ -35,7 +35,6 @@ with epkgs; [
   prism
   projectile
   rainbow-delimiters
-  restart-emacs
   ripgrep # projectile-ripgrepのために必要(rgでもよい)
   smartparens
   treemacs
