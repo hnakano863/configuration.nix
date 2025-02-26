@@ -54,7 +54,7 @@
 (use-package auth-source-pass
   :after auth-source
   :custom
-  (auth-source-pass-filename "~/.local/share/password-store")
+  (auth-source-pass-filename "~/.local/share/password-store") ; FIXME ここには書かない
   :config
   (auth-source-pass-enable))
 
@@ -188,6 +188,7 @@
   (nix-mode . smartparens-mode)
   (nix-mode . rainbow-delimiters-mode)
   :config
+  ;; FIXME: nix-mode config
   (eval-after-load 'smartparens
     (sp-with-modes 'nix-mode
       (sp-local-pair "[ " " ]")
@@ -240,6 +241,7 @@
   :hook
   (org-mode . smartparens-mode)
   :config
+  ;; FIXME: org-mode
   ;; <>が括弧として認識されないようにする
   (modify-syntax-entry ?< "_" org-mode-syntax-table)
   (modify-syntax-entry ?> "_" org-mode-syntax-table)
@@ -473,7 +475,7 @@
   :custom
   (evil-collection-magit-state 'normal)
   :config
-  (evil-collection-init '(pdf-view magit vterm)))
+  (evil-collection-init '(pdf-view magit vterm))) ; FIXME: pdf-view
 
 ;;; General.el definitions
 ;; definer
@@ -602,7 +604,7 @@ _j_: next _k_: previous _s_: stage _r_: revert _d_: popup diff"
   "q" 'save-buffers-kill-terminal
   "Q" 'evil-quit-all-with-error-code
   "r" 'restart-emacs
-  "R" '((lambda () (interactive "P") (restart-emacs '("--debug-init")))
+  "R" '((lambda () (interactive "P") (restart-emacs '("--debug-init"))) ; FIXME
 	:wk "restart-debug-init"))
 
 ;; search
