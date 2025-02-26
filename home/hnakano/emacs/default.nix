@@ -7,7 +7,7 @@ with pkgs;
 
   programs.emacs.extraPackages = epkgs: with epkgs; [
     my-early-init
-    my-init
+    my-init-common
   ];
 
   home.file = {
@@ -17,7 +17,7 @@ with pkgs;
     '';
 
     ".emacs.d/init.el".text = ''
-      (require 'my-init)
+      (require 'my-init-common)
       (provide 'init)
     '';
   };
