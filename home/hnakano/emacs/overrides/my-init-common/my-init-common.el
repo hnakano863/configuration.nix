@@ -164,6 +164,8 @@
     "C-c ] s" 'sp-forward-slurp-sexp
     "C-c ] b" 'sp-forward-barf-sexp))
 
+(use-package smartparens-config :after smartparens)
+
 ;;; Programming Languages
 (use-package elisp-mode
   :hook
@@ -175,7 +177,9 @@
   (:map emacs-lisp-mode-map
    ("C-c C-e" . 'macrostep-expand))
   (:map lisp-interaction-mode-map
-   ("C-c C-e" . 'macrostep-expand)))
+   ("C-c C-e" . 'macrostep-expand))
+  :config
+  (push 'lisp-interaction-mode context-skk-programming-mode))
 
 (use-package nix-mode
   :mode "\\.nix\\'"
@@ -371,7 +375,9 @@
 ;; highlight
 (use-package hl-line
   :hook
-  ((vterm-mode eshell-mode comint-mode term-mode) . (lambda () (hl-line-mode -1)))
+  ((vterm-mode eshell-mode comint-mode term-mode) . (lambda () (setq-local global-hl-line-mode nil)))
+  :init
+  (make-variable-buffer-local 'global-hl-line-mode)
   :config
   (global-hl-line-mode 1))
 
@@ -382,7 +388,7 @@
 ;;; Doom Emacs like interface
 (use-package doom-themes
   :config
-  (load-theme 'doom-opera))
+  (load-theme 'doom-opera t))
 
 ;; treemacs theme
 (use-package doom-themes-ext-treemacs
@@ -480,6 +486,7 @@
   :prefix "SPC"
   "" nil
   "SPC" 'consult-buffer
+  "RET" 'vterm
   "b" '(:ignore t :wk "buffer")
   "f" '(:ignore t :wk "file")
   "g" '(:ignore t :wk "git")
@@ -610,9 +617,11 @@ _j_: next _k_: previous _s_: stage _r_: revert _d_: popup diff"
   "d" 'toggle-debug-on-error
   "t" 'toggle-truncate-lines
   "l" 'display-line-numbers-mode
-  "f" 'treemacs
-  (:map prog-mode-map
-   ("p" 'prism-mode)))
+  "f" 'treemacs)
+(my/bind
+  :prefix "SPC t"
+  :keymaps 'prog-mode-map
+  "p" 'prism-mode)
 
 ;; window
 (my/bind
