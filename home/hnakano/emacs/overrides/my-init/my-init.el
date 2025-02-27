@@ -109,14 +109,8 @@
   (leaf python
     :custom
     (python-guess-indent . nil)
-    (python-shell-interpreter . "ipython")
-    :mode "\\.py\\'"
-    :hook
-    (python-mode-hook . smartparens-mode)
-    (python-mode-hook . eglot-ensure))
+    (python-shell-interpreter . "ipython"))
   (leaf toml-mode :mode "\\.toml\\'")
-  (leaf yaml-mode :mode "\\.ya?ml\\'")
-  (leaf dockerfile-mode :mode "Dockerfile\\'")
   (leaf docker-compose-mode
     :hook (docker-compose-mode-hook . company-mode))
   (leaf lisp-mode
@@ -156,31 +150,7 @@
   (leaf lean4-mode :mode "\\.lean\\'")
   (leaf mermaid-mode :mode "\\.mermaid\\'")
   (leaf rust-mode :mode "\\.rs\\'")
-  (leaf js-mode :mode "\\.gs\\'")
-  (leaf dataform-mode
-    :custom
-    (yas-indent-line . 'fixed)
-    :preface
-    (define-derived-mode dataform-mode prog-mode "Dataform"
-      "Major mode for dataform"
-      (setq-local tab-width 2)
-      (setq indent-tabs-mode nil))
-    :mode "\\.sqlx\\'"
-    :hook
-    (dataform-mode-hook . prism-mode)
-    (dataform-mode-hook . yas-minor-mode))
-  (leaf lookml-mode
-    :custom
-    (yas-indent-line . 'fixed)
-    :preface
-    (define-derived-mode lookml-mode prog-mode "LookML"
-      "Major mode for LookML"
-      (setq-local tab-width 2)
-      (setq indent-tabs-mode nil))
-    :mode "\\.lkml\\'"
-    :hook
-    (lookml-mode-hook . prism-mode)
-    (lookml-mode-hook . yas-minor-mode)))
+  (leaf js-mode :mode "\\.gs\\'"))
 
 (leaf org
   :config

@@ -195,6 +195,15 @@
 
 (use-package fish-mode :mode "\\.fish\\'")
 
+(use-package python
+  :mode "\\.py\\'"
+  :hook
+  (python-mode . smartparens-mode)
+  (python-mode . eglot-ensure))
+
+(use-package yaml-mode :mode "\\.ya?ml\\'")
+(use-package dockerfile-mode :mode "Dockerfile\\'")
+
 ;;; Editor Support
 (use-package pdf-tools
   :mode ("\\.pdf\\'" . pdf-view-mode))

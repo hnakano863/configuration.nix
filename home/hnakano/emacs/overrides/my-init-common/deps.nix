@@ -6,6 +6,7 @@ with epkgs; [
   ddskk
   ddskk-posframe
   dictionary
+  dockerfile-mode
   doom-modeline
   doom-themes
   eglot
@@ -47,5 +48,6 @@ with epkgs; [
   vterm
   which-key
   winum
+  yaml-mode
   yasnippet
 ]

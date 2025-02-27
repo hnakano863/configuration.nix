@@ -6,7 +6,6 @@ with epkgs; [
   copilot
   csv-mode
   docker
-  dockerfile-mode
   docker-compose-mode
   eglot-jl
   elfeed
@@ -39,5 +38,4 @@ with epkgs; [
   toml-mode
   uuidgen
   vterm-toggle
-  yaml-mode
 ]
