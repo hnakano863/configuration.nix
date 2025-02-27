@@ -39,6 +39,7 @@ with epkgs; [
   smartparens
   treemacs
   treemacs-evil
+  treemacs-projectile
   undo-fu
   undo-fu-session
   vertico

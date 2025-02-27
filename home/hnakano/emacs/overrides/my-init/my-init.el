@@ -37,21 +37,6 @@
 
 (require 'my-init-common)
 
-(leaf treemacs
-  :doc "treemacs and its extentions"
-  :defun treemacs-git-mode
-  ;; TODO treemacs-git-modeって本当に必要？ treemacs-magitと被ってない？
-  :hook (treemacs-mode-hook . (lambda () (treemacs-git-mode 'deferred)))
-  :config
-  ;; TODO treemacs-magitの機能を調べる
-  (leaf treemacs-magit
-    :after treemacs
-    :require t)
-  ;; TODO treemacs-projectileの機能を調べる
-  (leaf treemacs-projectile
-    :after treemacs
-    :require t))
-
 (leaf context-skk
   :config
   (setq context-skk-programming-mode

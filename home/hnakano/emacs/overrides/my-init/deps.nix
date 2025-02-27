@@ -38,8 +38,6 @@ with epkgs; [
   slime-company
   terraform-mode
   toml-mode
-  treemacs-magit
-  treemacs-projectile
   uuidgen
   vterm-toggle
   yaml-mode

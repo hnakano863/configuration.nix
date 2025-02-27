@@ -313,6 +313,10 @@
   :config
   (treemacs-git-mode 'extended))
 
+;; projectile-integration
+(use-package treemacs-projectile
+  :after treemacs projectile)
+
 ;;; Completions
 ;; cool completion UI
 (use-package vertico
