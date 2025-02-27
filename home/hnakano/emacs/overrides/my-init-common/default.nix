@@ -15,7 +15,7 @@ in
 trivialBuild {
    inherit src;
    pname = "my-init-common";
-   version = "2025-02-23";
+   version = "2025-02-28";
    packageRequires = deps;
    preferLocalBuild = true;
    allowSubstitute = false;
