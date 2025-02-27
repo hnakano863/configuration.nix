@@ -26,4 +26,7 @@ self: super: {
   my-init-linux = self.callPackage ./my-init-linux { epkgs = self; };
   my-init-wsl = self.callPackage ./my-init-wsl { epkgs = self; };
 
+  dataform-mode = self.callPackage ./dataform-mode { };
+  lookml-mode = self.callPackage ./lookml-mode { };
+
 }

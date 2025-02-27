@@ -1,4 +1,4 @@
-;;; my-init.el --- My init.el -*- lexical-binding: t; -*-
+;;; dataform-mode.el --- Major mode for Dataform -*- lexical-binding: t; -*-
 
 ;; Copyright (C) 2021  Hiroshi Nakano
 
@@ -19,32 +19,22 @@
 
 ;;; Commentary:
 
-;; My init file.
+;; Major mode for Dataform.
 
 ;;; Code:
 
-(require 'my-init-common)
-(eval-when-compile
-  (require 'use-package))
+(defgroup dataform-mode nil
+  "Dataform mode customizations."
+  :group 'languages)
 
-;;; Programming Languages
-(use-package dataform-mode
-  :mode "\\.sqlx\\'"
-  :hook
-  (dataform-mode . prism-mode)
-  (dataform-mode . yas-minor-mode)
-  (dataform-mode . (lambda () (setq-local yas-indent-line 'fixed)))
-  :config
-  (push 'dataform-mode context-skk-programming-mode))
+;;;###autoload
+(define-derived-mode dataform-mode prog-mode "Dataform"
+  "Major mode for Dataform."
+  :group 'dataform-mode
 
-(use-package lookml-mode
-  :mode "\\.lkml\\'"
-  :hook
-  (lookml-mode . prism-mode)
-  (lookml-mode . yas-minor-mode)
-  (lookml-mode . (lambda () (setq-local yas-indent-line 'fixed)))
-  :config
-  (push 'lookml-mode context-skk-programming-mode))
+  (setq-local indent-tabs-mode nil)
+  (setq-local tab-width 2)
+  (setq-local comment-start "--"))
 
-(provide 'my-init)
-;;; my-init.el ends here
+(provide 'dataform-mode)
+;;; dataform-mode.el ends here

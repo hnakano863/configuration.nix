@@ -1,4 +1,4 @@
-;;; my-init.el --- My init.el -*- lexical-binding: t; -*-
+;;; lookml-mode.el --- Major mode for editing Lookml files -*- lexical-binding: t; -*-
 
 ;; Copyright (C) 2021  Hiroshi Nakano
 
@@ -19,32 +19,22 @@
 
 ;;; Commentary:
 
-;; My init file.
+;; Major mode for editing Lookml.
 
 ;;; Code:
 
-(require 'my-init-common)
-(eval-when-compile
-  (require 'use-package))
+(defgroup lookml-mode nil
+  "Lookml mode customizations."
+  :group 'languages)
 
-;;; Programming Languages
-(use-package dataform-mode
-  :mode "\\.sqlx\\'"
-  :hook
-  (dataform-mode . prism-mode)
-  (dataform-mode . yas-minor-mode)
-  (dataform-mode . (lambda () (setq-local yas-indent-line 'fixed)))
-  :config
-  (push 'dataform-mode context-skk-programming-mode))
+;;;###autoload
+(define-derived-mode lookml-mode prog-mode "Lookml"
+  "Major mode for editing Lookml files."
+  :group 'lookml-mode
 
-(use-package lookml-mode
-  :mode "\\.lkml\\'"
-  :hook
-  (lookml-mode . prism-mode)
-  (lookml-mode . yas-minor-mode)
-  (lookml-mode . (lambda () (setq-local yas-indent-line 'fixed)))
-  :config
-  (push 'lookml-mode context-skk-programming-mode))
+  (setq-local indent-tabs-mode nil)
+  (setq-local tab-width 2)
+  (setq-local comment-start "# "))
 
-(provide 'my-init)
-;;; my-init.el ends here
+(provide 'lookml-mode)
+;;; lookml-mode.el ends here
