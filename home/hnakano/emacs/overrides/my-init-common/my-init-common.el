@@ -589,7 +589,8 @@ _j_: next _k_: previous _s_: stage _r_: revert _d_: popup diff"
   "a" 'org-agenda-list
   "A" 'org-agenda
   "t" 'org-todo-list
-  "x" 'org-mru-clock-in
+  "i" 'org-mru-clock-in
+  "o" 'org-clock-out
   ;; TODO replace with bookmark
   "n" '((lambda ()
 	  (interactive)
