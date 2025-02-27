@@ -309,7 +309,9 @@
 (use-package treemacs
   :defer t
   :custom
-  (treemacs-width 30))
+  (treemacs-width 30)
+  :config
+  (treemacs-git-mode 'extended))
 
 ;;; Completions
 ;; cool completion UI
