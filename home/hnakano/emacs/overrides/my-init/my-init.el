@@ -37,16 +37,6 @@
 
 (require 'my-init-common)
 
-(leaf cus-edit
-  :doc "tools for customizing Emacs and Lisp packages"
-  :tag "builtin" "faces" "help"
-  :hook
-  ;; TODO eterm-256color-modeが入ってない
-  (term-mode-hook . eterm-256color-mode))
-
-;; 使わないかも
-(leaf hideshow :hook (emacs-lisp-mode-hook . hs-minor-mode))
-
 (leaf treemacs
   :doc "treemacs and its extentions"
   :defun treemacs-git-mode
