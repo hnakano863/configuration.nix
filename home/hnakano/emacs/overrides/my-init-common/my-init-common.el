@@ -186,6 +186,7 @@
   (nix-mode . smartparens-mode)
   (nix-mode . rainbow-delimiters-mode)
   :config
+  (push 'nix-mode context-skk-programming-mode)
   (with-eval-after-load 'smartparens
     (sp-with-modes 'nix-mode
       (sp-local-pair "[ " " ]")
