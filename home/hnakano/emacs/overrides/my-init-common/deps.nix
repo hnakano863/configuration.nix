@@ -13,6 +13,7 @@ with epkgs; [
   evil
   evil-collection
   evil-org # 不要か？
+  fish-mode
   flycheck
   forge
   general

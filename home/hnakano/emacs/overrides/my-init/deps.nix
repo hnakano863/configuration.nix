@@ -12,7 +12,6 @@ with epkgs; [
   elfeed
   elm-mode
   ess
-  fish-mode
   geiser
   haskell-mode
   imenu-list

@@ -73,8 +73,6 @@
   (leaf elm-mode :mode "\\.elm\\'")
   (leaf ess-site
     :mode ("\\.R\\'" . R-mode))
-  (leaf fish-mode
-    :mode "\\.fish\\'")
 ;  (leaf geiser
 ;    :pre-setq
 ;    (geiser-active-implementations . '(guile))

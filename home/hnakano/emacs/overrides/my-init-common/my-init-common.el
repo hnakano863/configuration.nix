@@ -192,6 +192,8 @@
       (sp-local-pair "{ " " }")
       (sp-local-pair "( " " )"))))
 
+(use-package fish-mode :mode "\\.fish\\'")
+
 ;;; Editor Support
 (use-package pdf-tools
   :mode ("\\.pdf\\'" . pdf-view-mode))
