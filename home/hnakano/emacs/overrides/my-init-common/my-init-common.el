@@ -205,8 +205,6 @@
 (use-package dockerfile-mode :mode "Dockerfile\\'")
 
 ;;; Editor Support
-(use-package pdf-tools
-  :mode ("\\.pdf\\'" . pdf-view-mode))
 
 (use-package markdown-mode
   :mode ("\\.md\\'" . gfm-mode)
@@ -489,7 +487,7 @@
   :custom
   (evil-collection-magit-state 'normal)
   :config
-  (evil-collection-init '(pdf-view magit vterm))) ; FIXME: pdf-view
+  (evil-collection-init '(magit vterm))) ; FIXME: pdf-view
 
 ;;; General.el definitions
 ;; definer
