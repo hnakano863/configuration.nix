@@ -23,9 +23,7 @@ self: super: {
     skkdicts = pkgs.skkDictionariesUtf8Cdb.combined;
     epkgs = self;
   };
-  my-init = self.callPackage ./my-init {
-    inherit (pkgs) runCommand julia;
-    epkgs = self;
-  };
+  my-init-linux = self.callPackage ./my-init-linux { epkgs = self; };
+  my-init-wsl = self.callPackage ./my-init-wsl { epkgs = self; };
 
 }

@@ -43,6 +43,11 @@
     lsprof.body = "ls $GUIX_EXTRA_PROFILES";
   };
 
+  programs.emacs.extraPackages = epkgs: with epkgs; [
+    my-early-init
+    my-init-linux
+  ];
+
   programs.rofi = {
     enable = true;
     extraConfig.modi = "drun,window,power-menu:rofi-power-menu";
