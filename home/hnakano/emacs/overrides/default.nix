@@ -15,8 +15,6 @@ self: super: {
 
   lean4-mode = self.callPackage ./lean4-mode.nix { inherit (pkgs) fetchFromGitHub writeText; };
 
-  copilot = self.callPackage ./copilot.nix { inherit (pkgs) fetchFromGitHub writeText; };
-
   my-early-init = self.callPackage ./my-early-init { };
   my-init-common = self.callPackage ./my-init-common {
     inherit (pkgs) runCommand;

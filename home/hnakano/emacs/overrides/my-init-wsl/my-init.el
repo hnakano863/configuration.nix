@@ -27,6 +27,17 @@
 (eval-when-compile
   (require 'use-package))
 
+;;; Development Support
+;; copilot.el configurations
+(use-package copilot
+  :hook
+  prog-mode
+  :config
+  (copilot-login)
+  :bind
+  (:map copilot-mode-map
+   ("TAB" . copilot-accept-completion)))
+
 ;;; Programming Languages
 (use-package dataform-mode
   :mode "\\.sqlx\\'"
@@ -45,6 +56,11 @@
   (lookml-mode . (lambda () (setq-local yas-indent-line 'fixed)))
   :config
   (push 'lookml-mode context-skk-programming-mode))
+
+(my/bind
+  :prefix "SPC l" ; LLMなので
+  :keymaps 'prog-mode-map
+  "l" 'copilot-complete)
 
 (provide 'my-init)
 ;;; my-init.el ends here
