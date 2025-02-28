@@ -32,11 +32,17 @@
 (use-package copilot
   :hook
   prog-mode
+  (emacs-lisp-mode . (lambda () (copilot-mode nil)))
   :config
   (copilot-login)
   :bind
   (:map copilot-mode-map
    ("TAB" . copilot-accept-completion)))
+
+;; copilot-chat
+(use-package copilot-chat
+  :hook
+  (git-commit-setup . copilot-chat-insert-commit-message))
 
 ;;; Programming Languages
 (use-package dataform-mode
@@ -59,8 +65,12 @@
 
 (my/bind
   :prefix "SPC l" ; LLMなので
+  "l" 'copilot-chat-switch-to-buffer)
+
+(my/bind
+  :prefix "SPC l"
   :keymaps 'prog-mode-map
-  "l" 'copilot-complete)
+  "c" 'copilot-complete)
 
 (provide 'my-init)
 ;;; my-init.el ends here
