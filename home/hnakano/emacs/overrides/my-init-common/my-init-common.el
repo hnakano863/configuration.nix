@@ -48,7 +48,8 @@
   :init
   (add-hook 'before-save-hook #'delete-trailing-whitespace)
   (add-hook 'emacs-startup-hook #'my/print-startup-stats)
-  (blink-cursor-mode -1))
+  (blink-cursor-mode -1)
+  (load custom-file))
 
 ;;; Auth Source
 (use-package auth-source-pass

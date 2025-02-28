@@ -41,6 +41,8 @@
 
 ;; copilot-chat
 (use-package copilot-chat
+  :custom
+  (copilot-chat-model "claude-3.5-sonnet")
   :hook
   (git-commit-setup . copilot-chat-insert-commit-message))
 
