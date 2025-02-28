@@ -1,2 +1,4 @@
 { epkgs }:
-with epkgs; [ ]
+with epkgs; [
+  gptel
+]

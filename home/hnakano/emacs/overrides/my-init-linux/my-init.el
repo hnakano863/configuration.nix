@@ -27,5 +27,28 @@
 (eval-when-compile
   (require 'use-package))
 
+;;; Development Support
+(use-package gptel
+  :defer t
+  :custom
+  (gptel-model 'gemini-2.0-flash-exp)
+  (gptel-default-mode 'org-mode)
+  (gptel-org-branching-context t)
+  :config
+  (let ((found (nth 0 (auth-source-search :max 1
+					  :host "gemini"
+					  :require '(:secret)))))
+    (when found
+      (setq gptel-backend
+	    (gptel-make-gemini "Gemini"
+	      :key (auth-info-password found)
+	      :stream t)))))
+
+;;; Key Bindings
+(my/bind
+  :prefix "SPC"
+  "l" '(:ignore t :wk "LLM")
+  "l l" 'gptel)
+
 (provide 'my-init)
 ;;; my-init.el ends here
