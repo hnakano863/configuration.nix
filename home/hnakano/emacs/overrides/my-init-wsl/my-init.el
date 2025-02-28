@@ -70,7 +70,20 @@
 (my/bind
   :prefix "SPC l"
   :keymaps 'prog-mode-map
-  "c" 'copilot-complete)
+  "c" 'copilot-complete
+  "e" 'copilot-chat-explain-symbol-at-line
+  "a" '(:ignore t :wk "add")
+  "a b" 'copilot-chat-add-current-buffer
+  "a f" 'copilot-chat-add-file)
+
+(my/bind
+  :prefix "SPC l"
+  :keymaps 'prog-mode-map
+  :states 'visual
+  "e" 'copilot-chat-explain
+  "r" 'copilot-chat-review
+  "f" 'copilot-chat-fix
+  "o" 'copilot-chat-optimize)
 
 (provide 'my-init)
 ;;; my-init.el ends here
