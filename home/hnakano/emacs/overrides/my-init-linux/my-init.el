@@ -42,7 +42,9 @@
       (setq gptel-backend
 	    (gptel-make-gemini "Gemini"
 	      :key (auth-info-password found)
-	      :stream t)))))
+	      :stream t))))
+  (setf (alist-get 'org-mode gptel-prompt-prefix-alist) "@user\n")
+  (setf (alist-get 'org-mode gptel-response-prefix-alist) "@gptel\n"))
 
 ;;; Key Bindings
 (my/bind
