@@ -1,8 +1,8 @@
-{ config, pkgs, ... }:
+{ config, pkgs, pkgs-unstable, ... }:
 with pkgs;
 {
   programs.emacs.enable = true;
-  programs.emacs.overrides = import ./overrides { inherit pkgs; };
+  programs.emacs.overrides = import ./overrides { inherit pkgs pkgs-unstable; };
   programs.emacs.package = emacs29;
 
   home.file = {

@@ -34,6 +34,7 @@
   prog-mode
   (emacs-lisp-mode . (lambda () (copilot-mode nil)))
   :config
+  (push '(nix-mode 2) copilot-indentation-alist)
   (copilot-login)
   :bind
   (:map copilot-mode-map
