@@ -27,6 +27,26 @@
 (eval-when-compile
   (require 'use-package))
 
+;;; Development Support
+;; copilot.el configurations
+(use-package copilot
+  :hook
+  prog-mode
+  (emacs-lisp-mode . (lambda () (copilot-mode nil)))
+  :config
+  (push '(nix-mode 2) copilot-indentation-alist)
+  (copilot-login)
+  :bind
+  (:map copilot-mode-map
+   ("TAB" . copilot-accept-completion)))
+
+;; copilot-chat
+(use-package copilot-chat
+  :custom
+  (copilot-chat-model "claude-3.5-sonnet")
+  :hook
+  (git-commit-setup . copilot-chat-insert-commit-message))
+
 ;;; Programming Languages
 (use-package dataform-mode
   :mode "\\.sqlx\\'"
@@ -45,6 +65,28 @@
   (lookml-mode . (lambda () (setq-local yas-indent-line 'fixed)))
   :config
   (push 'lookml-mode context-skk-programming-mode))
+
+(my/bind
+  :prefix "SPC l" ; LLMなので
+  "l" 'copilot-chat-switch-to-buffer)
+
+(my/bind
+  :prefix "SPC l"
+  :keymaps 'prog-mode-map
+  "c" 'copilot-complete
+  "e" 'copilot-chat-explain-symbol-at-line
+  "a" '(:ignore t :wk "add")
+  "a b" 'copilot-chat-add-current-buffer
+  "a f" 'copilot-chat-add-file)
+
+(my/bind
+  :prefix "SPC l"
+  :keymaps 'prog-mode-map
+  :states 'visual
+  "e" 'copilot-chat-explain
+  "r" 'copilot-chat-review
+  "f" 'copilot-chat-fix
+  "o" 'copilot-chat-optimize)
 
 (provide 'my-init)
 ;;; my-init.el ends here

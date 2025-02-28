@@ -2,7 +2,7 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, lib, ... } @ attrs:
+{ config, pkgs, lib, pkgs-unstable, ... } @ attrs:
 
 {
   system.configurationRevision = with attrs; lib.mkIf (self ? rev) self.rev;
@@ -34,7 +34,7 @@
   nixpkgs.overlays = with attrs; [
     emacs-overlay.overlay
     eijiro.overlay
-    (import ../overlays { inherit config; })
+    (import ../overlays { inherit config pkgs-unstable; })
   ];
 
   # List packages installed in system profile. To search, run:

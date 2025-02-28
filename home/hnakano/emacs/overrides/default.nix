@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, pkgs-unstable, ... }:
 self: super: {
   evil = self.melpaPackages.evil;
 
@@ -15,8 +15,6 @@ self: super: {
 
   lean4-mode = self.callPackage ./lean4-mode.nix { inherit (pkgs) fetchFromGitHub writeText; };
 
-  copilot = self.callPackage ./copilot.nix { inherit (pkgs) fetchFromGitHub writeText; };
-
   my-early-init = self.callPackage ./my-early-init { };
   my-init-common = self.callPackage ./my-init-common {
     inherit (pkgs) runCommand;
@@ -28,5 +26,12 @@ self: super: {
 
   dataform-mode = self.callPackage ./dataform-mode { };
   lookml-mode = self.callPackage ./lookml-mode { };
+
+  # copilot-node-serverがunfreeライセンスなのでunstableを使うことができない
+  # そこで、copilot-node-serverのみpkgsから取得する
+  copilot-unstable = pkgs-unstable.emacsPackages.copilot.override {
+    inherit (pkgs) copilot-node-server;
+  };
+  copilot-chat-unstable = pkgs-unstable.emacsPackages.copilot-chat;
 
 }
