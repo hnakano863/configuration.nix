@@ -1,28 +1,20 @@
-{ config, pkgs, lib, pkgs-unstable, ... }:
+{ config, pkgs, ... }:
 with pkgs;
-with lib;
-let
-  init-el = runCommand "my-init.el" {
-    inherit gnuplot julia;
-    skkdicts = skkDictionariesUtf8Cdb.combined;
-  } ''substituteAll "${./my-init.el}" $out '';
-in
 {
-  imports = [
-    ./compileInit.nix
-    ./extraPackages.nix
-    ./orgProtocol.nix
-  ];
-
   programs.emacs.enable = true;
   programs.emacs.overrides = import ./overrides { inherit pkgs; };
   programs.emacs.package = emacs29;
 
-  programs.emacs.compileInit = {
-    enable = true;
-    initFile = init-el;
-    earlyInitFile = ./my-early-init.el;
+  home.file = {
+    ".emacs.d/early-init.el".text = ''
+      (require 'my-early-init)
+      (provide 'early-init)
+    '';
+
+    ".emacs.d/init.el".text = ''
+      (require 'my-init)
+      (provide 'init)
+    '';
   };
 
-  programs.emacs.orgProtocol.enable = true;
 }

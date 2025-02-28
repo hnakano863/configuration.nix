@@ -38,6 +38,11 @@ in {
     ec.body = "emacsclient -c";
   };
 
+  programs.emacs.extraPackages = epkgs: with epkgs; [
+    my-early-init
+    my-init-wsl
+  ];
+
   # xdg-open
   xdg.desktopEntries.vivaldi = {
     name = "Vivaldi";

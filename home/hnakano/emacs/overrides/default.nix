@@ -17,4 +17,16 @@ self: super: {
 
   copilot = self.callPackage ./copilot.nix { inherit (pkgs) fetchFromGitHub writeText; };
 
+  my-early-init = self.callPackage ./my-early-init { };
+  my-init-common = self.callPackage ./my-init-common {
+    inherit (pkgs) runCommand;
+    skkdicts = pkgs.skkDictionariesUtf8Cdb.combined;
+    epkgs = self;
+  };
+  my-init-linux = self.callPackage ./my-init-linux { epkgs = self; };
+  my-init-wsl = self.callPackage ./my-init-wsl { epkgs = self; };
+
+  dataform-mode = self.callPackage ./dataform-mode { };
+  lookml-mode = self.callPackage ./lookml-mode { };
+
 }

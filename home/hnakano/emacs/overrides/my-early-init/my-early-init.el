@@ -64,5 +64,8 @@
 ;; Fullscreen at startup
 (push '(fullscreen . maximized) initial-frame-alist)
 
+;; Speed up package activation
+(setq package-quickstart t)
+
 (provide 'my-early-init)
 ;;; my-early-init.el ends here
