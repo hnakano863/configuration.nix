@@ -45,6 +45,7 @@
   (epg-pinentry-mode 'loopback)
   (custom-file (locate-user-emacs-file "custom.el"))
   (read-process-output-max (* 3 1024 1024))
+  (calendar-date-style 'iso)
   :init
   (add-hook 'before-save-hook #'delete-trailing-whitespace)
   (add-hook 'emacs-startup-hook #'my/print-startup-stats)
