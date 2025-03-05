@@ -166,13 +166,13 @@ let
         sha512 = "XCuKFP5PS55gnMVu3dty8KPatLqUoy/ZYzDzAGCQ8JNFCkLXzmI7vNHCR+XpbZaMWQK/vQubr7PkYq8g470J/A==";
       };
     };
-    "@types/node-22.13.0" = {
+    "@types/node-22.13.9" = {
       name = "_at_types_slash_node";
       packageName = "@types/node";
-      version = "22.13.0";
+      version = "22.13.9";
       src = fetchurl {
-        url = "https://registry.npmjs.org/@types/node/-/node-22.13.0.tgz";
-        sha512 = "ClIbNe36lawluuvq3+YYhnIN2CELi+6q8NpnM7PYp4hBn/TatfboPgVSm2rwKRfnV2M+Ty9GWDFI64KEe+kysA==";
+        url = "https://registry.npmjs.org/@types/node/-/node-22.13.9.tgz";
+        sha512 = "acBjXdRJ3A6Pb3tqnw9HZmyR3Fiol3aGxRCK1x3d+6CDAMjl7I649wpSd+yNURCjbOUGu9tqtLKnTGxmK6CyGw==";
       };
     };
     "abbrev-2.0.0" = {
@@ -373,22 +373,22 @@ let
         sha512 = "zRpUiDwd/xk6ADqPMATG8vc9VPrkck7T07OIx0gnjmJAnHnTVXNQG3vfvWNuiZIkwu9KrKdA1iJKfsfTVxE6NA==";
       };
     };
-    "call-bind-apply-helpers-1.0.1" = {
+    "call-bind-apply-helpers-1.0.2" = {
       name = "call-bind-apply-helpers";
       packageName = "call-bind-apply-helpers";
-      version = "1.0.1";
+      version = "1.0.2";
       src = fetchurl {
-        url = "https://registry.npmjs.org/call-bind-apply-helpers/-/call-bind-apply-helpers-1.0.1.tgz";
-        sha512 = "BhYE+WDaywFg2TBWYNXAE+8B1ATnThNBqXHP5nQu0jWJdVvY2hvkpyB3qOmtmDePiS5/BDQ8wASEWGMWRG148g==";
+        url = "https://registry.npmjs.org/call-bind-apply-helpers/-/call-bind-apply-helpers-1.0.2.tgz";
+        sha512 = "Sp1ablJ0ivDkSzjcaJdxEunN5/XvksFJ2sMBFfq6x0ryhQV/2b/KwFe21cMpmHtPOSij8K99/wSfoEuTObmuMQ==";
       };
     };
-    "call-bound-1.0.3" = {
+    "call-bound-1.0.4" = {
       name = "call-bound";
       packageName = "call-bound";
-      version = "1.0.3";
+      version = "1.0.4";
       src = fetchurl {
-        url = "https://registry.npmjs.org/call-bound/-/call-bound-1.0.3.tgz";
-        sha512 = "YTd+6wGlNlPxSuri7Y6X8tY2dmm12UMH66RpKMhiX6rsk5wXXnYgbUcOt8kiS31/AjfoTOvCsE+w8nZQLQnzHA==";
+        url = "https://registry.npmjs.org/call-bound/-/call-bound-1.0.4.tgz";
+        sha512 = "+ys997U96po4Kx/ABpBCqhA9EuxJaQWDQg7295H4hBphv3IZg0boBKuwYpt4YXp6MZ5AmZQnU/tyMTlRpaSejg==";
       };
     };
     "chokidar-3.6.0" = {
@@ -643,13 +643,13 @@ let
         sha512 = "YsGpe3WHLK8ZYi4tWDg2Jy3ebRz2rXowDxnld4bkQB00cc/1Zw9AWnC0i9ztDJitivtQvaI9KaLyKrc+hBW0yg==";
       };
     };
-    "foreground-child-3.3.0" = {
+    "foreground-child-3.3.1" = {
       name = "foreground-child";
       packageName = "foreground-child";
-      version = "3.3.0";
+      version = "3.3.1";
       src = fetchurl {
-        url = "https://registry.npmjs.org/foreground-child/-/foreground-child-3.3.0.tgz";
-        sha512 = "Ld2g8rrAyMYFXBhEqMz8ZAHBi4J4uS1i/CxGMDnjyFWddMXLVcDp051DZfu+t7+ab7Wv6SMqpWmyFIj5UbfFvg==";
+        url = "https://registry.npmjs.org/foreground-child/-/foreground-child-3.3.1.tgz";
+        sha512 = "gIXjKqtFuWEgzFRJA9WCQeSJLZDjgJUOMCMzxtvFq/37KojM1BFGufqsCy0r4qSQmYLsZYMeyRqzIWOMup03sw==";
       };
     };
     "fs-extra-9.1.0" = {
@@ -697,13 +697,13 @@ let
         sha512 = "DyFP3BM/3YHTQOCUL/w0OZHR0lpKeGrxotcHWcqNEdnltqFwXVfhEBQ94eIo34AfQpo0rGki4cyIiftY06h2Fg==";
       };
     };
-    "get-intrinsic-1.2.7" = {
+    "get-intrinsic-1.3.0" = {
       name = "get-intrinsic";
       packageName = "get-intrinsic";
-      version = "1.2.7";
+      version = "1.3.0";
       src = fetchurl {
-        url = "https://registry.npmjs.org/get-intrinsic/-/get-intrinsic-1.2.7.tgz";
-        sha512 = "VW6Pxhsrk0KAOqs3WEd0klDiF/+V7gQOpAvY1jVU/LHmaD/kQO4523aiJuikX/QAKYiW6x8Jh+RJej1almdtCA==";
+        url = "https://registry.npmjs.org/get-intrinsic/-/get-intrinsic-1.3.0.tgz";
+        sha512 = "9fSjSaos/fRIVIp+xSJlE6lfwhES7LNtKaCBIamHsjr2na1BiABJPo0mOjjz8GJDURarmCPGqaiVg5mfjb98CQ==";
       };
     };
     "get-proto-1.0.1" = {
@@ -958,13 +958,13 @@ let
         sha512 = "OGlZQpz2yfahA/Rd1Y8Cd9SIEsqvXkLVoSw/cgwhnhFMDbsQFeZYoJJ7bIZBS9BcamUW96asq/npPWugM+RQBw==";
       };
     };
-    "js-beautify-1.15.1" = {
+    "js-beautify-1.15.4" = {
       name = "js-beautify";
       packageName = "js-beautify";
-      version = "1.15.1";
+      version = "1.15.4";
       src = fetchurl {
-        url = "https://registry.npmjs.org/js-beautify/-/js-beautify-1.15.1.tgz";
-        sha512 = "ESjNzSlt/sWE8sciZH8kBF8BPlwXPwhR6pWKAw8bw4Bwj+iZcnKW6ONWUutJ7eObuBZQpiIb8S7OYspWrKt7rA==";
+        url = "https://registry.npmjs.org/js-beautify/-/js-beautify-1.15.4.tgz";
+        sha512 = "9/KXeZUKKJwqCXUdBxFJ3vPh467OCckSBmYDwSK/EtV090K+iMJ7zx2S3HLVDIWFQdqMIsZWbnaGiba18aWhaA==";
       };
     };
     "js-cookie-3.0.5" = {
@@ -1021,13 +1021,13 @@ let
         sha512 = "KDncfTmOZoOMTFG4mBlG0qUIOlc03fmzH+ru6RgYVZhPkyiy/92Owlt/8UEN+a4TXR1FQetfIpJE8ApdvdVxTg==";
       };
     };
-    "long-5.2.4" = {
+    "long-5.3.1" = {
       name = "long";
       packageName = "long";
-      version = "5.2.4";
+      version = "5.3.1";
       src = fetchurl {
-        url = "https://registry.npmjs.org/long/-/long-5.2.4.tgz";
-        sha512 = "qtzLbJE8hq7VabR3mISmVGtoXP8KGc2Z/AT8OuqlYD7JTR3oqrgwdjnk07wpj1twXxYmgDXgoKVWUG/fReSzHg==";
+        url = "https://registry.npmjs.org/long/-/long-5.3.1.tgz";
+        sha512 = "ka87Jz3gcx/I7Hal94xaN2tZEOPoUOEVftkQqZx2EeQRN7LGdfLlI3FvZ+7WDplm+vK2Urx9ULrvSowtdCieng==";
       };
     };
     "lru-cache-10.4.3" = {
@@ -1381,13 +1381,13 @@ let
         sha512 = "YZo3K82SD7Riyi0E1EQPojLz7kpepnSQI9IyPbHHg1XXXevb5dJI7tpyN2ADxGcQbHG7vcyRHk0cbwqcQriUtg==";
       };
     };
-    "semver-7.7.0" = {
+    "semver-7.7.1" = {
       name = "semver";
       packageName = "semver";
-      version = "7.7.0";
+      version = "7.7.1";
       src = fetchurl {
-        url = "https://registry.npmjs.org/semver/-/semver-7.7.0.tgz";
-        sha512 = "DrfFnPzblFmNrIZzg5RzHegbiRWg7KMR7btwi2yjHwx06zsUbO5g613sVwEV7FTwmzJu+Io0lJe2GJ3LxqpvBQ==";
+        url = "https://registry.npmjs.org/semver/-/semver-7.7.1.tgz";
+        sha512 = "hlq8tAfn0m/61p4BVRcPzIGr6LKiMwo4VM6dGi6pt4qcRkmNzTcWq6eCEjEh+qXjkMDvPlOFFSGwQjoEa6gyMA==";
       };
     };
     "shebang-command-2.0.0" = {
@@ -1727,7 +1727,7 @@ let
   args = rec {
     name = "_at_dataform_slash_cli";
     packageName = "@dataform/cli";
-    version = "3.0.12";
+    version = "3.0.15";
     src = import ./src.nix { inherit fetchurl version; };
     dependencies = [
       sources."@google-cloud/bigquery-5.12.0"
@@ -1748,7 +1748,7 @@ let
       sources."@protobufjs/pool-1.1.0"
       sources."@protobufjs/utf8-1.1.0"
       sources."@tootallnate/once-2.0.0"
-      sources."@types/node-22.13.0"
+      sources."@types/node-22.13.9"
       sources."abbrev-2.0.0"
       sources."abort-controller-3.0.0"
       sources."acorn-8.14.0"
@@ -1769,8 +1769,8 @@ let
       sources."braces-3.0.3"
       sources."buffer-5.7.1"
       sources."buffer-equal-constant-time-1.0.1"
-      sources."call-bind-apply-helpers-1.0.1"
-      sources."call-bound-1.0.3"
+      sources."call-bind-apply-helpers-1.0.2"
+      sources."call-bound-1.0.4"
       sources."chokidar-3.6.0"
       (sources."cliui-7.0.4" // {
         dependencies = [
@@ -1809,13 +1809,13 @@ let
       sources."extend-3.0.2"
       sources."fast-text-encoding-1.0.6"
       sources."fill-range-7.1.1"
-      sources."foreground-child-3.3.0"
+      sources."foreground-child-3.3.1"
       sources."fs-extra-9.1.0"
       sources."function-bind-1.1.2"
       sources."gaxios-4.3.3"
       sources."gcp-metadata-4.3.1"
       sources."get-caller-file-2.0.5"
-      sources."get-intrinsic-1.2.7"
+      sources."get-intrinsic-1.3.0"
       sources."get-proto-1.0.1"
       sources."glob-10.4.5"
       sources."glob-parent-5.1.2"
@@ -1844,14 +1844,14 @@ let
       sources."is-stream-2.0.1"
       sources."isexe-2.0.0"
       sources."jackspeak-3.4.3"
-      sources."js-beautify-1.15.1"
+      sources."js-beautify-1.15.4"
       sources."js-cookie-3.0.5"
       sources."js-yaml-4.1.0"
       sources."json-bigint-1.0.0"
       sources."jsonfile-6.1.0"
       sources."jwa-2.0.0"
       sources."jws-4.0.0"
-      sources."long-5.2.4"
+      sources."long-5.3.1"
       sources."lru-cache-6.0.0"
       sources."math-intrinsics-1.1.0"
       sources."minimatch-9.0.5"
@@ -1900,7 +1900,7 @@ let
       sources."safe-buffer-5.2.1"
       sources."safe-regex-test-1.1.0"
       sources."safer-buffer-2.1.2"
-      sources."semver-7.7.0"
+      sources."semver-7.7.1"
       sources."shebang-command-2.0.0"
       sources."shebang-regex-3.0.0"
       sources."signal-exit-4.1.0"

@@ -1,0 +1,9 @@
+# -*- mode: snippet -*-
+# name: measure { ... }
+# key: mes
+# --
+measure: ${1: name} {
+  type: ${2: type}
+  label: ${3: label}
+  sql: \${TABLE}. ;;
+}

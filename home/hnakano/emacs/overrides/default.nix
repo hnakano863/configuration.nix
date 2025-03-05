@@ -32,6 +32,5 @@ self: super: {
   copilot-unstable = pkgs-unstable.emacsPackages.copilot.override {
     inherit (pkgs) copilot-node-server;
   };
-  copilot-chat-unstable = pkgs-unstable.emacsPackages.copilot-chat;
 
 }
