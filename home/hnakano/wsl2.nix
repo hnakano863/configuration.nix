@@ -1,8 +1,8 @@
 # configuraion fraction specific to wsl2 home.
-{ config, pkgs, lib, pkgs-unstable, ... }:
+{ config, pkgs, lib, ... }:
 
 let
-  gcloud = pkgs-unstable.google-cloud-sdk;
+  gcloud = pkgs.unstable.google-cloud-sdk;
   gcloudWithComp = gcloud.withExtraComponents (with gcloud.components; [
     gke-gcloud-auth-plugin
   ]);

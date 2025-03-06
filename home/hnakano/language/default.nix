@@ -1,4 +1,4 @@
-{ pkgs, pkgs-unstable, ... }:
+{ pkgs, ... }:
 {
   imports = [
     ./julia
@@ -18,7 +18,7 @@
     elmPackages.elm-test
     nodePackages.vscode-json-languageserver
     nodePackages.mermaid-cli
-    pkgs-unstable.lean4
+    unstable.lean4
     # rust
     rustc
     cargo

@@ -1,4 +1,4 @@
-{ pkgs, pkgs-unstable, ... }:
+{ pkgs, ... }:
 self: super: {
   evil = self.melpaPackages.evil;
 
@@ -29,8 +29,6 @@ self: super: {
 
   # copilot-node-serverがunfreeライセンスなのでunstableを使うことができない
   # そこで、copilot-node-serverのみpkgsから取得する
-  copilot-unstable = pkgs-unstable.emacsPackages.copilot.override {
-    inherit (pkgs) copilot-node-server;
-  };
+  copilot-unstable = pkgs.unstable.emacsPackages.copilot;
 
 }

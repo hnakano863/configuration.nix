@@ -2,15 +2,12 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, lib, pkgs-unstable, ... } @ attrs:
+{ config, pkgs, lib, self, nixpkgs, nixpkgs-unstable, ... }:
 
 {
-  system.configurationRevision = with attrs; lib.mkIf (self ? rev) self.rev;
+  system.configurationRevision = lib.mkIf (self ? rev) self.rev;
 
-  imports = with attrs; [
-    home-manager.nixosModules.home-manager
-    ./users.nix
-  ];
+  imports = [ ./users.nix ];
 
   nix = {
     settings = {
@@ -18,11 +15,11 @@
       max-jobs = "auto";
     };
     registry = {
-      nixpkgs.flake = attrs.nixpkgs;
+      nixpkgs.flake = nixpkgs;
     };
     nixPath = [
-      "nixpkgs=${attrs.nixpkgs}"
-      "nixpkgs-unstable=${attrs.nixpkgs-unstable}"
+      "nixpkgs=${nixpkgs}"
+      "nixpkgs-unstable=${nixpkgs-unstable}"
     ];
   };
 
@@ -30,12 +27,6 @@
     allowUnfree = true;
     allowBroken = true;
   };
-
-  nixpkgs.overlays = with attrs; [
-    emacs-overlay.overlay
-    eijiro.overlay
-    (import ../overlays { inherit config pkgs-unstable; })
-  ];
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
@@ -107,10 +98,5 @@
   home-manager = {
     useGlobalPkgs = true;
     useUserPackages = true;
-    extraSpecialArgs = let
-      sys = config.nixpkgs.localSystem.system;
-    in {
-      pkgs-unstable = attrs.nixpkgs-unstable.legacyPackages."${sys}";
-    };
   };
 }

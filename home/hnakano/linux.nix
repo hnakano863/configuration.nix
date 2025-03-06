@@ -1,5 +1,5 @@
 # configuraion fraction specific to linux home.
-{ config, pkgs, lib, pkgs-unstable, ... }:
+{ config, pkgs, lib, ... }:
 {
   imports = [
     ./common.nix

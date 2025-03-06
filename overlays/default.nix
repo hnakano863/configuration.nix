@@ -1,4 +1,3 @@
-{ config, pkgs-unstable }:
 final: prev:
 let
 
