@@ -12,6 +12,7 @@ in {
   imports = [
     ./common.nix
     ./emacs/yasnippet
+    ./language/wsl
   ];
 
   home.packages = with pkgs; [

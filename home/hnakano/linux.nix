@@ -4,6 +4,8 @@
   imports = [
     ./common.nix
     ./alacritty.nix
+    ./nyxt
+    ./language/linux
   ];
 
   home.packages = with pkgs; [
