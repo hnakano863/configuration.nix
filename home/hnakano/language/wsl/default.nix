@@ -1,7 +1,7 @@
 { pkgs, ... }:
 {
   imports = [
-    ./python
+    ../python
   ];
 
   home.packages = with pkgs; [

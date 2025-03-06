@@ -1,8 +1,8 @@
 { pkgs, ... }:
 {
   imports = [
-    ./julia
-    ./python
+    ../julia
+    ../python
   ];
 
   home.packages = with pkgs; [
