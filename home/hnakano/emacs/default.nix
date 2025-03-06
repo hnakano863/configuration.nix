@@ -3,7 +3,7 @@ with pkgs;
 {
   programs.emacs.enable = true;
   programs.emacs.overrides = import ./overrides { inherit pkgs pkgs-unstable; };
-  programs.emacs.package = emacs30;
+  programs.emacs.package = pkgs-unstable.emacs30;
 
   home.file = {
     ".emacs.d/early-init.el".text = ''
