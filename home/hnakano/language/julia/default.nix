@@ -17,6 +17,7 @@ let
     "OhMyREPL"
     "Pluto"
     "Revise"
+    "JLD2" # required for DrWatson
   ];
 
 in
