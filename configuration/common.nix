@@ -107,9 +107,6 @@
   home-manager = {
     useGlobalPkgs = true;
     useUserPackages = true;
-    users.hnakano = { config, pkgs, lib, ... }: {
-      imports = [ ../home/hnakano/common.nix ];
-    };
     extraSpecialArgs = let
       sys = config.nixpkgs.localSystem.system;
     in {

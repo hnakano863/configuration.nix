@@ -9,7 +9,10 @@ let
 
 in {
 
-  imports = [ ./emacs/yasnippet ];
+  imports = [
+    ./common.nix
+    ./emacs/yasnippet
+  ];
 
   home.packages = with pkgs; [
     awscli2

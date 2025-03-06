@@ -2,6 +2,7 @@
 { config, pkgs, lib, pkgs-unstable, ... }:
 {
   imports = [
+    ./common.nix
     ./alacritty.nix
   ];
 
