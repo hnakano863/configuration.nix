@@ -1,10 +1,9 @@
 # configuration fraction specific to linux.
 
-{ config, pkgs, lib, ... } @ attrs:
+{ config, pkgs, lib, ... }:
 
 {
   imports = [
-    attrs.nixpkgs.nixosModules.notDetected
     ./common.nix
     ./hardware.nix
     # ./guix.nix

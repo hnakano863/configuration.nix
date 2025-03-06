@@ -1,6 +1,6 @@
 { epkgs }:
 with epkgs; [
-  copilot-unstable
+  unstable.copilot
   copilot-chat
   dataform-mode
   lookml-mode

@@ -1,9 +1,9 @@
-{ config, pkgs, pkgs-unstable, ... }:
+{ config, pkgs, ... }:
 with pkgs;
 {
   programs.emacs.enable = true;
-  programs.emacs.overrides = import ./overrides { inherit pkgs pkgs-unstable; };
-  programs.emacs.package = emacs29;
+  programs.emacs.overrides = import ./overrides { inherit pkgs; };
+  programs.emacs.package = unstable.emacs30;
 
   home.file = {
     ".emacs.d/early-init.el".text = ''

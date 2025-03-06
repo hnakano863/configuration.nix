@@ -11,9 +11,6 @@
     nixos-wsl.url = "github:nix-community/NixOS-WSL";
     nixos-wsl.inputs.nixpkgs.follows = "nixpkgs";
 
-    nix-ld.url = "github:Mic92/nix-ld";
-    nix-ld.inputs.nixpkgs.follows = "nixpkgs";
-
     eijiro.url = "path:/home/hnakano/ghq/github.com/hnakano/eijiro.nix";
     eijiro.inputs.nixpkgs.follows = "nixpkgs";
 
@@ -28,22 +25,48 @@
     , home-manager
     , emacs-overlay
     , nixos-wsl
-    , nix-ld
     , eijiro
     , vscode-server
-    } @ attrs:
+    }:
 
-    {
+    let
+      overlays = { config, pkgs, ... }:
+        let
+          unstable-overlay = final: prev: {
+            unstable = import nixpkgs-unstable {
+              inherit (config.nixpkgs) system config;
+            };
+          };
+        in {
+          nixpkgs.overlays = [
+            emacs-overlay.overlay
+            eijiro.overlay
+            unstable-overlay
+            (import ./overlays)
+          ];
+        };
+    in {
       nixosConfigurations.bravo = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
-        specialArgs = attrs;
-        modules = [ ./configuration/linux.nix ];
+        specialArgs = { inherit self nixpkgs nixpkgs-unstable; };
+        modules = [
+          home-manager.nixosModules.home-manager
+          overlays
+          nixpkgs.nixosModules.notDetected
+          ./configuration/linux.nix
+        ];
       };
 
       nixosConfigurations.nixos = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
-        specialArgs = attrs;
-        modules = [ ./configuration/wsl2.nix ];
+        specialArgs = { inherit self nixpkgs nixpkgs-unstable; };
+        modules = [
+          home-manager.nixosModules.home-manager
+          overlays
+          nixos-wsl.nixosModules.wsl
+          vscode-server.nixosModules.default
+          ./configuration/wsl2.nix
+        ];
       };
 
       devShells.x86_64-linux.default = let

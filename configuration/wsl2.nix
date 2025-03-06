@@ -1,12 +1,8 @@
 # configuration fraction specific to wsl2.
-{ config, pkgs, lib, ... } @ attrs:
+{ config, pkgs, lib, ... }:
 
 {
-  imports = [
-    ./common.nix
-    attrs.nixos-wsl.nixosModules.wsl
-    attrs.vscode-server.nixosModules.default
-  ];
+  imports = [ ./common.nix ];
 
   # wsl
   wsl = {

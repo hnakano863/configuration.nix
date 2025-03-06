@@ -1,10 +1,6 @@
 { config, pkgs, lib, ... }:
 {
-  imports = [
-    ./emacs
-    ./language
-    ./nyxt
-  ];
+  imports = [ ./emacs ];
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
 

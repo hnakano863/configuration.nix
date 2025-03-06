@@ -55,7 +55,8 @@
   (dataform-mode . yas-minor-mode)
   (dataform-mode . (lambda () (setq-local yas-indent-line 'fixed)))
   :config
-  (push 'dataform-mode context-skk-programming-mode))
+  (push 'dataform-mode context-skk-programming-mode)
+  (push '(dataform-mode 2) copilot-indentation-alist))
 
 (use-package lookml-mode
   :mode "\\.lkml\\'"
@@ -64,7 +65,8 @@
   (lookml-mode . yas-minor-mode)
   (lookml-mode . (lambda () (setq-local yas-indent-line 'fixed)))
   :config
-  (push 'lookml-mode context-skk-programming-mode))
+  (push 'lookml-mode context-skk-programming-mode)
+  (push '(lookml-mode 2) copilot-indentation-alist))
 
 (my/bind
   :prefix "SPC l" ; LLMなので
