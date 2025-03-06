@@ -28,29 +28,26 @@
   (require 'use-package))
 
 ;;; Development Support
+;; LLM tools
+(defun my/auth-source-get-gemini-api-key ()
+  "Get gemini api key using auth-source."
+  (auth-info-password (car (auth-source-search :host "gemini"))))
+
 (use-package gptel
   :defer t
   :custom
   (gptel-model 'gemini-2.0-flash-exp)
   (gptel-default-mode 'org-mode)
-  (gptel-org-branching-context t)
+  (gptel-crowdsourced-prompts-file (locate-user-emacs-file ".cache/gptel-crowdsourced-prompts.csv"))
   :config
-  (let ((found (nth 0 (auth-source-search :max 1
-					  :host "gemini"
-					  :require '(:secret)))))
-    (when found
-      (setq gptel-backend
-	    (gptel-make-gemini "Gemini"
-	      :key (auth-info-password found)
-	      :stream t))))
-  (setf (alist-get 'org-mode gptel-prompt-prefix-alist) "@user\n")
-  (setf (alist-get 'org-mode gptel-response-prefix-alist) "@gptel\n"))
+  (setq gptel-backend
+	(gptel-make-gemini "Gemini"
+	  :key #'my/auth-source-get-gemini-api-key
+	  :stream t)))
 
-;;; Key Bindings
 (my/bind
-  :prefix "SPC"
-  "l" '(:ignore t :wk "LLM")
-  "l l" 'gptel)
+  :prefix "SPC l"
+  "l" 'gptel)
 
 (provide 'my-init)
 ;;; my-init.el ends here

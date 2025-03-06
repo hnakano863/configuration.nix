@@ -33,6 +33,7 @@ with epkgs; [
   org-journal
   org-mru-clock
   org-roam
+  popper
   prism
   projectile
   rainbow-delimiters
