@@ -1,5 +1,7 @@
 { pkgs, ... }:
 self: super: {
+  unstable = pkgs.unstable.emacsPackages;
+
   evil = self.melpaPackages.evil;
 
   treemacs = self.melpaBuild {
@@ -26,9 +28,4 @@ self: super: {
 
   dataform-mode = self.callPackage ./dataform-mode { };
   lookml-mode = self.callPackage ./lookml-mode { };
-
-  # copilot-node-serverがunfreeライセンスなのでunstableを使うことができない
-  # そこで、copilot-node-serverのみpkgsから取得する
-  copilot-unstable = pkgs.unstable.emacsPackages.copilot;
-
 }
