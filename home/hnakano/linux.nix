@@ -1,8 +1,11 @@
 # configuraion fraction specific to linux home.
-{ config, pkgs, lib, pkgs-unstable, ... }:
+{ config, pkgs, lib, ... }:
 {
   imports = [
+    ./common.nix
     ./alacritty.nix
+    ./nyxt
+    ./language/linux
   ];
 
   home.packages = with pkgs; [
