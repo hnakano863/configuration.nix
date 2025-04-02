@@ -166,13 +166,13 @@ let
         sha512 = "XCuKFP5PS55gnMVu3dty8KPatLqUoy/ZYzDzAGCQ8JNFCkLXzmI7vNHCR+XpbZaMWQK/vQubr7PkYq8g470J/A==";
       };
     };
-    "@types/node-22.13.9" = {
+    "@types/node-22.13.17" = {
       name = "_at_types_slash_node";
       packageName = "@types/node";
-      version = "22.13.9";
+      version = "22.13.17";
       src = fetchurl {
-        url = "https://registry.npmjs.org/@types/node/-/node-22.13.9.tgz";
-        sha512 = "acBjXdRJ3A6Pb3tqnw9HZmyR3Fiol3aGxRCK1x3d+6CDAMjl7I649wpSd+yNURCjbOUGu9tqtLKnTGxmK6CyGw==";
+        url = "https://registry.npmjs.org/@types/node/-/node-22.13.17.tgz";
+        sha512 = "nAJuQXoyPj04uLgu+obZcSmsfOenUg6DxPKogeUy6yNCFwWaj5sBF8/G/pNo8EtBJjAfSVgfIlugR/BCOleO+g==";
       };
     };
     "abbrev-2.0.0" = {
@@ -193,13 +193,13 @@ let
         sha512 = "h8lQ8tacZYnR3vNQTgibj+tODHI5/+l06Au2Pcriv/Gmet0eaj4TwWH41sO9wnHDiQsEj19q0drzdWdeAHtweg==";
       };
     };
-    "acorn-8.14.0" = {
+    "acorn-8.14.1" = {
       name = "acorn";
       packageName = "acorn";
-      version = "8.14.0";
+      version = "8.14.1";
       src = fetchurl {
-        url = "https://registry.npmjs.org/acorn/-/acorn-8.14.0.tgz";
-        sha512 = "cl669nCJTZBsL97OF4kUQm5g5hC2uihk0NxY3WENAC0TYdILVkAyHymAntgxGkl7K+t0cXIrH5siy5S4XkFycA==";
+        url = "https://registry.npmjs.org/acorn/-/acorn-8.14.1.tgz";
+        sha512 = "OvQ/2pUDKmgfCg++xsTX1wGxfTaszcHVcTctW4UJB4hibJx2HXxxO5UmVgyjMa+ZDsiaf5wWLXYpRWMmBI0QHg==";
       };
     };
     "acorn-walk-8.3.4" = {
@@ -1727,7 +1727,7 @@ let
   args = rec {
     name = "_at_dataform_slash_cli";
     packageName = "@dataform/cli";
-    version = "3.0.15";
+    version = "3.0.18";
     src = import ./src.nix { inherit fetchurl version; };
     dependencies = [
       sources."@google-cloud/bigquery-5.12.0"
@@ -1748,10 +1748,10 @@ let
       sources."@protobufjs/pool-1.1.0"
       sources."@protobufjs/utf8-1.1.0"
       sources."@tootallnate/once-2.0.0"
-      sources."@types/node-22.13.9"
+      sources."@types/node-22.13.17"
       sources."abbrev-2.0.0"
       sources."abort-controller-3.0.0"
-      sources."acorn-8.14.0"
+      sources."acorn-8.14.1"
       sources."acorn-walk-8.3.4"
       sources."agent-base-6.0.2"
       sources."ansi-regex-5.0.1"
