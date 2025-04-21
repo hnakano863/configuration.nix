@@ -28,6 +28,7 @@ with epkgs; [
   nerd-icons
   nix-mode
   nyan-mode
+  ob-restclient
   orderless
   org-contrib
   org-journal
@@ -36,6 +37,7 @@ with epkgs; [
   prism
   projectile
   rainbow-delimiters
+  restclient
   ripgrep # projectile-ripgrepのために必要(rgでもよい)
   smartparens
   treemacs
