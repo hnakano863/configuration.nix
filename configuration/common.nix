@@ -13,6 +13,7 @@
     settings = {
       experimental-features = ["nix-command" "flakes"];
       max-jobs = "auto";
+      download-buffer-size = 134217728;
     };
     registry = {
       nixpkgs.flake = nixpkgs;
