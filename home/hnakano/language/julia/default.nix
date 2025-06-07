@@ -15,7 +15,7 @@ let
     "IJulia"
     "LanguageServer"
     "OhMyREPL"
-    "Pluto"
+    # "Pluto"
     "Revise"
     "JLD2" # required for DrWatson
   ];
