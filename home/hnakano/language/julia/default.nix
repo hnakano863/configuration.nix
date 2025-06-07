@@ -9,7 +9,7 @@ let
     inherit jupyterCommand;
   } ''substituteAll "${./startup.jl.in}" $out '';
 
-  myJulia = unstable.julia.withPackages [
+  myJulia = julia.withPackages [
     "BenchmarkTools"
     "DrWatson"
     "IJulia"
