@@ -88,7 +88,7 @@
   services.smartd.notifications.x11.enable = true;
 
   # define default session
-  # services.displayManager.defaultSession = "none+xmonad";
+  services.displayManager.defaultSession = "qtile";
 
   services.xserver = {
     # for configuration
