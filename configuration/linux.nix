@@ -7,7 +7,7 @@
     ./common.nix
     ./hardware.nix
     # ./guix.nix
-    ./xmonad
+    # ./xmonad
   ];
 
   # extra settings for linux
@@ -54,7 +54,7 @@
 
   # List services that you want to enable:
   services.picom = {
-    enable = true;
+    enable = false;
     fade = true;
     inactiveOpacity = 0.8;
     fadeDelta = 6;
@@ -81,14 +81,14 @@
   services.blueman.enable = true;
 
   # Enable dconf for gnome
-  programs.dconf.enable = false;
+  programs.dconf.enable = true;
 
   services.gnome.gnome-keyring.enable = true;
 
   services.smartd.notifications.x11.enable = true;
 
   # define default session
-  services.displayManager.defaultSession = "none+xmonad";
+  # services.displayManager.defaultSession = "none+xmonad";
 
   services.xserver = {
     # for configuration
@@ -101,7 +101,7 @@
 
     # desktop environment
     windowManager.i3 = {
-      enable = true;
+      enable = false;
       extraPackages = with pkgs; [
         networkmanagerapplet
         i3lock
@@ -111,13 +111,13 @@
     };
 
     desktopManager = {
-      gnome.enable = false;
+      gnome.enable = true;
       runXdgAutostartIfNone = true;
     };
 
     displayManager = {
-      lightdm.enable = true;
-      gdm.enable = false;
+      lightdm.enable = false;
+      gdm.enable = true;
       gdm.wayland = false;
     };
   };
