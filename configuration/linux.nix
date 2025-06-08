@@ -81,7 +81,7 @@
   services.blueman.enable = true;
 
   # Enable dconf for gnome
-  programs.dconf.enable = true;
+  programs.dconf.enable = false;
 
   services.gnome.gnome-keyring.enable = true;
 
@@ -110,14 +110,18 @@
       ];
     };
 
+    windowManager.qtile = {
+      enable = true;
+    };
+
     desktopManager = {
-      gnome.enable = true;
+      gnome.enable = false;
       runXdgAutostartIfNone = true;
     };
 
     displayManager = {
-      lightdm.enable = false;
-      gdm.enable = true;
+      lightdm.enable = true;
+      gdm.enable = false;
       gdm.wayland = false;
     };
   };
