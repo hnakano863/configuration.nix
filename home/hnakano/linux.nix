@@ -22,6 +22,7 @@
     trayer
     glxinfo
     anki
+    gnome-tweaks
   ];
 
   home.sessionVariables = {
