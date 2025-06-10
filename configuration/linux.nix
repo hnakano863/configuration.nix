@@ -6,8 +6,7 @@
   imports = [
     ./common.nix
     ./hardware.nix
-    # ./guix.nix
-    # ./xmonad
+    ./qtile
   ];
 
   # extra settings for linux
@@ -117,14 +116,10 @@
       ];
     };
 
-    windowManager.qtile = {
-      enable = true;
-    };
-
     desktopManager = {
       gnome.enable = false;
       # qtileではこの設定が利用できないので直接dexを呼ぶ
-      runXdgAutostartIfNone = false;
+      runXdgAutostartIfNone = if config.services.xserver.windowManager.qtile.enable then false else true;
     };
 
     displayManager = {
@@ -139,11 +134,6 @@
 
   # Enable graphics
   hardware.graphics.enable = true;
-
-  # Additional packages for linux machine
-  environment.systemPackages = with pkgs; [
-    dex
-  ];
 
   # home-manager configuration
   home-manager.users.hnakano = { config, pkgs, lib, ... }: {
