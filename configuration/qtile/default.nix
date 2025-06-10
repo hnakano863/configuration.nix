@@ -3,6 +3,7 @@
 {
   services.xserver.windowManager.qtile = {
     enable = true;
+    configFile = ./config.py;
   };
 
   # Additional packages for qtile
