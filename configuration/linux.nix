@@ -116,7 +116,8 @@
 
     desktopManager = {
       gnome.enable = false;
-      runXdgAutostartIfNone = true;
+      # qtileではこの設定が利用できないので直接dexを呼ぶ
+      runXdgAutostartIfNone = false;
     };
 
     displayManager = {
