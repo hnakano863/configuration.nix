@@ -73,7 +73,7 @@ keys = [
     Key([mod], "r", lazy.spawncmd(), desc="Spawn a command using a prompt widget"),
 ]
 
-groups = [Group(i) for i in "123456789"]
+groups = [Group(i) for i in "12345"]
 
 for i in groups:
     keys.extend(
@@ -100,20 +100,16 @@ screens = [
     Screen(
         bottom=bar.Bar(
             [
-                widget.CurrentLayout(),
                 widget.GroupBox(),
-                widget.Prompt(),
                 widget.WindowName(),
-                widget.Chord(
-                    chords_colors={
-                        "launch": ("#ff0000", "#ffffff"),
-                    },
-                    name_transform=lambda name: name.upper(),
-                ),
-                widget.PulseVolume(fmt="Vol: {}", update_interval=0.2),
+                widget.Prompt(),
+                widget.Wlan(interface="wlp2s0", format="{essid} {percent:2.0%}", update_interval=2),
+                widget.CPU(fmt="Cpu:{}", format="{load_percent}%"),
+                widget.Memory(fmt="Mem:{}", measure_mem="G", format="{MemUsed:.1f}{mm}/{MemTotal:.1f}{mm}"),
+                widget.PulseVolume(fmt="Vol:{}", update_interval=0.2),
+                widget.Battery(fmt="Bat:{}", format="{percent:2.0%}"),
                 widget.Systray(),
                 widget.Clock(format="%Y-%m-%d %a %I:%M %p"),
-                widget.QuickExit(),
             ],
             24,
         ),
