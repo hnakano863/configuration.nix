@@ -75,6 +75,13 @@
   # Enable power management
   powerManagement.enable = true;
 
+  # Sound
+  services.pipewire = {
+    enable = true;
+    alsa.enable = true;
+    pulse.enable = true;
+  };
+
   # Enable bluetooth
   hardware.bluetooth.enable = true;
   hardware.bluetooth.powerOnBoot = true;
