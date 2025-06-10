@@ -33,7 +33,7 @@
   # $ nix search wget
   environment.systemPackages = with pkgs; [
     git wget vim gnupg mkpasswd psmisc file
-    feh docker-compose dex
+    feh docker-compose
   ];
 
   fonts.enableDefaultPackages = true;

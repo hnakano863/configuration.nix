@@ -133,6 +133,11 @@
   # Enable graphics
   hardware.graphics.enable = true;
 
+  # Additional packages for linux machine
+  environment.systemPackages = with pkgs; [
+    dex
+  ];
+
   # home-manager configuration
   home-manager.users.hnakano = { config, pkgs, lib, ... }: {
     imports = [ ../home/hnakano/linux.nix ];
