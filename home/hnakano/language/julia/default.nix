@@ -13,8 +13,8 @@ let
     augmentedRegistry = fetchFromGitHub {
       owner = "CodeDownIO";
       repo = "General";
-      rev = "8931e0b2c4359c8764c9911ef82ca1e21f9e21e1";
-      hash = "sha256-rTkDLAiiQj2LDyndi+aPNCPvZBeuAsjsU8tGKh1A8/8=";
+      rev = "3002053bf0129717cf37c5e973eb50a0983c8af9";
+      hash = "sha256-/e32RKNOrRuJKzOvxI/F13WHFBlomN70k2HZ4i6f29E=";
     };
   }) [
     "BenchmarkTools"
