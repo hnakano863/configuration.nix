@@ -17,6 +17,22 @@
         "type": "path"
       }
     },
+    "emacs-lean4-mode-src": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1748752682,
+        "narHash": "sha256-6XFcyqSTx1CwNWqQvIc25cuQMwh3YXnbgr5cDiOCxBk=",
+        "owner": "leanprover-community",
+        "repo": "lean4-mode",
+        "rev": "1388f9d1429e38a39ab913c6daae55f6ce799479",
+        "type": "github"
+      },
+      "original": {
+        "owner": "leanprover-community",
+        "repo": "lean4-mode",
+        "type": "github"
+      }
+    },
     "emacs-overlay": {
       "inputs": {
         "nixpkgs": "nixpkgs",
@@ -209,6 +225,7 @@
     "root": {
       "inputs": {
         "eijiro": "eijiro",
+        "emacs-lean4-mode-src": "emacs-lean4-mode-src",
         "emacs-overlay": "emacs-overlay",
         "home-manager": "home-manager",
         "julia-registry": "julia-registry",

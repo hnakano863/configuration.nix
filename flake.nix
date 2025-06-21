@@ -19,6 +19,9 @@
     julia-registry.url = "github:codedownio/General";
     julia-registry.flake = false;
 
+    emacs-lean4-mode-src.url = "github:leanprover-community/lean4-mode";
+    emacs-lean4-mode-src.flake = false;
+
   };
 
   outputs =
@@ -31,6 +34,7 @@
     , eijiro
     , vscode-server
     , julia-registry
+    , emacs-lean4-mode-src
     }:
 
     let
@@ -48,6 +52,7 @@
             unstable-overlay
             (import ./overlays)
             (final: prev: { inherit julia-registry; })
+            (final: prev: { inherit emacs-lean4-mode-src; })
           ];
         };
     in {
