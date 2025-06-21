@@ -22,6 +22,9 @@
     emacs-lean4-mode-src.url = "github:leanprover-community/lean4-mode";
     emacs-lean4-mode-src.flake = false;
 
+    skktools-unstable-src.url = "github:skk-dev/skktools";
+    skktools-unstable-src.flake = false;
+
   };
 
   outputs =
@@ -35,6 +38,7 @@
     , vscode-server
     , julia-registry
     , emacs-lean4-mode-src
+    , skktools-unstable-src
     }:
 
     let
@@ -53,6 +57,7 @@
             (import ./overlays)
             (final: prev: { inherit julia-registry; })
             (final: prev: { inherit emacs-lean4-mode-src; })
+            (final: prev: { inherit skktools-unstable-src; })
           ];
         };
     in {

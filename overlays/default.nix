@@ -13,16 +13,11 @@ in {
   # SKK dicts
   skktools = prev.skktools.overrideAttrs(old: {
     name = "skktools-unstable";
-    src = prev.fetchFromGitHub {
-      owner = "skk-dev";
-      repo = "skktools";
-      rev = "1e8c457c2796c2e3d84badcf41386506d5010a7e";
-      hash = "sha256-8sG6fMqoKjZ7c0S6O8Nf/GWv1y3TzZmE3FaJgp0YoRg=";
-    };
+    src = final.skktools-unstable-src;
   });
 
-  skkDictionariesUtf8 = prev.callPackage ./skk-dicts/utf8.nix { inherit (prev) skkDictionaries; };
-  skkDictionariesUtf8Cdb = prev.callPackage ./skk-dicts/cdb.nix {
+  skkDictionariesUtf8 = final.callPackage ./skk-dicts/utf8.nix { };
+  skkDictionariesUtf8Cdb = final.callPackage ./skk-dicts/cdb.nix {
     skkDictionaries = final.skkDictionariesUtf8;
   };
 
