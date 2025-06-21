@@ -16,6 +16,9 @@
 
     vscode-server.url = "github:nix-community/nixos-vscode-server";
 
+    julia-registry.url = "github:codedownio/General";
+    julia-registry.flake = false;
+
   };
 
   outputs =
@@ -27,6 +30,7 @@
     , nixos-wsl
     , eijiro
     , vscode-server
+    , julia-registry
     }:
 
     let
@@ -43,6 +47,7 @@
             eijiro.overlay
             unstable-overlay
             (import ./overlays)
+            (final: prev: { inherit julia-registry; })
           ];
         };
     in {

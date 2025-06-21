@@ -91,6 +91,22 @@
         "type": "github"
       }
     },
+    "julia-registry": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1750509137,
+        "narHash": "sha256-/e32RKNOrRuJKzOvxI/F13WHFBlomN70k2HZ4i6f29E=",
+        "owner": "codedownio",
+        "repo": "General",
+        "rev": "3002053bf0129717cf37c5e973eb50a0983c8af9",
+        "type": "github"
+      },
+      "original": {
+        "owner": "codedownio",
+        "repo": "General",
+        "type": "github"
+      }
+    },
     "nixos-wsl": {
       "inputs": {
         "flake-compat": "flake-compat",
@@ -195,6 +211,7 @@
         "eijiro": "eijiro",
         "emacs-overlay": "emacs-overlay",
         "home-manager": "home-manager",
+        "julia-registry": "julia-registry",
         "nixos-wsl": "nixos-wsl",
         "nixpkgs": "nixpkgs_2",
         "nixpkgs-unstable": "nixpkgs-unstable",
