@@ -197,7 +197,7 @@
 
 (use-package fish-mode :mode "\\.fish\\'")
 
-(use-package python
+(use-package python-mode
   :mode "\\.py\\'"
   :hook
   (python-mode . smartparens-mode)
