@@ -42,44 +42,60 @@
     }:
 
     let
-      overlays = { config, pkgs, ... }:
+
+      overlays-module = { config, pkgs, ... }:
         let
-          unstable-overlay = final: prev: {
+          flake-input-overlay = final: prev: {
+
             unstable = import nixpkgs-unstable {
               inherit (config.nixpkgs) system config;
             };
+
+            inherit julia-registry emacs-lean4-mode-src skktools-unstable-src;
+
           };
         in {
           nixpkgs.overlays = [
             emacs-overlay.overlay
             eijiro.overlay
-            unstable-overlay
+            flake-input-overlay
             (import ./overlays)
-            (final: prev: { inherit julia-registry; })
-            (final: prev: { inherit emacs-lean4-mode-src; })
-            (final: prev: { inherit skktools-unstable-src; })
           ];
         };
+
+      flake-input-config = { config, pkgs, lib, ... }: {
+
+        system.configurationRevision = lib.mkIf (self ? rev) self.rev;
+
+        nix.registry.nixpkgs.flake = nixpkgs;
+
+        nix.nixPath = [
+          "nixpkgs=${nixpkgs}"
+          "nixpkgs-unstable=${nixpkgs-unstable}"
+        ];
+
+      };
+
     in {
       nixosConfigurations.bravo = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
-        specialArgs = { inherit self nixpkgs nixpkgs-unstable; };
         modules = [
           home-manager.nixosModules.home-manager
-          overlays
+          overlays-module
           nixpkgs.nixosModules.notDetected
+          flake-input-config
           ./configuration/linux.nix
         ];
       };
 
       nixosConfigurations.nixos = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
-        specialArgs = { inherit self nixpkgs nixpkgs-unstable; };
         modules = [
           home-manager.nixosModules.home-manager
-          overlays
+          overlays-module
           nixos-wsl.nixosModules.wsl
           vscode-server.nixosModules.default
+          flake-input-config
           ./configuration/wsl2.nix
         ];
       };

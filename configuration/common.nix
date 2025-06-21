@@ -2,11 +2,9 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, lib, self, nixpkgs, nixpkgs-unstable, ... }:
+{ config, pkgs, lib, ... }:
 
 {
-  system.configurationRevision = lib.mkIf (self ? rev) self.rev;
-
   imports = [ ./users.nix ];
 
   nix = {
@@ -15,13 +13,6 @@
       max-jobs = "auto";
       download-buffer-size = 134217728;
     };
-    registry = {
-      nixpkgs.flake = nixpkgs;
-    };
-    nixPath = [
-      "nixpkgs=${nixpkgs}"
-      "nixpkgs-unstable=${nixpkgs-unstable}"
-    ];
   };
 
   nixpkgs.config = {
