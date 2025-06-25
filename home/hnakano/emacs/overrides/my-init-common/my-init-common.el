@@ -300,6 +300,16 @@
   :config
   (org-roam-setup))
 
+;; citation and bibliography
+(use-package org-cite
+  :defer t
+  :custom
+  (org-cite-global-bibliography '("~/Dropbox/bibliography/default.bib"))
+  (citar-bibliography '("~/Dropbox/bibliography/default.bib"))
+  (org-cite-insert-processor 'citar)
+  (org-cite-follow-processor 'citar)
+  (org-cite-activate-processor 'citar))
+
 ;;; Files
 ;; recent files
 (use-package recentf

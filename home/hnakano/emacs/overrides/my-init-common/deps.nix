@@ -1,6 +1,7 @@
 { epkgs }:
 with epkgs; [
   all-the-icons
+  citar
   company
   consult
   ddskk
@@ -30,6 +31,7 @@ with epkgs; [
   nyan-mode
   ob-restclient
   orderless
+  org-cite
   org-contrib
   org-journal
   org-mru-clock
