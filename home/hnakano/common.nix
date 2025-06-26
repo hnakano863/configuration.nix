@@ -33,6 +33,7 @@
     jq
     ispell # for forge.el
     nyxt
+    gemini-cli
   ];
 
   home.sessionPath = [ "${config.home.homeDirectory}/.local/bin" ];
