@@ -25,6 +25,7 @@ in {
     dataform-cli
     look-at-me-sideways
     sqlfluff
+    git-crypt
   ];
 
   home.sessionVariables = {
