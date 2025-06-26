@@ -33,4 +33,6 @@ in {
 
   look-at-me-sideways = (final.callPackage ./look-at-me-sideways { inherit nodeEnv; }).package;
 
+  gemini-cli = (final.callPackage ./gemini-cli { inherit nodeEnv; }).package;
+
 }

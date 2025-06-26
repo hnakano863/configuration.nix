@@ -33,6 +33,12 @@ let
       package = "look-at-me-sideways@3.4.1";
     };
 
+    gemini-cli = mkNode2NixUpdator {
+      name = "gemini-cli-updator";
+      repos = "@google";
+      package = "gemini-cli";
+    };
+
   };
 
 in
