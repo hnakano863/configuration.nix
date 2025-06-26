@@ -48,6 +48,7 @@ mkShell {
   buildInputs = [
     updators.dataform-cli
     updators.look-at-me-sideways
+    updators.gemini-cli
   ];
 
 }
