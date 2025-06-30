@@ -14,7 +14,6 @@
     gimp
     vlc
     myVivaldi
-    brave
     dmenu
     rofi-power-menu
     xorg.xmessage
