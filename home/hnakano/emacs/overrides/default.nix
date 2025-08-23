@@ -15,7 +15,9 @@ self: super: {
     '';
   });
 
-  lean4-mode = self.callPackage ./lean4-mode.nix { inherit (pkgs) fetchFromGitHub writeText; };
+  lean4-mode = self.callPackage ./lean4-mode.nix {
+    inherit (pkgs) writeText emacs-lean4-mode-src;
+  };
 
   my-early-init = self.callPackage ./my-early-init { };
   my-init-common = self.callPackage ./my-init-common {

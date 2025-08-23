@@ -2,25 +2,17 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, lib, self, nixpkgs, nixpkgs-unstable, ... }:
+{ config, pkgs, lib, ... }:
 
 {
-  system.configurationRevision = lib.mkIf (self ? rev) self.rev;
-
   imports = [ ./users.nix ];
 
   nix = {
     settings = {
       experimental-features = ["nix-command" "flakes"];
       max-jobs = "auto";
+      download-buffer-size = 134217728;
     };
-    registry = {
-      nixpkgs.flake = nixpkgs;
-    };
-    nixPath = [
-      "nixpkgs=${nixpkgs}"
-      "nixpkgs-unstable=${nixpkgs-unstable}"
-    ];
   };
 
   nixpkgs.config = {
@@ -32,13 +24,17 @@
   # $ nix search wget
   environment.systemPackages = with pkgs; [
     git wget vim gnupg mkpasswd psmisc file
-    feh docker-compose
+    feh docker-compose nh
   ];
 
   fonts.enableDefaultPackages = true;
   fonts.enableGhostscriptFonts = true;
   fonts.fontDir.enable = true;
-  fonts.packages = with pkgs; [
+  fonts.packages = let
+    nerdfont-pkgs =
+      builtins.filter lib.attrsets.isDerivation
+      (builtins.attrValues pkgs.nerd-fonts);
+  in with pkgs; [
     noto-fonts
     noto-fonts-cjk-sans
     noto-fonts-emoji
@@ -46,9 +42,8 @@
     hackgen-font
     unifont
     siji
-    nerdfonts
     material-icons
-  ];
+  ] ++ nerdfont-pkgs;
 
   environment.variables = {
     LIBRARY_PATH = with pkgs; builtins.concatStringsSep ":" [

@@ -9,7 +9,9 @@ let
     inherit jupyterCommand;
   } ''substituteAll "${./startup.jl.in}" $out '';
 
-  myJulia = julia.withPackages [
+  myJulia = (julia.withPackages.override {
+    augmentedRegistry = julia-registry;
+  }) [
     "BenchmarkTools"
     "DrWatson"
     "IJulia"

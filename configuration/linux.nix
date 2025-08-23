@@ -6,8 +6,7 @@
   imports = [
     ./common.nix
     ./hardware.nix
-    # ./guix.nix
-    ./xmonad
+    ./qtile
   ];
 
   # extra settings for linux
@@ -54,7 +53,7 @@
 
   # List services that you want to enable:
   services.picom = {
-    enable = true;
+    enable = false;
     fade = true;
     inactiveOpacity = 0.8;
     fadeDelta = 6;
@@ -75,6 +74,13 @@
   # Enable power management
   powerManagement.enable = true;
 
+  # Sound
+  services.pipewire = {
+    enable = true;
+    alsa.enable = true;
+    pulse.enable = true;
+  };
+
   # Enable bluetooth
   hardware.bluetooth.enable = true;
   hardware.bluetooth.powerOnBoot = true;
@@ -88,7 +94,7 @@
   services.smartd.notifications.x11.enable = true;
 
   # define default session
-  services.displayManager.defaultSession = "none+xmonad";
+  services.displayManager.defaultSession = "qtile";
 
   services.xserver = {
     # for configuration
@@ -101,7 +107,7 @@
 
     # desktop environment
     windowManager.i3 = {
-      enable = true;
+      enable = false;
       extraPackages = with pkgs; [
         networkmanagerapplet
         i3lock
@@ -112,7 +118,8 @@
 
     desktopManager = {
       gnome.enable = false;
-      runXdgAutostartIfNone = true;
+      # qtileではこの設定が利用できないので直接dexを呼ぶ
+      runXdgAutostartIfNone = if config.services.xserver.windowManager.qtile.enable then false else true;
     };
 
     displayManager = {

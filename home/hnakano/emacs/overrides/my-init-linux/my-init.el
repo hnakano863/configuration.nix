@@ -45,6 +45,9 @@
 	  :key #'my/auth-source-get-gemini-api-key
 	  :stream t)))
 
+(use-package lean4-mode
+  :mode "\\.lean\\'")
+
 (my/bind
   :prefix "SPC l"
   "l" 'gptel)

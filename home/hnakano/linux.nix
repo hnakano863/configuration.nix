@@ -14,7 +14,6 @@
     gimp
     vlc
     myVivaldi
-    brave
     dmenu
     rofi-power-menu
     xorg.xmessage
@@ -22,6 +21,7 @@
     trayer
     glxinfo
     anki
+    gnome-tweaks
   ];
 
   home.sessionVariables = {
