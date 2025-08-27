@@ -218,6 +218,7 @@
 (setq org-directory "~/Dropbox/Org")
 (setq my/org-notes-directory (concat (file-name-as-directory org-directory) "notes/"))
 (setq my/org-gtd-directory (concat (file-name-as-directory org-directory) "gtd/"))
+(setq my/org-gtd-inbox-file (concat my/org-gtd-directory "inbox.org"))
 
 (use-package org
   :defer t
@@ -264,12 +265,11 @@
   :defer t
   :custom
   (org-default-notes-file (concat my/org-notes-directory "todos.org"))
-  (org-gtd-inbox-file (concat my/org-gtd-directory "inbox.org"))
   (org-todo-keywords '((sequence "TODO(t)" "WAIT(w)" "|" "DONE(d)" "KILL(k)")))
   (org-todo-keyword-faces '(("TODO" . org-todo) ("WAIT" . warning)))
   (org-capture-templates '(("t" "Todo witout properties" entry (file+headline org-default-notes-file "Todos")
 			    "* TODO %?")
-			   ("c" "GTD Inbox" entry (file+headline org-gtd-inbox-file "Inbox")
+			   ("c" "GTD Inbox" entry (file+headline my/org-gtd-inbox-file "Inbox")
 			    "* %?"))))
 
 (use-package org-agenda
