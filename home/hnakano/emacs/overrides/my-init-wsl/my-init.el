@@ -35,6 +35,21 @@
   (:map copilot-completion-map
    ("TAB" . copilot-accept-completion)))
 
+(defun my/auth-source-get-gemini-api-key ()
+  "Get gemini api key using auth-source."
+  (auth-info-password (car (auth-source-search :host "gemini"))))
+
+(use-package gptel
+  :defer t
+  :custom
+  (gptel-model 'gemini-2.5-pro)
+  (gptel-default-mode 'org-mode)
+  :config
+  (setq gptel-backend
+	(gptel-make-gemini "Gemini"
+	  :key #'my/auth-source-get-gemini-api-key
+	  :stream t)))
+
 ;;; Programming Languages
 (use-package dataform-mode
   :mode "\\.sqlx\\'"
