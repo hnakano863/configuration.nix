@@ -70,7 +70,11 @@
   (push '(lookml-mode 2) copilot-indentation-alist))
 
 (my/bind
-  :prefix "SPC l") ; LLMなので
+  :prefix "SPC l" ; LLMなので
+  "l" 'gptel
+  "a" 'gptel-add
+  "f" 'gptel-add-file
+  "w" 'gptel-rewrite)
 
 (provide 'my-init)
 ;;; my-init.el ends here
