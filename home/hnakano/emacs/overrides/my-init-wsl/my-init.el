@@ -46,9 +46,7 @@
   (gptel-default-mode 'org-mode)
   :config
   (setq gptel-backend
-	(gptel-make-gemini "Gemini"
-	  :key #'my/auth-source-get-gemini-api-key
-	  :stream t)))
+        (gptel-make-gh-copilot "Gemini")))
 
 ;;; Programming Languages
 (use-package dataform-mode
