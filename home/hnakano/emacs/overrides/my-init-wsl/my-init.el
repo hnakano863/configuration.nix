@@ -48,6 +48,12 @@
   (setq gptel-backend
         (gptel-make-gh-copilot "Gemini")))
 
+(use-package gptel-commit
+  :after (gptel magit)
+  :bind
+  (:map git-commit-mode-map
+   ("C-c g" . gptel-commit)))
+
 ;;; Programming Languages
 (use-package dataform-mode
   :mode "\\.sqlx\\'"
