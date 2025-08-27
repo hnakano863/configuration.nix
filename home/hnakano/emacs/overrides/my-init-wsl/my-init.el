@@ -30,22 +30,10 @@
 ;;; Development Support
 ;; copilot.el configurations
 (use-package copilot
-  :hook
-  prog-mode
-  (emacs-lisp-mode . (lambda () (copilot-mode nil)))
-  :config
-  (push '(nix-mode 2) copilot-indentation-alist)
-  (copilot-login)
+  :hook prog-mode
   :bind
-  (:map copilot-mode-map
+  (:map copilot-completion-map
    ("TAB" . copilot-accept-completion)))
-
-;; copilot-chat
-(use-package copilot-chat
-  :custom
-  (copilot-chat-model "claude-3.5-sonnet")
-  :hook
-  (git-commit-setup . copilot-chat-insert-commit-message))
 
 ;;; Programming Languages
 (use-package dataform-mode
