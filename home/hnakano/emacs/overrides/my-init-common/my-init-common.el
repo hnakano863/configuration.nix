@@ -217,6 +217,7 @@
 ;; 複数の設定で使い回すのでtoplevelで定義
 (setq org-directory "~/Dropbox/Org")
 (setq my/org-notes-directory (concat (file-name-as-directory org-directory) "notes/"))
+(setq my/org-gtd-directory (concat (file-name-as-directory org-directory) "gtd/"))
 
 (use-package org
   :defer t
@@ -263,17 +264,19 @@
   :defer t
   :custom
   (org-default-notes-file (concat my/org-notes-directory "todos.org"))
+  (org-gtd-inbox-file (concat my/org-gtd-directory "inbox.org"))
   (org-todo-keywords '((sequence "TODO(t)" "WAIT(w)" "|" "DONE(d)" "KILL(k)")))
   (org-todo-keyword-faces '(("TODO" . org-todo) ("WAIT" . warning)))
-  (org-capture-templates '(("c" "Todo" entry (file+headline org-default-notes-file "Todos")
-			    "* TODO %?\n:PROPERTIES:\n:Project:%^{Project}p\n:END:")
-			   ("t" "Todo witout properties" entry (file+headline org-default-notes-file "Todos")
-			    "* TODO %?"))))
+  (org-capture-templates '(("t" "Todo witout properties" entry (file+headline org-default-notes-file "Todos")
+			    "* TODO %?")
+			   ("c" "GTD Inbox" entry (file+headline org-gtd-inbox-file "Inbox")
+			    "* %?"))))
 
 (use-package org-agenda
   :defer t
   :custom
-  (org-agenda-files (list my/org-notes-directory))
+  (org-agenda-files (list (concat my/org-gtd-directory "reminders.org")
+			  (concat my/org-gtd-directory "waiting.org")))
   (org-agenda-span 'day))
 
 ;; diary/journal
