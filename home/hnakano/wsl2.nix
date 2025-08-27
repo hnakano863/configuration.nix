@@ -25,7 +25,6 @@ in {
     dataform-cli
     look-at-me-sideways
     sqlfluff
-    copilot-language-server
   ];
 
   home.sessionVariables = {
