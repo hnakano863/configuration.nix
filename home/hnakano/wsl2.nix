@@ -33,7 +33,7 @@ in {
 
   # シェルの起動時スクリプトは共通化しない
   programs.bash.initExtra = lib.mkAfter ''
-    if [ $SHLVL -eq 1 ]; then
+    if [ -z "$IN_NIX_SHELL" ]; then
       exec fish
     fi
   '';
