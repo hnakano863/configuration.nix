@@ -31,10 +31,12 @@ in {
     AWS_VAULT_BACKEND = "pass";
   };
 
-  # シェルの起動時スクリプトは共通化しない
+  # https://nixos.wiki/wiki/Fish#Setting_fish_as_your_shell
   programs.bash.initExtra = lib.mkOrder 1501 ''
-    if [ -z "$IN_NIX_SHELL" ]; then
-      exec fish
+    if [[ $(${pkgs.procps}/bin/ps --no-header --pid=$PPID --format=comm) != "fish" && -z ''${BASH_EXECUTION_STRING} ]]
+    then
+      shopt -q login_shell && LOGIN_OPTION='--login' || LOGIN_OPTION=""
+      exec ${pkgs.fish}/bin/fish $LOGIN_OPTION
     fi
   '';
 
