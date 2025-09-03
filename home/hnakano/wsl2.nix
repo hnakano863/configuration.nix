@@ -32,7 +32,7 @@ in {
   };
 
   # シェルの起動時スクリプトは共通化しない
-  programs.bash.initExtra = lib.mkAfter ''
+  programs.bash.initExtra = lib.mkOrder 1501 ''
     if [ -z "$IN_NIX_SHELL" ]; then
       exec fish
     fi
