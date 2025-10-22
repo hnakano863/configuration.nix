@@ -5,13 +5,14 @@ let
 
   mkNode2NixUpdator =
     { name
-    , repos
     , package
+    , repos ? null
     , template ? ./update-scripts/node2nix-template.sh
     }:
     let
+      packageName = if repos != null then "${repos}/${package}" else package;
       script = runCommand "script.sh" {
-        inherit repos package;
+        inherit package packageName;
       } ''substituteAll "${template}" $out'';
     in writeShellApplication {
       inherit name;
@@ -33,6 +34,11 @@ let
       package = "look-at-me-sideways@3.4.1";
     };
 
+    lookml-parser = mkNode2NixUpdator {
+      name = "lookml-parser-updator";
+      package = "lookml-parser";
+    };
+
   };
 
 in
@@ -42,6 +48,7 @@ mkShell {
   buildInputs = [
     updators.dataform-cli
     updators.look-at-me-sideways
+    updators.lookml-parser
   ];
 
 }

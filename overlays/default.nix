@@ -33,4 +33,6 @@ in {
 
   look-at-me-sideways = (final.callPackage ./look-at-me-sideways { inherit nodeEnv; }).package;
 
+  lookml-parser = (final.callPackage ./lookml-parser { inherit nodeEnv; }).package;
+
 }

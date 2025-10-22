@@ -25,6 +25,7 @@ in {
     dataform-cli
     look-at-me-sideways
     sqlfluff
+    lookml-parser
   ];
 
   home.sessionVariables = {

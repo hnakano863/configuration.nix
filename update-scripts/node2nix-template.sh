@@ -1,6 +1,6 @@
 mkdir tmp
 cd ./tmp
-wget "$(npm view @repos@/@package@ dist.tarball)"
+wget "$(npm view @packageName@ dist.tarball)"
 tar xf "$(echo '@package@' | cut -d'@' -f1)"-*.tgz
 cd ./package
 node2nix
