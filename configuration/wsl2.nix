@@ -24,6 +24,13 @@
 
   i18n.defaultLocale = "ja_JP.UTF-8";
   time.timeZone = "Asia/Tokyo";
+  i18n.inputMethod = {
+    enable = true;
+    type = "fcitx5";
+    fcitx5.addons = with pkgs; [
+      fcitx5-gtk
+    ];
+  };
 
   services.xserver.enable = true;
   services.xserver.autorun = true;
