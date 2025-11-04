@@ -26,6 +26,7 @@ in {
     look-at-me-sideways
     sqlfluff
     lookml-parser
+    obsidian
   ];
 
   home.sessionVariables = {
