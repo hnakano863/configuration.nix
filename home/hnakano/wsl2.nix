@@ -31,6 +31,7 @@ in {
 
   home.sessionVariables = {
     AWS_VAULT_BACKEND = "pass";
+    PIP_INDEX_URL = "https://pypi.flatt.tech/simple/";
   };
 
   # https://nixos.wiki/wiki/Fish#Setting_fish_as_your_shell
