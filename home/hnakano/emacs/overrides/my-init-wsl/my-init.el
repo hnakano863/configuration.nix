@@ -42,13 +42,14 @@
 (use-package gptel
   :defer t
   :custom
-  (gptel-model 'gemini-2.5-pro)
+  (gptel-model 'gemini-3-flash-preview)
   (gptel-default-mode 'org-mode)
   :config
   (setq gptel-backend
         (gptel-make-gh-copilot "Gemini")))
 
 (use-package gptel-commit
+  :after magit
   :bind
   (:map git-commit-mode-map
    ("C-c g" . gptel-commit)))
