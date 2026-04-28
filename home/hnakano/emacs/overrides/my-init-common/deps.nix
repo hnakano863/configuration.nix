@@ -15,6 +15,7 @@ with epkgs; [
   evil
   evil-collection
   evil-org # 不要か？
+  exec-path-from-shell
   fish-mode
   flycheck
   forge

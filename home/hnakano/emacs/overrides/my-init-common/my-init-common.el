@@ -56,7 +56,15 @@
 (use-package auth-source-pass
   :after auth-source
   :config
+  (setq password-store-dir auth-source-pass-filename)
   (auth-source-pass-enable))
+
+(use-package exec-path-from-shell
+  :after auth-source-pass
+  :config
+  (when (or (memq window-system '(mac ns x)) (daemonp))
+    (exec-path-from-shell-initialize))
+  (exec-path-from-shell-copy-env "PASSWORD_STORE_DIR"))
 
 ;;; Undo Systems
 (use-package undo-fu
