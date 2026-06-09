@@ -109,9 +109,6 @@
   };
 
   programs.password-store.enable = true;
-  programs.password-store.settings = {
-    PASSWORD_STORE_DIR = "$XDG_DATA_HOME/password-store";
-  };
 
   # This value determines the Home Manager release that your
   # configuration is compatible with. This helps avoid breakage
