@@ -70,10 +70,12 @@
 
   programs.git = {
     enable = true;
-    userName = "hnakano863";
-    userEmail = "notchi863@gmail.com";
     ignores = [ "*~" "*.swp" ];
-    extraConfig = {
+    settings = {
+      user = {
+        name = "hnakano863";
+        email = "notchi863@gmail.com";
+      };
       core.askPass = "";
       pull.rebase = false;
       init.defaultBranch = "main";
@@ -107,6 +109,9 @@
   };
 
   programs.password-store.enable = true;
+  programs.password-store.settings = {
+    PASSWORD_STORE_DIR = "$XDG_DATA_HOME/password-store";
+  };
 
   # This value determines the Home Manager release that your
   # configuration is compatible with. This helps avoid breakage

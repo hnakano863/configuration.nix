@@ -60,12 +60,10 @@
     settings.corner-radius = 10;
   };
 
-  services.logind = {
-    lidSwitch = "suspend-then-hibernate";
-    lidSwitchExternalPower = "lock";
-    settings.Login = {
-      HandlePowerKey = "ignore";
-    };
+  services.logind.settings.Login = {
+    HandlePowerKey = "ignore";
+    HandleLidSwitch = "suspend-then-hibernate";
+    HandleLidSwitchExternalPower = "lock";
   };
 
   # Enable power management
@@ -93,6 +91,10 @@
   # define default session
   services.displayManager.defaultSession = "qtile";
 
+  # I don't use gnome
+  services.displayManager.gdm.enable = false;
+  services.desktopManager.gnome.enable = false;
+
   services.xserver = {
     # for configuration
     autorun = true;
@@ -114,15 +116,11 @@
     };
 
     desktopManager = {
-      gnome.enable = false;
       # qtileではこの設定が利用できないので直接dexを呼ぶ
       runXdgAutostartIfNone = if config.services.xserver.windowManager.qtile.enable then false else true;
     };
 
-    displayManager = {
-      lightdm.enable = true;
-      gdm.enable = false;
-    };
+    displayManager.lightdm.enable = true;
   };
 
   # Enable touchpad support.

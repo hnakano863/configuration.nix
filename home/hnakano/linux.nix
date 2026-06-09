@@ -16,7 +16,7 @@
     myVivaldi
     dmenu
     rofi-power-menu
-    xorg.xmessage
+    xmessage
     htop
     trayer
     anki
