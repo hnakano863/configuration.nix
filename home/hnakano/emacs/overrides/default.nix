@@ -22,7 +22,7 @@ self: super: {
   my-early-init = self.callPackage ./my-early-init { };
   my-init-common = self.callPackage ./my-init-common {
     inherit (pkgs) runCommand;
-    skkdicts = pkgs.skkDictionariesUtf8Cdb.combined;
+    skkdicts = pkgs.skkDictionariesUtf8.combined;
     epkgs = self;
   };
   my-init-linux = self.callPackage ./my-init-linux { epkgs = self; };

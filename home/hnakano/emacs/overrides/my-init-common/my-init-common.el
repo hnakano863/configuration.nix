@@ -114,8 +114,7 @@
 ;; skk
 (use-package skk
   :custom
-  (skk-cdb-large-jisyo "@skkdicts@/share/skk/SKK-JISYO.combined.utf8.cdb")
-  (skk-cdb-coding-system 'utf-8-unix)
+  (skk-large-jisyo "@skkdicts@/share/skk/SKK-JISYO.combined.utf8")
   (skk-inhibit-ja-dic-search t)
   (default-input-method "japanese-skk")
   (skk-use-color-cursor t)
