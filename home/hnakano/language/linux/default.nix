@@ -16,8 +16,8 @@
     elmPackages.elm-language-server
     elmPackages.elm-format
     elmPackages.elm-test
-    nodePackages.vscode-json-languageserver
-    nodePackages.mermaid-cli
+    vscode-json-languageserver
+    mermaid-cli
     unstable.lean4
     # rust
     rustc

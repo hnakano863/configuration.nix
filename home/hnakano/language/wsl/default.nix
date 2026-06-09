@@ -6,8 +6,8 @@
 
   home.packages = with pkgs; [
     nixd
-    nodePackages.vscode-json-languageserver
-    nodePackages.mermaid-cli
+    vscode-json-languageserver
+    mermaid-cli
     gcc
   ];
 }
