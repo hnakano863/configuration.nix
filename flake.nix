@@ -21,10 +21,6 @@
 
     emacs-lean4-mode-src.url = "github:leanprover-community/lean4-mode";
     emacs-lean4-mode-src.flake = false;
-
-    skktools-unstable-src.url = "github:skk-dev/skktools";
-    skktools-unstable-src.flake = false;
-
   };
 
   outputs =
@@ -38,7 +34,6 @@
     , vscode-server
     , julia-registry
     , emacs-lean4-mode-src
-    , skktools-unstable-src
     }:
 
     let
@@ -51,7 +46,7 @@
               inherit (config.nixpkgs) system config;
             };
 
-            inherit julia-registry emacs-lean4-mode-src skktools-unstable-src;
+            inherit julia-registry emacs-lean4-mode-src;
 
           };
         in {
