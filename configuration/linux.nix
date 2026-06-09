@@ -63,13 +63,10 @@
   services.logind = {
     lidSwitch = "suspend-then-hibernate";
     lidSwitchExternalPower = "lock";
-    extraConfig = ''
-      HandlePowerKey=ignore
-    '';
+    settings.Login = {
+      HandlePowerKey = "ignore";
+    };
   };
-
-  #Enable backlight
-  programs.light.enable = true;
 
   # Enable power management
   powerManagement.enable = true;
@@ -125,7 +122,6 @@
     displayManager = {
       lightdm.enable = true;
       gdm.enable = false;
-      gdm.wayland = false;
     };
   };
 
