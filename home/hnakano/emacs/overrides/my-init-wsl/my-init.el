@@ -27,7 +27,7 @@
 (eval-when-compile
   (require 'use-package))
 
-(require 'compat-31)
+(require 'compat-31) ; set-locals workaround for emacs 30
 
 ;;; Development Support
 ;; copilot.el configurations
