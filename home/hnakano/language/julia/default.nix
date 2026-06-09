@@ -9,23 +9,10 @@ let
     inherit jupyterCommand;
   } ''substituteAll "${./startup.jl.in}" $out '';
 
-  myJulia = (julia.withPackages.override {
-    augmentedRegistry = julia-registry;
-  }) [
-    "BenchmarkTools"
-    "DrWatson"
-    "IJulia"
-    "LanguageServer"
-    # "OhMyREPL"
-    "Pluto"
-    "Revise"
-    "JLD2" # required for DrWatson
-  ];
-
 in
 {
   home.packages = [
-    myJulia
+    julia-bin
   ];
 
   home.file.".julia/config/startup.jl".source = startup-jl;
