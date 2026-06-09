@@ -20,8 +20,8 @@ main = xmonad . xmobarProp $ def
   , ("<XF86AudioMute>", spawn "pactl set-sink-mute @DEFAULT_SINK@ toggle")
   , ("<XF86AudioLowerVolume>", spawn "pactl set-sink-volume @DEFAULT_SINK@ -10%")
   , ("<XF86AudioRaiseVolume>", spawn "pactl set-sink-volume @DEFAULT_SINK@ +10%")
-  , ("<XF86MonBrightnessDown>", spawn "light -U 10")
-  , ("<XF86MonBrightnessUp>", spawn "light -A 10")
+  , ("<XF86MonBrightnessDown>", spawn "brightnessctl set 10%-")
+  , ("<XF86MonBrightnessUp>", spawn "brightnessctl set 10%+")
   ]
   `removeKeysP`
   [ "M-p"

@@ -19,9 +19,9 @@
     xorg.xmessage
     htop
     trayer
-    glxinfo
     anki
     gnome-tweaks
+    brightnessctl
   ];
 
   home.sessionVariables = {
