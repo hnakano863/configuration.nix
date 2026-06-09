@@ -1,0 +1,7 @@
+{
+  "name": "lookml-parser-wrapper",
+  "version": "7.1.0",
+  "dependencies": {
+    "lookml-parser": "7.1.0"
+  }
+}
