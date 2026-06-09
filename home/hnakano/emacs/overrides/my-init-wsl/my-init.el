@@ -27,6 +27,8 @@
 (eval-when-compile
   (require 'use-package))
 
+(require 'compat-31)
+
 ;;; Development Support
 ;; copilot.el configurations
 (use-package copilot
