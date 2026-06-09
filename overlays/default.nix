@@ -1,12 +1,4 @@
-final: prev:
-let
-
-  nodeEnv = final.callPackage "${final.node2nix.src}/nix/node-env.nix" {
-    pkgs = final;
-    libtool = if final.stdenv.isDarwin then final.darwin.cctools else null;
-  };
-
-in {
+final: prev: {
 
   jupyterCommand = import ./jupyter-command { pkgs = prev; };
 
@@ -29,10 +21,8 @@ in {
     inherit (prev) vivaldi-ffmpeg-codecs widevine-cdm;
   };
 
-  dataform-cli = (final.callPackage ./dataform-cli { inherit nodeEnv; }).package;
-
-  look-at-me-sideways = (final.callPackage ./look-at-me-sideways { inherit nodeEnv; }).package;
-
-  lookml-parser = (final.callPackage ./lookml-parser { inherit nodeEnv; }).package;
+  dataform-cli = final.callPackage ./dataform-cli {};
+  look-at-me-sideways = final.callPackage ./look-at-me-sideways {};
+  lookml-parser = final.callPackage ./lookml-parser {};
 
 }
