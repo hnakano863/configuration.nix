@@ -232,24 +232,7 @@
         "nixos-wsl": "nixos-wsl",
         "nixpkgs": "nixpkgs_2",
         "nixpkgs-unstable": "nixpkgs-unstable",
-        "skktools-unstable-src": "skktools-unstable-src",
         "vscode-server": "vscode-server"
-      }
-    },
-    "skktools-unstable-src": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1775157742,
-        "narHash": "sha256-Vqv5cpDSdP/3eoh8s6zNbN6uuhUoWxIpqC8t/DkrVWI=",
-        "owner": "skk-dev",
-        "repo": "skktools",
-        "rev": "7bfccbcbf76e572f76933d30fa90503340b3148e",
-        "type": "github"
-      },
-      "original": {
-        "owner": "skk-dev",
-        "repo": "skktools",
-        "type": "github"
       }
     },
     "systems": {
