@@ -34,6 +34,11 @@
   :config
   (claude-code-ide-emacs-tools-setup))
 
+(use-package gptel-commit
+  :after magit
+  :custom
+  (gptel-commit-use-claude-code t))
+
 ;;; Programming Languages
 (use-package dataform-mode
   :mode "\\.sqlx\\'"
@@ -58,6 +63,11 @@
 (my/bind
   :prefix "SPC c" ; claude codeなので
   "c" 'claude-code-ide-menu)
+
+(my/bind
+  :keymaps 'git-commit-mode-map
+  :prefix "SPC c"
+  "g" 'gptel-commit)
 
 (provide 'my-init)
 ;;; my-init.el ends here
