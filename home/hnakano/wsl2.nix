@@ -27,6 +27,7 @@ in {
     sqlfluff
     lookml-parser
     obsidian
+    unstable.claude-code
   ];
 
   home.sessionVariables = {
