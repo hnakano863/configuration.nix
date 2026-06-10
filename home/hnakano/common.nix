@@ -14,6 +14,7 @@
     eza
     fd
     fzf
+    gh
     ghq
     graphviz
     R
