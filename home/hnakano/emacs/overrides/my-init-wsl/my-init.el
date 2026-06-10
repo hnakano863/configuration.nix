@@ -30,31 +30,9 @@
 (require 'compat-31) ; set-locals workaround for emacs 30
 
 ;;; Development Support
-;; copilot.el configurations
-(use-package copilot
-  :hook prog-mode
-  :bind
-  (:map copilot-completion-map
-   ("TAB" . copilot-accept-completion)))
-
-(defun my/auth-source-get-gemini-api-key ()
-  "Get gemini api key using auth-source."
-  (auth-info-password (car (auth-source-search :host "gemini"))))
-
-(use-package gptel
-  :defer t
-  :custom
-  (gptel-model 'gemini-3-flash-preview)
-  (gptel-default-mode 'org-mode)
+(use-package claude-code-ide
   :config
-  (setq gptel-backend
-        (gptel-make-gh-copilot "Gemini")))
-
-(use-package gptel-commit
-  :after magit
-  :bind
-  (:map git-commit-mode-map
-   ("C-c g" . gptel-commit)))
+  (claude-code-ide-emacs-tools-setup))
 
 ;;; Programming Languages
 (use-package dataform-mode
@@ -78,11 +56,8 @@
   (push '(lookml-mode 2) copilot-indentation-alist))
 
 (my/bind
-  :prefix "SPC l" ; LLMなので
-  "l" 'gptel
-  "a" 'gptel-add
-  "f" 'gptel-add-file
-  "w" 'gptel-rewrite)
+  :prefix "SPC c" ; claude codeなので
+  "c" 'claude-code-ide-menu)
 
 (provide 'my-init)
 ;;; my-init.el ends here
