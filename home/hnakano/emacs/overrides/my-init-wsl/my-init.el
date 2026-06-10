@@ -30,21 +30,22 @@
 (require 'compat-31) ; set-locals workaround for emacs 30
 
 ;;; Development Support
-;; 日本語入力をclaude-codeで実施するためのヘルパー関数
 (defun my/claude-code-japanese-input ()
-  "Input Japanese text via minibuffer with SKK and send to terminal."
+  "Input Japanese text via minibuffer with SKK and send to terminal.
+Only activates in claude-code-ide session buffers."
   (interactive)
-  (let ((text (minibuffer-with-setup-hook
-                  (lambda () (skk-mode 1))
-                (read-string "日本語入力: "))))
-    (unless (string-empty-p text)
-      (claude-code-ide--terminal-send-string text))))
+  (when (claude-code-ide--session-buffer-p (current-buffer))
+    (let ((text (minibuffer-with-setup-hook
+                    (lambda () (skk-mode 1))
+                  (read-string "日本語入力: "))))
+      (unless (string-empty-p text)
+        (claude-code-ide--terminal-send-string text)))))
 
 (use-package claude-code-ide
-  :bind (:map vterm-mode-map
-         ("C-c j" . my/claude-code-japanese-input))
   :config
-  (claude-code-ide-emacs-tools-setup))
+  (claude-code-ide-emacs-tools-setup)
+  (with-eval-after-load 'vterm
+    (define-key vterm-mode-map (kbd "C-x C-j") #'my/claude-code-japanese-input)))
 
 (use-package gptel-commit
   :after magit
