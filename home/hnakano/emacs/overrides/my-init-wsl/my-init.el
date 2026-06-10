@@ -31,6 +31,8 @@
 
 ;;; Development Support
 (use-package claude-code-ide
+  :custom
+  (claude-code-ide-terminal-backend 'eat)
   :config
   (claude-code-ide-emacs-tools-setup))
 
