@@ -1,5 +1,6 @@
 { trivialBuild
 , fetchFromGitHub
+, websocket
 }:
 
 trivialBuild {
@@ -11,6 +12,7 @@ trivialBuild {
   };
   pname = "claude-code-ide";
   version = "2026-06-02";
+  packageRequires = [ websocket ];
   preferLocalBuild = true;
   allowSubstitute = false;
 }
