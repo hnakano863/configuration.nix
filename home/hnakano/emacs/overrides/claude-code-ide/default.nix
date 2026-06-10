@@ -1,6 +1,5 @@
 { trivialBuild
 , fetchFromGitHub
-, epkgs
 }:
 
 trivialBuild {
