@@ -2,5 +2,5 @@
 with epkgs; [
   dataform-mode
   lookml-mode
-  unstable.claude-code-ide
+  claude-code-ide
 ]
