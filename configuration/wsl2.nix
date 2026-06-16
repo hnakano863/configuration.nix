@@ -32,6 +32,12 @@
     ];
   };
 
+  # WSL2 ではブート時に正規のログインセッションが張られず、
+  # systemd ユーザーインスタンス (user@<uid>.service) が起動しないため、
+  # services.emacs が生成する emacs.service (wantedBy = default.target) も
+  # 自動起動しない。linger を有効化してブート時にユーザーサービスを起動させる。
+  users.users.hnakano.linger = true;
+
   services.xserver.enable = true;
   services.xserver.autorun = true;
 
