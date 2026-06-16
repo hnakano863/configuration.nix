@@ -30,31 +30,27 @@
 (require 'compat-31) ; set-locals workaround for emacs 30
 
 ;;; Development Support
-;; copilot.el configurations
-(use-package copilot
-  :hook prog-mode
-  :bind
-  (:map copilot-completion-map
-   ("TAB" . copilot-accept-completion)))
+(defun my/claude-code-japanese-input ()
+  "Input Japanese text via minibuffer with SKK and send to terminal.
+Only activates in claude-code-ide session buffers."
+  (interactive)
+  (when (claude-code-ide--session-buffer-p (current-buffer))
+    (let ((text (minibuffer-with-setup-hook
+                    (lambda () (skk-mode 1))
+                  (read-string "日本語入力: "))))
+      (unless (string-empty-p text)
+        (claude-code-ide--terminal-send-string text)))))
 
-(defun my/auth-source-get-gemini-api-key ()
-  "Get gemini api key using auth-source."
-  (auth-info-password (car (auth-source-search :host "gemini"))))
-
-(use-package gptel
-  :defer t
-  :custom
-  (gptel-model 'gemini-3-flash-preview)
-  (gptel-default-mode 'org-mode)
+(use-package claude-code-ide
   :config
-  (setq gptel-backend
-        (gptel-make-gh-copilot "Gemini")))
+  (claude-code-ide-emacs-tools-setup)
+  (with-eval-after-load 'vterm
+    (define-key vterm-mode-map (kbd "C-x C-j") #'my/claude-code-japanese-input)))
 
 (use-package gptel-commit
   :after magit
-  :bind
-  (:map git-commit-mode-map
-   ("C-c g" . gptel-commit)))
+  :custom
+  (gptel-commit-use-claude-code t))
 
 ;;; Programming Languages
 (use-package dataform-mode
@@ -78,11 +74,13 @@
   (push '(lookml-mode 2) copilot-indentation-alist))
 
 (my/bind
-  :prefix "SPC l" ; LLMなので
-  "l" 'gptel
-  "a" 'gptel-add
-  "f" 'gptel-add-file
-  "w" 'gptel-rewrite)
+  :prefix "SPC c" ; claude codeなので
+  "c" 'claude-code-ide-menu)
+
+(my/bind
+  :keymaps 'git-commit-mode-map
+  :prefix "SPC c"
+  "g" 'gptel-commit)
 
 (provide 'my-init)
 ;;; my-init.el ends here

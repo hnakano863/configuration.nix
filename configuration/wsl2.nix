@@ -32,6 +32,16 @@
     ];
   };
 
+  # WSL2 ではブート時に正規のログインセッションが張られず、
+  # systemd ユーザーインスタンス (user@<uid>.service) が起動しないため、
+  # linger を有効化してブート時にユーザーサービス (default.target) を起動させる。
+  users.users.hnakano.linger = true;
+
+  # services.xserver.enable = true により startWithGraphical がデフォルト true になり、
+  # emacs.service が graphical-session.target に紐付く。WSL2 ではこのターゲットが
+  # 起動しないため emacs daemon が自動起動しない。default.target に紐付け直す。
+  services.emacs.startWithGraphical = false;
+
   services.xserver.enable = true;
   services.xserver.autorun = true;
 

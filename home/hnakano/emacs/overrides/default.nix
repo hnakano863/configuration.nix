@@ -30,4 +30,5 @@ self: super: {
 
   dataform-mode = self.callPackage ./dataform-mode { };
   lookml-mode = self.callPackage ./lookml-mode { };
+  claude-code-ide = self.callPackage ./claude-code-ide { };
 }
