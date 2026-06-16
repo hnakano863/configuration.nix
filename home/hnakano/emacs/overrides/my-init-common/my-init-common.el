@@ -509,7 +509,7 @@
   :custom
   (evil-collection-magit-state 'normal)
   :config
-  (evil-collection-init '(magit vterm))) ; FIXME: pdf-view
+  (evil-collection-init '(magit vterm pdf))) ; FIXME: pdf-view
 
 ;;; General.el definitions
 ;; definer
