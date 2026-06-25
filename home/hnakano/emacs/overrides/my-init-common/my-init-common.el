@@ -610,6 +610,7 @@ _j_: next _k_: previous _s_: stage _r_: revert _d_: popup diff"
   "A" 'org-agenda
   "t" 'org-todo-list
   "i" 'org-mru-clock-in
+  "j" 'org-journal-new-entry
   "o" 'org-clock-out
   ;; TODO replace with bookmark
   "n" '((lambda ()
