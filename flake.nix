@@ -11,6 +11,9 @@
     nixos-wsl.url = "github:nix-community/NixOS-WSL";
     nixos-wsl.inputs.nixpkgs.follows = "nixpkgs";
 
+    agenix.url = "github:ryantm/agenix";
+    agenix.inputs.nixpkgs.follows = "nixpkgs";
+
     eijiro.url = "path:/home/hnakano/ghq/github.com/hnakano/eijiro.nix";
     eijiro.inputs.nixpkgs.follows = "nixpkgs";
 
@@ -34,6 +37,7 @@
     , vscode-server
     , julia-registry
     , emacs-lean4-mode-src
+    , agenix
     }:
 
     let
@@ -90,6 +94,11 @@
           overlays-module
           nixos-wsl.nixosModules.wsl
           vscode-server.nixosModules.default
+          agenix.nixosModules.default
+          ({ pkgs, ... }: {
+            # agenix CLI (secret の作成・編集用)。
+            environment.systemPackages = [ agenix.packages.${pkgs.system}.default ];
+          })
           flake-input-config
           ./configuration/wsl2.nix
         ];

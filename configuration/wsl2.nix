@@ -5,6 +5,7 @@
   imports = [
     ./common.nix
     ./arize-phoenix.nix
+    ./esa-mcp.nix
   ];
 
   # wsl
