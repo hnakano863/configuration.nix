@@ -43,12 +43,15 @@ in
       description = "SQLite データ永続化に使う Docker volume 名。";
     };
 
-    clientUsers = lib.mkOption {
-      type = lib.types.listOf lib.types.str;
-      default = [ ];
-      example = [ "hnakano" ];
+    configureClient = lib.mkOption {
+      type = lib.types.bool;
+      default = true;
       description = ''
-        Claude Code のトレース送信用環境変数を注入する home-manager ユーザー名のリスト。
+        Claude Code のトレース送信用環境変数をシステム全体 (environment.sessionVariables)
+        に設定するか。emacs デーモン (systemd user service) は set-environment
+        (= environment.sessionVariables) を source して起動するため、システムレベルに
+        置くことで emacs 経由で起動される Claude Code にも設定が届く。
+        home.sessionVariables はログインシェル限定でデーモン起動には届かないため使わない。
       '';
     };
 
@@ -80,20 +83,20 @@ in
 
     # --- クライアント: Claude Code のトレースを Phoenix (gRPC) に送る環境変数 ---
     # Phoenix はトレース収集特化のため metrics/logs は none で無効化する。
-    home-manager.users = lib.genAttrs cfg.clientUsers (_user: {
-      home.sessionVariables = {
-        CLAUDE_CODE_ENABLE_TELEMETRY = "1";
-        CLAUDE_CODE_ENHANCED_TELEMETRY_BETA = "1"; # 分散トレーシング(spans)を有効化
-        OTEL_TRACES_EXPORTER = "otlp";
-        OTEL_EXPORTER_OTLP_PROTOCOL = "grpc";
-        OTEL_EXPORTER_OTLP_ENDPOINT = endpoint;
-        OTEL_METRICS_EXPORTER = "none";
-        OTEL_LOGS_EXPORTER = "none";
-      } // lib.optionalAttrs cfg.logSensitiveData {
-        OTEL_LOG_USER_PROMPTS = "1";
-        OTEL_LOG_TOOL_DETAILS = "1";
-        OTEL_LOG_TOOL_CONTENT = "1";
-      };
+    # emacs デーモン経由で起動される Claude Code にも届くよう、システムレベルの
+    # environment.sessionVariables (= set-environment) に設定する。
+    environment.sessionVariables = lib.mkIf cfg.configureClient ({
+      CLAUDE_CODE_ENABLE_TELEMETRY = "1";
+      CLAUDE_CODE_ENHANCED_TELEMETRY_BETA = "1"; # 分散トレーシング(spans)を有効化
+      OTEL_TRACES_EXPORTER = "otlp";
+      OTEL_EXPORTER_OTLP_PROTOCOL = "grpc";
+      OTEL_EXPORTER_OTLP_ENDPOINT = endpoint;
+      OTEL_METRICS_EXPORTER = "none";
+      OTEL_LOGS_EXPORTER = "none";
+    } // lib.optionalAttrs cfg.logSensitiveData {
+      OTEL_LOG_USER_PROMPTS = "1";
+      OTEL_LOG_TOOL_DETAILS = "1";
+      OTEL_LOG_TOOL_CONTENT = "1";
     });
   };
 }
