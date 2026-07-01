@@ -2,7 +2,10 @@
 { config, pkgs, lib, ... }:
 
 {
-  imports = [ ./common.nix ];
+  imports = [
+    ./common.nix
+    ./arize-phoenix.nix
+  ];
 
   # wsl
   wsl = {
@@ -47,6 +50,13 @@
 
   # vscode
   services.vscode-server.enable = true;
+
+  # Arize Phoenix (LLM 監視) サーバー + Claude Code 連携。定義は ./arize-phoenix.nix。
+  local.services.arize-phoenix = {
+    enable = true;
+    clientUsers = [ "hnakano" ];
+    version = "17.14.0";
+  };
 
   # home-manager configuration
   home-manager.users.hnakano = { config, pkgs, lib, ... }: {
