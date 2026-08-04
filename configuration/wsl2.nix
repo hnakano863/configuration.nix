@@ -54,7 +54,9 @@
 
   # WSLg が /mnt/wslg/PulseServer に立てている PulseAudio サーバーへ
   # クライアントとして接続する (ローカルにサーバーは立てない)。
-  environment.systemPackages = [ pkgs.pulseaudio ];
+  # sox は Claude Code の /voice がマイク録音に使う (rec コマンド)。
+  # nixpkgs の sox は Linux でデフォルトで libpulseaudio 対応でビルドされる。
+  environment.systemPackages = [ pkgs.pulseaudio pkgs.sox ];
   environment.sessionVariables = {
     PULSE_SERVER = "unix:${config.wsl.wslConf.automount.root}/wslg/PulseServer";
   };
