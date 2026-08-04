@@ -52,6 +52,13 @@
   # vscode
   services.vscode-server.enable = true;
 
+  # WSLg が /mnt/wslg/PulseServer に立てている PulseAudio サーバーへ
+  # クライアントとして接続する (ローカルにサーバーは立てない)。
+  environment.systemPackages = [ pkgs.pulseaudio ];
+  environment.sessionVariables = {
+    PULSE_SERVER = "unix:${config.wsl.wslConf.automount.root}/wslg/PulseServer";
+  };
+
   # Arize Phoenix (LLM 監視) サーバー + Claude Code 連携。定義は ./arize-phoenix.nix。
   # configureClient は既定 true でシステム全体に OTEL 環境変数を設定する。
   local.services.arize-phoenix = {
