@@ -41,11 +41,32 @@ Only activates in claude-code-ide session buffers."
       (unless (string-empty-p text)
         (claude-code-ide--terminal-send-string text)))))
 
+(define-minor-mode my/claude-code-vim-passthrough-mode
+  "Send ESC straight to the terminal instead of letting evil intercept it.
+Claude Code's own Vim editor mode (editorMode: vim) needs to see ESC
+itself to switch between its INSERT/NORMAL states; otherwise evil
+consumes it to leave insert state on the Emacs side only.
+While this mode is active, use `C-c C-z' to reach Emacs's own evil
+normal state instead (e.g. to use the \"SPC c\" leader bindings)."
+  :lighter nil
+  (if my/claude-code-vim-passthrough-mode
+      (progn
+        (evil-local-set-key 'insert (kbd "<escape>") #'vterm--self-insert)
+        (evil-local-set-key 'insert (kbd "C-c C-z") #'evil-normal-state))
+    (evil-local-set-key 'insert (kbd "<escape>") nil)
+    (evil-local-set-key 'insert (kbd "C-c C-z") nil)))
+
+(defun my/claude-code-vim-passthrough-setup ()
+  "Enable ESC passthrough only in claude-code-ide session buffers."
+  (when (claude-code-ide--session-buffer-p (current-buffer))
+    (my/claude-code-vim-passthrough-mode 1)))
+
 (use-package claude-code-ide
   :config
   (claude-code-ide-emacs-tools-setup)
   (with-eval-after-load 'vterm
-    (define-key vterm-mode-map (kbd "C-x C-j") #'my/claude-code-japanese-input)))
+    (define-key vterm-mode-map (kbd "C-x C-j") #'my/claude-code-japanese-input)
+    (add-hook 'vterm-mode-hook #'my/claude-code-vim-passthrough-setup)))
 
 (use-package gptel-commit
   :after magit
