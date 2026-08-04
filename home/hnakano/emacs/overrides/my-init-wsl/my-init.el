@@ -75,7 +75,8 @@ Only activates in claude-code-ide session buffers."
 
 (my/bind
   :prefix "SPC c" ; claude codeなので
-  "c" 'claude-code-ide-menu)
+  "c" 'claude-code-ide-menu
+  "q" 'claude-code-ide-stop)
 
 (my/bind
   :keymaps 'git-commit-mode-map
