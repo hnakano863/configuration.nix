@@ -395,7 +395,7 @@
   :defer t
   :custom
   (dictionary-server "localhost")
-  (dictionary-default-dictionary "dictd-db-eijiro")
+  ; (dictionary-default-dictionary "dictd-db-eijiro")
   (dictionary-default-strategy "re")
   (dictionary-default-popup-strategy "re"))
 

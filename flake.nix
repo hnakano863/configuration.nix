@@ -14,8 +14,8 @@
     agenix.url = "github:ryantm/agenix";
     agenix.inputs.nixpkgs.follows = "nixpkgs";
 
-    eijiro.url = "path:/home/hnakano/ghq/github.com/hnakano/eijiro.nix";
-    eijiro.inputs.nixpkgs.follows = "nixpkgs";
+    # eijiro.url = "path:/home/hnakano/ghq/github.com/hnakano/eijiro.nix";
+    # eijiro.inputs.nixpkgs.follows = "nixpkgs";
 
     vscode-server.url = "github:nix-community/nixos-vscode-server";
 
@@ -33,7 +33,7 @@
     , home-manager
     , emacs-overlay
     , nixos-wsl
-    , eijiro
+    # , eijiro
     , vscode-server
     , julia-registry
     , emacs-lean4-mode-src
@@ -56,7 +56,7 @@
         in {
           nixpkgs.overlays = [
             emacs-overlay.overlay
-            eijiro.overlay
+            # eijiro.overlay
             flake-input-overlay
             (import ./overlays)
           ];
