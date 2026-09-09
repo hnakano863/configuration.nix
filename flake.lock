@@ -45,23 +45,6 @@
         "type": "github"
       }
     },
-    "eijiro": {
-      "inputs": {
-        "nixpkgs": [
-          "nixpkgs"
-        ]
-      },
-      "locked": {
-        "lastModified": 1740378685,
-        "narHash": "sha256-iuJDipYYhZFVGs3hNO923hPQii1CeSoB8zprDDQqEbE=",
-        "path": "/home/hnakano/ghq/github.com/hnakano/eijiro.nix",
-        "type": "path"
-      },
-      "original": {
-        "path": "/home/hnakano/ghq/github.com/hnakano/eijiro.nix",
-        "type": "path"
-      }
-    },
     "emacs-lean4-mode-src": {
       "flake": false,
       "locked": {
@@ -292,7 +275,6 @@
     "root": {
       "inputs": {
         "agenix": "agenix",
-        "eijiro": "eijiro",
         "emacs-lean4-mode-src": "emacs-lean4-mode-src",
         "emacs-overlay": "emacs-overlay",
         "home-manager": "home-manager_2",
