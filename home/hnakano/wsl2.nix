@@ -48,6 +48,11 @@ in {
     ec.body = "emacsclient -c";
   };
 
+  # pinentry-tty が正しい端末に対して passphrase 入力を要求できるようにする。
+  programs.fish.interactiveShellInit = ''
+    set -gx GPG_TTY (tty)
+  '';
+
   programs.emacs.extraPackages = epkgs: with epkgs; [
     my-early-init
     my-init-wsl
