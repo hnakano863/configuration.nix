@@ -74,4 +74,8 @@ in {
       "x-scheme-handler/unknown" = "vivaldi.desktop";
     };
   };
+
+  programs.password-store.settings = {
+    PASSWORD_STORE_DIR = "${config.home.homeDirectory}/.local/share/password-store";
+  };
 }
