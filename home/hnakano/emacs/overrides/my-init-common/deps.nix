@@ -2,6 +2,7 @@
 with epkgs; [
   all-the-icons
   citar
+  code-review
   company
   consult
   ddskk

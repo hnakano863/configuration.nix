@@ -91,6 +91,11 @@
 
 (use-package forge :after magit)
 
+(use-package code-review
+  :after forge
+  :bind (:map magit-status-mode-map
+              ("C-c r" . code-review-forge-pr-at-point)))
+
 (use-package git-gutter
   :config
   (global-git-gutter-mode 1))
