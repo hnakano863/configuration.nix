@@ -93,6 +93,10 @@
 
 (use-package code-review
   :after forge
+  :init
+  ;; code-review calls `ghub-graphql', which ghub >= 5.1.0 moved to the
+  ;; `ghub-legacy' feature and no longer autoloads via `(require 'ghub)'.
+  (require 'ghub-legacy)
   :bind (:map magit-status-mode-map
               ("C-c r" . code-review-forge-pr-at-point)))
 
