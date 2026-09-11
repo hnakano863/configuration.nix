@@ -98,7 +98,10 @@
   ;; `ghub-legacy' feature and no longer autoloads via `(require 'ghub)'.
   (require 'ghub-legacy)
   :bind (:map magit-status-mode-map
-              ("C-c r" . code-review-forge-pr-at-point)))
+              ("C-c r" . code-review-forge-pr-at-point)
+         :map code-review-mode-map
+              ("C-c C-c" . code-review-comment-add-or-edit)
+              ("C-c C-r" . code-review-transient-api)))
 
 (use-package git-gutter
   :config
