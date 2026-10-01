@@ -27,8 +27,6 @@
 (eval-when-compile
   (require 'use-package))
 
-(require 'compat-31) ; set-locals workaround for emacs 30
-
 ;;; Development Support
 (defun my/claude-code-japanese-input ()
   "Input Japanese text via minibuffer with SKK and send to terminal.
