@@ -1,7 +1,7 @@
 {
   "name": "dataform-cli-wrapper",
-  "version": "3.0.59",
+  "version": "3.0.71",
   "dependencies": {
-    "@dataform/cli": "3.0.59"
+    "@dataform/cli": "3.0.71"
   }
 }

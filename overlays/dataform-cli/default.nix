@@ -6,11 +6,11 @@
 
 buildNpmPackage rec {
   pname = "dataform-cli";
-  version = "3.0.59";
+  version = "3.0.71";
 
   src = ./.;
 
-  npmDepsHash = "sha256-REEW4Bs8nyWGFr6a6XpI+VtAjBALCrd0QDSbBZWanjc=";
+  npmDepsHash = "sha256-OsErvmiEJve1ykuPUQ7Q5piMm01JvVrBbVCR31YgWw4=";
 
   dontNpmBuild = true;
 
