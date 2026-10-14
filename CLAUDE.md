@@ -22,5 +22,7 @@
 
 ### 注意
 
-- npm パッケージ(dataform-cli, lookml-parser)の更新は `package.json` / `package-lock.json` の更新と `npmDepsHash` の再計算が必要。パッケージマネージャーの実行はグローバルルールで禁止されているため、実行前にユーザーへ確認すること。
+- npm パッケージ(dataform-cli, lookml-parser)の更新は `package.json` / `package-lock.json` の更新と `npmDepsHash` の再計算が必要。
+- グローバルルールの例外: configurationの更新時に限り、`overlays/*/` で `npm install --package-lock-only --ignore-scripts` のみ実行してよい(ユーザー許可済み)。それ以外のパッケージマネージャー操作は従来どおり禁止で、実行前にユーザーへ確認すること。
+- `npmDepsHash` の再計算は `nix run nixpkgs#prefetch-npm-deps -- package-lock.json` で行う。
 - `fetchFromGitHub` の `rev` 固定のものは、`hash` の更新も必要。
