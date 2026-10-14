@@ -385,7 +385,7 @@
   :bind ("C-s" . consult-line)
   :config
   (consult-customize
-   consult-recent-file consult--source-recent-file consult--source-project-recent-file
+   consult-recent-file consult-source-recent-file consult-source-project-recent-file
    :preview-key '(:debounce 0.5 any)))
 
 ;; TODO install consult-projectile for projectile integration
