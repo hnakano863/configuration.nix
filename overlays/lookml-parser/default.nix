@@ -6,11 +6,11 @@
 
 buildNpmPackage rec {
   pname = "lookml-parser";
-  version = "9.0.0";
+  version = "9.1.1";
 
   src = ./.;
 
-  npmDepsHash = "sha256-vv6xgSoVXNxFZfiXeZVDDsAFjFDHj7IIRXh5rCFPaqU=";
+  npmDepsHash = "sha256-OiUpvkpz9ZR8C5JT29c1Z7fiGQRdhOCocQC5xFohGIs=";
 
   dontNpmBuild = true;
 
