@@ -65,7 +65,7 @@
   # configureClient は既定 true でシステム全体に OTEL 環境変数を設定する。
   local.services.arize-phoenix = {
     enable = true;
-    version = "20.19.0";
+    version = "20.21.2";
   };
 
   # home-manager configuration
