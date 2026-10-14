@@ -79,7 +79,6 @@ normal state instead (e.g. to use the \"SPC c\" leader bindings)."
   (dataform-mode . yas-minor-mode)
   (dataform-mode . (lambda () (setq-local yas-indent-line 'fixed)))
   :config
-  (push 'dataform-mode context-skk-programming-mode)
   (push '(dataform-mode 2) copilot-indentation-alist))
 
 (use-package lookml-mode
@@ -89,7 +88,6 @@ normal state instead (e.g. to use the \"SPC c\" leader bindings)."
   (lookml-mode . yas-minor-mode)
   (lookml-mode . (lambda () (setq-local yas-indent-line 'fixed)))
   :config
-  (push 'lookml-mode context-skk-programming-mode)
   (push '(lookml-mode 2) copilot-indentation-alist))
 
 (my/bind

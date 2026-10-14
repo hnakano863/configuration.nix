@@ -50,7 +50,7 @@
   (add-hook 'before-save-hook #'delete-trailing-whitespace)
   (add-hook 'emacs-startup-hook #'my/print-startup-stats)
   (blink-cursor-mode -1)
-  (load custom-file))
+  (load custom-file t))
 
 ;;; Environment
 ;; Emacsがシェルの環境変数を引き継げない起動経路(GUI/daemon)でも
@@ -140,7 +140,10 @@
 (use-package context-skk
   :defer t
   :hook
-  (skk-load . (lambda () (require 'context-skk))))
+  (skk-load . (lambda () (require 'context-skk)))
+  :config
+  (dolist (mode '(lisp-interaction-mode nix-mode))
+    (add-to-list 'context-skk-programming-mode mode)))
 
 (use-package ddskk-posframe
   :hook skk-mode)
@@ -198,9 +201,7 @@
   (:map emacs-lisp-mode-map
    ("C-c C-e" . 'macrostep-expand))
   (:map lisp-interaction-mode-map
-   ("C-c C-e" . 'macrostep-expand))
-  :config
-  (push 'lisp-interaction-mode context-skk-programming-mode))
+   ("C-c C-e" . 'macrostep-expand)))
 
 (use-package nix-mode
   :mode "\\.nix\\'"
@@ -209,7 +210,6 @@
   (nix-mode . smartparens-mode)
   (nix-mode . rainbow-delimiters-mode)
   :config
-  (push 'nix-mode context-skk-programming-mode)
   (with-eval-after-load 'smartparens
     (sp-with-modes 'nix-mode
       (sp-local-pair "[ " " ]")
