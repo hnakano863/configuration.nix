@@ -13,7 +13,7 @@
     thunderbird
     gimp
     vlc
-    myVivaldi
+    vivaldi
     dmenu
     rofi-power-menu
     xmessage
