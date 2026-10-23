@@ -4,7 +4,6 @@
   imports = [
     ./common.nix
     ./alacritty.nix
-    ./nyxt
     ./language/linux
   ];
 

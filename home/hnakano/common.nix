@@ -33,7 +33,6 @@
     kind
     jq
     ispell # for forge.el
-    nyxt
     git-crypt
   ];
 
