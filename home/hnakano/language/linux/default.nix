@@ -8,7 +8,6 @@
   home.packages = with pkgs; [
     nixd
     coq
-    deno
     sbcl
     clisp
     (haskellPackages.ghcWithPackages (p: [ p.cabal-install ]))
