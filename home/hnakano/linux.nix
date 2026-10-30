@@ -16,7 +16,6 @@
     xmessage
     htop
     trayer
-    anki
     gnome-tweaks
     brightnessctl
   ];
