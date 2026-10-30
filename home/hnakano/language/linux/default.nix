@@ -12,10 +12,6 @@
     sbcl
     clisp
     (haskellPackages.ghcWithPackages (p: [ p.cabal-install ]))
-    elmPackages.elm
-    elmPackages.elm-language-server
-    elmPackages.elm-format
-    elmPackages.elm-test
     vscode-json-languageserver
     mermaid-cli
     unstable.lean4

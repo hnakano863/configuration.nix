@@ -9,7 +9,6 @@ with epkgs; [
   docker-compose-mode
   eglot-jl
   elfeed
-  elm-mode
   ess
   geiser
   haskell-mode

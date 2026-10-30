@@ -70,7 +70,6 @@
   :config
   (leaf coq-mode
     :hook (coq-mode-hook . company-coq-mode))
-  (leaf elm-mode :mode "\\.elm\\'")
   (leaf ess-site
     :mode ("\\.R\\'" . R-mode))
 ;  (leaf geiser
