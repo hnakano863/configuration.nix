@@ -30,20 +30,14 @@
   fonts.enableDefaultPackages = true;
   fonts.enableGhostscriptFonts = true;
   fonts.fontDir.enable = true;
-  fonts.packages = let
-    nerdfont-pkgs =
-      builtins.filter lib.attrsets.isDerivation
-      (builtins.attrValues pkgs.nerd-fonts);
-  in with pkgs; [
+  fonts.packages = with pkgs; [
     noto-fonts
     noto-fonts-cjk-sans
     noto-fonts-color-emoji
-    source-han-code-jp
     hackgen-font
-    unifont
     siji
     material-icons
-  ] ++ nerdfont-pkgs;
+  ];
 
   environment.variables = {
     LIBRARY_PATH = with pkgs; builtins.concatStringsSep ":" [
