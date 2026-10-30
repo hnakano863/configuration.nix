@@ -19,7 +19,6 @@ with epkgs; [
   jupyter
   leaf
   leaf-convert
-  lean4-mode
   mermaid-mode
   ob-restclient
   ox-pandoc

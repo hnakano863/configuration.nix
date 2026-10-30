@@ -27,8 +27,5 @@
 (eval-when-compile
   (require 'use-package))
 
-(use-package lean4-mode
-  :mode "\\.lean\\'")
-
 (provide 'my-init)
 ;;; my-init.el ends here

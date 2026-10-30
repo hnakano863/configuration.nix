@@ -146,7 +146,6 @@
     :custom (jupyter-long-timeout . 100)
     :config
     (inheritenv-add-advice #'jupyter-command))
-  (leaf lean4-mode :mode "\\.lean\\'")
   (leaf mermaid-mode :mode "\\.mermaid\\'")
   (leaf rust-mode :mode "\\.rs\\'")
   (leaf js-mode :mode "\\.gs\\'"))
