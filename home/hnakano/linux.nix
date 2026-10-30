@@ -9,7 +9,6 @@
 
   home.packages = with pkgs; [
     firefox-bin
-    thunderbird
     gimp
     vlc
     dmenu
