@@ -58,22 +58,6 @@ in {
     my-init-wsl
   ];
 
-  # xdg-open
-  xdg.desktopEntries.vivaldi = {
-    name = "Vivaldi";
-    exec = "/mnt/c/Users/hiroshi.nakano/AppData/Local/Vivaldi/Application/vivaldi.exe";
-  };
-
-  xdg.mimeApps = {
-    enable = true;
-    defaultApplications = {
-      "text/html" = "vivaldi.desktop";
-      "x-scheme-handler/http" = "vivaldi.desktop";
-      "x-scheme-handler/https" = "vivaldi.desktop";
-      "x-scheme-handler/about" = "vivaldi.desktop";
-      "x-scheme-handler/unknown" = "vivaldi.desktop";
-    };
-  };
 
   programs.password-store.settings = {
     PASSWORD_STORE_DIR = "${config.home.homeDirectory}/.local/share/password-store";

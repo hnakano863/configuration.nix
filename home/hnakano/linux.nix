@@ -12,7 +12,6 @@
     thunderbird
     gimp
     vlc
-    vivaldi
     dmenu
     rofi-power-menu
     xmessage
@@ -60,17 +59,6 @@
   programs.autorandr.enable = true;
 
   services.dropbox.enable = true;
-
-  xdg.mimeApps = {
-    enable = true;
-    defaultApplications = {
-      "text/html" = "vivaldi-stable.desktop";
-      "x-scheme-handler/http" = "vivaldi-stable.desktop";
-      "x-scheme-handler/https" = "vivaldi-stable.desktop";
-      "x-scheme-handler/about" = "vivaldi-stable.desktop";
-      "x-scheme-handler/unknown" = "vivaldi-stable.desktop";
-    };
-  };
 
   programs.password-store.settings = {
     PASSWORD_STORE_DIR = "${config.home.homeDirectory}/.local/share/password-store";
