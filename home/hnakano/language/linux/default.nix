@@ -9,7 +9,6 @@
     nixd
     coq
     sbcl
-    clisp
     (haskellPackages.ghcWithPackages (p: [ p.cabal-install ]))
     vscode-json-languageserver
     mermaid-cli
