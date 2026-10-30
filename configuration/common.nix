@@ -37,6 +37,7 @@
     hackgen-font
     siji
     material-icons
+    nerd-fonts.symbols-only
   ];
 
   environment.variables = {
