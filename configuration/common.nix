@@ -88,5 +88,7 @@
   home-manager = {
     useGlobalPkgs = true;
     useUserPackages = true;
+    # 管理外の既存ファイルと衝突した場合は .bak に退避して続行する
+    backupFileExtension = "bak";
   };
 }
