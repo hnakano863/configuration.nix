@@ -7,6 +7,13 @@ let
     gke-gcloud-auth-plugin
   ]);
 
+  # Windows 側の Google Chrome (WSL 上では Chrome のみ使う前提でパスを固定)
+  chrome = "/mnt/c/Program Files/Google/Chrome/Application/chrome.exe";
+  # $BROWSER はスペースを含むパスを扱えないため、ラッパーを用意する
+  chrome-wsl = pkgs.writeShellScriptBin "chrome-wsl" ''
+    exec "${chrome}" "$@"
+  '';
+
 in {
 
   imports = [
@@ -28,9 +35,11 @@ in {
     lookml-parser
     obsidian
     unstable.claude-code
+    chrome-wsl
   ];
 
   home.sessionVariables = {
+    BROWSER = "chrome-wsl";
     AWS_VAULT_BACKEND = "pass";
     PIP_INDEX_URL = "https://pypi.flatt.tech/simple/";
   };
@@ -58,6 +67,23 @@ in {
     my-init-wsl
   ];
 
+  # xdg-open: Windows 側の Chrome で開く
+  xdg.desktopEntries.chrome-wsl = {
+    name = "Google Chrome (Windows)";
+    exec = "\"${chrome}\" %u";
+    mimeType = [ "text/html" "x-scheme-handler/http" "x-scheme-handler/https" ];
+    noDisplay = true;
+  };
+
+  xdg.mimeApps = {
+    enable = true;
+    defaultApplications = {
+      "text/html" = "chrome-wsl.desktop";
+      "x-scheme-handler/http" = "chrome-wsl.desktop";
+      "x-scheme-handler/https" = "chrome-wsl.desktop";
+      "x-scheme-handler/about" = "chrome-wsl.desktop";
+    };
+  };
 
   programs.password-store.settings = {
     PASSWORD_STORE_DIR = "${config.home.homeDirectory}/.local/share/password-store";
