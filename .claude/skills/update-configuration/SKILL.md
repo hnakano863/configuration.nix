@@ -46,7 +46,7 @@ arize-phoenix は PyPI のバージョンを目安にする(Docker Hub にその
 2. `overlays/<pkg>/` に移動し、`npm install --package-lock-only --ignore-scripts` で `package-lock.json` を更新する。
    - このコマンドだけは、`configuration.nix/overlays` 以下に限りフックで許可されている。他の npm / pip 操作は禁止なので、実行前にユーザーへ確認すること。
    - コマンドは完全一致が必要なので、フラグの追加や `&&` での連結はしない。作業ディレクトリは事前に別の呼び出しで移動する。
-3. `package.json` に `overrides` がある場合(現在 dataform-cli のみ。`brace-expansion` の脆弱性回避で `minimatch@^9` / `minimatch@^10` 配下を固定している)、まだ必要か確認する。
+3. `package.json` に `overrides` がある場合(現在はどのパッケージにもない。過去に dataform-cli で `brace-expansion` の脆弱性回避として `minimatch@^9` / `minimatch@^10` 配下を固定していたが、不要になり削除済み)、まだ必要か確認する。
    - まず `package.json` から `overrides` を一時的に外し、手順2のコマンドで `package-lock.json` を再生成する(`git checkout package-lock.json` で戻してから行う)。
    - その後 `npm audit`(読み取り専用なので実行可)で脆弱性が出なければ、`overrides` は不要なので外したまま進める。
    - 脆弱性が残る場合は `overrides` を戻し、`npm view <dep> versions dist-tags --json` で修正版を確認して、固定範囲を最新の修正版に更新する。
