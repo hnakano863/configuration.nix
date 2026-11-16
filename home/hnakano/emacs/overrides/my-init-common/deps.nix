@@ -51,7 +51,6 @@ with epkgs; [
   undo-fu
   undo-fu-session
   vertico
-  vterm
   which-key
   winum
   yaml-mode
