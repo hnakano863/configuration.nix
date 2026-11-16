@@ -21,6 +21,7 @@ with epkgs; [
   flycheck
   forge
   general
+  ghostel
   git-gutter
   helpful
   hydra
