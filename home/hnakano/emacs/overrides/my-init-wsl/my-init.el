@@ -29,42 +29,24 @@
 
 ;;; Development Support
 (defun my/claude-code-japanese-input ()
-  "Input Japanese text via minibuffer with SKK and send to terminal.
-Only activates in claude-code-ide session buffers."
+  "Input Japanese text via minibuffer with SKK and send to terminal."
   (interactive)
-  (when (claude-code-ide--session-buffer-p (current-buffer))
-    (let ((text (minibuffer-with-setup-hook
-                    (lambda () (skk-mode 1))
-                  (read-string "日本語入力: "))))
-      (unless (string-empty-p text)
-        (claude-code-ide--terminal-send-string text)))))
-
-(define-minor-mode my/claude-code-vim-passthrough-mode
-  "Send ESC straight to the terminal instead of letting evil intercept it.
-Claude Code's own Vim editor mode (editorMode: vim) needs to see ESC
-itself to switch between its INSERT/NORMAL states; otherwise evil
-consumes it to leave insert state on the Emacs side only.
-While this mode is active, use `C-c C-z' to reach Emacs's own evil
-normal state instead (e.g. to use the \"SPC c\" leader bindings)."
-  :lighter nil
-  (if my/claude-code-vim-passthrough-mode
-      (progn
-        (evil-local-set-key 'insert (kbd "<escape>") #'vterm--self-insert)
-        (evil-local-set-key 'insert (kbd "C-c C-z") #'evil-normal-state))
-    (evil-local-set-key 'insert (kbd "<escape>") nil)
-    (evil-local-set-key 'insert (kbd "C-c C-z") nil)))
-
-(defun my/claude-code-vim-passthrough-setup ()
-  "Enable ESC passthrough only in claude-code-ide session buffers."
-  (when (claude-code-ide--session-buffer-p (current-buffer))
-    (my/claude-code-vim-passthrough-mode 1)))
+  (let ((text (minibuffer-with-setup-hook
+                  (lambda () (skk-mode 1))
+                (read-string "日本語入力: "))))
+    (unless (string-empty-p text)
+      (claude-code-ide--terminal-send-string text))))
 
 (use-package claude-code-ide
+  :custom
+  (claude-code-ide-terminal-backend 'ghostel)
   :config
   (claude-code-ide-emacs-tools-setup)
-  (with-eval-after-load 'vterm
-    (define-key vterm-mode-map (kbd "C-x C-j") #'my/claude-code-japanese-input)
-    (add-hook 'vterm-mode-hook #'my/claude-code-vim-passthrough-setup)))
+  ;; claude-code-ideのセッションバッファかつinsert stateでのみ有効
+  (general-def 'insert ghostel-mode-map
+    :predicate '(claude-code-ide--session-buffer-p (current-buffer))
+    "C-x C-j" #'my/claude-code-japanese-input
+    "C-{" #'claude-code-ide-send-escape))
 
 (use-package gptel-commit
   :after magit

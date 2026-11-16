@@ -21,6 +21,7 @@ with epkgs; [
   flycheck
   forge
   general
+  ghostel
   git-gutter
   helpful
   hydra
@@ -50,7 +51,6 @@ with epkgs; [
   undo-fu
   undo-fu-session
   vertico
-  vterm
   which-key
   winum
   yaml-mode
