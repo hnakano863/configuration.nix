@@ -29,23 +29,24 @@
 
 ;;; Development Support
 (defun my/claude-code-japanese-input ()
-  "Input Japanese text via minibuffer with SKK and send to terminal.
-Only activates in claude-code-ide session buffers."
+  "Input Japanese text via minibuffer with SKK and send to terminal."
   (interactive)
-  (when (claude-code-ide--session-buffer-p (current-buffer))
-    (let ((text (minibuffer-with-setup-hook
-                    (lambda () (skk-mode 1))
-                  (read-string "日本語入力: "))))
-      (unless (string-empty-p text)
-        (claude-code-ide--terminal-send-string text)))))
+  (let ((text (minibuffer-with-setup-hook
+                  (lambda () (skk-mode 1))
+                (read-string "日本語入力: "))))
+    (unless (string-empty-p text)
+      (claude-code-ide--terminal-send-string text))))
 
 (use-package claude-code-ide
   :custom
   (claude-code-ide-terminal-backend 'ghostel)
   :config
   (claude-code-ide-emacs-tools-setup)
-  (with-eval-after-load 'ghostel
-    (define-key ghostel-mode-map (kbd "C-x C-j") #'my/claude-code-japanese-input)))
+  ;; claude-code-ideのセッションバッファかつinsert stateでのみ有効
+  (general-def 'insert ghostel-mode-map
+    :predicate '(claude-code-ide--session-buffer-p (current-buffer))
+    "C-x C-j" #'my/claude-code-japanese-input
+    "C-{" #'claude-code-ide-send-escape))
 
 (use-package gptel-commit
   :after magit
