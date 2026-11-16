@@ -420,7 +420,23 @@
   :config
   (winum-mode 1))
 
-;; TODO install popper for popup window
+;; popup window (VS Code風の下部ターミナル)
+(use-package popper
+  :custom
+  (popper-reference-buffers '("\\`\\*ghostel\\(: .*\\)?\\*\\(<[0-9]+>\\)?\\'")) ; タイトル付き名(*ghostel: ~*<2>)も対象
+  (popper-display-control t)
+  (popper-window-height 0.3)
+  (popper-group-function #'popper-group-by-projectile)
+  :config
+  (popper-mode 1)
+  (popper-echo-mode 1)
+  (defun my/terminal-toggle (&optional arg)
+    "ポップアップが開いていれば閉じ、なければghostelを開く。
+ARGがあれば `ghostel' にそのまま渡す(C-uで新規、数値でN番を開く)。"
+    (interactive "P")
+    (if (or arg (not popper-open-popup-alist))
+        (ghostel arg)
+      (popper-toggle))))
 
 ;;; User Interface
 ;; highlight
@@ -537,7 +553,7 @@
   :prefix "SPC"
   "" nil
   "SPC" 'consult-buffer
-  "RET" 'ghostel
+  "RET" 'my/terminal-toggle
   "b" '(:ignore t :wk "buffer")
   "f" '(:ignore t :wk "file")
   "g" '(:ignore t :wk "git")

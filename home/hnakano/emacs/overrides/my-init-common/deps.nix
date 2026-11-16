@@ -39,6 +39,7 @@ with epkgs; [
   org-mru-clock
   org-roam
   pdf-tools
+  popper
   prism
   projectile
   rainbow-delimiters
