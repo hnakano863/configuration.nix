@@ -58,7 +58,8 @@
 (use-package exec-path-from-shell
   :demand t
   :config
-  (add-to-list 'exec-path-from-shell-variables "PASSWORD_STORE_DIR")
+  (dolist (envvar '("PASSWORD_STORE_DIR" "EDITOR"))
+    (add-to-list 'exec-path-from-shell-variables envvar))
   (when (or (memq window-system '(mac ns x)) (daemonp))
     (exec-path-from-shell-initialize)))
 
