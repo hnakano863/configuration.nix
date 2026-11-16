@@ -523,7 +523,7 @@
   :custom
   (evil-collection-magit-state 'normal)
   :config
-  (evil-collection-init '(magit ghostel pdf))) ; FIXME: pdf-view
+  (evil-collection-init '(magit pdf evil-ghostel))) ; FIXME: pdf-view
 
 ;;; General.el definitions
 ;; definer
