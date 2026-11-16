@@ -51,8 +51,6 @@
   programs.fish = {
     enable = true;
     functions = {
-      vterm_printf.body = builtins.readFile ./fish_functions/vterm_printf.fish;
-
       gfz.body = "cd (ghq list -p | fzf)";
       grt.body = "cd (git rev-parse --show-toplevel)";
       pluto.body =
