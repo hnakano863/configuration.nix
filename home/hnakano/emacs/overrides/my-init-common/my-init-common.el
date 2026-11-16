@@ -142,7 +142,7 @@
   :hook
   (skk-load . (lambda () (require 'context-skk)))
   :config
-  (dolist (mode '(lisp-interaction-mode nix-mode))
+  (dolist (mode '(lisp-interaction-mode nix-mode ghostel-mode))
     (add-to-list 'context-skk-programming-mode mode)))
 
 (use-package ddskk-posframe
@@ -425,7 +425,7 @@
 ;; highlight
 (use-package hl-line
   :hook
-  ((vterm-mode eshell-mode comint-mode term-mode) . (lambda () (setq-local global-hl-line-mode nil)))
+  ((eshell-mode comint-mode term-mode) . (lambda () (setq-local global-hl-line-mode nil)))
   :init
   (make-variable-buffer-local 'global-hl-line-mode)
   :config
@@ -487,7 +487,7 @@
   (evil-insert-state-entry . (lambda () (skk-mode 1)))
   (evil-insert-state-exit . (lambda () (skk-mode -1)))
   :config
-  (evil-set-initial-state 'vterm-mode 'insert) ; vterm-modeではinsert-modeで入る
+  (evil-set-initial-state 'ghostel-mode 'insert) ; ghostel-modeではinsert-modeで入る
   (evil-mode 1))
 
 ;; org-mode integration
@@ -523,7 +523,7 @@
   :custom
   (evil-collection-magit-state 'normal)
   :config
-  (evil-collection-init '(magit vterm pdf))) ; FIXME: pdf-view
+  (evil-collection-init '(magit ghostel pdf))) ; FIXME: pdf-view
 
 ;;; General.el definitions
 ;; definer
@@ -536,7 +536,7 @@
   :prefix "SPC"
   "" nil
   "SPC" 'consult-buffer
-  "RET" 'vterm
+  "RET" 'ghostel
   "b" '(:ignore t :wk "buffer")
   "f" '(:ignore t :wk "file")
   "g" '(:ignore t :wk "git")
