@@ -15,14 +15,14 @@ with epkgs; [
   envrc
   evil
   evil-collection
-  evil-ghostel
+  unstable.evil-ghostel
   evil-org # 不要か？
   exec-path-from-shell
   fish-mode
   flycheck
   forge
   general
-  ghostel
+  unstable.ghostel
   git-gutter
   helpful
   hydra
