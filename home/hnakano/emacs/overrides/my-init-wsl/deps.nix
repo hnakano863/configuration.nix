@@ -4,4 +4,5 @@ with epkgs; [
   lookml-mode
   claude-code-ide
   unstable.gptel-commit
+  web-server
 ]
