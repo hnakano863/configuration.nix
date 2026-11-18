@@ -507,6 +507,11 @@ ARGがあれば `ghostel' にそのまま渡す(C-uで新規、数値でN番を�
   (evil-set-initial-state 'ghostel-mode 'insert) ; ghostel-modeではinsert-modeで入る
   (evil-mode 1))
 
+;; ghostel integration (シェル上でevilの編集コマンドを使う)
+(use-package evil-ghostel
+  :after (ghostel evil)
+  :hook (ghostel-mode . evil-ghostel-mode))
+
 ;; org-mode integration
 (use-package evil-org
   :hook

@@ -15,6 +15,7 @@ with epkgs; [
   envrc
   evil
   evil-collection
+  evil-ghostel
   evil-org # 不要か？
   exec-path-from-shell
   fish-mode

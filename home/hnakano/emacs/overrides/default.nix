@@ -4,6 +4,12 @@ self: super: {
 
   evil = self.melpaPackages.evil;
 
+  # nixpkgs(stable)のghostelは古くevil-ghostelと整合しないため、unstableの組を使う
+  ghostel = self.unstable.ghostel;
+  evil-ghostel = self.unstable.evil-ghostel.overrideAttrs (old: {
+    propagatedBuildInputs = [ self.evil self.ghostel ];
+  });
+
   treemacs = self.melpaBuild {
     inherit (super.treemacs) pname ename commit version src recipe meta;
     packageRequires = super.treemacs.propagatedBuildInputs ++ [ self.doom-modeline ];
