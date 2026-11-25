@@ -14,7 +14,7 @@ buildNpmPackage (finalAttrs: {
     hash = "sha256-vM1/KYR8RpTmPfBIX/SVwpqF9hYMGKBD35JeJX6a4z0=";
   };
 
-  npmDepsHash = "sha256-csbr6a5+hknwcPrfsa71rVa77vcNOAn/1hScFb7h1Mo=";
+  npmDepsHash = "sha256-yr7QLHA/xFGCUyV46hHekFPhP6XF/PIvk0TOyYrilus=";
 
   dontNpmBuild = true;
 
