@@ -10,8 +10,8 @@ buildNpmPackage (finalAttrs: {
   src = fetchFromGitHub {
     owner = "looker-open-source";
     repo = "look-at-me-sideways";
-    rev = "6a9262552f416c3205a7c5fddc63516108fd702f";
-    hash = "sha256-V5RexJ19QvPFCuiiKOryuoKLlvOKI0hhte36rtBYr2E=";
+    rev = "716727d0f002cc8568308e3b1452a4cb3fb39322";
+    hash = "sha256-vM1/KYR8RpTmPfBIX/SVwpqF9hYMGKBD35JeJX6a4z0=";
   };
 
   npmDepsHash = "sha256-csbr6a5+hknwcPrfsa71rVa77vcNOAn/1hScFb7h1Mo=";
